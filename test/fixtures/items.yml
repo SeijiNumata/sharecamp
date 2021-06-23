@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  events_id: 1
+  name: MyText
+  need_number: 1
+
+two:
+  events_id: 1
+  name: MyText
+  need_number: 1
