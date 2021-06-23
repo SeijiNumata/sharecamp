@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="event_show">
     <p>{{ message }}</p>
       <p>イベント名</p>
        <input v-model="newEventsName">
@@ -26,7 +26,7 @@
 import axios from 'axios';
 
 export default {
-  data: function () {
+  data() {
     return {
       message: "EventNew!",
       items: [],
@@ -34,11 +34,11 @@ export default {
       newEventsName: ''
     }
   },
-  mounted: function(){
+  mounted(){
         this.fetchItems();
   },
-  methods:{
-   fetchItems: function(){
+  methods: {
+   fetchItems(){
      axios.get('/api/items')
      .then((response)=>{
          let self = this
@@ -49,7 +49,7 @@ export default {
           console.log(error, response);
         });
       },
-  createItem: function () {
+    createItem() {
         if(this.newItem == '') return;
         axios.post('/api/items', { item: { name: this.newItem } }).then((response) => {
           this.items.unshift(response.data);

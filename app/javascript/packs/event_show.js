@@ -6,26 +6,15 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import App from '../app.vue'
+import EventShow from '../event_show.vue'
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     render: h => h(App)
-//   }).$mount()
-//   document.body.appendChild(app.$el)
-
-//   console.log(app)
-// })
 document.addEventListener('DOMContentLoaded', () => {
-  const selector = '#js-hello'
-  const announcements = document.querySelector(selector)
-  if (announcements) {
-    const title = announcements.getAttribute('data-title')
-    const currentUserId = announcements.getAttribute('data-current-user-id')
-    new Vue({
-      render: (h) =>h(App)
-    }).$mount(selector)
-  }
+  const eventShow = new Vue({
+    render: h => h(EventShow)
+  }).$mount()
+  document.body.appendChild(eventShow.$el)
+
+  console.log(eventShow)
 })
 
 
