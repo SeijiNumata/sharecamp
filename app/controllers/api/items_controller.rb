@@ -17,17 +17,26 @@ module Api
       end
   
       def destroy
-        Item.find(params[:id]).destroy!
+        @item.destroy!
       end
   
       def update
-        Item.find(params[:id]).toggle!(:is_done)
+        if @item.update(item_params)
+            head :ok
+          else
+            head :bad_request
+          end
       end
   
       private 
       def item_params
         params.require(:item).permit(:events_id, :name, :need_number)
       end
+
+      def set_item
+        @item = Item.find(params[:id])
+      end
+      
     end
   end
   

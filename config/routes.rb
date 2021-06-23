@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  resources :items
   root 'events#index'
-  resources :events
   resources :items
+  resources :events
   namespace :api, format: 'json' do
     resources :items, only: [:index, :create, :destroy, :update]
   end
