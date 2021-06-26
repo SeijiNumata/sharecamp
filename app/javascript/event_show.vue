@@ -5,7 +5,6 @@
        <input v-model="newEventsName">
        <p>"誰かに持ってきて欲しいもの"</p>
        <input v-model="newItem" placeholder="to doを追加して下さい">
-
       <div v-on:click="createItem">
         
         <i>追加</i>
@@ -39,7 +38,7 @@ export default {
   },
   methods: {
    fetchItems(){
-     axios.get('/api/items')
+     axios.get('/api/items.json')
      .then((response)=>{
          let self = this
        for(let i = 0; i < response.data.items.length; i++) {

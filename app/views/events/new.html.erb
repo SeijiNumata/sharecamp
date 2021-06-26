@@ -1,16 +1,7 @@
 <h1>New Event</h1>
-<%
-=begin%>
- <%= javascript_pack_tag 'hello_vue' %> 
-<%
-=end%>
-<div id="js-hello"></div>
-<%
-=begin%>
- <%= javascript_pack_tag 'event_new' %>
+
+<%= javascript_pack_tag 'event_new' %>
 <%= stylesheet_pack_tag 'event_new'  %>  
-<%
-=end%>
 
 <%= render 'form', event: @event %>
 
