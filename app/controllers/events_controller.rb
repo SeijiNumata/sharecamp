@@ -21,7 +21,6 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    byebug
     @event = Event.new(event_params)
 
     respond_to do |format|

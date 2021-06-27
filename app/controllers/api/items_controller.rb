@@ -8,6 +8,10 @@ module Api
       @items = Item.order('created_at DESC')
     end
 
+    def new
+      @event = Event.new
+    end
+
     def create
       @event = Event.new(event_params)
       if @event.save
@@ -15,21 +19,29 @@ module Api
           @item = Item.new
           @item.name = item_params[:name][i]
           @item.need_number = item_params[:need_number][i]
-          @item.events_id=@event.id
+          @item.event_id=@event.id
           unless @item.save
-             render json: @item.errors, status: :unprocessable_entity
-            # render json: { status: 'ERROR', data: @item.errors }
-            return
+            render json: { status: 'ERROR', data: @item.errors }
           end
         end
       else
-        render json: @event.errors, status: :unprocessable_entity
-        return
+        # render json: { status: 'ERROR', data: @event.errors }
+        # return
       end
-
-      
-      #render json: { status: 'SUCCESS', data: @item }
-      render json: @item, status: :created
+      render json: @event, status: :created
+      # render json: { status: 'ERROR', data: @item.errors }
+      # # format.html { redirect_to @event, notice: 'Event was successfully created.' }
+      # # format.json { render json: { status: 'SUCCESS', data: @item }}
+      # # #render json: @item, status: :created
+      # #  #render json: @item.errors, status: :unprocessable_entity
+      # #  render json: { status: 'ERROR', data: @item.errors 
+      # render :show, status: :created
+      # redirect_to root_path
+      # respond_to do |format|
+      #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
+      #     format.json { render :show, status: :created, location: @event }
+      #  end
+    
     end
 
     def destroy
@@ -47,7 +59,7 @@ module Api
     private
 
     def item_params
-      params.require(:item).permit(:events_id, need_number: [], name: [])
+      params.require(:item).permit(:event_id, need_number: [], name: [])
     end
 
     def event_params
