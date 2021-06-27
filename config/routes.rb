@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'events#index'
+  root 'top#index'
   # resources :items
   resources :events
   namespace :api do # , format: 'json' do
