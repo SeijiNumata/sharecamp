@@ -7,6 +7,10 @@ module Api
     def index
       @items = Item.order('created_at DESC')
     end
+    
+    def show
+      render json: @event
+    end
 
     def new
       @event = Event.new
