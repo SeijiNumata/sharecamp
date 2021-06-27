@@ -23,7 +23,7 @@
         </div>
      <ul>
       <li v-for="(item, index) in items" :key="item.id">
-        <input type="checkbox" v-model="item.is_done" v-on:click="update(item.id, index)">
+        <!-- <input type="checkbox" v-model="item.is_done" v-on:click="update(item.id, index)"> -->
         <span v-bind:class="{name: item.name}">{{ item.name }}</span>
          <span>{{ item.need_number}}</span> 
          <input type="number" name="num01"  placeholder="数" min="0">
