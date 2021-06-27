@@ -1,5 +1,9 @@
 <h1>New Event</h1>
 
+<%= javascript_pack_tag 'event_new' %>
+<%= stylesheet_pack_tag 'event_new'  %>  
+
 <%= render 'form', event: @event %>
 
 <%= link_to 'Back', events_path %>
+
