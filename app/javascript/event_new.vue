@@ -4,16 +4,16 @@
     <input v-model="newEventsName">
     <p>誰かに持ってきて欲しいもの</p>
     <form>
-    <ul>
+      <ul>
 
         <li v-for="(item, index) in items" :key="item.id">
           <!-- 各入力ボックス -->
           <input type="text" v-model="newItems[index]">
-         <input type="number" name="num01"  v-model="newItemsNumber[index]" placeholder="数" min="0"  >
+          <input type="number" name="num01" v-model="newItemsNumber[index]" placeholder="数" min="0">
         </li>
-    </ul>
-    <button type="button" @click="addInput">追加する</button>
-    <button type="button" @click="createItem">この内容で登録</button>
+      </ul>
+      <button type="button" @click="addInput">追加する</button>
+      <button type="button" @click="createItem">この内容で登録</button>
     </form>
 
     <p>内容は後で変更ができます</p>
@@ -32,7 +32,7 @@
       return {
         items: ["", "", ""],
         newItems: [],
-        newItemsNumber:[],
+        newItemsNumber: [],
         newEventsName: ''
       }
     },
@@ -42,19 +42,31 @@
       },
       createItem() {
         let self = this
-      console.log(this.newItems)
-         if (this.newItems== '') return;
+        console.log(this.newItems)
+        if (this.newItems == '') return;
         axios.post('/api/items', {
           item: {
             name: this.newItems,
             need_number: this.newItemsNumber
           },
-          event:{
+          event: {
             name: this.newEventsName
           }
         }).then((response) => {
           self.items.unshift(response.data);
           this.newItems = '';
+          // window.location.replace = '/';
+          const status = JSON.stringify(response.status)
+          console.log(status)
+          if (status == '201') {
+            console.log("aa" + JSON.stringify(response.data.id))
+            const url = JSON.stringify(response.data.id)
+            var url_rep = "";
+            url_rep = url.replace(/\"/g, "")
+            console.log(url_rep)
+            location.href = url_rep
+          }
+
         }, (error) => {
           console.log(error, response);
         });
