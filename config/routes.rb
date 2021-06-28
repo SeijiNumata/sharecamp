@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'top#index'
   # resources :items
   resources :events
-  resources :users
+  scope :events do
+    resources :users
+  end
   namespace :api do # , format: 'json' do
     resources :items # , only: [:index, :create, :destroy, :update]
   end

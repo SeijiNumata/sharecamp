@@ -63,8 +63,10 @@
             const url = JSON.stringify(response.data.id)
             var url_rep = "";
             url_rep = url.replace(/\"/g, "")
-            console.log(url_rep)
-            location.href = url_rep
+            console.log("wtha"+url_rep)
+            const redirectURL=("users/new?e="+url_rep)
+            console.log(redirectURL)
+            location.href = redirectURL
           }
 
         }, (error) => {

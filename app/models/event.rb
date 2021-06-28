@@ -2,7 +2,9 @@
 
 class Event < ApplicationRecord
    has_many :items
-   has_many :users
+   has_many :users_events
+   has_many :users, through: :users_events
+   accepts_nested_attributes_for :users_events
 
    before_create :generate_token
 

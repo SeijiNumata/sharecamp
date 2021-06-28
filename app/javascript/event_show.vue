@@ -1,6 +1,6 @@
 <template>
   <div id="event_show">
-        <div class="vue">
+        
       <ul class="tabs">
         <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">持ってきてほしいもの</li>
         <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">自分が持っていくもの</li>
@@ -12,7 +12,6 @@
         <li v-else-if="isActive === '2'">コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
         <li v-else-if="isActive === '3'">コンテンツ3コンテンツ3コンテンツ3コンテンツ3</li>
       </ul>
-    </div>
     <h1>{{eventName}}</h1>
        <!-- <input v-model="newEventsName">
        <p>"誰かに持ってきて欲しいもの"</p>
@@ -70,9 +69,10 @@ export default {
       axios.get(this.url()+".json")
     
        .then((response)=>{
-         console.log(response.data.item)
+         console.log("items"+response.data.item)
          this.items=response.data.item
          console.log(response.data)
+         console.log(this.items)
          this.eventName=response.data.name
         }, (error) => {
           console.log(error, response);

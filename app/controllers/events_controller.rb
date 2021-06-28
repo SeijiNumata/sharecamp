@@ -9,11 +9,15 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1 or /events/1.json
-  def show; end
+  def show
+
+  end
 
   # GET /events/new
   def new
     @event = Event.new
+    @takasu="takasu"
+    @current_user ||= User.find_by(id: cookies.signed[:user_id])
   end
 
   # GET /events/1/edit

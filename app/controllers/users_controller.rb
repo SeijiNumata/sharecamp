@@ -2,31 +2,43 @@
 
 class UsersController < ApplicationController
     before_action :set_user, only: %i[show edit update destroy]
-  
    
     def index
       @users = User.all
     end
   
     # GET /users/1 or /users/1.json
-    def show; end
+    def show
+    
+    end
   
     # GET /users/new
     def new
       @user = User.new
+      session[:param] = params[:e]
     end
-  
+   
     # GET /users/1/edit
     def edit; end
   
     # POST /users or /users.json
     def create
+        # saveしてからじゃないと無理説
       @user = User.new(user_params)
-  
+      @user.save
+      events=Event.find(session[:param])
+      @user.events.create(id: events.id)
+    #   events=Event.find(session[:param])
+    #   event.users.new(id:@user.id)
+    #   @user.events.new(id: event.id)
+      byebug
+    #   superEve.users.build(id: @user.id)
+#      @event=@user.events(superEve)
       respond_to do |format|
         if @user.save
-          format.html { redirect_to new_event_path, notice: 'user was successfully created.' }
-          format.json { render :show, status: :created, location: @event }
+          cookies.signed[:user_id] = @user.id
+          format.html { redirect_to event, notice: 'user was successfully created.' }
+        #   format.json { render :show, status: :created, location: @event }
         else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @user.errors, status: :unprocessable_entity }
