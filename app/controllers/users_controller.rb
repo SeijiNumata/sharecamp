@@ -25,13 +25,17 @@ class UsersController < ApplicationController
     def create
         # saveしてからじゃないと無理説
       @user = User.new(user_params)
-      @user.save
-      events=Event.find(session[:param])
-      @user.events.create(id: events.id)
+      event=Event.find(session[:param])
+      @user.events<<event
+    #   @user=event.users.build(user_params)
+    #   @user = User.new(user_params)
+    #   @user.save
+    #   events=Event.find(session[:param])
+    #   @user.events.create(id: events.id)
     #   events=Event.find(session[:param])
     #   event.users.new(id:@user.id)
     #   @user.events.new(id: event.id)
-      byebug
+     #  byebug
     #   superEve.users.build(id: @user.id)
 #      @event=@user.events(superEve)
       respond_to do |format|

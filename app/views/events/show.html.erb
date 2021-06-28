@@ -3,6 +3,9 @@
 <p>
   <strong>Name:</strong>
   <%= @event.name %>
+  <%= @event.users.each do |asda|%>
+  <%= asda %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
