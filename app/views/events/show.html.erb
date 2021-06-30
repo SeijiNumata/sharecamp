@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+ <p>hello! <%= current_user.name %></p>
+ <span>別人の場合は</span><%= link_to 'こちら', new_user_path %> 
 <p>
   <strong>Name:</strong>
   <%= @event.name %>

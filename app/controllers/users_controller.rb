@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     # GET /users/new
     def new
       @user = User.new
-      session[:param] = params[:e]
+      session[:param] = params[:e] || session[:e]
     end
    
     # GET /users/1/edit
@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   
     # POST /users or /users.json
     def create
-        # saveしてからじゃないと無理説
       @user = User.new(user_params)
       event=Event.find(session[:param])
       @user.events<<event

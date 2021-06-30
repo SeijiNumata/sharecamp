@@ -1,4 +1,5 @@
 <template>
+
   <div id="event_show">
         
       <ul class="tabs">
@@ -25,7 +26,21 @@
         <!-- <input type="checkbox" v-model="item.is_done" v-on:click="update(item.id, index)"> -->
         <span v-bind:class="{name: item.name}">{{ item.name }}</span>
          <span>{{ item.need_number}}</span> 
-         <input type="number" name="num01"  placeholder="数" min="0">
+           <!-- <label class="form-label" for="typeNumber">Number input</label>
+         <input type="number" id="typeNumber" name="num01"  step="1" placeholder="1" min="0"> -->
+       <select name="example" >
+         <option value='' disabled selected style='display:none;'>数</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+    <option value="9">9</option>
+     <option value="10">10</option>
+</select>
         <button type="button" @click="addInput">持っていく</button>
       </li>
     </ul>
@@ -83,6 +98,7 @@ export default {
     },
     addInput(){
       console.log("追加すすr")
+      //fetchする
     }
     
   //  fetchItems(){

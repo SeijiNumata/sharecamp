@@ -10,14 +10,14 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show  
-    #byebug  
+    session[:e]=@event.id 
   end
 
   # GET /events/new
   def new
     @event = Event.new
-    @takasu="takasu"
-    @current_user ||= User.find_by(id: cookies.signed[:user_id])
+   # @current_user ||= User.find_by(id: cookies.signed[:user_id])
+    User.find_by(id: cookies.signed[:user_id])
   end
 
   # GET /events/1/edit
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
-
+ 
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
