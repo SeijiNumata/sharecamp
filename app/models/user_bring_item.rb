@@ -1,0 +1,2 @@
+class UserBringItem < ApplicationRecord
+end
