@@ -24,11 +24,11 @@
     <ul>
       <li v-for="(item, index) in items" :key="item.id">
         <!-- <input type="checkbox" v-model="item.is_done" v-on:click="update(item.id, index)"> -->
-        <span v-bind:class="{name: item.name}" >{{ item.name }}</span>
+        <span v-bind:class="{name: item.name}">{{ item.name }}</span>
         <span>{{ item.need_number}}</span>
         <!-- <label class="form-label" for="typeNumber">Number input</label>
          <input type="number" id="typeNumber" name="num01"  step="1" placeholder="1" min="0"> -->
-        <select v-model="selectedNumber" name="example">
+        <!-- <select v-model="selectedNumber" name="example">
           <option value='' disabled selected style='display:none;'>数</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -40,20 +40,38 @@
           <option value="8">8</option>
           <option value="9">9</option>
           <option value="10">10</option>
-        </select>
-        {{items[index]}}
+        </select> -->
+
+        <select v-model="selectedNumber" name="example">
+          <option value='数' disabled selected style='display:none;'>数</option>
+          <option v-for="n of item.need_number" :key="n" >{{n}}</option>
+           </select>
+
+        <p>{{items[index]}}</p>
+        <!-- <p>{{selectedNumber[index]}}</p> -->
         <button type="button" @click="createUserBringItems(item,selectedNumber)">持っていく</button>
+        </br>
       </li>
     </ul>
     {{items}}
+   <item  v-for="(item) in items" 
+   v-bind:key="item.id"
+   v-bind:name="item.name"
+   v-bind:needNumber="item.need_number" 
+   v-bind:item="item">
+   </item>
   </div>
 
 </template>
 
 <script>
   import axios from 'axios';
+  import Item from './item.vue'
 
   export default {
+    components:{
+      item: Item
+    },
     data() {
       return {
         isActive: '1',
@@ -62,8 +80,8 @@
         items: [],
         newItem: '',
         newEventsName: '',
-        itemName:'',
-        selectedNumber:''
+        // itemName: '',
+        selectedNumber: ""
       }
     },
     mounted() {
@@ -102,13 +120,11 @@
         console.log("追加すすr")
         //fetchする
       },
-      itemName(){
-        return 
-      },
-      createUserBringItems(item,selectedNumber) {
+      createUserBringItems(item, selectedNumber) {
+        console.log(selectedNumber)
         axios.post('/api/user_bring_items', {
-            item: item,
-            selectedNumber: selectedNumber
+          item: item,
+          selectedNumber: selectedNumber
 
         })
       }
