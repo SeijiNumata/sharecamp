@@ -17,6 +17,7 @@ module Api
       end
   
       def create
+        byebug
         @event = Event.new(event_params)
         if @event.save
           item_params[:name].count.times do |i|
