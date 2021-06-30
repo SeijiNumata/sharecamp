@@ -17,23 +17,19 @@ module Api
       end
   
       def create
-        byebug
-        @event = Event.new(event_params)
-        if @event.save
-          item_params[:name].count.times do |i|
-            @item = Item.new
-            @item.name = item_params[:name][i]
-            @item.need_number = item_params[:need_number][i]
-            @item.event_id=@event.id
-            unless @item.save
-              render json: { status: 'ERROR', data: @item.errors }
-            end
-          end
+        bring_number=user_bring_item_params[:selectedNumber]
+        user_bring_item=UserBringItem.new(bring_number: bring_number)
+        item=Item.find(item_params[:id])
+        item.user_bring_items << user_bring_item
+        current_user.user_bring_items << user_bring_item
+          byebug
+        if user_bring_item.save
+          #何かを返す
         else
-          # render json: { status: 'ERROR', data: @event.errors }
+          render json: { status: 'ERROR', data: user_bring_item.errors }
           # return
         end      
-        render json: @event, status: :created
+        
         # render json: { status: 'ERROR', data: @item.errors }
         # # format.html { redirect_to @event, notice: 'Event was successfully created.' }
         # # format.json { render json: { status: 'SUCCESS', data: @item }}
@@ -46,7 +42,6 @@ module Api
         #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
         #     format.json { render :show, status: :created, location: @event }
         #  end
-      
       end
   
       def destroy
@@ -54,6 +49,8 @@ module Api
       end
   
       def update
+        byebug
+        User.find(params[:id])
         if @item.update(item_params)
           head :ok
         else
@@ -64,9 +61,13 @@ module Api
       private
   
       def item_params
-        params.require(:item).permit(:event_id, need_number: [], name: [])
+        params.require(:item).permit(:id)
       end
-  
+      def user_bring_item_params
+        params.permit(:selectedNumber)
+      end
+
+
       def event_params
         params.require(:event).permit(:name)
       end
@@ -76,4 +77,3 @@ module Api
       end
     end
   end
-  

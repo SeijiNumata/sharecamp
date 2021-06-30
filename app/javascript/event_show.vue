@@ -121,6 +121,7 @@
         //fetchする
       },
       createUserBringItems(item, selectedNumber) {
+        //todo putと分ける
         console.log(selectedNumber)
         axios.post('/api/user_bring_items', {
           item: item,
