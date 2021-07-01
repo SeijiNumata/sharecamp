@@ -10,23 +10,33 @@ import App from '../app.vue'
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   const app = new Vue({
-//     render: h => h(App)
+//     render: h => h(App,{ props: document.getElementById("hello_vue").dataset})
 //   }).$mount()
 //   document.body.appendChild(app.$el)
 
 //   console.log(app)
 // })
-document.addEventListener('DOMContentLoaded', () => {
-  const selector = '#js-hello'
-  const announcements = document.querySelector(selector)
-  if (announcements) {
-    const title = announcements.getAttribute('data-title')
-    const currentUserId = announcements.getAttribute('data-current-user-id')
-    new Vue({
-      render: (h) =>h(App)
-    }).$mount(selector)
-  }
-})
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const selector='hello_vue'
+//   // const announcements = document.querySelector(selector)
+//   // console.log("announ"+announcements)
+//   // const currentUserId = announcements.getAttribute('data-item-group-code')
+//   new Vue({
+//     render: h => h(App)
+//   }).$mount(selector)
+// })
+// document.addEventListener('DOMContentLoaded', () => {
+//   const selector = '#js-hello'
+//   const announcements = document.querySelector(selector)
+//   if (announcements) {
+//     const title = announcements.getAttribute('data-title')
+//     const currentUserId = announcements.getAttribute('data-current-user-id')
+//     new Vue({
+//       render: (h) =>h(App)
+//     }).$mount(selector)
+//   }
+// })
 
 
 // The above code uses Vue without the compiler, which means you cannot

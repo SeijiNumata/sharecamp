@@ -13,3 +13,16 @@
 <%= link_to 'Back', events_path %>
 <%= javascript_pack_tag 'event_show' %>
 <%= stylesheet_pack_tag 'event_show'  %> 
+
+<%
+=begin%>
+ <%= javascript_pack_tag 'hello_vue' %>  
+<%
+=end%>
+<%
+=begin%>
+ <div id='hello_vue' data-code="<%= current_user.name %>"></div>  
+<%
+=end%>
+
+<div id='event_show' data-code="<%= current_user.name %>"></div> 

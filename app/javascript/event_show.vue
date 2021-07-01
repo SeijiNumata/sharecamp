@@ -60,6 +60,7 @@
    v-bind:needNumber="item.need_number" 
    v-bind:item="item">
    </item>
+   <h1 > {{ code }}</h1>
   </div>
 
 </template>
@@ -72,6 +73,9 @@
     components:{
       item: Item
     },
+      props:{
+    code: { type: String },
+  },
     data() {
       return {
         isActive: '1',

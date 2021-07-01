@@ -22,7 +22,6 @@ module Api
         item=Item.find(item_params[:id])
         item.user_bring_items << user_bring_item
         current_user.user_bring_items << user_bring_item
-          byebug
         if user_bring_item.save
           #何かを返す
         else
