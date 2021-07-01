@@ -44,7 +44,9 @@ module Api
       end
   
       def destroy
-        @item.destroy!
+        set_user_bring_item
+        @user_bring_item.destroy!
+        # @item.destroy!
       end
   
       def update
@@ -66,6 +68,11 @@ module Api
         params.permit(:selectedNumber)
       end
 
+      def set_user_bring_paras
+        #todo
+      end
+
+
 
       def event_params
         params.require(:event).permit(:name)
@@ -73,6 +80,10 @@ module Api
   
       def set_item
         @item = Item.find(params[:id])
+      end
+
+      def set_user_bring_item
+        @user_bring_item=UserBringItem.find(params[:id])
       end
     end
   end
