@@ -8,14 +8,14 @@
 import Vue from 'vue'
 import App from '../app.vue'
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     render: h => h(App,{ props: document.getElementById("hello_vue").dataset})
-//   }).$mount()
-//   document.body.appendChild(app.$el)
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new Vue({
+    render: h => h(App)
+  }).$mount()
+  document.body.appendChild(app.$el)
 
-//   console.log(app)
-// })
+  console.log(app)
+})
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   const selector='hello_vue'

@@ -49,7 +49,7 @@
 
         <p>{{items[index]}}</p>
         <!-- <p>{{selectedNumber[index]}}</p> -->
-        <button type="button" @click="createUserBringItems(item,selectedNumber)">持っていく</button>
+        <button type="button"  @click="createUserBringItems(item,selectedNumber)">持っていく</button>
         </br>
       </li>
     </ul>
@@ -58,9 +58,10 @@
    v-bind:key="item.id"
    v-bind:name="item.name"
    v-bind:needNumber="item.need_number" 
-   v-bind:item="item">
+   v-bind:item="item"
+   v-bind:currentUserId="currentUserId">
    </item>
-   <h1 > {{ code }}</h1>
+   <h1 > {{ currentUserId }}</h1>
   </div>
 
 </template>
@@ -74,7 +75,7 @@
       item: Item
     },
       props:{
-    code: { type: String },
+    currentUserId: { type: String },
   },
     data() {
       return {
@@ -85,7 +86,7 @@
         newItem: '',
         newEventsName: '',
         // itemName: '',
-        selectedNumber: ""
+        selectedNumber: "",
       }
     },
     mounted() {
