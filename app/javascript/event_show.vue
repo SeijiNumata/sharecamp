@@ -21,11 +21,11 @@
     <div>
       <!-- <i>追加</i> -->
     </div>
-    <ul>
-      <li v-for="(item, index) in items" :key="item.id">
+    <!-- <ul>
+      <li v-for="(item, index) in items" :key="item.id"> -->
         <!-- <input type="checkbox" v-model="item.is_done" v-on:click="update(item.id, index)"> -->
-        <span v-bind:class="{name: item.name}">{{ item.name }}</span>
-        <span>{{ item.need_number}}</span>
+        <!-- <span v-bind:class="{name: item.name}">{{ item.name }}</span>
+        <span>{{ item.need_number}}</span> -->
         <!-- <label class="form-label" for="typeNumber">Number input</label>
          <input type="number" id="typeNumber" name="num01"  step="1" placeholder="1" min="0"> -->
         <!-- <select v-model="selectedNumber" name="example">
@@ -42,18 +42,18 @@
           <option value="10">10</option>
         </select> -->
 
-        <select v-model="selectedNumber" name="example">
+        <!-- <select v-model="selectedNumber" name="example">
           <option value='数' disabled selected style='display:none;'>数</option>
           <option v-for="n of item.need_number" :key="n" >{{n}}</option>
-           </select>
+           </select> -->
 
-        <p>{{items[index]}}</p>
+        <!-- <p>{{items[index]}}</p> -->
         <!-- <p>{{selectedNumber[index]}}</p> -->
-        <button type="button"  @click="createUserBringItems(item,selectedNumber)">持っていく</button>
+        <!-- <button type="button"  @click="createUserBringItems(item,selectedNumber)">持っていく</button>
         </br>
       </li>
     </ul>
-    {{items}}
+    {{items}} -->
    <item  v-for="(item) in items" 
    v-bind:key="item.id"
    v-bind:name="item.name"
