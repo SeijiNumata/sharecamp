@@ -6,7 +6,7 @@
 
         <select v-model="selectedNumber" name="example">
             <option value='' disabled selected style='display:none;'>数</option>
-            <option v-for="n of needNumberCopy" :key="n">{{n}}</option>
+            <option v-for="n of needNumber-bringSum" :key="n">{{n}}</option>
         </select>
         <button type="button" v-bind:disabled="isDisabled||needNumber-bringSum<=0"
             @click="createUserBringItems(item,selectedNumber)">持っていく</button>
@@ -146,11 +146,7 @@
             sumBringNumber(){
                 this.bringSum=0
                 for (var i = 0; i < this.bring_items.length; i++) {
-                    console.log("bbb"+ JSON.stringify(this.bring_items[i]))
-                    console.log("aaa"+JSON.stringify(this.bring_items[i].bring_number))
-                    console.log("ccc"+this.bringSum)
                     this.bringSum+=Number(this.bring_items[i].bring_number)
-                    console.log("ddd"+this.bringSum)
                 }
             },
         }
