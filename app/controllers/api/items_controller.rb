@@ -9,7 +9,11 @@ module Api
     end
     
     def show
-      render json: @event
+      set_item
+      respond_to do |format|
+        format.json
+      end
+      #render json: @item
     end
 
     def new
@@ -30,7 +34,7 @@ module Api
         end
       else
         # render json: { status: 'ERROR', data: @event.errors }
-        # return
+        # returnF
       end      
       render json: @event, status: :created
       # render json: { status: 'ERROR', data: @item.errors }

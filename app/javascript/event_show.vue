@@ -102,7 +102,6 @@
       getItems() {
         console.log(this.url() + ".json")
         axios.get(this.url() + ".json")
-
           .then((response) => {
             console.log("items" + response.data.item)
             this.items = response.data.item
