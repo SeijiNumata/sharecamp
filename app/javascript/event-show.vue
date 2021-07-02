@@ -10,7 +10,7 @@
 
     <ul class="contents">
       <li v-if="isActive === '1'">
-                <h1>持ってきて欲しいもの</h1>
+       <h1>持ってきて欲しいもの</h1>
         <event-show-item 
         v-for="(item) in items" 
         v-bind:key="item.id" 
@@ -28,7 +28,7 @@
         v-bind:currentUserId="currentUserId"
         >
         </event-show-current-user-item>コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
-      <li v-else-if="isActive === '3'">コンテンツ3コンテンツ3コンテンツ3コンテンツ3</li>
+      <li v-else-if="isActive === '3'">「{{eventName}}」で誰かに持ってきてもらいたいものリストはこちら。 <p>{{pageUrl}} </p><p>持ってきてくれる人募集中です！</p></li>
     </ul>
     <h1>{{eventName}}</h1>
     <!-- <input v-model="newEventsName">
@@ -55,11 +55,14 @@
     components: {
       "event-show-item": eventShowItem,
       "event-show-current-user-item": eventShowCurrentUserItem
-    },
+       },
     props: {
       currentUserId: {
         type: String
       },
+      pageUrl:{
+        type: String
+      }
     },
     data() {
       return {
