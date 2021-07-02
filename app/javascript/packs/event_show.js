@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import EventShow from '../event_show.vue'
+import EventShow from '../event-show.vue'
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   const eventShow = new Vue({
