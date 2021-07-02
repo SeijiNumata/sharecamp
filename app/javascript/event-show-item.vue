@@ -1,5 +1,7 @@
 <template>
     <div>
+
+
         <p>------------------------------</p>
         <p>{{itemName}}        <span>({{bringSum}}/{{ needNumber}})</span></p>
 

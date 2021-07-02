@@ -9,8 +9,20 @@
     </ul>
 
     <ul class="contents">
-      <li v-if="isActive === '1'">コンテンツ1コンテンツ1コンテンツ1コンテンツ1</li>
-      <li v-else-if="isActive === '2'">コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
+      <li v-if="isActive === '1'">
+                <h1>持ってきて欲しいもの</h1>
+        <event-show-item 
+        v-for="(item) in items" 
+        v-bind:key="item.id" 
+        v-bind:item-name="item.name"
+        v-bind:needNumber="item.need_number" 
+        v-bind:item="item" 
+        v-bind:currentUserId="currentUserId">
+        </event-show-item>
+      </li>
+      <li v-else-if="isActive === '2'">
+        <event-show-current-user-item>
+        </event-show-current-user-item>コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
       <li v-else-if="isActive === '3'">コンテンツ3コンテンツ3コンテンツ3コンテンツ3</li>
     </ul>
     <h1>{{eventName}}</h1>
@@ -21,47 +33,10 @@
     <div>
       <!-- <i>追加</i> -->
     </div>
-    <!-- <ul>
-      <li v-for="(item, index) in items" :key="item.id"> -->
-        <!-- <input type="checkbox" v-model="item.is_done" v-on:click="update(item.id, index)"> -->
-        <!-- <span v-bind:class="{name: item.name}">{{ item.name }}</span>
-        <span>{{ item.need_number}}</span> -->
-        <!-- <label class="form-label" for="typeNumber">Number input</label>
-         <input type="number" id="typeNumber" name="num01"  step="1" placeholder="1" min="0"> -->
-        <!-- <select v-model="selectedNumber" name="example">
-          <option value='' disabled selected style='display:none;'>数</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select> -->
-
-        <!-- <select v-model="selectedNumber" name="example">
-          <option value='数' disabled selected style='display:none;'>数</option>
-          <option v-for="n of item.need_number" :key="n" >{{n}}</option>
-           </select> -->
-
-        <!-- <p>{{items[index]}}</p> -->
-        <!-- <p>{{selectedNumber[index]}}</p> -->
-        <!-- <button type="button"  @click="createUserBringItems(item,selectedNumber)">持っていく</button>
-        </br>
-      </li>
-    </ul>
-    {{items}} -->
-   <event-show-item  v-for="(item) in items" 
-   v-bind:key="item.id"
-   v-bind:item-name="item.name"
-   v-bind:needNumber="item.need_number" 
-   v-bind:item="item"
-   v-bind:currentUserId="currentUserId">
-   </event-show-item>
-   <h1 > {{ currentUserId }}</h1>
+    <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
+      v-bind:needNumber="item.need_number" v-bind:item="item" v-bind:currentUserId="currentUserId">
+    </event-show-item>
+    <h1> {{ currentUserId }}</h1>
   </div>
 
 </template>
@@ -69,14 +44,18 @@
 <script>
   import axios from 'axios';
   import eventShowItem from './event-show-item.vue'
+  import eventShowCurrentUserItem from './event-show-current-user-item.vue'
 
   export default {
-    components:{
-      "event-show-item": eventShowItem
+    components: {
+      "event-show-item": eventShowItem,
+      "event-show-current-user-item": eventShowCurrentUserItem
     },
-      props:{
-    currentUserId: { type: String },
-  },
+    props: {
+      currentUserId: {
+        type: String
+      },
+    },
     data() {
       return {
         isActive: '1',
@@ -205,7 +184,7 @@
   }
 
   .contents li {
-    width: 320px;
+    width: 1000px;
     padding: 20px;
     border: 1px solid #ccc;
   }
