@@ -1,7 +1,8 @@
 <template>
 
   <div id="event_show">
-
+    <h1>{{eventName}}</h1>
+    <button>内容変更</button>
     <ul class="tabs">
       <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">持ってきてほしいもの</li>
       <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">自分が持っていくもの</li>
@@ -30,13 +31,14 @@
         </event-show-current-user-item>コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
       <li v-else-if="isActive === '3'">「{{eventName}}」で誰かに持ってきてもらいたいものリストはこちら。 <p>{{pageUrl}} </p><p>持ってきてくれる人募集中です！</p></li>
     </ul>
-    <h1>{{eventName}}</h1>
+
     <div>
+
     </div>
-    <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
+    <!-- <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
       v-bind:needNumber="item.need_number" v-bind:item="item" v-bind:currentUserId="currentUserId">
     </event-show-item>
-    <h1> {{ currentUserId }}</h1>
+    <h1> {{ currentUserId }}</h1> -->
   </div>
 
 </template>

@@ -12,12 +12,14 @@ class EventsController < ApplicationController
   def show  
     @url=request.url
     session[:e]=@event.id 
+    unless current_user
+      redirect_to "/events/users/new"
+    end
   end
 
   # GET /events/new
   def new
     @event = Event.new
-   # @current_user ||= User.find_by(id: cookies.signed[:user_id])
     User.find_by(id: cookies.signed[:user_id])
   end
 

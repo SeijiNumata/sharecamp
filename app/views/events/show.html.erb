@@ -8,21 +8,12 @@
   <%= asda %>
   <% end %>
 </p>
+<h1><%= @event.name %></h1>
+
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
 <%= javascript_pack_tag 'event_show' %>
-<%= stylesheet_pack_tag 'event_show'  %> 
-
-<%
-=begin%>
- <%= javascript_pack_tag 'hello_vue' %>  
-<%
-=end%>
-<%
-=begin%>
- <div id='hello_vue' data-code="<%= current_user.name %>"></div>  
-<%
-=end%>
-
 <div id='event_show' data-current-user-id="<%= current_user.id %>" data-page-url="<%= @url %>"></div> 
+<%= stylesheet_pack_tag 'event_show'  %>  

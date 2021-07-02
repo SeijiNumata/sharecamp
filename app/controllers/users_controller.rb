@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   
     # GET /users/new
     def new
+      byebug
       @user = User.new
       session[:param] = params[:e] || session[:e]
     end
