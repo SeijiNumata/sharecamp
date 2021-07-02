@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show  
+    @url=request.url
     session[:e]=@event.id 
   end
 

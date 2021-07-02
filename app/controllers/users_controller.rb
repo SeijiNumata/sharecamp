@@ -25,18 +25,14 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       event=Event.find(session[:param])
+      if @user=event.users.find_by(name: @user.name)
+        cookies.signed[:user_id] = @user.id
+        @user=event.users.find_by(name: @user.name)
+        byebug
+        redirect_to event
+      else
+      byebug
       @user.events<<event
-    #   @user=event.users.build(user_params)
-    #   @user = User.new(user_params)
-    #   @user.save
-    #   events=Event.find(session[:param])
-    #   @user.events.create(id: events.id)
-    #   events=Event.find(session[:param])
-    #   event.users.new(id:@user.id)
-    #   @user.events.new(id: event.id)
-     #  byebug
-    #   superEve.users.build(id: @user.id)
-#      @event=@user.events(superEve)
       respond_to do |format|
         if @user.save
           cookies.signed[:user_id] = @user.id
@@ -48,9 +44,11 @@ class UsersController < ApplicationController
         end
       end
     end
+    end
   
     # PATCH/PUT /users/1 or /users/1.json
     def update
+      byebug
       respond_to do |format|
         if @user.update(user_params)
           format.html { redirect_to @user, notice: 'user was successfully updated.' }
