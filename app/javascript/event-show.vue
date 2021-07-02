@@ -56,7 +56,7 @@
     {{items}} -->
    <event-show-item  v-for="(item) in items" 
    v-bind:key="item.id"
-   v-bind:name="item.name"
+   v-bind:item-name="item.name"
    v-bind:needNumber="item.need_number" 
    v-bind:item="item"
    v-bind:currentUserId="currentUserId">

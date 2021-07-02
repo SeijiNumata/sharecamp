@@ -1,21 +1,21 @@
 <template>
     <div>
         <p>------------------------------</p>
-        <p>{{name}}        <span>({{bringSum}}/{{ needNumber}})</span></p>
+        <p>{{itemName}}        <span>({{bringSum}}/{{ needNumber}})</span></p>
 
 
         <select v-model="selectedNumber" name="example">
             <option value='' disabled selected style='display:none;'>数</option>
             <option v-for="n of needNumber-bringSum" :key="n">{{n}}</option>
         </select>
-        <button type="button" v-bind:disabled="isDisabled||needNumber-bringSum<=0"
+        <button type="button" v-bind:disabled="isCurrentUserItem||needNumber-bringSum<=0"
             @click="createUserBringItems(item,selectedNumber)">持っていく</button>
         <!-- <p>{{bring_items}}</p>
         <p>ww{{currentUserId}}</p> -->
         <ul id="example-1">
             <li v-for="bring_item in bring_items" :key="bring_item.id">
                 {{ bring_item }}
-               <button type="button" v-show="IsUser(bring_item)" @click="deleteUserBringItem(bring_item)">❌</button>
+               <button type="button" v-show="isCurrentUser(bring_item)" @click="deleteUserBringItem(bring_item)">❌</button>
             </li>
         </ul>
     </div>
@@ -25,7 +25,7 @@
     import axios from 'axios';
     export default {
         props: {
-            name: String,
+            itemName: String,
             needNumber: Number,
             item: Object,
             currentUserId: String
@@ -33,10 +33,8 @@
         data() {
             return {
                 selectedNumber: "",
-                names: [],
                 bring_items: [],
-                isDisabled: false,
-                isUser:false,
+                isCurrentUserItem: false,
                 bringSum:0,
                 needNumberCopy: 0,
             }
@@ -114,7 +112,7 @@
                 console.log(this.bring_items)
                 if(this.bring_items.length===0){
                     console.log("nukkda")
-                   return this.isDisabled = false;
+                   return this.isCurrentUserItem = false;
                 }
                 console.log("this.bring_items.length"+this.bring_items.length)
                 for (var i = 0; i < this.bring_items.length; i++) {
@@ -123,13 +121,13 @@
                     console.log(Number(this.currentUserId))
                     if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
                         console.log("true")
-                        return this.isDisabled = true;
+                        return this.isCurrentUserItem = true;
                     }
                     console.log("false")
-                    this.isDisabled = false;
+                    this.isCurrentUserItem = false;
                 }
             },
-            IsUser(bring_item){
+            isCurrentUser(bring_item){
                 console.log("----------------------------------------------------------------")
                 console.log(bring_item.user_id)
                 console.log(this.currentUserId)
