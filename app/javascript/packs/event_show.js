@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import EventShow from '../event-show.vue'
+import VueClipboard from 'vue-clipboard2'
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   const eventShow = new Vue({
@@ -20,6 +21,7 @@ import EventShow from '../event-show.vue'
 //     }).$mount(selector)
 //   }
 // })
+Vue.use(VueClipboard)
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     render: h => h(EventShow,{ props: document.getElementById("event_show").dataset})

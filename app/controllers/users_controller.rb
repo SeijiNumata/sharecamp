@@ -13,8 +13,7 @@ class UsersController < ApplicationController
     end
   
     # GET /users/new
-    def new
-      byebug
+    def new      
       @user = User.new
       session[:param] = params[:e] || session[:e]
     end
@@ -50,7 +49,6 @@ class UsersController < ApplicationController
   
     # PATCH/PUT /users/1 or /users/1.json
     def update
-      byebug
       respond_to do |format|
         if @user.update(user_params)
           format.html { redirect_to @user, notice: 'user was successfully updated.' }
