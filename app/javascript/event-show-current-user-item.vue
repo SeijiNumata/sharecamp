@@ -1,12 +1,10 @@
 <template>
-    <div>
-        <h1>持ってきて欲しいもの</h1>
-        <p>{{currentUserId}}</p>
-        <p>{{currentUserBringItems}}</p>
-        <p>{{this.itemName}}</p>
-        <p>{{this.bringNumber}}</p>
-        <p>{{this.bringItemId}}</p>
+    <div v-if="this.bringItemId!=0">
+        <input type="checkbox" id="checkbox" v-model="bringChecked" v-on:change="changeBringCheckBox">
+        <p >{{this.itemName}}({{this.bringNumber}})</p>
 
+        <p >({{this.bringItemId}})</p>
+       <p> ----------------------------------------------------------------</p>
 
 
     </div>
@@ -29,7 +27,8 @@
 
                 itemName:"",
                 bringNumber:0,
-                bringItemId:0
+                bringItemId:0,
+                bringChecked: false
             }
         },
         mounted() {
@@ -49,6 +48,11 @@
                         this.itemName=this.bring_items[i].item_name
                         this.bringNumber=this.bring_items[i].bring_number
                         this.bringItemId=this.bring_items[i].user_bring_item_id
+                        console.log(JSON.stringify(this.bring_items[i]))
+                        this.bringChecked=this.bring_items[i].bring_check
+                        console.log("ほし")
+                        console.log(this.bringChecked)
+                        console.log("ほし")
                     }
                 }
                         this.HasBringItemsUser()
@@ -105,6 +109,53 @@
                     this.bringSum+=Number(this.bring_items[i].bring_number)
                 }
             },
+            changeBringCheckBox(){
+                console.log(this.bringChecked)
+                var params
+                if(this.bringChecked){
+                    params={check: true, id:this.bringItemId}
+                }else{
+                    params={check: false, id:this.bringItemId}
+                }
+                axios.patch('/api/user_bring_items/'+this.bringItemId,params)
+                .then(() => {
+                   
+                }, (error) => {
+                    console.log(error, response);
+                });
+            },
+            checkedBringItem(){
+               axios.patch('/api/user_bring_items/'+this.bringItemId, {
+                  check: true,
+                  id: this.bringItemId
+                }).then(() => {
+                   
+                }, (error) => {
+                    console.log(error, response);
+                });
+            },
+            uncheckedBringItem(){
+                axios.patch('/api/user_bring_items/'+this.bringItemId, {
+                  check: false,
+                  id: this.bringItemId
+                }).then(() => {
+                   
+                }, (error) => {
+                    console.log(error, response);
+                });
+            },
+          
         }
     }
 </script>
+
+<style scoped>
+input{
+     display:inline-block; 
+    /* vertical-align:1px; */
+}
+p{
+     display:inline-block; 
+
+}
+</style>

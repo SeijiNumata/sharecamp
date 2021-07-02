@@ -50,9 +50,10 @@ module Api
       end
   
       def update
-        byebug
-        User.find(params[:id])
-        if @item.update(item_params)
+        set_user_bring_item
+        
+        
+        if @user_bring_item.update(user_bring_item_paramss)
           head :ok
         else
           head :bad_request
@@ -70,6 +71,11 @@ module Api
 
       def set_user_bring_paras
         #todo
+      end
+
+      def user_bring_item_paramss
+        # todo :params.require(:event).permit(:name)
+        params.require(:user_bring_item).permit(:check,:id)
       end
 
 
