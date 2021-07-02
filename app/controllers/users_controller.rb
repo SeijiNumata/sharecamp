@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   
     # GET /users/1 or /users/1.json
     def show
-        byebug
+
     end
   
     # GET /users/new
@@ -25,13 +25,14 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       event=Event.find(session[:param])
-      if @user=event.users.find_by(name: @user.name)
+      if event.users.find_by(name: @user.name)
+        @user=event.users.find_by(name: @user.name)
         cookies.signed[:user_id] = @user.id
         @user=event.users.find_by(name: @user.name)
-        byebug
+
         redirect_to event
       else
-      byebug
+
       @user.events<<event
       respond_to do |format|
         if @user.save

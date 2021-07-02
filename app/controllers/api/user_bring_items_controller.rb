@@ -17,9 +17,11 @@ module Api
       end
   
       def create
+
         bring_number=user_bring_item_params[:selectedNumber]
         user_bring_item=UserBringItem.new(bring_number: bring_number)
         item=Item.find(item_params[:id])
+
         item.user_bring_items << user_bring_item
         current_user.user_bring_items << user_bring_item
         if user_bring_item.save
