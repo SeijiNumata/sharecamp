@@ -29,7 +29,14 @@
         v-bind:currentUserId="currentUserId"
         >
         </event-show-current-user-item>コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
-      <li v-else-if="isActive === '3'">「{{eventName}}」で誰かに持ってきてもらいたいものリストはこちら。 <p>{{pageUrl}} </p><p>持ってきてくれる人募集中です！</p></li>
+      
+      <li v-else-if="isActive === '3'">
+        <div id="copy" value="a">
+        <p>{{message}}</p>
+         </div>
+       <button @click="cp()">コピー</button>
+      </li>
+     
     </ul>
 
     <div>
@@ -47,7 +54,7 @@
   import axios from 'axios';
   import eventShowItem from './event-show-item.vue'
   import eventShowCurrentUserItem from './event-show-current-user-item.vue'
-
+  
   export default {
     components: {
       "event-show-item": eventShowItem,
@@ -71,19 +78,20 @@
         newEventsName: '',
         // itemName: '',
         selectedNumber: "",
+         message: 'Copy These Text'
       }
     },
     mounted() {
       // this.fetchItems();
       this.url();
-      this.getItems();
+      this.getItems()
     },
     computed: {},
     methods: {
       url() {
         const url = location.href
         console.log(url)
-        const requestURLindex = 21
+        const requestURLindex = 21 //eventsIDをURLから取得する
         const requestURL = url.slice(requestURLindex);
         console.log(requestURL)
         return requestURL
@@ -97,12 +105,17 @@
             console.log(response.data)
             console.log(this.items)
             this.eventName = response.data.name
+            this.inviteMessage();
           }, (error) => {
             console.log(error, response);
           });
       },
       change(num) {
         this.isActive = num
+      },
+      inviteMessage(){
+
+  this.message="「"+this.eventName+"」で誰かに持ってきてもらいたいものリストはこちら\n"+this.pageUrl+"\n持ってきてくれる人募集中です！"
       },
       addInput() {
         console.log("追加すすr")
@@ -116,6 +129,15 @@
           selectedNumber: selectedNumber
 
         })
+      },
+      cp(){
+        console.log("coy")
+      
+       this.$copyText(this.message).then(function (e) {
+                console.log(e)
+            }, function (e) {
+                console.log(e)
+            })
       }
 
       //  fetchItems(){
@@ -206,5 +228,14 @@
 
   .vue_radio input {
     display: none;
+  }
+  .textarea {
+     display: inline-block;
+     width: 100%; /* 幅：横いっぱいに */
+  height: 90px; /* 高さ */
+  }
+  p{
+    white-space: pre-line;
+    word-wrap:break-word
   }
 </style>
