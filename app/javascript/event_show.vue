@@ -54,13 +54,13 @@
       </li>
     </ul>
     {{items}} -->
-   <item  v-for="(item) in items" 
+   <event-show-item  v-for="(item) in items" 
    v-bind:key="item.id"
    v-bind:name="item.name"
    v-bind:needNumber="item.need_number" 
    v-bind:item="item"
    v-bind:currentUserId="currentUserId">
-   </item>
+   </event-show-item>
    <h1 > {{ currentUserId }}</h1>
   </div>
 
@@ -68,11 +68,11 @@
 
 <script>
   import axios from 'axios';
-  import Item from './item.vue'
+  import eventShowItem from './event-show-item.vue'
 
   export default {
     components:{
-      item: Item
+      "event-show-item": eventShowItem
     },
       props:{
     currentUserId: { type: String },
