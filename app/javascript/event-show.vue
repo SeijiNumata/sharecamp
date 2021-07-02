@@ -31,12 +31,7 @@
       <li v-else-if="isActive === '3'">「{{eventName}}」で誰かに持ってきてもらいたいものリストはこちら。 <p>{{pageUrl}} </p><p>持ってきてくれる人募集中です！</p></li>
     </ul>
     <h1>{{eventName}}</h1>
-    <!-- <input v-model="newEventsName">
-       <p>"誰かに持ってきて欲しいもの"</p>
-       <input v-model="newItem" placeholder="to doを追加して下さい"> -->
-    <!-- <div v-on:click="createItem"> -->
     <div>
-      <!-- <i>追加</i> -->
     </div>
     <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
       v-bind:needNumber="item.need_number" v-bind:item="item" v-bind:currentUserId="currentUserId">
