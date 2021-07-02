@@ -21,7 +21,12 @@
         </event-show-item>
       </li>
       <li v-else-if="isActive === '2'">
-        <event-show-current-user-item>
+        <event-show-current-user-item
+        v-for="(item) in items"
+        v-bind:key="item.id"
+        v-bind:item="item" 
+        v-bind:currentUserId="currentUserId"
+        >
         </event-show-current-user-item>コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
       <li v-else-if="isActive === '3'">コンテンツ3コンテンツ3コンテンツ3コンテンツ3</li>
     </ul>
