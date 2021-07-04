@@ -5,7 +5,7 @@
  <ul>
         <li v-for="(neededItemInfo, index) in neededItemInfos" :key="neededItemInfo.id">
           <!-- 各入力ボックス -->
-          <input v-model="neededItemInfo.name">
+          <input v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly" :class="{readonly:neededItemInfo.readonly}">
           <input type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number">
           
         </li>
@@ -84,7 +84,7 @@
           for (const item of this.items){
              console.log("----")
             console.log(item.name+""+item.need_number)
-            this.neededItemInfos.push({name: item.name ,need_number: item.need_number})
+            this.neededItemInfos.push({name: item.name ,need_number: item.need_number, readonly: true})
             console.log(this.neededItemInfos)
            }
             console.log(this.items)
