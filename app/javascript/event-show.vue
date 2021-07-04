@@ -3,6 +3,8 @@
   <div id="event_show">
     <h1>{{eventName}}</h1>
     <button>内容変更</button>
+
+<a :href="eventEditUrl">edit</a>
     <ul class="tabs">
       <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">持ってきてほしいもの</li>
       <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">自分が持っていくもの</li>
@@ -76,29 +78,39 @@
         items: [],
         newItem: '',
         newEventsName: '',
-        // itemName: '',
         selectedNumber: "",
-         message: 'Copy These Text'
+         message: 'Copy These Text',
+         eventEditUrl: "",
+         getItemRequestUrl:"",
+         eventEditUrl:""
       }
     },
     mounted() {
       // this.fetchItems();
-      this.url();
+      this.setUrl();
       this.getItems()
     },
     computed: {},
     methods: {
-      url() {
+      setUrl() {
         const url = location.href
-        console.log(url)
-        const requestURLindex = 21 //eventsIDをURLから取得する
-        const requestURL = url.slice(requestURLindex);
-        console.log(requestURL)
-        return requestURL
+        this.setItemRequestUrl(url)
+        this.setEditUrl(url)
+      },
+      setItemRequestUrl(url){
+        const requestEventURLindex = 21 // /events/IDを取得する
+        this.getItemRequestUrl = url.slice(requestEventURLindex);
+        console.log("agaegaega"+this.getItemRequestUrl)
+
+      },
+      setEditUrl(url){
+        const eventIdIndex = 29
+        const eventId=url.slice(eventIdIndex)
+        this.eventEditUrl=eventId+"/edit"
       },
       getItems() {
-        console.log(this.url() + ".json")
-        axios.get(this.url() + ".json")
+        console.log(this.getItemRequestUrl + ".json")
+        axios.get(this.getItemRequestUrl+ ".json")
           .then((response) => {
             console.log("items" + response.data.item)
             this.items = response.data.item
