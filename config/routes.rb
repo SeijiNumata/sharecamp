@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :api do # , format: 'json' do
     resources :items # , only: [:index, :create, :destroy, :update]
     resources :user_bring_items
+    resources :events
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -57,6 +57,7 @@ module Api
     end
 
     def update
+      byebug
       if @item.update(item_params)
         head :ok
       else
@@ -77,5 +78,6 @@ module Api
     def set_item
       @item = Item.find(params[:id])
     end
+
   end
 end

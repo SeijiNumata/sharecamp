@@ -3,10 +3,10 @@
 <p>{{items}}</p>
   <form>
  <ul>
-        <li v-for="(item, index) in items" :key="item.id">
+        <li v-for="(neededItemInfo, index) in neededItemInfos" :key="neededItemInfo.id">
           <!-- 各入力ボックス -->
-          <input v-model="items[index].name">
-          <input type="number" name="num01" min="0" v-model="items[index].need_number">
+          <input v-model="neededItemInfo.name">
+          <input type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number">
           
         </li>
          
@@ -37,7 +37,6 @@
     },
     data() {
       return {
-        updateItems:[],
         isActive: '1',
         message: "EventNew!",
         eventName: "",
@@ -45,10 +44,10 @@
         newItem: '',
         newEventsName: '',
         selectedNumber: "",
-         message: 'Copy These Text',
-         eventEditUrl: "",
-         getItemRequestUrl:"",
-         eventEditUrl:""
+        eventEditUrl: "",
+        getItemRequestUrl:"",
+        eventEditUrl:"",
+        neededItemInfos:[]
       }
     },
     mounted() {
@@ -82,9 +81,11 @@
             this.items = response.data.item
             console.log(response.data)
             console.log(this.items)
-           for (const item of this.items){
+          for (const item of this.items){
              console.log("----")
-            console.log(item.name)
+            console.log(item.name+""+item.need_number)
+            this.neededItemInfos.push({name: item.name ,need_number: item.need_number})
+            console.log(this.neededItemInfos)
            }
             console.log(this.items)
             this.eventName = response.data.name
@@ -93,10 +94,19 @@
           });
       },
       addInput() {
-        this.items.push(''); // 配列に１つ空データを追加する
+        this.neededItemInfos.push({name: " ",need_number: ""}); // 配列に１つ空データを追加する
       },
       updateItems(){
-        
+        const eventsID=this.getItemRequestUrl.slice(8)
+        console.log("URKRR"+eventsID)
+        console.log(this.neededItemInfos)
+        const requestPath="/api/events/"+eventsID
+                axios.patch(requestPath,{items: this.neededItemInfos})
+                .then(() => {
+                   
+                }, (error) => {
+                    console.log(error, response);
+                });
       }
     }
   }
