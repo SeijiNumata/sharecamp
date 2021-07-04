@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_034640) do
+ActiveRecord::Schema.define(version: 2021_07_04_160459) do
 
   create_table "events", id: :string, force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "event_id"
-    t.text "name"
-    t.integer "need_number"
+    t.string "event_id", null: false
+    t.text "name", null: false
+    t.integer "need_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_06_30_034640) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2021_06_30_034640) do
   create_table "users_events", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.string "event_id"
+    t.integer "user_id", null: false
+    t.string "event_id", null: false
     t.index ["event_id"], name: "index_users_events_on_event_id"
     t.index ["user_id"], name: "index_users_events_on_user_id"
   end
