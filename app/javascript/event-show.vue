@@ -1,10 +1,21 @@
 <template>
 
   <div id="event_show">
+    <h1>{{fromCreate}}</h1>
+    <modal name="modal-message-from-create" :draggable="true">
+      <div class="modal-header">
+        <h2>以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</h2>
+      </div>
+      <div class="modal-body">
+       <p>{{message}}</p>
+        <button @click="cp()">コピー</button>
+        <button @click="hide">閉じる</button>
+      </div>
+    </modal>
     <h1>{{eventName}}</h1>
     <button>内容変更</button>
 
-<a :href="eventEditUrl">edit</a>
+    <a :href="eventEditUrl">edit</a>
     <ul class="tabs">
       <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">持ってきてほしいもの</li>
       <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">自分が持っていくもの</li>
@@ -13,32 +24,24 @@
 
     <ul class="contents">
       <li v-if="isActive === '1'">
-       <h1>持ってきて欲しいもの</h1>
-        <event-show-item 
-        v-for="(item) in items" 
-        v-bind:key="item.id" 
-        v-bind:item-name="item.name"
-        v-bind:needNumber="item.need_number" 
-        v-bind:item="item" 
-        v-bind:currentUserId="currentUserId">
+        <h1>持ってきて欲しいもの</h1>
+        <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
+          v-bind:needNumber="item.need_number" v-bind:item="item" v-bind:currentUserId="currentUserId">
         </event-show-item>
       </li>
       <li v-else-if="isActive === '2'">
-        <event-show-current-user-item
-        v-for="(item) in items"
-        v-bind:key="item.id"
-        v-bind:item="item" 
-        v-bind:currentUserId="currentUserId"
-        >
-        </event-show-current-user-item>コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
-      
+        <event-show-current-user-item v-for="(item) in items" v-bind:key="item.id" v-bind:item="item"
+          v-bind:currentUserId="currentUserId">
+        </event-show-current-user-item>コンテンツ2コンテンツ2コンテンツ2コンテンツ2
+      </li>
+
       <li v-else-if="isActive === '3'">
         <div id="copy" value="a">
-        <p>{{message}}</p>
-         </div>
-       <button @click="cp()">コピー</button>
+          <p>{{message}}</p>
+        </div>
+        <button @click="cp()">コピー</button>
       </li>
-     
+
     </ul>
 
     <div>
@@ -56,19 +59,22 @@
   import axios from 'axios';
   import eventShowItem from './event-show-item.vue'
   import eventShowCurrentUserItem from './event-show-current-user-item.vue'
-  
+
   export default {
     components: {
       "event-show-item": eventShowItem,
       "event-show-current-user-item": eventShowCurrentUserItem
-       },
+    },
     props: {
       currentUserId: {
         type: String
       },
-      pageUrl:{
+      pageUrl: {
         type: String
-      }
+      },
+      fromCreate: {
+        type: String
+      },
     },
     data() {
       return {
@@ -79,16 +85,17 @@
         newItem: '',
         newEventsName: '',
         selectedNumber: "",
-         message: 'Copy These Text',
-         eventEditUrl: "",
-         getItemRequestUrl:"",
-         eventEditUrl:""
+        message: 'Copy These Text',
+        eventEditUrl: "",
+        getItemRequestUrl: "",
+        eventEditUrl: ""
       }
     },
     mounted() {
       // this.fetchItems();
       this.setUrl();
       this.getItems()
+      this.modal()
     },
     computed: {},
     methods: {
@@ -97,20 +104,20 @@
         this.setItemRequestUrl(url)
         this.setEditUrl(url)
       },
-      setItemRequestUrl(url){
+      setItemRequestUrl(url) {
         const requestEventURLindex = 21 // /events/IDを取得する
         this.getItemRequestUrl = url.slice(requestEventURLindex);
-        console.log("agaegaega"+this.getItemRequestUrl)
+        console.log("agaegaega" + this.getItemRequestUrl)
 
       },
-      setEditUrl(url){
+      setEditUrl(url) {
         const eventIdIndex = 29
-        const eventId=url.slice(eventIdIndex)
-        this.eventEditUrl=eventId+"/edit"
+        const eventId = url.slice(eventIdIndex)
+        this.eventEditUrl = eventId + "/edit"
       },
       getItems() {
         console.log(this.getItemRequestUrl + ".json")
-        axios.get(this.getItemRequestUrl+ ".json")
+        axios.get(this.getItemRequestUrl + ".json")
           .then((response) => {
             console.log("items" + response.data.item)
             this.items = response.data.item
@@ -125,9 +132,9 @@
       change(num) {
         this.isActive = num
       },
-      inviteMessage(){
+      inviteMessage() {
 
-  this.message="「"+this.eventName+"」で誰かに持ってきてもらいたいものリストはこちら\n"+this.pageUrl+"\n持ってきてくれる人募集中です！"
+        this.message = "「" + this.eventName + "」で誰かに持ってきてもらいたいものリストはこちら\n" + this.pageUrl + "\n持ってきてくれる人募集中です！"
       },
       addInput() {
         console.log("追加すすr")
@@ -142,15 +149,28 @@
 
         })
       },
-      cp(){
+      cp() {
         console.log("coy")
-      
-       this.$copyText(this.message).then(function (e) {
-                console.log(e)
-            }, function (e) {
-                console.log(e)
-            })
-      }
+
+        this.$copyText(this.message).then(function (e) {
+          console.log(e)
+        }, function (e) {
+          console.log(e)
+        })
+        this.hide()
+      },
+      modal() {
+        if(this.fromCreate=="fromCreate"){
+          this.show()
+        }
+
+      },
+      show: function () {
+        this.$modal.show('modal-message-from-create');
+      },
+      hide: function () {
+        this.$modal.hide('modal-message-from-create');
+      },
 
       //  fetchItems(){
       //    axios.get('/api/items.json')
@@ -241,13 +261,23 @@
   .vue_radio input {
     display: none;
   }
+
   .textarea {
-     display: inline-block;
-     width: 100%; /* 幅：横いっぱいに */
-  height: 90px; /* 高さ */
+    display: inline-block;
+    width: 100%;
+    /* 幅：横いっぱいに */
+    height: 90px;
+    /* 高さ */
   }
-  p{
+
+  p {
     white-space: pre-line;
-    word-wrap:break-word
+    word-wrap: break-word
   }
+  .modal-header, .modal-body {
+  padding: 5px 25px;
+}
+.modal-header {
+  border-bottom: 1px solid #ddd;
+}
 </style>

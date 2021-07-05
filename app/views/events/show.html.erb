@@ -9,11 +9,11 @@
   <% end %>
 </p>
 <h1><%= @event.name %></h1>
-
+<h1><%= @fromCreate %></h1>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
 
 <%= javascript_pack_tag 'event_show' %>
-<div id='event_show' data-current-user-id="<%= current_user.id %>" data-page-url="<%= @url %>"></div> 
+<div id='event_show' data-current-user-id="<%= current_user.id %>" data-page-url="<%= @url %>" data-from-create="<%= @fromCreate %>"></div> 
 <%= stylesheet_pack_tag 'event_show'  %>  
