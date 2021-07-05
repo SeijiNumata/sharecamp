@@ -1,7 +1,6 @@
 <template>
 
   <div id="event_show">
-    <h1>{{fromCreate}}</h1>
     <modal name="modal-message-from-create" :draggable="true">
       <div class="modal-header">
         <h2>以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</h2>
