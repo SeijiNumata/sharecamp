@@ -10,6 +10,10 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show  
+    if session["fromCreate"]
+      @fromCreate=session["fromCreate"]
+      session.delete("fromCreate")
+    end
     @url=request.url
     session[:e]=@event.id 
     unless current_user

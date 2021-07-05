@@ -34,7 +34,10 @@
       },
       pageUrl: {
         type: String
-      }
+      },
+      fromCreate: {
+        type: String
+      },
     },
     data() {
       return {

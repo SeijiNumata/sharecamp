@@ -35,8 +35,8 @@ module Api
       else
         # render json: { status: 'ERROR', data: @event.errors }
         # returnF
-      end      
-
+      end     
+      session[:fromCreate]="fromCreate"
       render json: @event, status: :created
       # render json: { status: 'ERROR', data: @item.errors }
       
@@ -59,7 +59,6 @@ module Api
     end
 
     def update
-      byebug
       if @item.update(item_params)
         head :ok
       else

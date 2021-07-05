@@ -1,6 +1,10 @@
 <template>
 
   <div id="event_show">
+        <h1>{{fromCreate}}</h1>
+      <h1>{{fromCreate}}</h1>
+        <h1>{{fromCreate}}</h1>
+          <h1>{{fromCreate}}</h1>
     <h1>{{eventName}}</h1>
     <button>内容変更</button>
 
@@ -68,7 +72,10 @@
       },
       pageUrl:{
         type: String
-      }
+      },
+      fromCreate:{
+        type: String
+      },
     },
     data() {
       return {
@@ -89,6 +96,7 @@
       // this.fetchItems();
       this.setUrl();
       this.getItems()
+      this.modal()
     },
     computed: {},
     methods: {
@@ -150,6 +158,11 @@
             }, function (e) {
                 console.log(e)
             })
+      },
+      modal(){
+       const modal= window.sessionStorage.getItem("fromCreate")
+       console.log(modal)
+        
       }
 
       //  fetchItems(){
