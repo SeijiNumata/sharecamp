@@ -36,8 +36,10 @@ module Api
         # render json: { status: 'ERROR', data: @event.errors }
         # returnF
       end      
+
       render json: @event, status: :created
       # render json: { status: 'ERROR', data: @item.errors }
+      
       # # format.html { redirect_to @event, notice: 'Event was successfully created.' }
       # # format.json { render json: { status: 'SUCCESS', data: @item }}
       # # #render json: @item, status: :created

@@ -17,7 +17,6 @@ module Api
       end
   
       def create
-
         bring_number=user_bring_item_params[:selectedNumber]
         user_bring_item=UserBringItem.new(bring_number: bring_number)
         item=Item.find(item_params[:id])
@@ -53,7 +52,7 @@ module Api
   
       def update
         set_user_bring_item
-        
+        byebug
         
         if @user_bring_item.update(user_bring_item_paramss)
           head :ok
