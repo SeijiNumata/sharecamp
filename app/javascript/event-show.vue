@@ -2,10 +2,9 @@
 
   <div id="event_show">
     <h1>{{fromCreate}}</h1>
-    <button v-on:click="show" class="button">show!</button>
-    <modal name="hello-world" :draggable="true" :resizable="true">
+    <modal name="modal-message-from-create" :draggable="true">
       <div class="modal-header">
-        <h2>Modal title</h2>
+        <h2>以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</h2>
       </div>
       <div class="modal-body">
        <p>{{message}}</p>
@@ -161,16 +160,16 @@
         this.hide()
       },
       modal() {
-        if(this.fromCreate="fromCreate"){
+        if(this.fromCreate=="fromCreate"){
           this.show()
         }
 
       },
       show: function () {
-        this.$modal.show('hello-world');
+        this.$modal.show('modal-message-from-create');
       },
       hide: function () {
-        this.$modal.hide('hello-world');
+        this.$modal.hide('modal-message-from-create');
       },
 
       //  fetchItems(){
