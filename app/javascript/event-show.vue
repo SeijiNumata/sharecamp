@@ -1,56 +1,65 @@
 <template>
+  <div id="event-show">
+    <div class=event_head>
+      <h1 class=event_title>{{eventName}}</h1>
 
-  <div id="event_show">
-    <modal name="modal-message-from-create" :draggable="true">
-      <div class="modal-header">
-        <h2>以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</h2>
-      </div>
-      <div class="modal-body">
-       <p>{{message}}</p>
-        <button @click="cp()">コピー</button>
-        <button @click="hide">閉じる</button>
-      </div>
-    </modal>
-    <h1>{{eventName}}</h1>
-    <button>内容変更</button>
+      <a :href="eventEditUrl"> 内容変更</a>
+    </div>
+    <div class="show_component">
+      <ul class="tabs">
+        <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">持ってきてほしいもの</li>
+        <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">自分が持っていくもの</li>
+        <li v-on:click="change('3')" v-bind:class="{'active': isActive === '3'}">参加者を呼ぶ</li>
+      </ul>
 
-    <a :href="eventEditUrl">edit</a>
-    <ul class="tabs">
-      <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">持ってきてほしいもの</li>
-      <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">自分が持っていくもの</li>
-      <li v-on:click="change('3')" v-bind:class="{'active': isActive === '3'}">参加者を呼ぶ</li>
-    </ul>
+      <ul class="contents">
+        <li v-if="isActive === '1'">
+          <h2>誰か持ってきて</h2>
+          <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
+            v-bind:needNumber="item.need_number" v-bind:item="item" v-bind:currentUserId="currentUserId">
+          </event-show-item>
+        </li>
+        <li class="self-brings-contents" v-else-if="isActive === '2'">
+          <h2>自分の持ち物</h2>
+          <event-show-current-user-item v-for="(item) in items" v-bind:key="item.id" v-bind:item="item"
+            v-bind:currentUserId="currentUserId">
+          </event-show-current-user-item>
+        </li>
+        <li class="invite" v-else-if="isActive === '3'">
 
-    <ul class="contents">
-      <li v-if="isActive === '1'">
-        <h1>持ってきて欲しいもの</h1>
-        <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
-          v-bind:needNumber="item.need_number" v-bind:item="item" v-bind:currentUserId="currentUserId">
-        </event-show-item>
-      </li>
-      <li v-else-if="isActive === '2'">
-        <event-show-current-user-item v-for="(item) in items" v-bind:key="item.id" v-bind:item="item"
-          v-bind:currentUserId="currentUserId">
-        </event-show-current-user-item>コンテンツ2コンテンツ2コンテンツ2コンテンツ2
-      </li>
+          <p class="invite_message_title">以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</p>
+          <p class="invite_message_content">{{message}}</p>
 
-      <li v-else-if="isActive === '3'">
-        <div id="copy" value="a">
-          <p>{{message}}</p>
-        </div>
-        <button @click="cp()">コピー</button>
-      </li>
+          <button @click="cp()">コピー</button>
+        </li>
 
-    </ul>
-
+      </ul>
+    </div>
     <div>
+      <modal class=modal name="modal-message-from-create" width=650px>
+        <div class="modal-header">
+          <h2>以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</h2>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body-text">
+            <p>「{{eventName}}」で誰かに持ってきてもらいたいものリストはこちら</p>
+            <p>{{pageUrl}}</p>
+            <p>持ってきてくれる人募集中です！</p>
+          </div>
+          <div class="modal-body-button">
+            <button @click="cp()">コピー</button>
+            <button @click="hide">閉じる</button>
 
+          </div>
+        </div>
+      </modal>
     </div>
     <!-- <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
       v-bind:needNumber="item.need_number" v-bind:item="item" v-bind:currentUserId="currentUserId">
     </event-show-item>
     <h1> {{ currentUserId }}</h1> -->
   </div>
+
 
 </template>
 
@@ -106,7 +115,6 @@
       setItemRequestUrl(url) {
         const requestEventURLindex = 21 // /events/IDを取得する
         this.getItemRequestUrl = url.slice(requestEventURLindex);
-        console.log("agaegaega" + this.getItemRequestUrl)
 
       },
       setEditUrl(url) {
@@ -133,10 +141,10 @@
       },
       inviteMessage() {
 
-        this.message = "「" + this.eventName + "」で誰かに持ってきてもらいたいものリストはこちら\n" + this.pageUrl + "\n持ってきてくれる人募集中です！"
+        this.message = "「" + this.eventName + "」で誰かに持ってきてもらいたいものリストはこちら\n" + this.pageUrl + "\n" + "持ってきてくれる人募集中です！"
       },
       addInput() {
-        console.log("追加すすr")
+        console.log("追加する")
         //fetchする
       },
       createUserBringItems(item, selectedNumber) {
@@ -149,17 +157,12 @@
         })
       },
       cp() {
-        console.log("coy")
-
-        this.$copyText(this.message).then(function (e) {
-          console.log(e)
-        }, function (e) {
-          console.log(e)
-        })
-        this.hide()
+        this.$copyText(this.message)
+        
       },
       modal() {
-        if(this.fromCreate=="fromCreate"){
+        
+        if (this.fromCreate == "fromCreate") {
           this.show()
         }
 
@@ -196,87 +199,5 @@
 </script>
 
 <style scoped>
-  input {
-    display: block;
 
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    list-style: none;
-  }
-
-  .tabs {
-    overflow: hidden;
-  }
-
-  .tabs li,
-  .tabs label {
-    float: left;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    transition: .3s;
-  }
-
-  .tabs li:not(:first-child),
-  .tabs label:not(:first-of-type) {
-    border-left: none;
-  }
-
-  .tabs li.active,
-  .tabs :checked+label {
-    background-color: #000;
-    border-color: #000;
-    color: #fff;
-    cursor: auto;
-  }
-
-  .contents {
-    overflow: hidden;
-    margin-top: -1px;
-  }
-
-  .contents li {
-    width: 1000px;
-    padding: 20px;
-    border: 1px solid #ccc;
-  }
-
-  contents li {
-    display: none;
-  }
-
-  .contents li.active {
-    display: block;
-    color: red;
-    background-color: red;
-  }
-
-  .vue_radio input {
-    display: none;
-  }
-
-  .textarea {
-    display: inline-block;
-    width: 100%;
-    /* 幅：横いっぱいに */
-    height: 90px;
-    /* 高さ */
-  }
-
-  p {
-    white-space: pre-line;
-    word-wrap: break-word
-  }
-  .modal-header, .modal-body {
-  padding: 5px 25px;
-}
-.modal-header {
-  border-bottom: 1px solid #ddd;
-}
 </style>

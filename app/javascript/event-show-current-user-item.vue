@@ -1,12 +1,9 @@
 <template>
-    <div v-if="this.bringItemId!=0">
+    <div  class=self-bring-item v-if="this.bringItemId!=0">
         <input type="checkbox" id="checkbox" v-model="bringChecked" v-on:change="changeBringCheckBox">
         <p >{{this.itemName}}({{this.bringNumber}})</p>
 
         <p >({{this.bringItemId}})</p>
-       <p> ----------------------------------------------------------------</p>
-
-
     </div>
 </template>
 <script>

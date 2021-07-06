@@ -1,17 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%
+=begin%>
+ <p id="notice"><%= notice %></p>
  <p>hello! <%= current_user.name %></p>
  <span>別人の場合は</span><%= link_to 'こちら', new_user_path %> 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-  <%= @event.users.each do |asda|%>
-  <%= asda %>
-  <% end %>
-</p>
-<h1><%= @event.name %></h1>
+<p> 
+<%
+=end%>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%
+=begin%>
+ <h1><%= @event.name %></h1> 
+<%
+=end%>
+
+<%
+=begin%>
+ <%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %> 
+<%
+=end%>
 
 <%= javascript_pack_tag 'event_show' %>
 <div id='event_show' data-current-user-id="<%= current_user.id %>" data-page-url="<%= @url %>" data-from-create="<%= @fromCreate %>"></div> 

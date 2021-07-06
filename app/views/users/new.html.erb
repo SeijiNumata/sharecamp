@@ -1,4 +1,4 @@
-<h1>New User</h1>
+<h1><%= @event.name %>の誰か持ってきてリストへようこそ</h1>
 
 <%= form_with(model: @user) do |form| %>
   <% if @user.errors.any? %>
@@ -14,12 +14,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label "ニックネーム" %>
     <%= form.text_field :name %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "持ってきて欲しいものリストへ"%>
   </div>
 <% end %>
 

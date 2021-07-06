@@ -1,0 +1,42 @@
+
+header{
+   background-color:#bae8e8;
+   height:44px;
+   position: relative;
+   h1{
+    display:inline-block;
+   font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+    color:black;
+    font-size:16px;
+    margin-left:10px;
+    vertical-align: middle;
+    line-height: 40px;
+   }
+
+}
+.img_logo{
+    width:50px;
+    display:inline-block;
+    margin-top:10px;
+    position: absolute;
+    top:-5px;
+    left:130px;
+    }
+.header-right{
+    height:114px;
+    display:block;
+    float: right;
+    font-size: 14px;
+    margin-top:2px;
+    margin-right:10px;
+ 
+    a{
+        font-weight: 700;
+        color:#272343;
+        text-decoration:none;
+        &:hover{
+                color:#ffd803;
+                text-decoration:underline;
+        }
+    }
+}
