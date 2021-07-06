@@ -1,21 +1,28 @@
 <template>
-  <div id="event_show">
+  <div id="event-new">
+    <div class="event-name">
     <p>イベント名</p>
-    <input v-model="newEventsName">
+    <input placeholder="○○大学卒業キャンプ2021" v-model="newEventsName">
+    </div>
+    <div class="event-content">
     <p>誰かに持ってきて欲しいもの</p>
     <form>
       <ul>
-
         <li v-for="(item, index) in items" :key="item.id">
           <!-- 各入力ボックス -->
-          <input type="text" v-model="newItems[index]">
-          <input type="number" name="num01" v-model="newItemsNumber[index]" placeholder="数" min="0">
+          <input class="item" type="text" v-model="newItems[index]" :placeholder="itemsPlaceholders[index]">
+
+          <!-- <input class="item-number" type="number" name="num01" v-model="newItemsNumber[index]" placeholder="数" min="0"> -->
+         <select name="example" v-model="newItemsNumber[index]">
+            <option value='' disabled selected style='display:none;'>数</option>
+            <option v-for="n of 20" :key="n">{{n}}</option>
+        </select>
         </li>
       </ul>
       <button type="button" @click="addInput">追加する</button>
       <button type="button" @click="createItem">この内容で登録</button>
     </form>
-
+</div>
     <p>内容は後で変更ができます</p>
     {{newItems}}
     {{newItems[0]}}
@@ -32,13 +39,15 @@
       return {
         items: ["", "", ""],
         newItems: [],
-        newItemsNumber: [],
-        newEventsName: ''
+        newItemsNumber: ["","",""],
+        newEventsName: '',
+        itemsPlaceholders:["テント","タープ","寝袋"]
       }
     },
     methods: {
       addInput() {
-        this.items.push(''); // 配列に１つ空データを追加する
+        this.items.push(""); // 配列に１つ空データを追加する
+        this.newItemsNumber.push("")
       },
       createItem() {
         let self = this
