@@ -158,6 +158,7 @@
       },
       cp() {
         this.$copyText(this.message)
+        this.hide()
         
       },
       modal() {

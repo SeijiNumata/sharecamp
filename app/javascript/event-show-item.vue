@@ -4,12 +4,16 @@
         <p class="item-name-and-number">{{itemName}}        <span>({{bringSum}}/{{ needNumber}})</span></p>
 
         <div class="event-show-item-input">
-        <select v-model="selectedNumber" name="example">
+        <select class="number-select" v-model="selectedNumber" name="select-number" v-show="needNumber!=1" :disabled="isCurrentUserItem||needNumber-bringSum<=0">
             <option value='' disabled selected style='display:none;'>数</option>
             <option v-for="n of needNumber-bringSum" :key="n">{{n}}</option>
         </select>
+ <div class="stamp-button-component">
         <button type="button" v-bind:disabled="isCurrentUserItem||needNumber-bringSum<=0"
             @click="createUserBringItems(item,selectedNumber)">持っていく</button>
+            <div v-if="needNumber-bringSum<=0" class="postmark"> 決まり</div>
+          </div>
+
         </div>
     </div>
         <ul class="event-show-item-user">
@@ -17,6 +21,7 @@
                
                 <p> {{ bring_item.name }}({{ bring_item.bring_number }})</p>
                <button type="button" v-show="isCurrentUser(bring_item)" @click="deleteUserBringItem(bring_item)">×</button>
+              
                <p v-if="bring_items[index+1]!=null">,</p>
             </li>
         </ul>

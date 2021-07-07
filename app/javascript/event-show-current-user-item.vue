@@ -3,7 +3,6 @@
         <input type="checkbox" id="checkbox" v-model="bringChecked" v-on:change="changeBringCheckBox">
         <p >{{this.itemName}}({{this.bringNumber}})</p>
 
-        <p >({{this.bringItemId}})</p>
     </div>
 </template>
 <script>

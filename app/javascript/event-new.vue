@@ -13,19 +13,21 @@
           <input class="item" type="text" v-model="newItems[index]" :placeholder="itemsPlaceholders[index]">
 
           <!-- <input class="item-number" type="number" name="num01" v-model="newItemsNumber[index]" placeholder="数" min="0"> -->
-         <select name="example" v-model="newItemsNumber[index]">
+         <select class="item-number" name="example" v-model="newItemsNumber[index]">
             <option value='' disabled selected style='display:none;'>数</option>
             <option v-for="n of 20" :key="n">{{n}}</option>
         </select>
         </li>
       </ul>
-      <button type="button" @click="addInput">追加する</button>
-      <button type="button" @click="createItem">この内容で登録</button>
+      <button class="add-button" type="button" @click="addInput">+ 追加</button>
+     
+      <button class="create-button" type="button" @click="createItem">この内容で登録</button>
+      <div class="messasge-container">
+    <p class="message">内容は後で変更ができます</p>
+  </div>
     </form>
 </div>
-    <p>内容は後で変更ができます</p>
-    {{newItems}}
-    {{newItems[0]}}
+
   </div>
 
 
