@@ -1,21 +1,28 @@
 <template>
-  <div>
-    <p>{{items}}</p>
+  <div class="event-edit">
+    <p>イベント名</p>
+     <input class="event-name" v-model="eventName" >
     <form>
+      <p>誰かに持ってきて欲しいもの</p>
       <ul>
         <li v-for="(neededItemInfo, index) in neededItemInfos" :key="neededItemInfo.id">
           <!-- 各入力ボックス -->
-          <input v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly"
-            :class="{readonly:neededItemInfo.readonly}">
-          <input type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number">
-
+          <input class="item-name" v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly"
+            :class="{readonly:neededItemInfo.readonly}" >
+          <!-- <input class="item-number" type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number"> -->
+<select class="item-number" name="example" v-model="neededItemInfos[index].need_number">
+            <option value='' disabled selected style='display:none;'>数</option>
+            <option v-for="n of 20" :key="n">{{n}}</option>
+        </select>
         </li>
 
       </ul>
-      <button type="button" @click="addInput">追加する</button>
-      <button type="button" @click="updateItems">この内容で登録</button>
+      <button class="add-button" type="button" @click="addInput">追加する</button>
+      <button class="create-button"type="button" @click="updateItems">この内容で登録</button>
     </form>
   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -85,6 +92,7 @@
             console.log("items" + response.data.item)
             this.items = response.data.item
             console.log(response.data)
+            this.eventName = response.data
             console.log(this.items)
             for (const item of this.items) {
               console.log("----")
@@ -116,7 +124,8 @@
         axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
         axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
         axios.patch(requestPath, {
-            items: this.neededItemInfos
+            items: this.neededItemInfos,
+            eventName:this.eventName
           })
           .then((response) => {
             const status = JSON.stringify(response.status)

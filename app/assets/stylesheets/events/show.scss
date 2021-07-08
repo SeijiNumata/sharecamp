@@ -76,6 +76,7 @@
         display:flex;
         width:90%;
         justify-content: space-around;
+        margin:15px auto;
       }
     
       .tabs li,
@@ -90,6 +91,7 @@
         transition: .3s;
         background-color: #e3f6f5;
         border-radius: 4px;
+        margin-right:5px;
       }
     
       .tabs li.active,
@@ -150,13 +152,13 @@
          
         .stamp-button-component{
             position: relative;
-            .postmark{
+            .postmark-decide{
                 display:inline-block;
                  position: absolute;
                  margin: 0;
                  padding: 10px;
                  width: 40px;
-                 left:-40px;
+                 left:-80px;
                  top:13px;
                  height: 10px;
                  line-height: 10px;
@@ -168,6 +170,26 @@
                  font-family: 'Bree Serif', serif;
                 // line-height: 100px;
                   transform: rotate(-16deg);
+            }
+            .postmark-bring{
+                display:inline-block;
+                 position: absolute;
+                 margin: 0;
+                 padding: 10px;
+                 width: 60px;
+                 left:-1px;
+                 top:13px;
+                 height: 10px;
+                 line-height: 10px;
+                 border: 5px double blue;
+                 border-radius: 10%;
+                 color: blue;
+                 text-align: center;
+                 font-size: 9px;
+                 font-family: 'Bree Serif', serif;
+                // line-height: 100px;
+                  transform: rotate(-16deg);
+
             }
         }
         }
@@ -239,7 +261,7 @@
                     box-shadow:0px 0px 10px #ccc;
                     position: relative;
                     top: 2px;
-                    left:2px;
+                    left:px;
                     background-color:goldenrod;
   
                 }
