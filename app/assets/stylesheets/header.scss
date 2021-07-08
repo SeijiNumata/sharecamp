@@ -1,0 +1,77 @@
+
+header{
+   width: 100%;
+   background-color:#bae8e8;
+   height:44px;
+   display:flex;
+    text-decoration: none;
+//    .header-left{
+//        display:inline-block;
+//        width:80%;
+    //    background-color:blue;
+    .header-left{
+        width:85%;
+       .title{
+        display:inline-block;
+        font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+        color:black;
+        font-weight: 700;
+        font-size:16px;
+        margin-top:12px;
+        margin-left:20px;
+        vertical-align: middle;
+        text-decoration: none;
+        // line-height: 40px;
+       }
+       .img_logo{
+        width:50px;
+        display:inline-block;
+        margin-top:10px;
+        position: absolute;
+        top:-5px;
+        left:150px;
+        }
+    }
+//    }
+
+        .header-right{
+            display: inline-block;
+            width:150px;
+           
+            a{
+                        font-weight: 700;
+                        color:#272343;
+                        text-decoration:none;
+                        &:hover{
+                                color:#ffd803;
+                                text-decoration:underline;
+                        }
+                    }
+
+            
+        }
+//    .header-right{
+//     display:inline-block;
+//     width:200px;
+//     height:44px;
+//     font-size: 14px;
+//     background-color:red;
+//     padding-left:10px;
+//     // margin-top:2px;
+//     // margin-right:10px;
+ 
+//     a{
+//         font-weight: 700;
+//         color:#272343;
+//         text-decoration:none;
+//         &:hover{
+//                 color:#ffd803;
+//                 text-decoration:underline;
+//         }
+//     }
+  
+
+// }
+
+
+}

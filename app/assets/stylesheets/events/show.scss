@@ -1,0 +1,352 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+#event-show{
+    width:80%;
+    margin:30px auto;
+    height:800px;
+
+    input {
+        display: block;
+    
+      }
+    .show-component{
+        width: 100%;
+    }
+    .event_head{
+        width:100%;
+        display:flex;
+   
+        .event_title{
+            display:inline-block;
+
+            text-align:center;
+            margin-bottom: 30px;
+            width:80%;
+            
+        }
+        a{
+            display: block;
+            width:89px;
+            height:20px;
+            text-align:center;
+            padding:10px;
+            text-decoration: none;
+            background: #ffd803;
+            color:black;
+            margin-left:auto;
+            margin-right:100px;
+
+            &:hover{
+                box-shadow:0px 0px 10px #ccc;
+                
+
+            }
+            &:active{
+                box-shadow:0px 0px 10px #ccc;
+                position: relative;
+                top: 2px;
+                left:2px;
+                background-color:goldenrod;
+            }
+    
+            &:visited{
+                color:black;
+            }
+        }
+    }
+    
+
+    
+    // ul {
+    //     width: 100%;
+    //   }
+    
+    //   li {
+    //     list-style: none;
+    //     display: inline-block;
+
+    //     width: 15px;
+    //     background-color:skyblue;
+    //   }
+    
+      .tabs {
+       
+        display:flex;
+        width:90%;
+        justify-content: space-around;
+        margin:15px auto;
+      }
+    
+      .tabs li,
+      .tabs label {
+        width:240px;
+        height:40px;
+        line-height: 40px;
+        list-style: none;
+        border: 3px solid gray;
+        cursor: pointer;
+        text-align: center;
+        transition: .3s;
+        background-color: #e3f6f5;
+        border-radius: 4px;
+        margin-right:5px;
+      }
+    
+      .tabs li.active,
+      .tabs :checked+label {
+        background-color: #bae8e8;
+        border-color: #000;
+        color: black;
+        cursor: auto;
+      }
+    
+      .contents {
+        margin-top: -17px;
+        width: 100%;
+        // background-color:red;
+        border: 3px solid gray;
+        // background-color:red;
+        margin-left: 0px;
+        list-style: none;
+        li{
+            margin-left:-29px;
+        }
+        .event-show-item{
+            // background-color:blue;
+            margin:3px;
+            border: 2px solid black;
+            margin-right:6px;
+            padding:10px;
+        }
+        h2{
+            display: inline-block;
+            margin:20px 20px 20px -2px;
+            font-size: 15px;
+        }
+        .item-and-input{
+            border-bottom: 1px solid black;
+            padding-bottom: 20px;
+            margin-bottom:10px;
+        }
+        .item-name-and-number{
+            display: inline-block;
+            width:70%;
+            
+        }
+        .event-show-item-input{
+            
+            height:30px;
+            float: right;
+            display: flex;
+            select{
+                height: 30px;
+                font-size: 14px;
+                margin-right:4px;
+            }
+            button{
+                height: 30px;
+                font-size: 13px;  
+            }
+         
+        .stamp-button-component{
+            position: relative;
+            .postmark-decide{
+                display:inline-block;
+                 position: absolute;
+                 margin: 0;
+                 padding: 10px;
+                 width: 40px;
+                 left:-80px;
+                 top:13px;
+                 height: 10px;
+                 line-height: 10px;
+                 border: 5px double red;
+                 border-radius: 10%;
+                 color: red;
+                 text-align: center;
+                 font-size: 12px;
+                 font-family: 'Bree Serif', serif;
+                // line-height: 100px;
+                  transform: rotate(-16deg);
+            }
+            .postmark-bring{
+                display:inline-block;
+                 position: absolute;
+                 margin: 0;
+                 padding: 10px;
+                 width: 60px;
+                 left:-1px;
+                 top:13px;
+                 height: 10px;
+                 line-height: 10px;
+                 border: 5px double blue;
+                 border-radius: 10%;
+                 color: blue;
+                 text-align: center;
+                 font-size: 9px;
+                 font-family: 'Bree Serif', serif;
+                // line-height: 100px;
+                  transform: rotate(-16deg);
+
+            }
+        }
+        }
+        .event-show-item-user{
+            clear: both;
+            list-style: none;
+       
+            // display: inline-block;
+            ul{
+                display: inline-block;
+               
+            }
+            li{
+                display: inline-block;
+                margin-right: 40px;
+            }
+            button,p{
+                display: inline-block;
+            }
+            button{
+                color:red;
+            }
+            // p{
+            //     display: inline-block;
+               
+            // }
+        }
+        .self-brings-contents{
+            height:600px;
+            
+            .self-bring-item{
+                margin-left:40px;
+                margin-bottom:4px;
+                input{
+                    display: inline-block;
+                }
+            }
+            
+        }
+        .invite{
+            text-align: center;
+            height:300px;
+            .invite_message_title{
+                margin-top:40px;
+                margin-bottom:30px;
+            }
+            .invite_message_content{
+                margin-bottom:30px;
+                margin-right:14px;
+                padding:14px;
+                border: 3px solid black;
+                white-space: pre-line;
+                word-wrap: break-word;
+                
+            }
+            button{
+                width:300px;
+                margin-top:20px;
+                margin-bottom:30px;
+                height:50px;
+                border: none;
+                background-color:#ffd803;
+                &:hover{
+                    box-shadow:0px 0px 10px #ccc;
+                    
+
+                }
+                &:active{
+                    box-shadow:0px 0px 10px #ccc;
+                    position: relative;
+                    top: 2px;
+                    left:px;
+                    background-color:goldenrod;
+  
+                }
+
+            }
+
+        }
+        // ul{
+        //     width: 100%;
+        //     // background-color:green;
+        // }
+    }
+    .vm--modal{
+        width:1000px;
+    }
+    .modal{
+        
+        .modal-header {
+            border-bottom: 1px solid #ddd;
+            font-size: 10px;
+            text-align: center;
+            margin-top:20px;
+            padding-bottom: 20px;
+          }
+        .modal-body-text{
+            margin-top:20px;
+           text-align: center;
+           p{
+               display:inline-block;
+               padding:10px;
+           }
+            
+        }
+        .modal-body-button{
+            display:flex;
+            justify-content: space-around;
+            margin-top:20px;
+            margin-left: 50px;
+            margin-right:50px;
+            button{
+                width:150px;
+            }
+        }
+    }
+       
+        //     width: 100%;
+        //     margin: 20px;
+        //     border: 1px solid #ccc;
+        //     .active {
+        //         display: block;
+        //         color: red;
+        //         background-color: red;
+        //       }
+        //       .invite_message{
+        //         height:200px;
+        //         display: inline-block;
+        //         width:100%;
+        //         margin:30px auto;
+        //         text-align:center;
+        //         background-color:red;
+        //         .invite_message_title{
+        //             margin-bottom:10px;
+        //         }
+        //         .invite_message_content{
+        //             background-color:green;
+        //             margin:10px;
+        //         }
+        //     }
+        //   }
+      
+    
+    //   .textarea {
+    //     display: inline-block;
+    //     width: 100%;
+    //     /* 幅：横いっぱいに */
+    //     height: 90px;
+    //     /* 高さ */
+    //   }
+    
+    //   p {
+    //     white-space: pre-line;
+    //     word-wrap: break-word
+    //   }
+    //   .modal-header, .modal-body {
+    //   padding: 5px 25px;
+    // }
+ 
+}

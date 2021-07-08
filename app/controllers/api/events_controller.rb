@@ -60,13 +60,15 @@ module Api
       def update
         
         items_params
-
+        byebug
         items = params[:items]
         event=Event.find(params[:id])
+        event.name=params[:eventName]
+        event.save!
         items.each do |item|
            if  event.items.find_by(name: item[:name])
             # 数だけ変える
-    
+            
             newItem=event.items.find_by(name: item[:name])
 
             newItem.update(need_number: item[:need_number])
@@ -95,6 +97,7 @@ module Api
 
     def items_params
         params.require(:items)
+        params.require(:eventName)
       end
     end
  end

@@ -1,0 +1,15 @@
+<header>
+
+ <div class=header-left>
+   
+    <%=  link_to 'SHARECAMP', root_path ,class:"title" %>
+ 
+    <img class=img_logo src="/assets/img_logo.png" alt="ロゴ">
+</div>
+    <div class=header-right>
+        <% unless  controller.controller_name=="users"||current_user==nil %>
+        <p>hello! <%= current_user.name %></p>
+        <p><span>別人の場合は</span><%= link_to 'こちら', new_user_path %></p>
+        <% end %>
+    </div>
+</header>
