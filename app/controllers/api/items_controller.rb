@@ -37,6 +37,7 @@ module Api
         # returnF
       end     
       session[:fromCreate]="fromCreate"
+      session[:event_id]=@event.id
       render json: @event, status: :created
       # render json: { status: 'ERROR', data: @item.errors }
       

@@ -12,10 +12,18 @@ class UsersController < ApplicationController
     end
   
     # GET /users/new
-    def new
+    def new      
       @user = User.new
-      session[:param] = params[:e] || session[:event_id]
-      @event=Event.find(session[:param])
+      if params[:e] # 新規作成時
+      session[:param] = params[:e] 
+      elsif session[:event_id] #event_showから
+        session[:param] = session[:event_id] 
+      end
+     
+      if session[:param]
+          @event=Event.find(session[:param])
+      end
+    
     end
    
     # GET /users/1/edit

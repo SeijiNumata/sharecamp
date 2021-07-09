@@ -16,6 +16,7 @@ class EventsController < ApplicationController
     end
     @url=request.url
     session[:event_id]=@event.id 
+    byebug
     unless current_user
       redirect_to "/events/users/new"
     end

@@ -1,31 +1,33 @@
 <div class=user-new-container>
-<h1><%= @event.name %>の</h1>
-<h1>誰か持ってきてリストへようこそ</h1>
-
-<%= form_with(model: @user) do |form| %>
+  <% if @event!=nil %>
+  <h1><%= @event.name %>の</h1>
+  <h1>誰か持ってきてリストへようこそ</h1>
+  <%end %>
+  <%= form_with(model: @user) do |form| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% @user.errors.each do |user| %>
-          <li><%= user.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <ul>
+      <% @user.errors.each do |user| %>
+      <li><%= user.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
 
-<div class="nickname-form">
-<p>ニックネームを入力してください</p>
-  <div class="field">
-    <p class="nickname-label"><%= form.label "ニックネーム" %></p>
-    <%= form.text_field :name, class:"text_field" %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit "持ってきて欲しいものリストへ", class:"nickname-submit-button"%>
+  <div class="nickname-form">
+    <p>ニックネームを入力してください</p>
+    <div class="field">
+      <p class="nickname-label"><%= form.label "ニックネーム" %></p>
+      <%= form.text_field :name, class:"text_field" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "持ってきて欲しいものリストへ", class:"nickname-submit-button"%>
+    </div>
+    <% end %>
   </div>
-<% end %>
-</div>
-<%= link_to '戻る', :back %>
+  <%= link_to '戻る', :back %>
 </div>

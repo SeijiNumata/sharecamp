@@ -55,7 +55,8 @@
         let self = this
         console.log(this.newItems)
         if (this.newItems == '') return;
-        axios.post('/api/items', {
+        // axios.post('/api/items', {
+          axios.post('/api/events', {
           item: {
             name: this.newItems,
             need_number: this.newItemsNumber
@@ -76,6 +77,7 @@
             url_rep = url.replace(/\"/g, "")
             console.log("wtha"+url_rep)
             const redirectURL=("users/new?e="+url_rep)
+            //const redirectURL=("users/new")
             console.log(redirectURL)
             location.href = redirectURL
           }
