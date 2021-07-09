@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     unless current_user
       redirect_to "/events/users/new"
     end
-
+    
     # byebug
     
 

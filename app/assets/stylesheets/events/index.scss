@@ -9,6 +9,9 @@
         font-size:20px;
         font-weight: normal;
     }
+    @media screen and (min-width: 768px){
+        .br-sp {display: none; }
+        }
     .title-description{
         margin-bottom:20px;
     }
