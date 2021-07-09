@@ -1,8 +1,9 @@
 <template>
   <div id="event-new">
+    <h1>新規作成</h1>
     <div class="event-name">
     <p>イベント名</p>
-    <input placeholder="○○大学卒業キャンプ2021" v-model="newEventsName">
+    <input placeholder="○○大学卒業キャンプ" v-model="newEventsName">
     </div>
     <div class="event-content">
     <p>誰かに持ってきて欲しいもの</p>

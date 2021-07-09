@@ -23,7 +23,6 @@ module Api
     def create
       @event = Event.new(event_params)
       if @event.save
-        byebug
         item_params[:name].count.times do |i|
           @item = Item.new
           @item.name = item_params[:name][i]
