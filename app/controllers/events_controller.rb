@@ -16,7 +16,6 @@ class EventsController < ApplicationController
     end
     @url=request.url
     session[:event_id]=@event.id 
-    byebug
     unless current_user
       redirect_to "/events/users/new"
     end
@@ -32,19 +31,19 @@ class EventsController < ApplicationController
   def edit; end
 
   # POST /events or /events.json
-  def create
-    @event = Event.new(event_params)
+  # def create
+  #   @event = Event.new(event_params)
  
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @event.save
+  #       format.html { redirect_to @event, notice: 'Event was successfully created.' }
+  #       format.json { render :show, status: :created, location: @event }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #       format.json { render json: @event.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /events/1 or /events/1.json
   def update

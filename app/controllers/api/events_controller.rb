@@ -23,6 +23,7 @@ module Api
     def create
       @event = Event.new(event_params)
       if @event.save
+        byebug
         item_params[:name].count.times do |i|
           @item = Item.new
           @item.name = item_params[:name][i]
@@ -39,8 +40,6 @@ module Api
       session[:fromCreate]="fromCreate"
       session[:event_id]=@event.id
       render json: @event, status: :created
-      byebug
-
     end
     # #   def create
     # #     @event = Event.new(event_params)

@@ -21,7 +21,7 @@
     <p>ニックネームを入力してください</p>
     <div class="field">
       <p class="nickname-label"><%= form.label "ニックネーム" %></p>
-      <%= form.text_field :name, class:"text_field" %>
+      <%= form.text_field :name, class:"text_field", value:current_user.name %>
     </div>
 
     <div class="actions">
