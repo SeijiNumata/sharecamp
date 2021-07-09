@@ -15,7 +15,7 @@ class EventsController < ApplicationController
       session.delete("fromCreate")
     end
     @url=request.url
-    session[:e]=@event.id 
+    session[:event_id]=@event.id 
     unless current_user
       redirect_to "/events/users/new"
     end
@@ -23,8 +23,8 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
-    User.find_by(id: cookies.signed[:user_id])
+    # @event = Event.new
+    # User.find_by(id: cookies.signed[:user_id])
   end
 
   # GET /events/1/edit

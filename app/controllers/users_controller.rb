@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     end
   
     # GET /users/new
-    def new      
+    def new
       @user = User.new
-      session[:param] = params[:e] || session[:e]
+      session[:param] = params[:e] || session[:event_id]
       @event=Event.find(session[:param])
     end
    

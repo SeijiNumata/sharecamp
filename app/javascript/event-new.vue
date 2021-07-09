@@ -89,11 +89,5 @@
 </script>
 
 <style scoped>
-  input {
-    display: block;
-  }
 
-  button {
-    display: block;
-  }
 </style>

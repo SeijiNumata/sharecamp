@@ -57,20 +57,6 @@
         }
     }
     
-
-    
-    // ul {
-    //     width: 100%;
-    //   }
-    
-    //   li {
-    //     list-style: none;
-    //     display: inline-block;
-
-    //     width: 15px;
-    //     background-color:skyblue;
-    //   }
-    
       .tabs {
        
         display:flex;
@@ -212,10 +198,10 @@
             button{
                 color:red;
             }
-            // p{
-            //     display: inline-block;
-               
-            // }
+            .bring-item-current-user-name{
+                font-weight: bold;
+            }
+
         }
         .self-brings-contents{
             height:600px;

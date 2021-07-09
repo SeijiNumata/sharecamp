@@ -20,7 +20,7 @@
         <ul class="event-show-item-user">
             <li v-for="(bring_item,index) in bring_items" :key="bring_item.id">
                
-                <p> {{ bring_item.name }}({{ bring_item.bring_number }})</p>
+                <p :class="{'bring-item-current-user-name':isCurrentUserBringItem(bring_item.user_id)}"> {{ bring_item.name }}({{ bring_item.bring_number }})</p>
                <button type="button" v-show="isCurrentUser(bring_item)" @click="deleteUserBringItem(bring_item)">×</button>
               
                <p v-if="bring_items[index+1]!=null">,</p>
@@ -111,6 +111,9 @@
                     this.bringSum+=Number(this.bring_items[i].bring_number)
                 }
             },
+            isCurrentUserBringItem(user_id){
+                return this.currentUserId==user_id
+            }
         }
     }
 </script>
