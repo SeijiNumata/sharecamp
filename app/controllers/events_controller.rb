@@ -5,7 +5,15 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    @events = Event.all.order(:updated_at)
+    recent_watch_events=JSON.parse(cookies[:recent_watch_events])
+    @events=[]
+    
+    recent_watch_events.each do |event_id|
+      @events.push(Event.find(event_id))
+    end
+    @events.reverse!
+
   end
 
   # GET /events/1 or /events/1.json
@@ -19,6 +27,29 @@ class EventsController < ApplicationController
     unless current_user
       redirect_to "/events/users/new"
     end
+
+    # byebug
+    
+
+    if cookies[:recent_watch_events]==nil
+      recent_watch_events=[@event.id.to_s] #配列 
+    else
+ 
+      recent_watch_events=JSON.parse(cookies[:recent_watch_events])
+      recent_watch_events.push(@event.id).uniq!
+      if recent_watch_events.count>5
+        recent_watch_events.slice!(0..recent_watch_events.count-6)
+      end
+      
+     end
+
+    cookies[:recent_watch_events]=JSON.generate(recent_watch_events)
+
+    #cookies.delete :recent_watch_events
+    # byebug
+    # if cookies[:recent_watch_events]
+    # mycookie=[cookies[:recent_watch_events],]
+    # recent_watch_events=[]
   end
 
   # GET /events/new
