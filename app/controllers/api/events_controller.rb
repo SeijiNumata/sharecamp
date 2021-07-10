@@ -81,6 +81,8 @@ module Api
       event.name = params[:eventName]
       event.save!
       items.each do |item|
+        next if item[:name] == '' || item[:need_number] == ''
+
         if event.items.find_by(name: item[:name])
           # 数だけ変える
 

@@ -1,21 +1,21 @@
 <template>
   <div class="event-edit">
     <p>イベント名<span class="event-name-error">{{eventsNameNullError}}</span></p>
-     <input class="event-name" v-model="eventName" >
+    <input class="event-name" v-model="eventName">
     <form>
       <p>誰かに持ってきて欲しいもの</p>
-       <p class="event-item-null-error" v-if="newItemsNullError">{{newItemsNullError}}</p>
-     <p class="event-item-null-error" v-if="newItemsNumberNullError">{{newItemsNumberNullError}}</p>
+      <p class="event-item-null-error" v-if="newItemsNullError">{{newItemsNullError}}</p>
+      <p class="event-item-null-error" v-if="newItemsNumberNullError">{{newItemsNumberNullError}}</p>
       <ul>
         <li v-for="(neededItemInfo, index) in neededItemInfos" :key="neededItemInfo.id">
           <!-- 各入力ボックス -->
-          <input class="item-name" v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly"
-            :class="{readonly:neededItemInfo.readonly}" >
+          <input class="item-name" v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly" :disabled="neededItemInfo.readonly" 
+            :class="{readonly:neededItemInfo.readonly}">
           <!-- <input class="item-number" type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number"> -->
-<select class="item-number" name="example" v-model="neededItemInfos[index].need_number">
+          <select class="item-number" name="example" v-model="neededItemInfos[index].need_number">
             <option value='' disabled selected style='display:none;'>数</option>
             <option v-for="n of 20" :key="n">{{n}}</option>
-        </select>
+          </select>
         </li>
 
       </ul>
@@ -24,7 +24,7 @@
     </form>
   </div>
   </div>
-  
+
 </template>
 
 <script>
@@ -61,9 +61,9 @@
         getItemRequestUrl: "",
         eventEditUrl: "",
         neededItemInfos: [],
-         eventsNameNullError:"",
-        newItemsNullError:"",
-        newItemsNumberNullError:""
+        eventsNameNullError: "",
+        newItemsNullError: "",
+        newItemsNumberNullError: ""
       }
     },
     mounted() {
@@ -120,9 +120,9 @@
         }); // 配列に１つ空データを追加する
       },
       updateItems() {
-        console.log("チェック"+this.checkForm())
-        if(this.checkForm()==false){
-            return
+        console.log("チェック" + this.checkForm())
+        if (this.checkForm() == false) {
+          return
         }
         const eventsID = this.getItemRequestUrl.slice(8)
         console.log("URKRR" + eventsID)
@@ -132,7 +132,7 @@
         axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
         axios.patch(requestPath, {
             items: this.neededItemInfos,
-            eventName:this.eventName
+            eventName: this.eventName
           })
           .then((response) => {
             const status = JSON.stringify(response.status)
@@ -146,42 +146,42 @@
             console.log(error, response);
           });
       },
-       checkForm(){
-        
-        if(this.eventName== ''){
-          this.eventsNameNullError="※イベント名を入力してください"
+      checkForm() {
+
+        if (this.eventName == '') {
+          this.eventsNameNullError = "※イベント名を入力してください"
           return false
-        }else{
-          this.eventsNameNullError=""
+        } else {
+          this.eventsNameNullError = ""
         }
 
-       for (let i = 0; i < this.neededItemInfos.length; ++i) {
-       console.log("assaaaaaaaaaaa")
-       console.log(this.neededItemInfos)
-       //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
-       console.log(this.neededItemInfos[i].name )
-        if (!this.neededItemInfos[i].name && this.neededItemInfos[i].need_number){
-          this.newItemsNullError="※持ち物を入力してください"
-          return false
+        for (let i = 0; i < this.neededItemInfos.length; ++i) {
+          console.log("assaaaaaaaaaaa")
+          console.log(this.neededItemInfos)
+          //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
+          console.log(this.neededItemInfos[i].name)
+          if (!this.neededItemInfos[i].name && this.neededItemInfos[i].need_number) {
+            this.newItemsNullError = "※持ち物を入力してください"
+            return false
+          }
         }
-    }
-      //    if(this.neededItemInfos == ''){
-      //     this.newItemsNullError="※持ち物を入力してください"
-      // }else{
-      //   this.newItemsNullError=""
-      // }
-     for (let i = 0; i < this.neededItemInfos.length; ++i) {
-       console.log("adfazsadcszssfda")
-       console.log(this.neededItemInfos)
-       //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
-       console.log(this.neededItemInfos[i].name )
-        if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number){
-          this.newItemsNumberNullError="※持ち物の数を入力してください"
-          console.log("※持ち物の数を入力してください")
-          return false
+        //    if(this.neededItemInfos == ''){
+        //     this.newItemsNullError="※持ち物を入力してください"
+        // }else{
+        //   this.newItemsNullError=""
+        // }
+        for (let i = 0; i < this.neededItemInfos.length; ++i) {
+          console.log("adfazsadcszssfda")
+          console.log(this.neededItemInfos)
+          //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
+          console.log(this.neededItemInfos[i].name)
+          if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number) {
+            this.newItemsNumberNullError = "※持ち物の数を入力してください"
+            console.log("※持ち物の数を入力してください")
+            return false
+          }
         }
-    }
-  }
+      }
     }
   }
 </script>
