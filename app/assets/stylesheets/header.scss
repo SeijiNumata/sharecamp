@@ -5,12 +5,9 @@ header{
    height:44px;
    display:flex;
     text-decoration: none;
-//    .header-left{
-//        display:inline-block;
-//        width:80%;
-    //    background-color:blue;
+
     .header-left{
-        width:85%;
+        width:80%;
        .title{
         display:inline-block;
         font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
@@ -35,9 +32,11 @@ header{
 //    }
 
         .header-right{
-            display: inline-block;
-            width:150px;
-           
+            display: block;
+            width:250px;
+            text-align:right;
+            float: right;
+            
             a{
                         font-weight: 700;
                         color:#272343;
@@ -47,31 +46,13 @@ header{
                                 text-decoration:underline;
                         }
                     }
-
-            
         }
-//    .header-right{
-//     display:inline-block;
-//     width:200px;
-//     height:44px;
-//     font-size: 14px;
-//     background-color:red;
-//     padding-left:10px;
-//     // margin-top:2px;
-//     // margin-right:10px;
- 
-//     a{
-//         font-weight: 700;
-//         color:#272343;
-//         text-decoration:none;
-//         &:hover{
-//                 color:#ffd803;
-//                 text-decoration:underline;
-//         }
-//     }
-  
-
-// }
+        @media screen and (max-width: 768px){
+            .header-right{
+                font-size:13px;
+                line-height: 22px;}
+            }
+      
 
 
 }
