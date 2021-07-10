@@ -120,7 +120,10 @@
         }); // 配列に１つ空データを追加する
       },
       updateItems() {
-        this.checkForm()
+        console.log("チェック"+this.checkForm())
+        if(this.checkForm()==false){
+            return
+        }
         const eventsID = this.getItemRequestUrl.slice(8)
         console.log("URKRR" + eventsID)
         console.log(this.neededItemInfos)
@@ -147,15 +150,26 @@
         
         if(this.eventName== ''){
           this.eventsNameNullError="※イベント名を入力してください"
+          return false
         }else{
           this.eventsNameNullError=""
         }
 
-         if(this.neededItemInfos == ''){
+       for (let i = 0; i < this.neededItemInfos.length; ++i) {
+       console.log("assaaaaaaaaaaa")
+       console.log(this.neededItemInfos)
+       //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
+       console.log(this.neededItemInfos[i].name )
+        if (!this.neededItemInfos[i].name && this.neededItemInfos[i].need_number){
           this.newItemsNullError="※持ち物を入力してください"
-      }else{
-        this.newItemsNullError=""
-      }
+          return false
+        }
+    }
+      //    if(this.neededItemInfos == ''){
+      //     this.newItemsNullError="※持ち物を入力してください"
+      // }else{
+      //   this.newItemsNullError=""
+      // }
      for (let i = 0; i < this.neededItemInfos.length; ++i) {
        console.log("adfazsadcszssfda")
        console.log(this.neededItemInfos)
@@ -164,6 +178,7 @@
         if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number){
           this.newItemsNumberNullError="※持ち物の数を入力してください"
           console.log("※持ち物の数を入力してください")
+          return false
         }
     }
   }
