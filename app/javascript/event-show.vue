@@ -7,8 +7,8 @@
     </div>
     <div class="show_component">
       <ul class="tabs">
-        <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">持ってきてほしいもの</li>
-        <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">自分が持っていくもの</li>
+        <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">持ってきて<br class="br-sp">ほしいもの</li>
+        <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">自分が<br class="br-sp">持っていくもの</li>
         <li v-on:click="change('3')" v-bind:class="{'active': isActive === '3'}">参加者を呼ぶ</li>
       </ul>
 
@@ -27,8 +27,8 @@
         </li>
         <li class="invite" v-else-if="isActive === '3'">
 
-          <p class="invite_message_title">以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</p>
-          <p class="invite_message_content">{{message}}</p>
+          <p class="invite-message-title">以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！</p>
+          <p class="invite-message-content">{{message}}</p>
 
           <button @click="cp()">コピー</button>
         </li>

@@ -9,7 +9,7 @@
             <option v-for="n of needNumber-bringSum" :key="n">{{n}}</option>
         </select>
  <div class="stamp-button-component">
-        <button type="button" v-bind:disabled="isCurrentUserItem||needNumber-bringSum<=0"
+        <button class="bring-button" type="button" v-bind:disabled="isCurrentUserItem||needNumber-bringSum<=0"
             @click="createUserBringItems(item,selectedNumber)">持っていく</button>
             <div v-if="needNumber-bringSum<=0" class="postmark-decide"> 決まり</div>
             <div v-if="isCurrentUserItem" class="postmark-bring"> 持っていく</div>
