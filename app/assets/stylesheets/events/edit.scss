@@ -10,7 +10,16 @@
     .event-name{
         width:100%;
     }
-    
+    .event-name-error{
+        color:red;
+        font-size:12px;
+        margin-left:40px;
+    }
+    .event-item-null-error{
+        color:red;
+        font-size:12px;
+        margin-left:40px;
+    }
     li{
         width:100%;
         display:inline-block;

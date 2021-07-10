@@ -1,9 +1,11 @@
 <template>
   <div class="event-edit">
-    <p>イベント名</p>
+    <p>イベント名<span class="event-name-error">{{eventsNameNullError}}</span></p>
      <input class="event-name" v-model="eventName" >
     <form>
       <p>誰かに持ってきて欲しいもの</p>
+       <p class="event-item-null-error" v-if="newItemsNullError">{{newItemsNullError}}</p>
+     <p class="event-item-null-error" v-if="newItemsNumberNullError">{{newItemsNumberNullError}}</p>
       <ul>
         <li v-for="(neededItemInfo, index) in neededItemInfos" :key="neededItemInfo.id">
           <!-- 各入力ボックス -->
@@ -18,7 +20,7 @@
 
       </ul>
       <button class="add-button" type="button" @click="addInput">追加する</button>
-      <button class="create-button"type="button" @click="updateItems">この内容で登録</button>
+      <button class="create-button" type="button" @click="updateItems">この内容で登録</button>
     </form>
   </div>
   </div>
@@ -58,7 +60,10 @@
         eventEditUrl: "",
         getItemRequestUrl: "",
         eventEditUrl: "",
-        neededItemInfos: []
+        neededItemInfos: [],
+         eventsNameNullError:"",
+        newItemsNullError:"",
+        newItemsNumberNullError:""
       }
     },
     mounted() {
@@ -95,8 +100,6 @@
             this.eventName = response.data
             console.log(this.items)
             for (const item of this.items) {
-              console.log("----")
-              console.log(item.name + "" + item.need_number)
               this.neededItemInfos.push({
                 name: item.name,
                 need_number: item.need_number,
@@ -112,11 +115,12 @@
       },
       addInput() {
         this.neededItemInfos.push({
-          name: " ",
+          name: "",
           need_number: ""
         }); // 配列に１つ空データを追加する
       },
       updateItems() {
+        this.checkForm()
         const eventsID = this.getItemRequestUrl.slice(8)
         console.log("URKRR" + eventsID)
         console.log(this.neededItemInfos)
@@ -138,7 +142,31 @@
           }, (error) => {
             console.log(error, response);
           });
+      },
+       checkForm(){
+        
+        if(this.eventName== ''){
+          this.eventsNameNullError="※イベント名を入力してください"
+        }else{
+          this.eventsNameNullError=""
+        }
+
+         if(this.neededItemInfos == ''){
+          this.newItemsNullError="※持ち物を入力してください"
+      }else{
+        this.newItemsNullError=""
       }
+     for (let i = 0; i < this.neededItemInfos.length; ++i) {
+       console.log("adfazsadcszssfda")
+       console.log(this.neededItemInfos)
+       //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
+       console.log(this.neededItemInfos[i].name )
+        if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number){
+          this.newItemsNumberNullError="※持ち物の数を入力してください"
+          console.log("※持ち物の数を入力してください")
+        }
+    }
+  }
     }
   }
 </script>

@@ -2,11 +2,13 @@
   <div id="event-new">
     <h1>新規作成</h1>
     <div class="event-name">
-    <p>イベント名</p>
+    <p>イベント名<span class="event-name-error">{{eventsNameNullError}}</span></p>
     <input placeholder="○○大学卒業キャンプ" v-model="newEventsName">
     </div>
     <div class="event-content">
     <p>誰かに持ってきて欲しいもの</p>
+    <p class="event-item-null-error" v-if="newItemsNullError">{{newItemsNullError}}</p>
+     <p class="event-item-null-error" v-if="newItemsNumberNullError">{{newItemsNumberNullError}}</p>
     <form>
       <ul>
         <li v-for="(item, index) in items" :key="item.id">
@@ -44,7 +46,10 @@
         newItems: [],
         newItemsNumber: ["","",""],
         newEventsName: '',
-        itemsPlaceholders:["テント","タープ","寝袋"]
+        itemsPlaceholders:["テント","タープ","寝袋"],
+        eventsNameNullError:"",
+        newItemsNullError:"",
+        newItemsNumberNullError:""
       }
     },
     methods: {
@@ -53,9 +58,13 @@
         this.newItemsNumber.push("")
       },
       createItem() {
+        this.checkForm()
         let self = this
         console.log(this.newItems)
-        if (this.newItems == '') return;
+        console.log(this.newItemsNumber)
+        this.newItemsNumber=this.newItemsNumber.filter(Boolean)
+        console.log(this.newItemsNumber[2]==true)
+        if (this.newItems == '' || this.newEventsName=='') return;
         // axios.post('/api/items', {
           axios.post('/api/events', {
           item: {
@@ -78,7 +87,6 @@
             url_rep = url.replace(/\"/g, "")
             console.log("wtha"+url_rep)
             const redirectURL=("users/new?e="+url_rep)
-            //const redirectURL=("users/new")
             console.log(redirectURL)
             location.href = redirectURL
           }
@@ -86,7 +94,29 @@
         }, (error) => {
           console.log(error, response);
         });
+      },
+      checkForm(){
+        
+        if(this.newEventsName== ''){
+          this.eventsNameNullError="※イベント名を入力してください"
+        }else{
+          this.eventsNameNullError=""
+        }
+
+         if(this.newItems == ''){
+          this.newItemsNullError="※持ち物を入力してください"
+      }else{
+        this.newItemsNullError=""
       }
+     for (let i = 0; i < this.newItems.length; ++i) {
+        if (this.newItems[i] && !this.newItemsNumber[i]){
+          this.newItemsNumberNullError="※持ち物の数を入力してください"
+        }
+}
+
+
+      }
+     
     }
   }
 </script>

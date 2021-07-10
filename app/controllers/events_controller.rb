@@ -6,46 +6,40 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @events = Event.all.order(:updated_at)
-    recent_watch_events=JSON.parse(cookies[:recent_watch_events])
-    @events=[]
-    
+    recent_watch_events = JSON.parse(cookies[:recent_watch_events])
+    @events = []
+
     recent_watch_events.each do |event_id|
       @events.push(Event.find(event_id))
     end
     @events.reverse!
-
   end
 
   # GET /events/1 or /events/1.json
-  def show  
-    if session["fromCreate"]
-      @fromCreate=session["fromCreate"]
-      session.delete("fromCreate")
+  def show
+    if session['fromCreate']
+      @fromCreate = session['fromCreate']
+      session.delete('fromCreate')
     end
-    @url=request.url
-    session[:event_id]=@event.id 
-    unless current_user
-      redirect_to "/events/users/new"
-    end
-    
+    @url = request.url
+    session[:event_id] = @event.id
+    redirect_to '/events/users/new' unless current_user
+
     # byebug
-    
 
-    if cookies[:recent_watch_events]==nil
-      recent_watch_events=[@event.id.to_s] #配列 
+    if cookies[:recent_watch_events].nil?
+      recent_watch_events = [@event.id.to_s] # 配列
     else
- 
-      recent_watch_events=JSON.parse(cookies[:recent_watch_events])
+
+      recent_watch_events = JSON.parse(cookies[:recent_watch_events])
       recent_watch_events.push(@event.id).uniq!
-      if recent_watch_events.count>5
-        recent_watch_events.slice!(0..recent_watch_events.count-6)
-      end
-      
-     end
+      recent_watch_events.slice!(0..recent_watch_events.count - 6) if recent_watch_events.count > 5
 
-    cookies[:recent_watch_events]=JSON.generate(recent_watch_events)
+    end
 
-    #cookies.delete :recent_watch_events
+    cookies[:recent_watch_events] = JSON.generate(recent_watch_events)
+
+    # cookies.delete :recent_watch_events
     # byebug
     # if cookies[:recent_watch_events]
     # mycookie=[cookies[:recent_watch_events],]
@@ -64,7 +58,7 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   # def create
   #   @event = Event.new(event_params)
- 
+
   #   respond_to do |format|
   #     if @event.save
   #       format.html { redirect_to @event, notice: 'Event was successfully created.' }

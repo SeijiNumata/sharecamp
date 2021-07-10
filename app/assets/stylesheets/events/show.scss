@@ -146,31 +146,37 @@
             
         }
         .event-show-item-input{
-            height:30px;
-            width:125px;
-            float: right;   
-            position: relative;
+            // height:30px;
+            // width:125px;
+            // float: right;   
+             position: relative;
+            // background-color:red;
         
          
             select{
+                position:absolute;
                 height: 30px;
                 font-size: 14px;
                 margin-right:4px;
+                top:-30px;
+                right:80px;
+
             }
             button{
                 height: 30px;
-                font-size: 13px;  
+                font-size: 13px; 
                 position:absolute;
                 right:0px;
                 top:-30px;
             }
         @media screen and (max-width: 768px){
                 .bring-button{
-                    line-height:30px; 
+                    line-height:14px; 
                     right:0px;
                    top:-34px;
-
-                    
+                }
+                .number-select{
+                    top:-34px;
                 }
           }
          

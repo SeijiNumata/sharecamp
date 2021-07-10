@@ -7,13 +7,13 @@ module Api
     def index
       @items = Item.order('created_at DESC')
     end
-    
+
     def show
       set_item
       respond_to do |format|
         format.json
       end
-      #render json: @item
+      # render json: @item
     end
 
     def new
@@ -27,32 +27,29 @@ module Api
           @item = Item.new
           @item.name = item_params[:name][i]
           @item.need_number = item_params[:need_number][i]
-          @item.event_id=@event.id
-          unless @item.save
-            render json: { status: 'ERROR', data: @item.errors }
-          end
+          @item.event_id = @event.id
+          render json: { status: 'ERROR', data: @item.errors } unless @item.save
         end
       else
         # render json: { status: 'ERROR', data: @event.errors }
         # returnF
-      end     
-      session[:fromCreate]="fromCreate"
-      session[:event_id]=@event.id
+      end
+      session[:fromCreate] = 'fromCreate'
+      session[:event_id] = @event.id
       render json: @event, status: :created
       # render json: { status: 'ERROR', data: @item.errors }
-      
+
       # # format.html { redirect_to @event, notice: 'Event was successfully created.' }
       # # format.json { render json: { status: 'SUCCESS', data: @item }}
       # # #render json: @item, status: :created
       # #  #render json: @item.errors, status: :unprocessable_entity
-      # #  render json: { status: 'ERROR', data: @item.errors 
+      # #  render json: { status: 'ERROR', data: @item.errors
       # render :show, status: :created
       # redirect_to root_path
       # respond_to do |format|
       #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
       #     format.json { render :show, status: :created, location: @event }
       #  end
-    
     end
 
     def destroy
@@ -80,6 +77,5 @@ module Api
     def set_item
       @item = Item.find(params[:id])
     end
-
   end
 end

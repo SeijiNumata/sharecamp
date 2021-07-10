@@ -5,5 +5,3 @@ json.set! :items do
     json.extract! item, :id, :name, :event_id, :need_number, :created_at, :updated_at
   end
 end
-
-
