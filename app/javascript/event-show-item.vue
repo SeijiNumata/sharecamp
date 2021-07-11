@@ -85,10 +85,10 @@
   import axios from 'axios';
   export default {
     props: {
-      itemName: String,
-      needNumber: Number,
-      item: Object,
-      currentUserId: String
+      itemName:{type: String, default: '',},
+      needNumber:{type: Number, default: 0,},
+      item:{type: Object, default: () => ({ }) },
+      currentUserId:{type: Number, default: 0,},
     },
     data() {
       return {

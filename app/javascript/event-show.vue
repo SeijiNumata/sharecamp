@@ -113,7 +113,8 @@
         default: '',
       },
       fromCreate: {
-        type: String
+        type: String,
+        default: '',
       },
     },
     data() {
