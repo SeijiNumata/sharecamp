@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <p :style="{color: color}"> {{ message }}</p> -->
-     <h1 > {{ code }}</h1>
+    <h1> {{ code }}</h1>
   </div>
 </template>
 

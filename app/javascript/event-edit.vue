@@ -1,31 +1,84 @@
 <template>
   <div class="event-edit">
     <h1>内容変更</h1>
-    <p>イベント名<span class="event-name-error">{{eventsNameNullError}}</span></p>
-    <input class="event-name" v-model="eventName">
+    <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
+    <input
+      v-model="eventName"
+      class="event-name"
+    >
     <form>
       <p>誰かに持ってきて欲しいもの</p>
-      <p class="event-item-null-error" v-if="newItemsNullError">{{newItemsNullError}}</p>
-      <p class="event-item-null-error" v-if="newItemsNumberNullError">{{newItemsNumberNullError}}</p>
+      <p
+        v-if="newItemsNullError"
+        class="event-item-null-error"
+      >
+        {{ newItemsNullError }}
+      </p>
+      <p
+        v-if="newItemsNumberNullError"
+        class="event-item-null-error"
+      >
+        {{ newItemsNumberNullError }}
+      </p>
       <ul>
-        <li v-for="(neededItemInfo, index) in neededItemInfos" :key="neededItemInfo.id">
+        <li
+          v-for="(neededItemInfo, index) in neededItemInfos"
+          :key="neededItemInfo.id"
+        >
           <!-- 各入力ボックス -->
-          <input class="item-name" v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly"
-            :disabled="neededItemInfo.readonly" :class="{readonly:neededItemInfo.readonly}">
+          <input
+            v-model="neededItemInfo.name"
+            class="item-name"
+            :readonly="neededItemInfo.readonly"
+            :disabled="neededItemInfo.readonly"
+            :class="{readonly:neededItemInfo.readonly}"
+          >
           <!-- <input class="item-number" type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number"> -->
-          <select class="item-number" name="example" v-model="neededItemInfos[index].need_number">
-            <option value='' disabled selected style='display:none;'>数</option>
-            <option v-for="n of 20" :key="n">{{n}}</option>
+          <select
+            v-model="neededItemInfos[index].need_number"
+            class="item-number"
+            name="example"
+          >
+            <option
+              value=""
+              disabled
+              selected
+              style="display:none;"
+            >
+              数
+            </option>
+            <option
+              v-for="n of 20"
+              :key="n"
+            >
+              {{ n }}
+            </option>
           </select>
-          <button class="delete-button" type="button" @click="deleteItems(neededItemInfo.item_id,index)">削除</button>
+          <button
+            class="delete-button"
+            type="button"
+            @click="deleteItems(neededItemInfo.item_id,index)"
+          >
+            削除
+          </button>
         </li>
-
       </ul>
-      <button class="add-button" type="button" @click="addInput">追加する</button>
-      <button class="create-button" type="button" @click="updateItems">この内容で登録</button>
+      <button
+        class="add-button"
+        type="button"
+        @click="addInput"
+      >
+        追加する
+      </button>
+      <button
+        class="create-button"
+        type="button"
+        @click="updateItems"
+      >
+        この内容で登録
+      </button>
     </form>
   </div>
-
 </template>
 
 <script>
@@ -67,11 +120,11 @@
         newItemsNumberNullError: ""
       }
     },
+    computed: {},
     mounted() {
       this.setUrl();
       this.getItems()
     },
-    computed: {},
     methods: {
       setUrl() {
         const url = location.href

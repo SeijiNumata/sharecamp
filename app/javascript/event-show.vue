@@ -1,58 +1,100 @@
 <template>
   <div id="event-show">
-    <div class=event_head>
-      <h1 class=event_title>{{eventName}}</h1>
+    <div class="event_head">
+      <h1 class="event_title">
+        {{ eventName }}
+      </h1>
       <a :href="eventEditUrl"> 内容変更</a>
     </div>
     <div class="show_component">
       <ul class="tabs">
-        <li v-on:click="changeTab('1')" v-bind:class="{'active': isActive === '1'}">持ってきて<br class="br-sp">ほしいもの</li>
-        <li v-on:click="changeTab('2')" v-bind:class="{'active': isActive === '2'}">自分が<br class="br-sp">持っていくもの</li>
-        <li v-on:click="changeTab('3')" v-bind:class="{'active': isActive === '3'}">参加者を呼ぶ</li>
+        <li
+          :class="{'active': isActive === '1'}"
+          @click="changeTab('1')"
+        >
+          持ってきて<br class="br-sp">ほしいもの
+        </li>
+        <li
+          :class="{'active': isActive === '2'}"
+          @click="changeTab('2')"
+        >
+          自分が<br class="br-sp">持っていくもの
+        </li>
+        <li
+          :class="{'active': isActive === '3'}"
+          @click="changeTab('3')"
+        >
+          参加者を呼ぶ
+        </li>
       </ul>
 
       <ul class="contents">
         <li v-if="isActive === '1'">
           <h2>誰か持ってきて</h2>
-          <event-show-item v-for="(item) in items" v-bind:key="item.id" v-bind:item-name="item.name"
-            v-bind:needNumber="item.need_number" v-bind:item="item" v-bind:currentUserId="currentUserId">
-          </event-show-item>
+          <event-show-item
+            v-for="(item) in items"
+            :key="item.id"
+            :item-name="item.name"
+            :need-number="item.need_number"
+            :item="item"
+            :current-user-id="currentUserId"
+          />
         </li>
-        <li class="self-brings-contents" v-else-if="isActive === '2'">
+        <li
+          v-else-if="isActive === '2'"
+          class="self-brings-contents"
+        >
           <h2>自分の持ち物</h2>
-          <event-show-current-user-item v-for="(item) in items" v-bind:key="item.id" v-bind:item="item"
-            v-bind:currentUserId="currentUserId">
-          </event-show-current-user-item>
+          <event-show-current-user-item
+            v-for="(item) in items"
+            :key="item.id"
+            :item="item"
+            :current-user-id="currentUserId"
+          />
         </li>
-        <li class="invite" v-else-if="isActive === '3'">
-          <p class="invite-message-title">以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！</p>
-          <p class="invite-message-content">{{message}}</p>
-          <button @click="cp()">コピー</button>
+        <li
+          v-else-if="isActive === '3'"
+          class="invite"
+        >
+          <p class="invite-message-title">
+            以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！
+          </p>
+          <p class="invite-message-content">
+            {{ message }}
+          </p>
+          <button @click="cp()">
+            コピー
+          </button>
         </li>
-
       </ul>
     </div>
     <div>
-      <modal class=modal name="modal-message-from-create" width=650px>
+      <modal
+        class="modal"
+        name="modal-message-from-create"
+        width="650px"
+      >
         <div class="modal-header">
           <h2>以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</h2>
         </div>
         <div class="modal-body">
           <div class="modal-body-text">
-            <p>「{{eventName}}」で誰かに持ってきてもらいたいものリストはこちら</p>
-            <p>{{url}}</p>
+            <p>「{{ eventName }}」で誰かに持ってきてもらいたいものリストはこちら</p>
+            <p>{{ url }}</p>
             <p>持ってきてくれる人募集中です！</p>
           </div>
           <div class="modal-body-button">
-            <button @click="cp()">コピー</button>
-            <button @click="hide">閉じる</button>
+            <button @click="cp()">
+              コピー
+            </button>
+            <button @click="hide">
+              閉じる
+            </button>
           </div>
         </div>
       </modal>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -67,7 +109,8 @@
     },
     props: {
       currentUserId: {
-        type: String
+        type: String,
+        default: '',
       },
       fromCreate: {
         type: String
