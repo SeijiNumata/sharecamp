@@ -10,10 +10,10 @@ module Api
 
     def show
       set_item
-      respond_to do |format|
-        format.json
-      end
-      # render json: @item
+      # respond_to do |format|
+      #   format.json
+      # end
+      #render json: @item
     end
 
     def new

@@ -182,6 +182,17 @@
          
         .stamp-button-component{
             position: relative;
+
+            .no-number-error{
+                color:red;
+                font-size: 10px;
+                position:absolute;
+                right:10px;
+            }
+            @media screen and (max-width: 768px){
+                .no-number-error {top:-10px; 
+                }
+          }
             .postmark-decide{
                 display:inline-block;
                  position: absolute;

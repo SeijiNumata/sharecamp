@@ -12,10 +12,7 @@
     <form>
       <ul>
         <li v-for="(item, index) in items" :key="item.id">
-          <!-- 各入力ボックス -->
           <input class="item" type="text" v-model="newItems[index]" :placeholder="itemsPlaceholders[index]">
-
-          <!-- <input class="item-number" type="number" name="num01" v-model="newItemsNumber[index]" placeholder="数" min="0"> -->
          <select class="item-number" name="example" v-model="newItemsNumber[index]">
             <option value='' disabled selected style='display:none;'>数</option>
             <option v-for="n of 20" :key="n">{{n}}</option>
@@ -113,8 +110,6 @@
           this.newItemsNumberNullError="※持ち物の数を入力してください"
         }
 }
-
-
       }
      
     }

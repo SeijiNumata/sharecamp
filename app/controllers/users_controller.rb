@@ -27,26 +27,23 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
     event = Event.find(session[:param])
-    if event.users.find_by(name: @user.name)
-      @user = event.users.find_by(name: @user.name)
+    if event.users.find_by(user_params)
+      @user = event.users.find_by(user_params)
       cookies.signed[:user_id] = @user.id
-      @user = event.users.find_by(name: @user.name)
-
-      redirect_to event
     else
-
+      @user = User.new(user_params)
       @user.events << event
-      respond_to do |format|
-        if @user.save
-          cookies.signed[:user_id] = @user.id
-          format.html { redirect_to event, notice: 'user was successfully created.' }
-        #   format.json { render :show, status: :created, location: @event }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+    end
+
+    respond_to do |format|
+      if @user.save
+        cookies.signed[:user_id] = @user.id
+        format.html { redirect_to event, notice: 'user was successfully created.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
