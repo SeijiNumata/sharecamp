@@ -10,14 +10,14 @@
       <ul>
         <li v-for="(neededItemInfo, index) in neededItemInfos" :key="neededItemInfo.id">
           <!-- 各入力ボックス -->
-          <input class="item-name" v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly" :disabled="neededItemInfo.readonly" 
-            :class="{readonly:neededItemInfo.readonly}">
+          <input class="item-name" v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly"
+            :disabled="neededItemInfo.readonly" :class="{readonly:neededItemInfo.readonly}">
           <!-- <input class="item-number" type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number"> -->
           <select class="item-number" name="example" v-model="neededItemInfos[index].need_number">
             <option value='' disabled selected style='display:none;'>数</option>
             <option v-for="n of 20" :key="n">{{n}}</option>
           </select>
-            <button class="delete-button" type="button" @click="deleteItems(neededItemInfo.item_id,index)" >削除</button>
+          <button class="delete-button" type="button" @click="deleteItems(neededItemInfo.item_id,index)">削除</button>
         </li>
 
       </ul>
@@ -69,7 +69,6 @@
       }
     },
     mounted() {
-      // this.fetchItems();
       this.setUrl();
       this.getItems()
     },
@@ -92,16 +91,10 @@
         this.eventEditUrl = eventId + "/edit"
       },
       getItems() {
-        console.log(this.getItemRequestUrl + ".json")
-
         axios.get(this.getItemRequestUrl + ".json")
           .then((response) => {
-            console.log("items" + response.data.item)
             this.items = response.data.item
-            console.log(response.data)
-            this.eventName = response.data
-            this.neededItemInfos=[]
-            console.log(this.items)
+            this.neededItemInfos = []
             for (const item of this.items) {
               this.neededItemInfos.push({
                 name: item.name,
@@ -109,31 +102,27 @@
                 readonly: true,
                 item_id: item.id
               })
-              console.log(this.neededItemInfos)
             }
-            console.log(this.items)
             this.eventName = response.data.name
           }, (error) => {
             console.log(error, response);
           });
       },
-      deleteItems(item_id,index){
-          console.log(item_id)
-          if(item_id==undefined){
-               this.neededItemInfos.splice(index,1)
-          }
-          else if (confirm('この持ち物を削除すると、他ユーザーの「持っていく」に登録中の情報も削除されます。\n本当によろしいですか？')){
-             axios.delete('/api/items/'+item_id,{
-                  item_id
-              }).then((response) => {
-                    console.log(response.data)
-                      this.neededItemInfos.splice(index,1)
-                }, (error) => {
-                    console.log(error, response);
-                });
-            }else{
-              return;
-            }
+      deleteItems(item_id, index) {
+        if (item_id == undefined) {
+          this.neededItemInfos.splice(index, 1)
+        } else if (confirm('この持ち物を削除すると、他ユーザーの「持っていく」に登録中の情報も削除されます。\n本当によろしいですか？')) {
+          axios.delete('/api/items/' + item_id, {
+            item_id
+          }).then((response) => {
+            console.log(response.data)
+            this.neededItemInfos.splice(index, 1)
+          }, (error) => {
+            console.log(error, response);
+          });
+        } else {
+          return;
+        }
       },
       addInput() {
         this.neededItemInfos.push({
@@ -147,8 +136,6 @@
           return
         }
         const eventsID = this.getItemRequestUrl.slice(8)
-        console.log("URKRR" + eventsID)
-        console.log(this.neededItemInfos)
         const requestPath = "/api/events/" + eventsID
         axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
         axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
@@ -158,12 +145,8 @@
           })
           .then((response) => {
             const status = JSON.stringify(response.status)
-            console.log(requestPath)
-
             const showPath = "/events/" + eventsID
-
             location.href = showPath
-
           }, (error) => {
             console.log(error, response);
           });
@@ -180,23 +163,14 @@
         for (let i = 0; i < this.neededItemInfos.length; ++i) {
           console.log("assaaaaaaaaaaa")
           console.log(this.neededItemInfos)
-          //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
           console.log(this.neededItemInfos[i].name)
           if (!this.neededItemInfos[i].name && this.neededItemInfos[i].need_number) {
             this.newItemsNullError = "※持ち物を入力してください"
             return false
           }
         }
-        //    if(this.neededItemInfos == ''){
-        //     this.newItemsNullError="※持ち物を入力してください"
-        // }else{
-        //   this.newItemsNullError=""
-        // }
+
         for (let i = 0; i < this.neededItemInfos.length; ++i) {
-          console.log("adfazsadcszssfda")
-          console.log(this.neededItemInfos)
-          //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
-          console.log(this.neededItemInfos[i].name)
           if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number) {
             this.newItemsNumberNullError = "※持ち物の数を入力してください"
             console.log("※持ち物の数を入力してください")

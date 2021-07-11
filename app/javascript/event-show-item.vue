@@ -44,13 +44,11 @@
         bring_items: [],
         isCurrentUserItem: false,
         bringSum: 0,
-        needNumberCopy: 0,
         noNumberErrorMessage:''
       }
     },
     mounted() {
       this.getUserBringItem();
-      this.needNumberCopy = this.needNumber
     },
     methods: {
       getUserBringItem() {
