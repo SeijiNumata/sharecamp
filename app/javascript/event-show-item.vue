@@ -11,7 +11,7 @@
         <div class="stamp-button-component">
           <button class="bring-button" type="button" v-bind:disabled="isCurrentUserItem||needNumber-bringSum<=0"
             @click="createUserBringItems(item,selectedNumber)">持っていく</button>
-            <p class="no-number-error" v-if="noNumberError">{{noNumberError}}<p>
+            <p class="no-number-error" v-if="noNumberErrorMessage">{{noNumberErrorMessage}}<p>
           <div v-if="needNumber-bringSum<=0" class="postmark-decide"> 決まり</div>
           <div v-if="isCurrentUserItem" class="postmark-bring"> 持っていく</div>
            
@@ -45,7 +45,7 @@
         isCurrentUserItem: false,
         bringSum: 0,
         needNumberCopy: 0,
-        noNumberError:''
+        noNumberErrorMessage:''
       }
     },
     mounted() {
@@ -112,10 +112,10 @@
       },
       isNumberNullCheck(selectedNumber){
         if(selectedNumber==''){
-          this.noNumberError="※数を入力してください"
+          this.noNumberErrorMessage="※数を入力してください"
          return true
        }else{
-          this.noNumberError=""
+          this.noNumberErrorMessage=""
           return false
        }
       }
