@@ -1,98 +1,114 @@
-.event-edit{
-    width:80%;
-    margin:30px auto;
-    height:800px;
-    
-   p{
-       margin-top:20px;
-       margin-bottom:10px;
-   }
-    .event-name{
-        width:100%;
+.event-edit {
+    width: 80%;
+    margin: 30px auto;
+    height: 800px;
+
+    p {
+        margin-top: 20px;
+        margin-bottom: 10px;
     }
-    .event-name-error{
-        color:red;
-        font-size:12px;
-        margin-left:40px;
+
+    .event-name {
+        width: 100%;
     }
-    .event-item-null-error{
-        color:red;
-        font-size:12px;
-        margin-left:40px;
+
+    .event-name-error {
+        color: red;
+        font-size: 12px;
+        margin-left: 40px;
     }
-    li{
-        width:100%;
-        display:inline-block;
+
+    .event-item-null-error {
+        color: red;
+        font-size: 12px;
+        margin-left: 40px;
+    }
+
+    li {
+        width: 100%;
+        display: inline-block;
         display: flex;
-        margin-bottom:5px;
-        .item-name{
-            display:inline-block;
-            width:86%;
+        margin-bottom: 5px;
+
+        .item-name {
+            display: inline-block;
+            width: 79%;
             margin-right: 10px;
 
-     }
-   
-     .item-number{
-         display:inline-block;
-         width:14%;
-         text-align: center;
-        
+        }
 
-     }
-       
-        
+        .item-number {
+            display: inline-block;
+            width: 14%;
+            text-align: center;
+        }
+
+        .delete-button {
+            display: inline-block;
+            width: 50px;
+            height: 40px;
+            margin-left:3px;
+            font-size:13px;
+        }
+        // .new-add-item{
+        //     opacity: 0;
+        //     pointer-events: none;
+        // }
     }
-    ul{
+
+    ul {
         list-style: none;
         padding-left: 0px;
     }
-    button{
-        display:block;
-        
-    }
-    .add-button{
-        margin:26px auto;
-        width:150px;
-        background:white;
-        margin-bottom:30px;
-        display:block;
-       
-        &:hover{
-            box-shadow:0px 0px 10px #ccc;
-            
+
+    .add-button {
+        margin: 26px auto;
+        width: 150px;
+        background: white;
+        margin-bottom: 30px;
+        display: block;
+
+        &:hover {
+            box-shadow: 0px 0px 10px #ccc;
+
 
         }
-        &:active{
-            box-shadow:0px 0px 10px #ccc;
+
+        &:active {
+            box-shadow: 0px 0px 10px #ccc;
             position: relative;
             top: 2px;
-            left:2px;
-            background:#e0e0e0;
-            
+            left: 2px;
+            background: #e0e0e0;
+
         }
 
     }
-    .create-button{
+
+    .create-button {
         border: none;
-        background-color:#ffd803;
-        padding:11px;
-        margin:30px auto 10px auto;
-        width:250px;
-        &:hover{
-            box-shadow:0px 0px 10px #ccc;
-            
+        background-color: #ffd803;
+        padding: 11px;
+        margin: 30px auto 10px auto;
+        width: 250px;
+        display: block;
+
+        &:hover {
+            box-shadow: 0px 0px 10px #ccc;
+
 
         }
-        &:active{
-            box-shadow:0px 0px 10px #ccc;
+
+        &:active {
+            box-shadow: 0px 0px 10px #ccc;
             position: relative;
             top: 2px;
-            left:2px;
-            background-color:goldenrod;
+            left: 2px;
+            background-color: goldenrod;
 
         }
 
     }
 
-    
+
 }

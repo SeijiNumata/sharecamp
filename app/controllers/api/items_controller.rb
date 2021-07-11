@@ -53,7 +53,9 @@ module Api
     end
 
     def destroy
+      set_item
       @item.destroy!
+      head :ok
     end
 
     def update
