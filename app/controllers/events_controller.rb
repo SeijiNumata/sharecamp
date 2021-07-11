@@ -5,10 +5,8 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all.order(:updated_at)
-    recent_watch_events = JSON.parse(cookies[:recent_watch_events])
     @events = []
-
+    recent_watch_events = JSON.parse(cookies[:recent_watch_events])
     recent_watch_events.each do |event_id|
       @events.push(Event.find(event_id))
     end
@@ -17,31 +15,12 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
-    if session['fromCreate']
-      @fromCreate = session['fromCreate']
-      session.delete('fromCreate')
-    end
-    @url = request.url
+    from_create_check
+
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
 
-    if cookies[:recent_watch_events].nil?
-      recent_watch_events = [@event.id.to_s] # 配列
-    else
-
-      recent_watch_events = JSON.parse(cookies[:recent_watch_events])
-      recent_watch_events.push(@event.id).uniq!
-      recent_watch_events.slice!(0..recent_watch_events.count - 6) if recent_watch_events.count > 5
-
-    end
-
-    cookies[:recent_watch_events] = JSON.generate(recent_watch_events)
-
-    # cookies.delete :recent_watch_events
-    # byebug
-    # if cookies[:recent_watch_events]
-    # mycookie=[cookies[:recent_watch_events],]
-    # recent_watch_events=[]
+    set_recent_watch_cookies(@event)
   end
 
   # GET /events/new
@@ -100,5 +79,24 @@ class EventsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:name)
+  end
+
+  def set_recent_watch_cookies(event)
+    if cookies[:recent_watch_events].nil?
+      recent_watch_events = [event.id.to_s]
+    else
+      recent_watch_events = JSON.parse(cookies[:recent_watch_events])
+      recent_watch_events.push(event.id).uniq!
+      recent_watch_events.slice!(0..recent_watch_events.count - 6) if recent_watch_events.count > 5
+    end
+
+    cookies[:recent_watch_events] = JSON.generate(recent_watch_events)
+  end
+
+  def from_create_check
+    return unless session['fromCreate']
+
+    @from_create = session['fromCreate']
+    session.delete('fromCreate')
   end
 end

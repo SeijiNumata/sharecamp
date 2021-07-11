@@ -40,7 +40,7 @@
         <div class="modal-body">
           <div class="modal-body-text">
             <p>「{{eventName}}」で誰かに持ってきてもらいたいものリストはこちら</p>
-            <p>{{pageUrl}}</p>
+            <p>{{url}}</p>
             <p>持ってきてくれる人募集中です！</p>
           </div>
           <div class="modal-body-button">
@@ -69,9 +69,6 @@
       currentUserId: {
         type: String
       },
-      pageUrl: {
-        type: String
-      },
       fromCreate: {
         type: String
       },
@@ -86,7 +83,8 @@
         selectedNumber: "",
         message: '',
         getItemRequestUrl: "",
-        eventEditUrl: ""
+        eventEditUrl: "",
+        url:""
       }
     },
     mounted() {
@@ -96,9 +94,9 @@
     },
     methods: {
       setUrl() {
-        const url = location.href
-        this.setItemRequestUrl(url)
-        this.setEditUrl(url)
+        this.url = location.href
+        this.setItemRequestUrl(this.url)
+        this.setEditUrl(this.url)
       },
       setItemRequestUrl(url) {
         const requestEventURLindex = 21 // /events/IDを取得する
@@ -124,7 +122,7 @@
         this.isActive = num
       },
       inviteMessage() {
-        this.message = "「" + this.eventName + "」で誰かに持ってきてもらいたいものリストはこちら\n" + this.pageUrl + "\n" + "持ってきてくれる人募集中です！"
+        this.message = "「" + this.eventName + "」で誰かに持ってきてもらいたいものリストはこちら\n" + this.url + "\n" + "持ってきてくれる人募集中です！"
       },
       createUserBringItems(item, selectedNumber) {
         axios.post('/api/user_bring_items', {
