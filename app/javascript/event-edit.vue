@@ -25,7 +25,6 @@
       <button class="create-button" type="button" @click="updateItems">この内容で登録</button>
     </form>
   </div>
-  </div>
 
 </template>
 
@@ -53,8 +52,8 @@
     data() {
       return {
         isActive: '1',
-        message: "EventNew!",
-        eventName: "",
+        message: 'EventNew!',
+        eventName: '',
         items: [],
         newItem: '',
         newEventsName: '',
@@ -80,7 +79,7 @@
         this.setEditUrl(url)
       },
       setItemRequestUrl(url) {
-        const requestEventURLIndexFront = 21 // /events/IDを取得する
+        const requestEventURLIndexFront = 21 // "/events/ID"を取得する
         const requestEventUrlIndexBack = 44
         this.getItemRequestUrl = (url.slice(requestEventURLIndexFront)).slice(0, requestEventUrlIndexBack)
 
@@ -161,9 +160,6 @@
         }
 
         for (let i = 0; i < this.neededItemInfos.length; ++i) {
-          console.log("assaaaaaaaaaaa")
-          console.log(this.neededItemInfos)
-          console.log(this.neededItemInfos[i].name)
           if (!this.neededItemInfos[i].name && this.neededItemInfos[i].need_number) {
             this.newItemsNullError = "※持ち物を入力してください"
             return false
