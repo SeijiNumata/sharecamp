@@ -1,7 +1,20 @@
+.back-button{
+    padding:4px;
+    margin-top:20px;
+    margin-left:40px;
+    color:black;
+    display: inline-block;
+    background-color:#ffd803;
+    text-decoration: none;
+}
 .event-edit {
     width: 80%;
     margin: 30px auto;
     height: 800px;
+    
+    h1{
+        text-align: center;
+    }
 
     p {
         margin-top: 20px;

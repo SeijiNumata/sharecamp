@@ -1,5 +1,6 @@
 <template>
   <div class="event-edit">
+    <h1>内容変更</h1>
     <p>イベント名<span class="event-name-error">{{eventsNameNullError}}</span></p>
     <input class="event-name" v-model="eventName">
     <form>
