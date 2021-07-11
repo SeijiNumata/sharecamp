@@ -21,7 +21,7 @@
             数
           </option>
           <option
-            v-for="n of needNumber-bringSum"
+            v-for="n of 0&&needNumber-bringSum"
             :key="n"
           >
             {{ n }}
@@ -88,11 +88,11 @@
       itemName:{type: String, default: '',},
       needNumber:{type: Number, default: 0,},
       item:{type: Object, default: () => ({ }) },
-      currentUserId:{type: Number, default: 0,},
+      currentUserId:{type: String, default: '',},
     },
     data() {
       return {
-        selectedNumber: "",
+        selectedNumber: '',
         bring_items: [],
         isCurrentUserItem: false,
         bringSum: 0,

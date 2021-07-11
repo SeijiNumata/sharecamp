@@ -16,8 +16,8 @@
   import axios from 'axios';
   export default {
     props: {
-      item: Object,
-      currentUserId: String
+      item:{type: Object, default: () => ({ }) },
+      currentUserId:{type: String, default: '',},
     },
     data() {
       return {

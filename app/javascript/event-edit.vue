@@ -83,24 +83,13 @@
 
 <script>
   import axios from 'axios';
-  import eventShowItem from './event-show-item.vue'
-  import eventShowCurrentUserItem from './event-show-current-user-item.vue'
 
   export default {
-    components: {
-      "event-show-item": eventShowItem,
-      "event-show-current-user-item": eventShowCurrentUserItem
-    },
+
     props: {
-      currentUserId: {
-        type: String
-      },
-      pageUrl: {
-        type: String
-      },
-      fromCreate: {
-        type: String
-      },
+      currentUserId:{type: String, default: '',},
+      pageUrl: { type: String, default:'',},
+      fromCreate: { type: String, default:''},
     },
     data() {
       return {
@@ -113,7 +102,6 @@
         selectedNumber: "",
         eventEditUrl: "",
         getItemRequestUrl: "",
-        eventEditUrl: "",
         neededItemInfos: [],
         eventsNameNullError: "",
         newItemsNullError: "",
