@@ -16,7 +16,7 @@
             <option value='' disabled selected style='display:none;'>数</option>
             <option v-for="n of 20" :key="n">{{n}}</option>
           </select>
-            <button class="delete-button" type="button" @click="deleteItems(neededItemInfo.item_id,index)" :class="{'new-add-item':!neededItemInfo.readonly}"  >削除</button>
+            <button class="delete-button" type="button" @click="deleteItems(neededItemInfo.item_id,index)" >削除</button>
         </li>
 
       </ul>
@@ -121,7 +121,7 @@
           if(item_id==undefined){
                this.neededItemInfos.splice(index,1)
           }
-          else if (confirm('持ち物を削除すると、他ユーザーの「持っていく」に登録中の情報も削除されます。\n本当によろしいですか？')){
+          else if (confirm('この持ち物を削除すると、他ユーザーの「持っていく」に登録中の情報も削除されます。\n本当によろしいですか？')){
              axios.delete('/api/items/'+item_id,{
                   item_id
               }).then((response) => {
