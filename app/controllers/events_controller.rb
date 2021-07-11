@@ -25,8 +25,6 @@ class EventsController < ApplicationController
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
 
-    # byebug
-
     if cookies[:recent_watch_events].nil?
       recent_watch_events = [@event.id.to_s] # 配列
     else

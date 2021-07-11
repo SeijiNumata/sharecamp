@@ -8,6 +8,7 @@ module Api
     #     @items = Item.order('created_at DESC')
     #   end
 
+    
     #   def show
     #     set_item
     #     respond_to do |format|
