@@ -2,38 +2,83 @@
   <div id="event-new">
     <h1>新規作成</h1>
     <div class="event-name">
-    <p>イベント名<span class="event-name-error">{{eventsNameNullError}}</span></p>
-    <input placeholder="○○大学卒業キャンプ" v-model="newEventsName">
+      <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
+      <input
+        v-model="newEventsName"
+        placeholder="○○大学卒業キャンプ"
+      >
     </div>
     <div class="event-content">
-    <p>誰かに持ってきて欲しいもの</p>
-    <p class="event-item-null-error" v-if="newItemsNullError">{{newItemsNullError}}</p>
-     <p class="event-item-null-error" v-if="newItemsNumberNullError">{{newItemsNumberNullError}}</p>
-    <form>
-      <ul>
-        <li v-for="(item, index) in items" :key="item.id">
-          <!-- 各入力ボックス -->
-          <input class="item" type="text" v-model="newItems[index]" :placeholder="itemsPlaceholders[index]">
-
-          <!-- <input class="item-number" type="number" name="num01" v-model="newItemsNumber[index]" placeholder="数" min="0"> -->
-         <select class="item-number" name="example" v-model="newItemsNumber[index]">
-            <option value='' disabled selected style='display:none;'>数</option>
-            <option v-for="n of 20" :key="n">{{n}}</option>
-        </select>
-        </li>
-      </ul>
-      <button class="add-button" type="button" @click="addInput">+ 追加</button>
+      <p>誰かに持ってきて欲しいもの</p>
+      <p
+        v-if="newItemsNullError"
+        class="event-item-null-error"
+      >
+        {{ newItemsNullError }}
+      </p>
+      <p
+        v-if="newItemsNumberNullError"
+        class="event-item-null-error"
+      >
+        {{ newItemsNumberNullError }}
+      </p>
+      <form>
+        <ul>
+          <li
+            v-for="(item, index) in items"
+            :key="item.id"
+          >
+            <input
+              v-model="newItems[index]"
+              class="item"
+              type="text"
+              :placeholder="itemsPlaceholders[index]"
+            >
+            <select
+              v-model="newItemsNumber[index]"
+              class="item-number"
+              name="example"
+            >
+              <option
+                value=""
+                disabled
+                selected
+                style="display:none;"
+              >
+                数
+              </option>
+              <option
+                v-for="n of 20"
+                :key="n"
+              >
+                {{ n }}
+              </option>
+            </select>
+          </li>
+        </ul>
+        <button
+          class="add-button"
+          type="button"
+          @click="addInput"
+        >
+          + 追加
+        </button>
      
-      <button class="create-button" type="button" @click="createItem">この内容で登録</button>
-      <div class="messasge-container">
-    <p class="message">内容は後で変更ができます</p>
+        <button
+          class="create-button"
+          type="button"
+          @click="createItem"
+        >
+          この内容で登録
+        </button>
+        <div class="messasge-container">
+          <p class="message">
+            内容は後で変更ができます
+          </p>
+        </div>
+      </form>
+    </div>
   </div>
-    </form>
-</div>
-
-  </div>
-
-
 </template>
 
 <script>
@@ -60,10 +105,7 @@
       createItem() {
         this.checkForm()
         let self = this
-        console.log(this.newItems)
-        console.log(this.newItemsNumber)
         this.newItemsNumber=this.newItemsNumber.filter(Boolean)
-        console.log(this.newItemsNumber[2]==true)
         if (this.newItems == '' || this.newEventsName=='') return;
         // axios.post('/api/items', {
           axios.post('/api/events', {
@@ -79,15 +121,11 @@
           this.newItems = '';
           // window.location.replace = '/';
           const status = JSON.stringify(response.status)
-          console.log(status)
           if (status == '201') {
-            console.log("aa" + JSON.stringify(response.data.id))
             const url = JSON.stringify(response.data.id)
             var url_rep = "";
             url_rep = url.replace(/\"/g, "")
-            console.log("wtha"+url_rep)
             const redirectURL=("users/new?e="+url_rep)
-            console.log(redirectURL)
             location.href = redirectURL
           }
 
@@ -113,14 +151,8 @@
           this.newItemsNumberNullError="※持ち物の数を入力してください"
         }
 }
-
-
       }
      
     }
   }
 </script>
-
-<style scoped>
-
-</style>

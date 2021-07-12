@@ -1,78 +1,118 @@
 <template>
   <div class="event-edit">
-    <p>イベント名<span class="event-name-error">{{eventsNameNullError}}</span></p>
-    <input class="event-name" v-model="eventName">
+    <h1>内容変更</h1>
+    <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
+    <input
+      v-model="eventName"
+      class="event-name"
+    >
     <form>
       <p>誰かに持ってきて欲しいもの</p>
-      <p class="event-item-null-error" v-if="newItemsNullError">{{newItemsNullError}}</p>
-      <p class="event-item-null-error" v-if="newItemsNumberNullError">{{newItemsNumberNullError}}</p>
+      <p
+        v-if="newItemsNullError"
+        class="event-item-null-error"
+      >
+        {{ newItemsNullError }}
+      </p>
+      <p
+        v-if="newItemsNumberNullError"
+        class="event-item-null-error"
+      >
+        {{ newItemsNumberNullError }}
+      </p>
       <ul>
-        <li v-for="(neededItemInfo, index) in neededItemInfos" :key="neededItemInfo.id">
+        <li
+          v-for="(neededItemInfo, index) in neededItemInfos"
+          :key="neededItemInfo.id"
+        >
           <!-- 各入力ボックス -->
-          <input class="item-name" v-model="neededItemInfo.name" :readonly="neededItemInfo.readonly" :disabled="neededItemInfo.readonly" 
-            :class="{readonly:neededItemInfo.readonly}">
+          <input
+            v-model="neededItemInfo.name"
+            class="item-name"
+            :readonly="neededItemInfo.readonly"
+            :disabled="neededItemInfo.readonly"
+            :class="{readonly:neededItemInfo.readonly}"
+          >
           <!-- <input class="item-number" type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number"> -->
-          <select class="item-number" name="example" v-model="neededItemInfos[index].need_number">
-            <option value='' disabled selected style='display:none;'>数</option>
-            <option v-for="n of 20" :key="n">{{n}}</option>
+          <select
+            v-model="neededItemInfos[index].need_number"
+            class="item-number"
+            name="example"
+          >
+            <option
+              value=""
+              disabled
+              selected
+              style="display:none;"
+            >
+              数
+            </option>
+            <option
+              v-for="n of 20"
+              :key="n"
+            >
+              {{ n }}
+            </option>
           </select>
-            <button class="delete-button" type="button" @click="deleteItems(neededItemInfo.item_id,index)" >削除</button>
+          <button
+            class="delete-button"
+            type="button"
+            @click="deleteItems(neededItemInfo.item_id,index)"
+          >
+            削除
+          </button>
         </li>
-
       </ul>
-      <button class="add-button" type="button" @click="addInput">追加する</button>
-      <button class="create-button" type="button" @click="updateItems">この内容で登録</button>
+      <button
+        class="add-button"
+        type="button"
+        @click="addInput"
+      >
+        追加する
+      </button>
+      <button
+        class="create-button"
+        type="button"
+        @click="updateItems"
+      >
+        この内容で登録
+      </button>
     </form>
   </div>
-  </div>
-
 </template>
 
 <script>
   import axios from 'axios';
-  import eventShowItem from './event-show-item.vue'
-  import eventShowCurrentUserItem from './event-show-current-user-item.vue'
 
   export default {
-    components: {
-      "event-show-item": eventShowItem,
-      "event-show-current-user-item": eventShowCurrentUserItem
-    },
+
     props: {
-      currentUserId: {
-        type: String
-      },
-      pageUrl: {
-        type: String
-      },
-      fromCreate: {
-        type: String
-      },
+      currentUserId:{type: String, default: '',},
+      pageUrl: { type: String, default:'',},
+      fromCreate: { type: String, default:''},
     },
     data() {
       return {
         isActive: '1',
-        message: "EventNew!",
-        eventName: "",
+        message: 'EventNew!',
+        eventName: '',
         items: [],
         newItem: '',
         newEventsName: '',
         selectedNumber: "",
         eventEditUrl: "",
         getItemRequestUrl: "",
-        eventEditUrl: "",
         neededItemInfos: [],
         eventsNameNullError: "",
         newItemsNullError: "",
         newItemsNumberNullError: ""
       }
     },
+    computed: {},
     mounted() {
-      // this.fetchItems();
       this.setUrl();
       this.getItems()
     },
-    computed: {},
     methods: {
       setUrl() {
         const url = location.href
@@ -80,7 +120,7 @@
         this.setEditUrl(url)
       },
       setItemRequestUrl(url) {
-        const requestEventURLIndexFront = 21 // /events/IDを取得する
+        const requestEventURLIndexFront = 21 // "/events/ID"を取得する
         const requestEventUrlIndexBack = 44
         this.getItemRequestUrl = (url.slice(requestEventURLIndexFront)).slice(0, requestEventUrlIndexBack)
 
@@ -91,16 +131,10 @@
         this.eventEditUrl = eventId + "/edit"
       },
       getItems() {
-        console.log(this.getItemRequestUrl + ".json")
-
         axios.get(this.getItemRequestUrl + ".json")
           .then((response) => {
-            console.log("items" + response.data.item)
             this.items = response.data.item
-            console.log(response.data)
-            this.eventName = response.data
-            this.neededItemInfos=[]
-            console.log(this.items)
+            this.neededItemInfos = []
             for (const item of this.items) {
               this.neededItemInfos.push({
                 name: item.name,
@@ -108,31 +142,26 @@
                 readonly: true,
                 item_id: item.id
               })
-              console.log(this.neededItemInfos)
             }
-            console.log(this.items)
             this.eventName = response.data.name
           }, (error) => {
             console.log(error, response);
           });
       },
-      deleteItems(item_id,index){
-          console.log(item_id)
-          if(item_id==undefined){
-               this.neededItemInfos.splice(index,1)
-          }
-          else if (confirm('この持ち物を削除すると、他ユーザーの「持っていく」に登録中の情報も削除されます。\n本当によろしいですか？')){
-             axios.delete('/api/items/'+item_id,{
-                  item_id
-              }).then((response) => {
-                    console.log(response.data)
-                      this.neededItemInfos.splice(index,1)
-                }, (error) => {
-                    console.log(error, response);
-                });
-            }else{
-              return;
-            }
+      deleteItems(item_id, index) {
+        if (item_id == undefined) {
+          this.neededItemInfos.splice(index, 1)
+        } else if (confirm('この持ち物を削除すると、他ユーザーの「持っていく」に登録中の情報も削除されます。\n本当によろしいですか？')) {
+          axios.delete('/api/items/' + item_id, {
+            item_id
+          }).then((response) => {
+            this.neededItemInfos.splice(index, 1)
+          }, (error) => {
+            console.log(error, response);
+          });
+        } else {
+          return;
+        }
       },
       addInput() {
         this.neededItemInfos.push({
@@ -141,13 +170,10 @@
         }); // 配列に１つ空データを追加する
       },
       updateItems() {
-        console.log("チェック" + this.checkForm())
         if (this.checkForm() == false) {
           return
         }
         const eventsID = this.getItemRequestUrl.slice(8)
-        console.log("URKRR" + eventsID)
-        console.log(this.neededItemInfos)
         const requestPath = "/api/events/" + eventsID
         axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
         axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
@@ -157,12 +183,8 @@
           })
           .then((response) => {
             const status = JSON.stringify(response.status)
-            console.log(requestPath)
-
             const showPath = "/events/" + eventsID
-
             location.href = showPath
-
           }, (error) => {
             console.log(error, response);
           });
@@ -177,28 +199,15 @@
         }
 
         for (let i = 0; i < this.neededItemInfos.length; ++i) {
-          console.log("assaaaaaaaaaaa")
-          console.log(this.neededItemInfos)
-          //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
-          console.log(this.neededItemInfos[i].name)
           if (!this.neededItemInfos[i].name && this.neededItemInfos[i].need_number) {
             this.newItemsNullError = "※持ち物を入力してください"
             return false
           }
         }
-        //    if(this.neededItemInfos == ''){
-        //     this.newItemsNullError="※持ち物を入力してください"
-        // }else{
-        //   this.newItemsNullError=""
-        // }
+
         for (let i = 0; i < this.neededItemInfos.length; ++i) {
-          console.log("adfazsadcszssfda")
-          console.log(this.neededItemInfos)
-          //console.log(this.neededItemInfos[i].item && !this.neededItemInfos[i].need_number)
-          console.log(this.neededItemInfos[i].name)
           if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number) {
             this.newItemsNumberNullError = "※持ち物の数を入力してください"
-            console.log("※持ち物の数を入力してください")
             return false
           }
         }

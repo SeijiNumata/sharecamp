@@ -4,7 +4,7 @@ header{
    background-color:#bae8e8;
    height:44px;
    display:flex;
-    text-decoration: none;
+   text-decoration: none;
 
     .header-left{
         width:80%;
@@ -36,7 +36,7 @@ header{
             width:250px;
             text-align:right;
             float: right;
-            
+            margin-right:10px;
             a{
                         font-weight: 700;
                         color:#272343;
