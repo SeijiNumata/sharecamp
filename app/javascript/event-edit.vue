@@ -41,9 +41,9 @@
           >
             <option
               value=""
-              disabled
+              :disabled="neededItemInfo.readonly"
               selected
-              style="display:none;"
+              :style="neededItemInfo.readonly ? display: ''"
             >
               数
             </option>
@@ -105,7 +105,8 @@
         neededItemInfos: [],
         eventsNameNullError: "",
         newItemsNullError: "",
-        newItemsNumberNullError: ""
+        newItemsNumberNullError: "",
+        display:{display:"none"}
       }
     },
     computed: {},
@@ -211,7 +212,7 @@
             return false
           }
         }
-      }
+      },
     }
   }
 </script>

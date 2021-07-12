@@ -41,9 +41,7 @@
             >
               <option
                 value=""
-                disabled
                 selected
-                style="display:none;"
               >
                 数
               </option>
@@ -103,10 +101,12 @@
         this.newItemsNumber.push("")
       },
       createItem() {
-        this.checkForm()
+        if(this.isFormNullCheck()){
+          return
+      }
         let self = this
         this.newItemsNumber=this.newItemsNumber.filter(Boolean)
-        if (this.newItems == '' || this.newEventsName=='') return;
+       
           axios.post('/api/events', {
           item: {
             name: this.newItems,
@@ -127,24 +127,30 @@
           console.log(error, response);
         });
       },
-      checkForm(){
-        
+      isFormNullCheck(){
         if(this.newEventsName== ''){
           this.eventsNameNullError="※イベント名を入力してください"
+          return true
         }else{
           this.eventsNameNullError=""
         }
-
-         if(this.newItems == ''){
-          this.newItemsNullError="※持ち物を入力してください"
-      }else{
-        this.newItemsNullError=""
+      
+      for(let i = 0;i< this.newItemsNumber.length; ++i){
+       
+         if (!this.newItems[i] && this.newItemsNumber[i]){
+          this.newItemsNumberNullError="※持ち物を入力してください"
+          return true
+        }
       }
+
+
      for (let i = 0; i < this.newItems.length; ++i) {
         if (this.newItems[i] && !this.newItemsNumber[i]){
           this.newItemsNumberNullError="※持ち物の数を入力してください"
+          return true
         }
-}
+        }
+        return false
       }
      
     }
