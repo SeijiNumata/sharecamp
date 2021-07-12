@@ -120,7 +120,9 @@
           this.newItems = '';
           const status = JSON.stringify(response.status)
           if (status == '201') {
-            const redirectURL=("users/new")
+            const url = JSON.stringify(response.data.id)
+            const url_rep = url.replace(/\"/g, "")
+            const redirectURL=("users/new?e="+url_rep)
             location.href = redirectURL
           }
         }, (error) => {

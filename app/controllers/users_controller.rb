@@ -11,6 +11,10 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+
+    if params[:e]
+      session[:event_id]=params[:e]
+    end 
     @event = Event.find(session[:event_id])
   end
 
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         cookies.signed[:user_id] = @user.id
-        format.html { redirect_to event, notice: 'user was successfully created.' }
+        format.html { redirect_to event }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +45,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'user was successfully updated.' }
+        format.html { redirect_to @user }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }

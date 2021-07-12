@@ -14,14 +14,15 @@ class EventsController < ApplicationController
 
   def show
     from_create_check
-
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
 
     set_recent_watch_cookies(@event)
   end
 
-  def new; end
+  def new
+
+   end
 
   def edit; end
 

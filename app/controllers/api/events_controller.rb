@@ -9,7 +9,10 @@ module Api
       event_name_params
       @event = Event.new(event_params)
       if @event.save
+
         item_params[:name].count.times do |i|
+          next if item_params[:name][i].nil? || item_params[:need_number][i].nil?
+
           @item = Item.new
           @item.name = item_params[:name][i]
           @item.need_number = item_params[:need_number][i]
@@ -22,6 +25,7 @@ module Api
       session[:fromCreate] = 'fromCreate'
       session[:event_id] = @event.id
       render json: @event, status: :created
+   
     end
 
     def update
