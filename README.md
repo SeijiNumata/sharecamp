@@ -10,3 +10,9 @@ $ rails db:create
 $ rails db:migrate
 $ rails s
 ```
+## lint
+
+```
+$ yarn run lint
+$ rubocop
+```
