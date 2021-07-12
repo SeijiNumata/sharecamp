@@ -11,12 +11,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # if params[:e] # eventの新規作成時はvueからevent_idをもらう
-    #   session[:event_id] = params[:e]
-    # end
-
     @event = Event.find(session[:event_id])
-
   end
 
   def edit; end
