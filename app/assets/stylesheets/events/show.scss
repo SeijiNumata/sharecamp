@@ -2,80 +2,79 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#event-show{
-    width:80%;
-    margin:30px auto;
-    height:800px;
+#event-show {
+    width: 80%;
+    margin: 30px auto;
+    height: 800px;
 
     input {
         display: block;
-    
-      }
-    .show-component{
+    }
+
+    .show-component {
         width: 100%;
     }
-    .event_head{
-        width:100%;
-        display:flex;
-   
-        .event_title{
-            display:inline-block;
 
-            text-align:center;
-          
+    .event_head {
+        width: 100%;
+        display: flex;
+
+        .event_title {
+            display: inline-block;
+            text-align: center;
             margin-bottom: 30px;
-            width:80%;
+            width: 80%;
         }
-        a{
+
+        a {
             display: block;
-            width:89px;
-            height:20px;
-            text-align:center;
-            padding:10px;
+            width: 89px;
+            height: 20px;
+            text-align: center;
+            padding: 10px;
             text-decoration: none;
             background: #ffd803;
-            color:black;
-            margin-left:auto;
-            margin-right:0px;
+            color: black;
+            margin-left: auto;
+            margin-right: 0px;
 
-            &:hover{
-                box-shadow:0px 0px 10px #ccc;
-                
-
+            &:hover {
+                box-shadow: 0px 0px 10px #ccc;
             }
-            &:active{
-                box-shadow:0px 0px 10px #ccc;
+
+            &:active {
+                box-shadow: 0px 0px 10px #ccc;
                 position: relative;
                 top: 2px;
-                left:2px;
-                background-color:goldenrod;
+                left: 2px;
+                background-color: goldenrod;
             }
-    
-            &:visited{
-                color:black;
+
+            &:visited {
+                color: black;
             }
         }
-        @media screen and (max-width: 850px){
-            a{
+
+        @media screen and (max-width: 850px) {
+            a {
                 font-size: 11px;
                 line-height: 20px;
-                width:89px;
+                width: 89px;
             }
         }
     }
-    
-      .tabs {
-       
-        display:flex;
-        width:90%;
+
+    .tabs {
+        display: flex;
+        width: 90%;
         justify-content: space-around;
-        margin:15px auto;
-      }
-    
-      .tabs li,
-      .tabs label {
-        width:240px;
-        height:40px;
+        margin: 15px auto;
+    }
+
+    .tabs li,
+    .tabs label {
+        width: 240px;
+        height: 40px;
         line-height: 40px;
         list-style: none;
         border: 3px solid gray;
@@ -84,347 +83,314 @@
         transition: .3s;
         background-color: #e3f6f5;
         border-radius: 4px;
-        margin-right:5px;
-      }
+        margin-right: 5px;
+    }
 
-      @media screen and (max-width: 768px){
-        .tabs li{
-            font-size:10px;
-            line-height:20px;
+    @media screen and (max-width: 768px) {
+        .tabs li {
+            font-size: 10px;
+            line-height: 20px;
         }
-       li:last-child{
-            line-height:40px;
+
+        li:last-child {
+            line-height: 40px;
         }
     }
-    @media screen and (min-width: 768px){
+
+    @media screen and (min-width: 768px) {
         .br-sp {
             display: none;
-            
         }
     }
-      
-    
-      .tabs li.active,
-      .tabs :checked+label {
+
+    .tabs li.active,
+    .tabs :checked+label {
         background-color: #bae8e8;
         border-color: #000;
         color: black;
         cursor: auto;
-      }
-    
-      .contents {
+    }
+
+    .contents {
         margin-top: -17px;
         width: 100%;
-        // background-color:red;
         border: 3px solid gray;
-        // background-color:red;
         margin-left: 0px;
         list-style: none;
-        li{
-            margin-left:-29px;
+
+        li {
+            margin-left: -29px;
         }
-        .event-show-item{
-            // background-color:blue;
-            margin:3px;
+
+        .event-show-item {
+            margin: 3px;
             border: 2px solid black;
-            margin-right:6px;
-            padding:10px;
+            margin-right: 6px;
+            padding: 10px;
         }
-        h2{
+
+        h2 {
             display: inline-block;
-            margin:20px 20px 20px -2px;
+            margin: 20px 20px 20px -2px;
             font-size: 15px;
         }
-        .item-and-input{
+
+        .item-and-input {
             border-bottom: 1px solid black;
             padding-bottom: 20px;
-            margin-bottom:10px;
+            margin-bottom: 10px;
         }
-        .item-name-and-number{
-            display: inline-block;
-            width:57%;
-            
-        }
-        .event-show-item-input{
-            // height:30px;
-            // width:125px;
-            // float: right;   
-             position: relative;
-            // background-color:red;
-        
-         
-            select{
-                position:absolute;
-                height: 30px;
-                font-size: 14px;
-                margin-right:4px;
-                top:-30px;
-                right:80px;
 
-            }
-            button{
-                height: 30px;
-                font-size: 13px; 
-                position:absolute;
-                right:0px;
-                top:-30px;
-            }
-        @media screen and (max-width: 768px){
-                .bring-button{
-                    line-height:14px; 
-                    right:0px;
-                   top:-34px;
-                }
-                .number-select{
-                    top:-34px;
-                }
-          }
-         
-        .stamp-button-component{
+        .item-name-and-number {
+            display: inline-block;
+            width: 57%;
+
+        }
+
+        .event-show-item-input {
             position: relative;
 
-            .no-number-error{
-                color:red;
-                font-size: 10px;
-                position:absolute;
-                right:10px;
-            }
-            @media screen and (max-width: 768px){
-                .no-number-error {top:-10px; 
-                }
-          }
-            .postmark-decide{
-                display:inline-block;
-                 position: absolute;
-                 margin: 0;
-                 padding: 10px;
-                 width: 40px;
-                 right:100px;
-                 top:-20px;
-                 height: 10px;
-                 line-height: 10px;
-                 border: 5px double red;
-                 border-radius: 10%;
-                 color: red;
-                 text-align: center;
-                 font-size: 12px;
-                 font-family: 'Bree Serif', serif;
-                // line-height: 100px;
-                  transform: rotate(-16deg);
-            }
-            @media screen and (max-width: 768px){
-                .postmark-decide {width:30px; 
-                font-size:6px;
-                
-          }
-                }
-            .postmark-bring{
-                display:inline-block;
-                 position: absolute;
-                 margin: 0;
-                 padding: 10px;
-                 width: 60px;
-                 right:0px;
-                 top:-20px;
-                 height: 10px;
-                 line-height: 10px;
-                 border: 5px double blue;
-                 border-radius: 10%;
-                 color: blue;
-                 text-align: center;
-                 font-size: 9px;
-                 font-family: 'Bree Serif', serif;
-                // line-height: 100px;
-                  transform: rotate(-16deg);
-
+            select {
+                position: absolute;
+                height: 30px;
+                font-size: 14px;
+                margin-right: 4px;
+                top: -30px;
+                right: 80px;
             }
 
-            @media screen and (max-width: 768px){
+            button {
+                height: 30px;
+                font-size: 13px;
+                position: absolute;
+                right: 0px;
+                top: -30px;
+            }
+
+            @media screen and (max-width: 768px) {
+                .bring-button {
+                    line-height: 14px;
+                    right: 0px;
+                    top: -34px;
+                }
+
+                .number-select {
+                    top: -34px;
+                }
+            }
+
+            .stamp-button-component {
+                position: relative;
+
+                .no-number-error {
+                    color: red;
+                    font-size: 10px;
+                    position: absolute;
+                    right: 10px;
+                }
+
+                @media screen and (max-width: 768px) {
+                    .no-number-error {
+                        top: -10px;
+                    }
+                }
+
+                .postmark-decide {
+                    display: inline-block;
+                    position: absolute;
+                    margin: 0;
+                    padding: 10px;
+                    width: 40px;
+                    right: 100px;
+                    top: -20px;
+                    height: 10px;
+                    line-height: 10px;
+                    border: 5px double red;
+                    border-radius: 10%;
+                    color: red;
+                    text-align: center;
+                    font-size: 12px;
+                    font-family: 'Bree Serif', serif;
+                    transform: rotate(-16deg);
+                }
+
+                @media screen and (max-width: 768px) {
+                    .postmark-decide {
+                        width: 30px;
+                        font-size: 6px;
+                    }
+                }
+
                 .postmark-bring {
-                    width:30px; 
-                    line-height:9px;
-                    right:10px;
+                    display: inline-block;
+                    position: absolute;
+                    margin: 0;
+                    padding: 10px;
+                    width: 60px;
+                    right: 0px;
+                    top: -20px;
+                    height: 10px;
+                    line-height: 10px;
+                    border: 5px double blue;
+                    border-radius: 10%;
+                    color: blue;
+                    text-align: center;
+                    font-size: 9px;
+                    font-family: 'Bree Serif', serif;
+                    transform: rotate(-16deg);
                 }
+
+                @media screen and (max-width: 768px) {
+                    .postmark-bring {
+                        width: 30px;
+                        line-height: 9px;
+                        right: 10px;
+                    }
                 }
+            }
         }
-        }
-        .event-show-item-user{
+
+        .event-show-item-user {
             clear: both;
             list-style: none;
-       
-            // display: inline-block;
-            ul{
+
+            ul {
                 display: inline-block;
-               
             }
-            li{
+
+            li {
                 display: inline-block;
                 margin-right: 40px;
             }
-            button,p{
+
+            button,
+            p {
                 display: inline-block;
             }
-            button{
-                color:red;
+
+            button {
+                color: red;
             }
-            .bring-item-current-user-name{
+
+            .bring-item-current-user-name {
                 font-weight: bold;
             }
 
         }
-        .self-brings-contents{
-            height:600px;
-            
-            .self-bring-item{
-                margin-left:40px;
-                margin-bottom:4px;
-                input{
+
+        .self-brings-contents {
+            height: 600px;
+
+            .self-bring-item {
+                margin-left: 40px;
+                margin-bottom: 4px;
+
+                input {
                     display: inline-block;
                 }
             }
-            
         }
-        .invite{
-            text-align: center;
-            height:300px;
-            .invite-message-title{
-                margin-top:40px;
-                margin-bottom:30px;
-            }
-           
-            @media screen and (max-width: 800px){
-                .invite-message-title{
-                    font-size:15px;
-                    line-height:20px;   
-                }
 
-                    
+        .invite {
+            text-align: center;
+            height: 400px;
+
+            .invite-message-title {
+                margin-top: 40px;
+                margin-bottom: 30px;
+            }
+
+            @media screen and (max-width: 800px) {
+                .invite-message-title {
+                    font-size: 15px;
+                    line-height: 20px;
                 }
-            .invite-message-content{
-                margin-bottom:30px;
-                margin-right:14px;
-                padding:14px;
-                line-height:30px;
+            }
+
+            .invite-message-content {
+                margin-bottom: 30px;
+                margin-right: 14px;
+                padding: 14px;
+                line-height: 30px;
                 border: 3px solid black;
                 white-space: pre-line;
                 word-wrap: break-word;
-                
             }
-            @media screen and (max-width: 756px){
-                .invite-message-content{
-                    font-size:15px;
-                    line-height:20px;   
+
+            @media screen and (max-width: 756px) {
+                .invite-message-content {
+                    font-size: 15px;
+                    line-height: 20px;
                 }
             }
 
-                    
-            button{
-                width:300px;
-                margin-top:20px;
-                margin-bottom:30px;
-                height:50px;
+
+            button {
+                width: 300px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                height: 50px;
                 border: none;
-                background-color:#ffd803;
-                &:hover{
-                    box-shadow:0px 0px 10px #ccc;
-                    
+                background-color: #ffd803;
 
+                &:hover {
+                    box-shadow: 0px 0px 10px #ccc;
                 }
-                &:active{
-                    box-shadow:0px 0px 10px #ccc;
+
+                &:active {
+                    box-shadow: 0px 0px 10px #ccc;
                     position: relative;
                     top: 2px;
-                    left:px;
-                    background-color:goldenrod;
-  
+                    left: px;
+                    background-color: goldenrod;
+
                 }
 
             }
 
         }
-        @media screen and (max-width: 768px){
-            .invite {height:600px;
+
+        @media screen and (max-width: 768px) {
+            .invite {
+                height: 600px;
             }
         }
-        
-        // ul{
-        //     width: 100%;
-        //     // background-color:green;
-        // }
+
     }
-    .vm--modal{
-        width:1000px;
+
+    .vm--modal {
+        width: 1000px;
     }
-    .modal{
-        
+
+    .modal {
         .modal-header {
             border-bottom: 1px solid #ddd;
             font-size: 10px;
             text-align: center;
-            margin-top:20px;
+            margin-top: 20px;
             padding-bottom: 20px;
-          }
-        .modal-body-text{
-            margin-top:20px;
-           text-align: center;
-           p{
-               display:inline-block;
-               padding:10px;
-           }
-            
         }
-        .modal-body-button{
-            display:flex;
+
+        .modal-body-text {
+            margin-top: 20px;
+            text-align: center;
+
+            p {
+                display: inline-block;
+                padding: 10px;
+            }
+        }
+
+        .modal-body-button {
+            display: flex;
             justify-content: space-around;
-            margin-top:20px;
+            margin-top: 20px;
             margin-left: 50px;
-            margin-right:50px;
-            button{
-                width:150px;
+            margin-right: 50px;
+
+            button {
+                width: 150px;
             }
         }
     }
-       
-        //     width: 100%;
-        //     margin: 20px;
-        //     border: 1px solid #ccc;
-        //     .active {
-        //         display: block;
-        //         color: red;
-        //         background-color: red;
-        //       }
-        //       .invite_message{
-        //         height:200px;
-        //         display: inline-block;
-        //         width:100%;
-        //         margin:30px auto;
-        //         text-align:center;
-        //         background-color:red;
-        //         .invite-message-title{
-        //             margin-bottom:10px;
-        //         }
-        //         .invite_message_content{
-        //             background-color:green;
-        //             margin:10px;
-        //         }
-        //     }
-        //   }
-      
-    
-    //   .textarea {
-    //     display: inline-block;
-    //     width: 100%;
-    //     /* 幅：横いっぱいに */
-    //     height: 90px;
-    //     /* 高さ */
-    //   }
-    
-    //   p {
-    //     white-space: pre-line;
-    //     word-wrap: break-word
-    //   }
-    //   .modal-header, .modal-body {
-    //   padding: 5px 25px;
-    // }
- 
 }
