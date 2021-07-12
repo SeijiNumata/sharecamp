@@ -9,7 +9,6 @@
 
     input {
         display: block;
-
     }
 
     .show-component {
@@ -22,9 +21,7 @@
 
         .event_title {
             display: inline-block;
-
             text-align: center;
-
             margin-bottom: 30px;
             width: 80%;
         }
@@ -43,8 +40,6 @@
 
             &:hover {
                 box-shadow: 0px 0px 10px #ccc;
-
-
             }
 
             &:active {
@@ -70,7 +65,6 @@
     }
 
     .tabs {
-
         display: flex;
         width: 90%;
         justify-content: space-around;
@@ -106,10 +100,8 @@
     @media screen and (min-width: 768px) {
         .br-sp {
             display: none;
-
         }
     }
-
 
     .tabs li.active,
     .tabs :checked+label {
@@ -156,10 +148,7 @@
         }
 
         .event-show-item-input {
-
             position: relative;
-
-
 
             select {
                 position: absolute;
@@ -168,7 +157,6 @@
                 margin-right: 4px;
                 top: -30px;
                 right: 80px;
-
             }
 
             button {
@@ -223,7 +211,6 @@
                     text-align: center;
                     font-size: 12px;
                     font-family: 'Bree Serif', serif;
-
                     transform: rotate(-16deg);
                 }
 
@@ -231,7 +218,6 @@
                     .postmark-decide {
                         width: 30px;
                         font-size: 6px;
-
                     }
                 }
 
@@ -251,9 +237,7 @@
                     text-align: center;
                     font-size: 9px;
                     font-family: 'Bree Serif', serif;
-
                     transform: rotate(-16deg);
-
                 }
 
                 @media screen and (max-width: 768px) {
@@ -270,10 +254,8 @@
             clear: both;
             list-style: none;
 
-
             ul {
                 display: inline-block;
-
             }
 
             li {
@@ -307,7 +289,6 @@
                     display: inline-block;
                 }
             }
-
         }
 
         .invite {
@@ -324,8 +305,6 @@
                     font-size: 15px;
                     line-height: 20px;
                 }
-
-
             }
 
             .invite-message-content {
@@ -336,7 +315,6 @@
                 border: 3px solid black;
                 white-space: pre-line;
                 word-wrap: break-word;
-
             }
 
             @media screen and (max-width: 756px) {
@@ -357,8 +335,6 @@
 
                 &:hover {
                     box-shadow: 0px 0px 10px #ccc;
-
-
                 }
 
                 &:active {
@@ -387,7 +363,6 @@
     }
 
     .modal {
-
         .modal-header {
             border-bottom: 1px solid #ddd;
             font-size: 10px;
@@ -404,7 +379,6 @@
                 display: inline-block;
                 padding: 10px;
             }
-
         }
 
         .modal-body-button {

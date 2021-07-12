@@ -1,16 +1,17 @@
-.back-button{
-    padding:4px;
-    margin-top:20px;
-    margin-left:40px;
-    color:black;
+.back-button {
+    padding: 4px;
+    margin-top: 20px;
+    margin-left: 40px;
+    color: black;
     display: inline-block;
 }
+
 .event-edit {
     width: 80%;
     margin: 30px auto;
     height: 800px;
-    
-    h1{
+
+    h1 {
         text-align: center;
     }
 
@@ -45,7 +46,6 @@
             display: inline-block;
             width: 79%;
             margin-right: 10px;
-
         }
 
         .item-number {
@@ -58,8 +58,8 @@
             display: inline-block;
             width: 50px;
             height: 40px;
-            margin-left:3px;
-            font-size:13px;
+            margin-left: 3px;
+            font-size: 13px;
         }
     }
 
@@ -77,8 +77,6 @@
 
         &:hover {
             box-shadow: 0px 0px 10px #ccc;
-
-
         }
 
         &:active {
@@ -87,9 +85,7 @@
             top: 2px;
             left: 2px;
             background: #e0e0e0;
-
         }
-
     }
 
     .create-button {
@@ -102,8 +98,6 @@
 
         &:hover {
             box-shadow: 0px 0px 10px #ccc;
-
-
         }
 
         &:active {
@@ -112,10 +106,6 @@
             top: 2px;
             left: 2px;
             background-color: goldenrod;
-
         }
-
     }
-
-
 }
