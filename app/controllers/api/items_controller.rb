@@ -4,16 +4,9 @@ module Api
   class ItemsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
-    def index
-      @items = Item.order('created_at DESC')
-    end
-
     def show
+      item_params_id
       set_item
-      # respond_to do |format|
-      #   format.json
-      # end
-      #render json: @item
     end
 
     def new
@@ -30,36 +23,17 @@ module Api
           @item.event_id = @event.id
           render json: { status: 'ERROR', data: @item.errors } unless @item.save
         end
+        session[:fromCreate] = 'fromCreate'
+        session[:event_id] = @event.id
+        render json: @event, status: :created
       else
-        # render json: { status: 'ERROR', data: @event.errors }
-        # returnF
+        render json: { status: 'ERROR', data: @event.errors }
       end
-      session[:fromCreate] = 'fromCreate'
-      session[:event_id] = @event.id
-      render json: @event, status: :created
-      # render json: { status: 'ERROR', data: @item.errors }
-
-      # # format.html { redirect_to @event, notice: 'Event was successfully created.' }
-      # # format.json { render json: { status: 'SUCCESS', data: @item }}
-      # # #render json: @item, status: :created
-      # #  #render json: @item.errors, status: :unprocessable_entity
-      # #  render json: { status: 'ERROR', data: @item.errors
-      # render :show, status: :created
-      # redirect_to root_path
-      # respond_to do |format|
-      #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
-      #     format.json { render :show, status: :created, location: @event }
-      #  end
     end
 
     def destroy
       set_item
-      @item.destroy!
-      head :ok
-    end
-
-    def update
-      if @item.update(item_params)
+      if @item.destroy!
         head :ok
       else
         head :bad_request
@@ -70,6 +44,10 @@ module Api
 
     def item_params
       params.require(:item).permit(:event_id, need_number: [], name: [])
+    end
+
+    def item_params_id
+      params.permit(:id)
     end
 
     def event_params

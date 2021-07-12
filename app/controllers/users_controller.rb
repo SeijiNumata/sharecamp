@@ -7,27 +7,22 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # GET /users/1 or /users/1.json
   def show; end
 
-  # GET /users/new
   def new
     @user = User.new
-    if params[:e] # 新規作成時
-      session[:param] = params[:e]
-    elsif session[:event_id] # event_showから
-      session[:param] = session[:event_id]
-    end
+    # if params[:e] # eventの新規作成時はvueからevent_idをもらう
+    #   session[:event_id] = params[:e]
+    # end
 
-    @event = Event.find(session[:param]) if session[:param]
+    @event = Event.find(session[:event_id])
+
   end
 
-  # GET /users/1/edit
   def edit; end
 
-  # POST /users or /users.json
   def create
-    event = Event.find(session[:param])
+    event = Event.find(session[:event_id])
     if event.users.find_by(user_params)
       @user = event.users.find_by(user_params)
       cookies.signed[:user_id] = @user.id
@@ -48,7 +43,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -61,7 +55,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|
@@ -72,12 +65,10 @@ class UsersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name)
   end

@@ -105,10 +105,7 @@
       createItem() {
         this.checkForm()
         let self = this
-        console.log(this.newItems)
-        console.log(this.newItemsNumber)
         this.newItemsNumber=this.newItemsNumber.filter(Boolean)
-        console.log(this.newItemsNumber[2]==true)
         if (this.newItems == '' || this.newEventsName=='') return;
         // axios.post('/api/items', {
           axios.post('/api/events', {
@@ -124,15 +121,11 @@
           this.newItems = '';
           // window.location.replace = '/';
           const status = JSON.stringify(response.status)
-          console.log(status)
           if (status == '201') {
-            console.log("aa" + JSON.stringify(response.data.id))
             const url = JSON.stringify(response.data.id)
             var url_rep = "";
             url_rep = url.replace(/\"/g, "")
-            console.log("wtha"+url_rep)
             const redirectURL=("users/new?e="+url_rep)
-            console.log(redirectURL)
             location.href = redirectURL
           }
 

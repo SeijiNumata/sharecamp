@@ -152,7 +152,6 @@
         this.eventEditUrl = eventId + "/edit"
       },
       getItems() {
-        console.log(this.getItemRequestUrl + ".json")
         axios.get(this.getItemRequestUrl + ".json")
           .then((response) => {
             this.items = response.data.item

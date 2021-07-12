@@ -155,7 +155,6 @@
           axios.delete('/api/items/' + item_id, {
             item_id
           }).then((response) => {
-            console.log(response.data)
             this.neededItemInfos.splice(index, 1)
           }, (error) => {
             console.log(error, response);
@@ -171,7 +170,6 @@
         }); // 配列に１つ空データを追加する
       },
       updateItems() {
-        console.log("チェック" + this.checkForm())
         if (this.checkForm() == false) {
           return
         }
@@ -210,7 +208,6 @@
         for (let i = 0; i < this.neededItemInfos.length; ++i) {
           if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number) {
             this.newItemsNumberNullError = "※持ち物の数を入力してください"
-            console.log("※持ち物の数を入力してください")
             return false
           }
         }

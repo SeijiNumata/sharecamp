@@ -46,15 +46,10 @@
             this.currentUserBringItems = []
             for (var i = 0; i < this.bring_items.length; i++) {
               if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
-
                 this.itemName = this.bring_items[i].item_name
                 this.bringNumber = this.bring_items[i].bring_number
                 this.bringItemId = this.bring_items[i].user_bring_item_id
-                console.log(JSON.stringify(this.bring_items[i]))
                 this.bringChecked = this.bring_items[i].bring_check
-                console.log("ほし")
-                console.log(this.bringChecked)
-                console.log("ほし")
               }
             }
             this.HasBringItemsUser()

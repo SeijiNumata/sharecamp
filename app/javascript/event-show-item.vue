@@ -21,7 +21,7 @@
             数
           </option>
           <option
-            v-for="n of 0&&needNumber-bringSum"
+            v-for="n of Math.max(needNumber-bringSum, 0)"
             :key="n"
           >
             {{ n }}
