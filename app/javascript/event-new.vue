@@ -107,7 +107,6 @@
         let self = this
         this.newItemsNumber=this.newItemsNumber.filter(Boolean)
         if (this.newItems == '' || this.newEventsName=='') return;
-        // axios.post('/api/items', {
           axios.post('/api/events', {
           item: {
             name: this.newItems,
@@ -119,16 +118,11 @@
         }).then((response) => {
           self.items.unshift(response.data);
           this.newItems = '';
-          // window.location.replace = '/';
           const status = JSON.stringify(response.status)
           if (status == '201') {
-            const url = JSON.stringify(response.data.id)
-            var url_rep = "";
-            url_rep = url.replace(/\"/g, "")
-            const redirectURL=("users/new?e="+url_rep)
+            const redirectURL=("users/new")
             location.href = redirectURL
           }
-
         }, (error) => {
           console.log(error, response);
         });
