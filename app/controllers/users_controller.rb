@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  
   def new
     @user = User.new
 
@@ -15,9 +14,9 @@ class UsersController < ApplicationController
 
   def create
     event = Event.find(session[:event_id])
+    user_params[:name].strip!
 
     if event.users.find_by(user_params)
-      user_params[:name].strip!
       @user = event.users.find_by(user_params)
       cookies.signed[:user_id] = @user.id
     else
@@ -48,6 +47,4 @@ class UsersController < ApplicationController
 
     redirect_to '/events'
   end
-
-  
 end

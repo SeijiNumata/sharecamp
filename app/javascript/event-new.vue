@@ -137,6 +137,10 @@
           this.eventsNameNullError=""
         }
       
+      if (this.newItemsNumber.length == 0 ){
+          this.newItemsNumberNullError="※持ち物を入力してください"
+            return true
+      }else{
       for(let i = 0;i< this.newItemsNumber.length; ++i){
        
          if (!this.newItems[i] && this.newItemsNumber[i]){
@@ -154,7 +158,7 @@
         }
         return false
       }
-     
+      }
     }
   }
 </script>
