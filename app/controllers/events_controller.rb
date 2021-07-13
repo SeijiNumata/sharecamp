@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
   def index
     @events = []
-    if cookies[:recent_watch_events]
+    return unless cookies[:recent_watch_events]
       recent_watch_events = JSON.parse(cookies[:recent_watch_events])
       recent_watch_events.each do |event_id|
         @events.push(Event.find(event_id))
