@@ -4,18 +4,6 @@ module Api
   class UserBringItemsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
-    # def index
-    #   @items = Item.order('created_at DESC')
-    # end
-
-    # def show
-    #   render json: @event
-    # end
-
-    # def new
-    #   @event = Event.new
-    # end
-
     def create
       user_bring_item = UserBringItem.new(user_bring_item_bring_number_params)
       item = Item.find(item_params[:id])
