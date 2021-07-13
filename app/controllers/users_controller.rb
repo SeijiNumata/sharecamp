@@ -12,10 +12,12 @@ class UsersController < ApplicationController
   def new
     @user = User.new
 
-    if params[:e]
-      session[:event_id]=params[:e]
-    end 
-    @event = Event.find(session[:event_id])
+    session[:event_id] = params[:e] if params[:e]
+    if session[:event_id].nil?
+      redirect_to '/'
+    else
+      @event = Event.find(session[:event_id])
+    end
   end
 
   def edit; end
@@ -70,5 +72,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name)
+  end
+
+  def event_check
+    if session[:event_id].nil?
+      redirect_to '/events'
+      nil
+    end
   end
 end

@@ -40,7 +40,7 @@ module Api
 
     def update
       set_user_bring_item
-      
+
       if @user_bring_item.update(user_bring_item_params)
         head :ok
       else
