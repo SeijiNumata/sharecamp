@@ -15,7 +15,6 @@ class EventsController < ApplicationController
   end
 
   def show
-
     from_create_check
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
