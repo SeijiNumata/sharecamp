@@ -25,7 +25,6 @@ module Api
       session[:fromCreate] = 'fromCreate'
       session[:event_id] = @event.id
       render json: @event, status: :created
-   
     end
 
     def update
