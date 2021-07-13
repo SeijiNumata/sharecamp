@@ -3,7 +3,7 @@
     <h1>内容変更</h1>
     <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
     <input
-      v-model="eventName"
+      v-model.trim="eventName"
       class="event-name"
     >
     <form>
@@ -27,7 +27,7 @@
         >
           <!-- 各入力ボックス -->
           <input
-            v-model="neededItemInfo.name"
+            v-model.trim="neededItemInfo.name"
             class="item-name"
             :readonly="neededItemInfo.readonly"
             :disabled="neededItemInfo.readonly"

@@ -4,7 +4,7 @@
     <div class="event-name">
       <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
       <input
-        v-model="newEventsName"
+        v-model.trim="newEventsName"
         placeholder="○○大学卒業キャンプ"
       >
     </div>
@@ -29,7 +29,7 @@
             :key="item.id"
           >
             <input
-              v-model="newItems[index]"
+              v-model.trim="newItems[index]"
               class="item"
               type="text"
               :placeholder="itemsPlaceholders[index]"
