@@ -64,7 +64,10 @@ class EventsController < ApplicationController
     else
       recent_watch_events = JSON.parse(cookies[:recent_watch_events])
       recent_watch_events.push(event.id).uniq!
-      recent_watch_events.slice!(0..recent_watch_events.count - 6) if recent_watch_events.count > 5
+      recent_watch_array_number = 5
+      if recent_watch_events.count > recent_watch_array_number
+        recent_watch_events.slice!(0..recent_watch_events.count - (recent_watch_array_number + 1))
+      end
     end
 
     cookies[:recent_watch_events] = JSON.generate(recent_watch_events)
