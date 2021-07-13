@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   end
 
   def show
+
     from_create_check
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
@@ -22,7 +23,9 @@ class EventsController < ApplicationController
     set_recent_watch_cookies(@event)
   end
 
-  def new; end
+  def new
+    session[:from_create] = 'from_create'
+  end
 
   def edit; end
 
@@ -69,9 +72,9 @@ class EventsController < ApplicationController
   end
 
   def from_create_check
-    return unless session['fromCreate']
+    return unless session[:from_create]
 
-    @from_create = session['fromCreate']
-    session.delete('fromCreate')
+    @from_create = session[:from_create]
+    session.delete(:from_create)
   end
 end

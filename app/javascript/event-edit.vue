@@ -89,7 +89,7 @@
     props: {
       currentUserId:{type: String, default: '',},
       pageUrl: { type: String, default:'',},
-      fromCreate: { type: String, default:''},
+      // firstWatch: { type: String, default:''},
     },
     data() {
       return {
