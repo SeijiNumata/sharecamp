@@ -43,13 +43,19 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'rspec-rails'
+  
   gem 'spring'
+  gem 'rexml'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+    gem 'capybara'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
+
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
