@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   scope :events do
     resources :users, only: %i[create new]
   end
-  namespace :api do # , format: 'json' do
+  namespace :api do 
     resources :items, only: %i[show new destroy]
     resources :user_bring_items, only: %i[create destroy update]
     resources :events, only: %i[create update]
