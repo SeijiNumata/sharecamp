@@ -5,11 +5,13 @@ class EventsController < ApplicationController
 
   def index
     @events = []
+    if cookies[:recent_watch_events]
     recent_watch_events = JSON.parse(cookies[:recent_watch_events])
     recent_watch_events.each do |event_id|
       @events.push(Event.find(event_id))
     end
     @events.reverse!
+  end
   end
 
   def show
@@ -74,4 +76,6 @@ class EventsController < ApplicationController
     @from_create = session['fromCreate']
     session.delete('fromCreate')
   end
+
+
 end

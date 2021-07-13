@@ -8,7 +8,9 @@
        <%= link_to "更新日時   "+event.updated_at.strftime("%Y年 %m月 %d日"),event ,class:"updated-at"  %>
        </div>
     <% end %>
-
+<% if @events.count==0 %>
+    <p class="no-recent-watch">最近閲覧した持ってきて欲しいものリストはまだありません</p>
+<% end %>
 
 <br>
 
