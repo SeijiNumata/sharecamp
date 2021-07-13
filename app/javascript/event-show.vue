@@ -178,7 +178,7 @@
         this.hide()
       },
       modal() {
-        if (this.fromCreate == "fromCreate") {
+        if (this.fromCreate == "from_create") {
           this.show()
         }
       },

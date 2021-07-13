@@ -2,6 +2,7 @@
 
 module Api
   class EventsController < ApplicationController
+    include ActionController::Cookies
     skip_before_action :verify_authenticity_token
     protect_from_forgery
 
@@ -22,7 +23,7 @@ module Api
       else
         render json: { status: 'ERROR', data: @event.errors }
       end
-      session[:fromCreate] = 'fromCreate'
+
       session[:event_id] = @event.id
       render json: @event, status: :created
     end

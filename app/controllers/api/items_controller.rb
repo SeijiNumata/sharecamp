@@ -14,21 +14,21 @@ module Api
     end
 
     def create
-      @event = Event.new(event_params)
-      if @event.save
-        item_params[:name].count.times do |i|
-          @item = Item.new
-          @item.name = item_params[:name][i]
-          @item.need_number = item_params[:need_number][i]
-          @item.event_id = @event.id
-          render json: { status: 'ERROR', data: @item.errors } unless @item.save
-        end
-        session[:fromCreate] = 'fromCreate'
-        session[:event_id] = @event.id
-        render json: @event, status: :created
-      else
-        render json: { status: 'ERROR', data: @event.errors }
-      end
+      # @event = Event.new(event_params)
+      # if @event.save
+      #   item_params[:name].count.times do |i|
+      #     @item = Item.new
+      #     @item.name = item_params[:name][i]
+      #     @item.need_number = item_params[:need_number][i]
+      #     @item.event_id = @event.id
+      #     render json: { status: 'ERROR', data: @item.errors } unless @item.save
+      #   end
+      # #  session[:fromCreate] = 'fromCreate'
+      #   session[:event_id] = @event.id
+      #   render json: @event, status: :created
+      # else
+      #   render json: { status: 'ERROR', data: @event.errors }
+      # end
     end
 
     def destroy
