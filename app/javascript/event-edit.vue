@@ -37,7 +37,7 @@
           <select
             v-model="neededItemInfos[index].need_number"
             class="item-number"
-            name="example"
+            name="item-number"
           >
             <option
               value=""
