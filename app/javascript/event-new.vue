@@ -17,11 +17,11 @@
         <ul>
           <li v-for="(item, index) in items" :key="item.id">
             <input v-model.trim="newItems[index]" class="item" type="text" :placeholder="itemsPlaceholders[index]">
-            <select v-model="newItemsNumber[index]" class="item-number" name="new-itemss-number">
+            <select v-model="newItemsNumber[index]" class="item-number" name="new-items-number">
               <option value="" selected>
                 数
               </option>
-              <option v-for="n of 20" :key="n">
+              <option v-for="n of 20" :key="n" :value="n">
                 {{ n }}
               </option>
             </select>
