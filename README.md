@@ -16,3 +16,8 @@ $ rails s
 $ yarn run lint
 $ rubocop
 ```
+## test
+
+```
+bundle exec rspec
+```
