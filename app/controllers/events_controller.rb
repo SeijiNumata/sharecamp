@@ -69,7 +69,6 @@ class EventsController < ApplicationController
         recent_watch_events.slice!(0..recent_watch_events.count - (recent_watch_array_number + 1))
       end
     end
-
     cookies[:recent_watch_events] = JSON.generate(recent_watch_events)
   end
 
@@ -77,6 +76,7 @@ class EventsController < ApplicationController
     return unless session[:from_create]
 
     @from_create = session[:from_create]
+
     session.delete(:from_create)
   end
 end

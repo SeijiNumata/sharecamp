@@ -143,13 +143,15 @@
         this.setEditUrl(this.url)
       },
       setItemRequestUrl(url) {
-        const requestEventURLindex = 21 // /events/IDを取得する
+        const requestEventURLindex = -44 // /events/IDを取得する
         this.getItemRequestUrl = url.slice(requestEventURLindex);
+        console.log(this.getItemRequestUrl)
       },
       setEditUrl(url) {
-        const eventIdIndex = 29
+        const eventIdIndex = -36
         const eventId = url.slice(eventIdIndex)
         this.eventEditUrl = eventId + "/edit"
+        console.log( this.eventEditUrl)
       },
       getItems() {
         axios.get(this.getItemRequestUrl + ".json")

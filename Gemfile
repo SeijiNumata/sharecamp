@@ -50,9 +50,10 @@ end
 
 group :development, :test do
   gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'selenium-webdriver'
-   gem 'capybara-screenshot'
 end
 
 group :test do
