@@ -5,8 +5,10 @@ FactoryBot.define do
     #   sequence(:email) { |n| "person#{n}@example.com" }
     #   password { 'password' }
     #   password_confirmation { 'password' }
-    sequence(:name) { |n| "TEST_NAME#{n}" }
 
+    sequence :name do |n|
+      "TEST_NAME#{n}"
+    end
     after(:create) do |event|
       create_list(:item, 3, event: event)
     end

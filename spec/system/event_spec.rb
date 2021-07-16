@@ -4,6 +4,7 @@ require 'rails_helper'
 #   save_and_open_screenshot
 
 RSpec.feature 'イベントのシステムテスト', type: :feature, js: true do
+  let(:event) { create(:event) }
   context '新規作成画面のテスト' do
     scenario '新規作成時、event/users/newに遷移してからevent/idに遷移すること' do
       visit '/events/new'
@@ -26,8 +27,6 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
     end
   end
   context '編集画面のテスト' do
-    let(:event) { create(:event) }
-
     before do
       event
       visit "events/#{event.id}"
@@ -86,7 +85,6 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
       expect(page).to have_content '※持ち物を入力してください'
     end
 
-
     scenario '持っていくものの数が入力されていないとき、イベント作成ができないこと' do
       visit '/events/new'
       expect(page).to have_content '新規作成'
@@ -101,11 +99,27 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
       visit '/events/new'
       expect(page).to have_content '新規作成'
       fill_in('○○大学卒業キャンプ', with: 'タイトル')
-      # fill_in('テント', with: 'テント')
       first('.item-number').find(:xpath, 'option[4]').select_option
 
       click_on 'この内容で登録'
       expect(page).to have_content '※持ち物を入力してください'
+    end
+  end
+
+  context 'indexページのテスト' do
+    scenario '直近に見た詳細ページ５つまで、/eventsのindexから名前だけ見ることができる。' do
+      events = []
+      6.times { |n| events[n] = create(:event) }
+
+      visit "events/#{events[0].id}"
+      fill_in('user_name', with: 'たろう')
+
+      click_on '持ってきて欲しいものリストへ'
+
+      5.times { |n| visit "events/#{events[n].id}" }
+
+      visit '/events'
+      5.times { |n| expect(page).to have_content "TEST_NAME#{n + 1}" }
     end
   end
 end
