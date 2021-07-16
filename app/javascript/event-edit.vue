@@ -89,7 +89,6 @@
     props: {
       currentUserId:{type: String, default: '',},
       pageUrl: { type: String, default:'',},
-      // firstWatch: { type: String, default:''},
     },
     data() {
       return {
@@ -100,7 +99,7 @@
         newItem: '',
         newEventsName: '',
         selectedNumber: "",
-        eventEditUrl: "",
+        // eventEditUrl: "",
         getItemRequestUrl: "",
         neededItemInfos: [],
         eventsNameNullError: "",
@@ -118,19 +117,19 @@
       setUrl() {
         const url = location.href
         this.setItemRequestUrl(url)
-        this.setEditUrl(url)
+        // this.setEditUrl(url)
       },
       setItemRequestUrl(url) {
-        const requestEventURLIndexFront = 21 // "/events/ID"を取得する
-        const requestEventUrlIndexBack = 44
+        const requestEventURLIndexFront = -49 // "/events/ID"を取得する
+        const requestEventUrlIndexBack = -5
         this.getItemRequestUrl = (url.slice(requestEventURLIndexFront)).slice(0, requestEventUrlIndexBack)
-
       },
-      setEditUrl(url) {
-        const eventIdIndex = 29
-        const eventId = url.slice(eventIdIndex)
-        this.eventEditUrl = eventId + "/edit"
-      },
+      // setEditUrl(url) {
+      //   const eventIdIndex = 29
+      //   const eventId = url.slice(eventIdIndex)
+      //   this.eventEditUrl = eventId + "/edit"
+      //   console.log(this.eventEditUrl)
+      // },
       getItems() {
         axios.get(this.getItemRequestUrl + ".json")
           .then((response) => {

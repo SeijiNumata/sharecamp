@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_704_160_459) do
+ActiveRecord::Schema.define(version: 20_210_716_085_345) do
   create_table 'events', id: :string, force: :cascade do |t|
     t.string 'name', null: false
     t.datetime 'created_at', precision: 6, null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20_210_704_160_459) do
     t.boolean 'check', default: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[item_id user_id], name: 'index_user_bring_items_on_item_id_and_user_id', unique: true
   end
 
   create_table 'users', force: :cascade do |t|
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20_210_704_160_459) do
     t.integer 'user_id', null: false
     t.string 'event_id', null: false
     t.index ['event_id'], name: 'index_users_events_on_event_id'
+    t.index %w[user_id event_id], name: 'index_users_events_on_user_id_and_event_id', unique: true
     t.index ['user_id'], name: 'index_users_events_on_user_id'
   end
 

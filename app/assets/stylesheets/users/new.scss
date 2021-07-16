@@ -8,11 +8,15 @@
         font-size: 20px;
         font-weight: 500;
     }
+    .error-message{
+        color:red;
+        list-style-type: none 
+    }
 
     .nickname-form {
         margin: 30px auto;
         border: 3px solid black;
-        height: 250px;
+        height: 300px;
         width: 450px;
 
         p,
