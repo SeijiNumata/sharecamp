@@ -3,7 +3,6 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
-
     session[:event_id] = params[:e] if params[:e]
     if session[:event_id].nil?
       redirect_to '/'
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
   def create
     event = Event.find(session[:event_id])
     user_params[:name].strip!
-
+    
     if event.users.find_by(user_params)
       @user = event.users.find_by(user_params)
       cookies.signed[:user_id] = @user.id
