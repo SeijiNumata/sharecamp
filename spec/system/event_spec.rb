@@ -41,6 +41,7 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
       visit '/events/new'
       expect(page).to have_content '新規作成'
       fill_in('○○大学卒業キャンプ', with: 'タイトル')
+      
       click_on 'この内容で登録'
       expect(page).to have_content '※持ち物を入力してください'
     end
@@ -55,7 +56,7 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
       expect(page).to have_content '※持ち物の数を入力してください'
     end
 
-    scenario '持っていくものが最低１つ以上登録されていないとき、イベント作成ができないこと' do
+    scenario '持っていくものの数だけ登録されていて名前が入力されていない時、イベント作成ができないこと' do
       visit '/events/new'
       expect(page).to have_content '新規作成'
       fill_in('○○大学卒業キャンプ', with: 'タイトル')
@@ -78,8 +79,10 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
     scenario '既存の持ち物の数を編集できること' do
       first('.item-number').find(:xpath, 'option[4]').select_option
       click_on 'この内容で登録'
+
       expect(page).to have_content "持ってきて\nほしいもの"
-      expect(page).to have_content 'TEST_ITEM_NAME1 (0/3)'
+      
+      expect(page).to have_content "#{event.items[0].name} (0/3)"
     end
 
     scenario '既存のイベントの名前を変更できること' do
@@ -106,6 +109,7 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
     end
   end
 
+
   context 'indexページのテスト' do
     scenario '直近に見た詳細ページ５つまで、/eventsのindexから名前だけ見ることができる。' do
       events = []
@@ -119,7 +123,8 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
       5.times { |n| visit "events/#{events[n].id}" }
 
       visit '/events'
-      5.times { |n| expect(page).to have_content "TEST_NAME#{n + 1}" }
+      
+      5.times { |n| expect(page).to have_content events[n].name }
     end
   end
 end
