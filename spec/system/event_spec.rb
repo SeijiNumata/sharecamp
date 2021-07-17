@@ -26,6 +26,46 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
       expect(page).to have_content 'タイトル'
     end
   end
+  context '新規画面のバリデーションテスト' do
+    scenario '持ち物リストの名前が空白の時に、イベントが作成できないこと' do
+      visit '/events/new'
+      expect(page).to have_content '新規作成'
+      fill_in('テント', with: 'テント')
+      first('.item-number').find(:xpath, 'option[4]').select_option
+
+      click_on 'この内容で登録'
+      expect(page).to have_content '※イベント名を入力してください'
+    end
+
+    scenario '持っていくものが最低１つ以上登録されていないと、イベント作成ができないこと' do
+      visit '/events/new'
+      expect(page).to have_content '新規作成'
+      fill_in('○○大学卒業キャンプ', with: 'タイトル')
+      click_on 'この内容で登録'
+      expect(page).to have_content '※持ち物を入力してください'
+    end
+
+    scenario '持っていくものの数が入力されていないとき、イベント作成ができないこと' do
+      visit '/events/new'
+      expect(page).to have_content '新規作成'
+      fill_in('○○大学卒業キャンプ', with: 'タイトル')
+      fill_in('テント', with: 'テント')
+
+      click_on 'この内容で登録'
+      expect(page).to have_content '※持ち物の数を入力してください'
+    end
+
+    scenario '持っていくものが最低１つ以上登録されていないとき、イベント作成ができないこと' do
+      visit '/events/new'
+      expect(page).to have_content '新規作成'
+      fill_in('○○大学卒業キャンプ', with: 'タイトル')
+      first('.item-number').find(:xpath, 'option[4]').select_option
+
+      click_on 'この内容で登録'
+      expect(page).to have_content '※持ち物を入力してください'
+    end
+  end
+
   context '編集画面のテスト' do
     before do
       event
@@ -63,46 +103,6 @@ RSpec.feature 'イベントのシステムテスト', type: :feature, js: true d
       page.driver.browser.switch_to.alert.accept
       click_on 'この内容で登録'
       expect(page).not_to have_content 'TEST_ITEM_NAME1'
-    end
-  end
-
-  context '新規画面のバリデーションテスト' do
-    scenario '持ち物リストの名前が空白の時に、イベントが作成できないこと' do
-      visit '/events/new'
-      expect(page).to have_content '新規作成'
-      fill_in('テント', with: 'テント')
-      first('.item-number').find(:xpath, 'option[4]').select_option
-
-      click_on 'この内容で登録'
-      expect(page).to have_content '※イベント名を入力してください'
-    end
-
-    scenario '持っていくものが最低１つ以上登録されていないとき、イベント作成ができないこと' do
-      visit '/events/new'
-      expect(page).to have_content '新規作成'
-      fill_in('○○大学卒業キャンプ', with: 'タイトル')
-      click_on 'この内容で登録'
-      expect(page).to have_content '※持ち物を入力してください'
-    end
-
-    scenario '持っていくものの数が入力されていないとき、イベント作成ができないこと' do
-      visit '/events/new'
-      expect(page).to have_content '新規作成'
-      fill_in('○○大学卒業キャンプ', with: 'タイトル')
-      fill_in('テント', with: 'テント')
-
-      click_on 'この内容で登録'
-      expect(page).to have_content '※持ち物の数を入力してください'
-    end
-
-    scenario '持っていくものが最低１つ以上登録されていないとき、イベント作成ができないこと' do
-      visit '/events/new'
-      expect(page).to have_content '新規作成'
-      fill_in('○○大学卒業キャンプ', with: 'タイトル')
-      first('.item-number').find(:xpath, 'option[4]').select_option
-
-      click_on 'この内容で登録'
-      expect(page).to have_content '※持ち物を入力してください'
     end
   end
 
