@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       selectedNumber: '',
-      bring_items: [],
+      bringItems: [],
       isCurrentUserItem: false,
       bringSum: 0,
       needNumberCopy: 0,
@@ -41,8 +41,7 @@ export default {
     getUserBringItem () {
       axios.get('/api/items/' + this.item.id + '.json')
         .then((response) => {
-          const bring_items = response.data.bring_item_names
-          this.bring_items = bring_items
+          this.bringItems = response.data.bring_item_names
           this.currentUserBringItems = []
           for (var i = 0; i < this.bring_items.length; i++) {
             if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
@@ -58,12 +57,12 @@ export default {
           console.log(error, response)
         })
     },
-    deleteUserBringItem (bring_item) {
+    deleteUserBringItem (bringItem) {
       axios.delete('/api/user_bring_items/' + bring_item.user_bring_item_id, {
-        bring_item
+        bringItem
       }).then((response) => {
         this.getUserBringItem()
-        this.bringSum -= Number(bring_item.bring_number)
+        this.bringSum -= Number(bringItem.bring_number)
       }, (error) => {
         console.log(error, response)
       })
@@ -81,17 +80,19 @@ export default {
     },
     HasBringItemsUser () {
       if (this.bring_items.length === 0) {
-        return this.isCurrentUserItem = false
+        this.isCurrentUserItem = false
+        return
       }
       for (var i = 0; i < this.bring_items.length; i++) {
         if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
-          return this.isCurrentUserItem = true
+          this.isCurrentUserItem = true
         }
         this.isCurrentUserItem = false
+        return
       }
     },
-    isCurrentUser (bring_item) {
-      if (bring_item.user_id === Number(this.currentUserId)) {
+    isCurrentUser (bringItem) {
+      if (bringItem.user_id === Number(this.currentUserId)) {
         return true
       } else {
         return false
@@ -151,7 +152,6 @@ export default {
 <style scoped>
   input {
     display: inline-block;
-    /* vertical-align:1px; */
   }
 
   p {

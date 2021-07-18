@@ -113,18 +113,18 @@ export default {
           console.log(error, response)
         })
     },
-    deleteUserBringItem (bring_item) {
-      axios.delete('/api/user_bring_items/' + bring_item.user_bring_item_id, {
-        bring_item
+    deleteUserBringItem (bringItem) {
+      axios.delete('/api/user_bring_items/' + bringItem.user_bring_item_id, {
+        bringItem
       }).then(() => {
         this.getUserBringItem()
-        this.bringSum -= Number(bring_item.bring_number)
+        this.bringSum -= Number(bringItem.bring_number)
       }, (error) => {
         console.log(error, response)
       })
     },
     createUserBringItems (item, selectedNumber) {
-      if (this.needNumber == 1) {
+      if (this.needNumber === 1) {
         selectedNumber = 1
       }
       if (this.isNumberNullCheck(selectedNumber)) {
@@ -141,17 +141,19 @@ export default {
     },
     checkItemCurrentUserBring () {
       if (this.bring_items.length === 0) {
-        return this.isCurrentUserItem = false
+        this.isCurrentUserItem = false
+        return
       }
       for (var i = 0; i < this.bring_items.length; i++) {
         if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
-          return this.isCurrentUserItem = true
+          this.isCurrentUserItem = true
+          return
         }
         this.isCurrentUserItem = false
       }
     },
-    isCurrentUser (bring_item) {
-      return bring_item.user_id === Number(this.currentUserId)
+    isCurrentUser (bringItem) {
+      return bringItem.user_id === Number(this.currentUserId)
     },
     sumBringNumber () {
       this.bringSum = 0
@@ -160,7 +162,9 @@ export default {
       }
     },
     isCurrentUserBringItem (userId) {
-      return this.currentUserId === userId
+      console.log(this.currentUserId)
+      console.log(Number(this.currentUserId) === userId)
+      return Number(this.currentUserId) === userId
     },
     isNumberNullCheck (selectedNumber) {
       if (selectedNumber === '') {
