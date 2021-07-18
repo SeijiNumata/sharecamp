@@ -61,7 +61,7 @@
         height: 40px;
         line-height: 40px;
         list-style: none;
-        border: 3px solid gray;
+        border: 1px solid gray;
         cursor: pointer;
         text-align: center;
         transition: .3s;
@@ -98,7 +98,7 @@
     .contents {
         margin-top: -17px;
         width: 100%;
-        border: 3px solid gray;
+        border: 1px solid gray;
         margin-left: 0px;
         list-style: none;
 
@@ -108,7 +108,7 @@
 
         .event-show-item {
             margin: 3px;
-            border: 2px solid black;
+            border: 1px solid black;
             margin-right: 6px;
             padding: 10px;
         }
@@ -296,7 +296,7 @@
                 margin-right: 14px;
                 padding: 14px;
                 line-height: 30px;
-                border: 3px solid black;
+                border: 1px solid black;
                 white-space: pre-line;
                 word-wrap: break-word;
             }
