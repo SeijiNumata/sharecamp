@@ -25,7 +25,6 @@
           v-for="(neededItemInfo, index) in neededItemInfos"
           :key="neededItemInfo.id"
         >
-          <!-- 各入力ボックス -->
           <input
             v-model.trim="neededItemInfo.name"
             class="item-name"
@@ -33,7 +32,6 @@
             :disabled="neededItemInfo.readonly"
             :class="{readonly:neededItemInfo.readonly}"
           >
-          <!-- <input class="item-number" type="number" name="num01" min="0" v-model="neededItemInfos[index].need_number"> -->
           <select
             v-model="neededItemInfos[index].need_number"
             class="item-number"
@@ -177,6 +175,7 @@
         const requestPath = "/api/events/" + eventsID
         axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
         axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
+
         axios.patch(requestPath, {
             items: this.neededItemInfos,
             eventName: this.eventName

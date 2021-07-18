@@ -8,6 +8,7 @@ module Api
     def create
       event_name_params
       @event = Event.new(event_params)
+
       if @event.save
 
         item_params[:name].count.times do |i|
