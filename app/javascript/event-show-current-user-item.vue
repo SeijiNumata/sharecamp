@@ -47,12 +47,12 @@ export default {
         .then((response) => {
           this.bringItems = response.data.bring_item_names
           this.currentUserBringItems = []
-          for (var i = 0; i < this.bring_items.length; i++) {
-            if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
-              this.itemName = this.bring_items[i].item_name
-              this.bringNumber = this.bring_items[i].bring_number
-              this.bringItemId = this.bring_items[i].user_bring_item_id
-              this.bringChecked = this.bring_items[i].bring_check
+          for (var i = 0; i < this.bringItems.length; i++) {
+            if (Number(this.bringItems[i].user_id) === Number(this.currentUserId)) {
+              this.itemName = this.bringItems[i].item_name
+              this.bringNumber = this.bringItems[i].bring_number
+              this.bringItemId = this.bringItems[i].user_bring_item_id
+              this.bringChecked = this.bringItems[i].bring_check
             }
           }
           this.HasBringItemsUser()
@@ -62,7 +62,7 @@ export default {
         })
     },
     deleteUserBringItem (bringItem) {
-      axios.delete('/api/user_bring_items/' + bring_item.user_bring_item_id, {
+      axios.delete('/api/user_bring_items/' + bringItem.user_bring_item_id, {
         bringItem
       }).then((response) => {
         this.getUserBringItem()
@@ -83,12 +83,12 @@ export default {
       })
     },
     HasBringItemsUser () {
-      if (this.bring_items.length === 0) {
+      if (this.bringItems.length === 0) {
         this.isCurrentUserItem = false
         return
       }
-      for (var i = 0; i < this.bring_items.length; i++) {
-        if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
+      for (var i = 0; i < this.bringItems.length; i++) {
+        if (Number(this.bringItems[i].user_id) === Number(this.currentUserId)) {
           this.isCurrentUserItem = true
         }
         this.isCurrentUserItem = false
@@ -104,8 +104,8 @@ export default {
     },
     sumBringNumber () {
       this.bringSum = 0
-      for (var i = 0; i < this.bring_items.length; i++) {
-        this.bringSum += Number(this.bring_items[i].bring_number)
+      for (var i = 0; i < this.bringItems.length; i++) {
+        this.bringSum += Number(this.bringItems[i].bring_number)
       }
     },
     changeBringCheckBox () {
