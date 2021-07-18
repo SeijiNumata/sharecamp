@@ -111,7 +111,6 @@
       setUrl() {
         const url = location.href
         this.setItemRequestUrl(url)
-        // this.setEditUrl(url)
       },
       setItemRequestUrl(url) {
         const requestEventURLIndexFront = -49 // "/events/ID"を取得する
