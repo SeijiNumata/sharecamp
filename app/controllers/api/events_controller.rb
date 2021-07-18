@@ -42,8 +42,7 @@ module Api
 
           new_item = event.items.find_by(name: item[:name])
           unless new_item.update(need_number: item[:need_number])
-            render json: { status: 'ERROR',
-                           data: new_item.errors }
+            render json: { status: 'ERROR', data: new_item.errors }
           end
         else
           new_item = Item.new(name: item[:name], need_number: item[:need_number])
