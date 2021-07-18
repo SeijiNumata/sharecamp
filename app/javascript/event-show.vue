@@ -125,8 +125,6 @@
         isActive: '1',
         eventName: "",
         items: [],
-        newItem: '',
-        newEventsName: '',
         selectedNumber: "",
         message: '',
         getItemRequestUrl: "",
@@ -148,13 +146,11 @@
       setItemRequestUrl(url) {
         const requestEventURLindex = -44 // /events/IDを取得する
         this.getItemRequestUrl = url.slice(requestEventURLindex);
-        console.log(this.getItemRequestUrl)
       },
       setEditUrl(url) {
         const eventIdIndex = -36
         const eventId = url.slice(eventIdIndex)
         this.eventEditUrl = eventId + "/edit"
-        console.log( this.eventEditUrl)
       },
       getItems() {
         axios.get(this.getItemRequestUrl + ".json")

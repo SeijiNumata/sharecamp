@@ -94,10 +94,6 @@
         message: 'EventNew!',
         eventName: '',
         items: [],
-        newItem: '',
-        newEventsName: '',
-        selectedNumber: "",
-        // eventEditUrl: "",
         getItemRequestUrl: "",
         neededItemInfos: [],
         eventsNameNullError: "",
@@ -122,12 +118,6 @@
         const requestEventUrlIndexBack = -5
         this.getItemRequestUrl = (url.slice(requestEventURLIndexFront)).slice(0, requestEventUrlIndexBack)
       },
-      // setEditUrl(url) {
-      //   const eventIdIndex = 29
-      //   const eventId = url.slice(eventIdIndex)
-      //   this.eventEditUrl = eventId + "/edit"
-      //   console.log(this.eventEditUrl)
-      // },
       getItems() {
         axios.get(this.getItemRequestUrl + ".json")
           .then((response) => {
@@ -165,7 +155,7 @@
         this.neededItemInfos.push({
           name: "",
           need_number: ""
-        }); // 配列に１つ空データを追加する
+        }); 
       },
       updateItems() {
         if (this.checkForm() == false) {
