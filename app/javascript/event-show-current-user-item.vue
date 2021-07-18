@@ -12,7 +12,11 @@
     <p>{{ itemName }}({{ bringNumber }})</p>
   </div>
 </template>
+
 <script>
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+
 import axios from 'axios'
 export default {
   props: {

@@ -60,7 +60,7 @@
     </div>
     <ul class="event-show-item-user">
       <li
-        v-for="(bring_item,index) in bring_items"
+        v-for="(bring_item,index) in bringItems"
         :key="bring_item.id"
       >
         <p :class="{'bring-item-current-user-name':isCurrentUserBringItem(bring_item.user_id)}">
@@ -73,7 +73,7 @@
         >
           ×
         </button>
-        <p v-if="bring_items[index+1]!=null">
+        <p v-if="bringItems[index+1]!=null">
           ,
         </p>
       </li>
@@ -82,6 +82,9 @@
 </template>
 
 <script>
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+
 import axios from 'axios'
 export default {
   props: {
@@ -93,7 +96,7 @@ export default {
   data () {
     return {
       selectedNumber: '',
-      bring_items: [],
+      bringItems: [],
       isCurrentUserItem: false,
       bringSum: 0,
       noNumberErrorMessage: ''
@@ -106,7 +109,7 @@ export default {
     getUserBringItem () {
       axios.get('/api/items/' + this.item.id + '.json')
         .then((response) => {
-          this.bring_items = response.data.bring_item_names
+          this.bringItems = response.data.bring_item_names
           this.checkItemCurrentUserBring()
           this.sumBringNumber()
         }, (error) => {
@@ -140,12 +143,12 @@ export default {
       })
     },
     checkItemCurrentUserBring () {
-      if (this.bring_items.length === 0) {
+      if (this.bringItems.length === 0) {
         this.isCurrentUserItem = false
         return
       }
-      for (var i = 0; i < this.bring_items.length; i++) {
-        if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
+      for (var i = 0; i < this.bringItems.length; i++) {
+        if (Number(this.bringItems[i].user_id) === Number(this.currentUserId)) {
           this.isCurrentUserItem = true
           return
         }
@@ -157,13 +160,11 @@ export default {
     },
     sumBringNumber () {
       this.bringSum = 0
-      for (var i = 0; i < this.bring_items.length; i++) {
-        this.bringSum += Number(this.bring_items[i].bring_number)
+      for (var i = 0; i < this.bringItems.length; i++) {
+        this.bringSum += Number(this.bringItems[i].bring_number)
       }
     },
     isCurrentUserBringItem (userId) {
-      console.log(this.currentUserId)
-      console.log(Number(this.currentUserId) === userId)
       return Number(this.currentUserId) === userId
     },
     isNumberNullCheck (selectedNumber) {

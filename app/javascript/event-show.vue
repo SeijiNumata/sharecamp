@@ -101,6 +101,7 @@
 </template>
 
 <script>
+/* eslint-disable no-undef */
 import axios from 'axios'
 import eventShowItem from './event-show-item.vue'
 import eventShowCurrentUserItem from './event-show-current-user-item.vue'
