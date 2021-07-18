@@ -80,126 +80,127 @@
 </template>
 
 <script>
-  import axios from 'axios';
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
 
-  export default {
+import axios from 'axios'
 
-    props: {
-      currentUserId:{type: String, default: '',},
-      pageUrl: { type: String, default:'',},
+export default {
+
+  props: {
+    currentUserId: { type: String, default: '' },
+    pageUrl: { type: String, default: '' }
+  },
+  data () {
+    return {
+      isActive: '1',
+      message: 'EventNew!',
+      eventName: '',
+      items: [],
+      getItemRequestUrl: '',
+      neededItemInfos: [],
+      eventsNameNullError: '',
+      newItemsNullError: '',
+      newItemsNumberNullError: '',
+      display: { display: 'none' }
+    }
+  },
+  computed: {},
+  mounted () {
+    this.setUrl()
+    this.getItems()
+  },
+  methods: {
+    setUrl () {
+      const url = location.href
+      this.setItemRequestUrl(url)
     },
-    data() {
-      return {
-        isActive: '1',
-        message: 'EventNew!',
-        eventName: '',
-        items: [],
-        getItemRequestUrl: "",
-        neededItemInfos: [],
-        eventsNameNullError: "",
-        newItemsNullError: "",
-        newItemsNumberNullError: "",
-        display:{display:"none"}
+    setItemRequestUrl (url) {
+      const requestEventURLIndexFront = -49 // "/events/ID"を取得する
+      const requestEventUrlIndexBack = -5
+      this.getItemRequestUrl = (url.slice(requestEventURLIndexFront)).slice(0, requestEventUrlIndexBack)
+    },
+    getItems () {
+      axios.get(this.getItemRequestUrl + '.json')
+        .then((response) => {
+          this.items = response.data.item
+          this.neededItemInfos = []
+          for (const item of this.items) {
+            this.neededItemInfos.push({
+              name: item.name,
+              need_number: item.need_number,
+              readonly: true,
+              item_id: item.id
+            })
+          }
+          this.eventName = response.data.name
+        }, (error) => {
+          console.log(error, response)
+        })
+    },
+    deleteItems (itemId, index) {
+      if (itemId === undefined) {
+        this.neededItemInfos.splice(index, 1)
+      } else if (confirm('この持ち物を削除すると、他ユーザーの「持っていく」に登録中の情報も削除されます。\n本当によろしいですか？')) {
+        axios.delete('/api/items/' + itemId, {
+          itemId
+        }).then((response) => {
+          this.neededItemInfos.splice(index, 1)
+        }, (error) => {
+          console.log(error, response)
+        })
+      } else {
+        return
       }
     },
-    computed: {},
-    mounted() {
-      this.setUrl();
-      this.getItems()
+    addInput () {
+      this.neededItemInfos.push({
+        name: '',
+        need_number: ''
+      })
     },
-    methods: {
-      setUrl() {
-        const url = location.href
-        this.setItemRequestUrl(url)
-      },
-      setItemRequestUrl(url) {
-        const requestEventURLIndexFront = -49 // "/events/ID"を取得する
-        const requestEventUrlIndexBack = -5
-        this.getItemRequestUrl = (url.slice(requestEventURLIndexFront)).slice(0, requestEventUrlIndexBack)
-      },
-      getItems() {
-        axios.get(this.getItemRequestUrl + ".json")
-          .then((response) => {
-            this.items = response.data.item
-            this.neededItemInfos = []
-            for (const item of this.items) {
-              this.neededItemInfos.push({
-                name: item.name,
-                need_number: item.need_number,
-                readonly: true,
-                item_id: item.id
-              })
-            }
-            this.eventName = response.data.name
-          }, (error) => {
-            console.log(error, response);
-          });
-      },
-      deleteItems(item_id, index) {
-        if (item_id == undefined) {
-          this.neededItemInfos.splice(index, 1)
-        } else if (confirm('この持ち物を削除すると、他ユーザーの「持っていく」に登録中の情報も削除されます。\n本当によろしいですか？')) {
-          axios.delete('/api/items/' + item_id, {
-            item_id
-          }).then((response) => {
-            this.neededItemInfos.splice(index, 1)
-          }, (error) => {
-            console.log(error, response);
-          });
-        } else {
-          return;
-        }
-      },
-      addInput() {
-        this.neededItemInfos.push({
-          name: "",
-          need_number: ""
-        }); 
-      },
-      updateItems() {
-        if (this.checkForm() == false) {
-          return
-        }
-        const eventsID = this.getItemRequestUrl.slice(8)
-        const requestPath = "/api/events/" + eventsID
-        axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
-        axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
+    updateItems () {
+      if (this.checkForm() === false) {
+        return
+      }
+      const eventsID = this.getItemRequestUrl.slice(8)
+      const requestPath = '/api/events/' + eventsID
+      axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
+      axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
 
-        axios.patch(requestPath, {
-            items: this.neededItemInfos,
-            eventName: this.eventName
-          })
-          .then((response) => {
-            const status = JSON.stringify(response.status)
-            const showPath = "/events/" + eventsID
-            location.href = showPath
-          }, (error) => {
-            console.log(error, response);
-          });
-      },
-      checkForm() {
+      axios.patch(requestPath, {
+        items: this.neededItemInfos,
+        eventName: this.eventName
+      })
+        .then((response) => {
+          const showPath = '/events/' + eventsID
+          location.href = showPath
+        }, (error) => {
+          console.log(error, response)
+        })
+    },
+    checkForm () {
+      if (this.eventName === '') {
+        this.eventsNameNullError = '※イベント名を入力してください'
+        return false
+      } else {
+        this.eventsNameNullError = ''
+      }
 
-        if (this.eventName == '') {
-          this.eventsNameNullError = "※イベント名を入力してください"
+      for (let i = 0; i < this.neededItemInfos.length; ++i) {
+        if (!this.neededItemInfos[i].name && this.neededItemInfos[i].need_number) {
+          this.newItemsNullError = '※持ち物を入力してください'
           return false
-        } else {
-          this.eventsNameNullError = ""
         }
+      }
 
-        for (let i = 0; i < this.neededItemInfos.length; ++i) {
-          if (!this.neededItemInfos[i].name && this.neededItemInfos[i].need_number) {
-            this.newItemsNullError = "※持ち物を入力してください"
-            return false
-          }
+      for (let i = 0; i < this.neededItemInfos.length; ++i) {
+        if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number) {
+          this.newItemsNumberNullError = '※持ち物の数を入力してください'
+          return false
         }
-
-        for (let i = 0; i < this.neededItemInfos.length; ++i) {
-          if (this.neededItemInfos[i].name && !this.neededItemInfos[i].need_number) {
-            this.newItemsNumberNullError = "※持ち物の数を入力してください"
-            return false
-          }
-        }
-      },
+      }
     }
   }
+}
 </script>

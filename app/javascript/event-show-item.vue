@@ -60,7 +60,7 @@
     </div>
     <ul class="event-show-item-user">
       <li
-        v-for="(bring_item,index) in bring_items"
+        v-for="(bring_item,index) in bringItems"
         :key="bring_item.id"
       >
         <p :class="{'bring-item-current-user-name':isCurrentUserBringItem(bring_item.user_id)}">
@@ -73,7 +73,7 @@
         >
           ×
         </button>
-        <p v-if="bring_items[index+1]!=null">
+        <p v-if="bringItems[index+1]!=null">
           ,
         </p>
       </li>
@@ -82,93 +82,100 @@
 </template>
 
 <script>
-  import axios from 'axios';
-  export default {
-    props: {
-      itemName:{type: String, default: '',},
-      needNumber:{type: Number, default: 0,},
-      item:{type: Object, default: () => ({ }) },
-      currentUserId:{type: String, default: '',},
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+
+import axios from 'axios'
+export default {
+  props: {
+    itemName: { type: String, default: '' },
+    needNumber: { type: Number, default: 0 },
+    item: { type: Object, default: () => ({ }) },
+    currentUserId: { type: String, default: '' }
+  },
+  data () {
+    return {
+      selectedNumber: '',
+      bringItems: [],
+      isCurrentUserItem: false,
+      bringSum: 0,
+      noNumberErrorMessage: ''
+    }
+  },
+  mounted () {
+    this.getUserBringItem()
+  },
+  methods: {
+    getUserBringItem () {
+      axios.get('/api/items/' + this.item.id + '.json')
+        .then((response) => {
+          this.bringItems = response.data.bring_item_names
+          this.checkItemCurrentUserBring()
+          this.sumBringNumber()
+        }, (error) => {
+          console.log(error, response)
+        })
     },
-    data() {
-      return {
-        selectedNumber: '',
-        bring_items: [],
-        isCurrentUserItem: false,
-        bringSum: 0,
-        noNumberErrorMessage: ''
+    deleteUserBringItem (bringItem) {
+      axios.delete('/api/user_bring_items/' + bringItem.user_bring_item_id, {
+        bringItem
+      }).then(() => {
+        this.getUserBringItem()
+        this.bringSum -= Number(bringItem.bring_number)
+      }, (error) => {
+        console.log(error, response)
+      })
+    },
+    createUserBringItems (item, selectedNumber) {
+      if (this.needNumber === 1) {
+        selectedNumber = 1
+      }
+      if (this.isNumberNullCheck(selectedNumber)) {
+        return
+      }
+      axios.post('/api/user_bring_items', {
+        item: item,
+        bring_number: selectedNumber
+      }).then(() => {
+        this.getUserBringItem()
+      }, (error) => {
+        console.log(error, response)
+      })
+    },
+    checkItemCurrentUserBring () {
+      if (this.bringItems.length === 0) {
+        this.isCurrentUserItem = false
+        return
+      }
+      for (var i = 0; i < this.bringItems.length; i++) {
+        if (Number(this.bringItems[i].user_id) === Number(this.currentUserId)) {
+          this.isCurrentUserItem = true
+          return
+        }
+        this.isCurrentUserItem = false
       }
     },
-    mounted() {
-      this.getUserBringItem();
+    isCurrentUser (bringItem) {
+      return bringItem.user_id === Number(this.currentUserId)
     },
-    methods: {
-      getUserBringItem() {
-        axios.get('/api/items/' + this.item.id + '.json')
-          .then((response) => {
-            this.bring_items = response.data.bring_item_names
-            this.checkItemCurrentUserBring()
-            this.sumBringNumber()
-          }, (error) => {
-            console.log(error, response);
-          });
-      },
-      deleteUserBringItem(bring_item) {
-        axios.delete('/api/user_bring_items/' + bring_item.user_bring_item_id, {
-          bring_item
-        }).then(() => {
-          this.getUserBringItem()
-          this.bringSum -= Number(bring_item.bring_number)
-        }, (error) => {
-          console.log(error, response);
-        });
-
-      },
-      createUserBringItems(item, selectedNumber) {
-        if (this.isNumberNullCheck(selectedNumber)) {
-          return;
-        }
-        axios.post('/api/user_bring_items', {
-          item: item,
-          bring_number: selectedNumber
-        }).then(() => {
-          this.getUserBringItem()
-        }, (error) => {
-          console.log(error, response);
-        });
-      },
-      checkItemCurrentUserBring() {
-        if (this.bring_items.length === 0) {
-          return this.isCurrentUserItem = false;
-        }
-        for (var i = 0; i < this.bring_items.length; i++) {
-          if (Number(this.bring_items[i].user_id) === Number(this.currentUserId)) {
-            return this.isCurrentUserItem = true;
-          }
-          this.isCurrentUserItem = false;
-        }
-      },
-      isCurrentUser(bring_item) {
-        return bring_item.user_id == Number(this.currentUserId)
-      },
-      sumBringNumber() {
-        this.bringSum = 0
-        for (var i = 0; i < this.bring_items.length; i++) {
-          this.bringSum += Number(this.bring_items[i].bring_number)
-        }
-      },
-      isCurrentUserBringItem(user_id) {
-        return this.currentUserId == user_id
-      },
-      isNumberNullCheck(selectedNumber) {
-        if (selectedNumber == '') {
-          this.noNumberErrorMessage = "※数を入力してください"
-          return true
-        } else {
-          this.noNumberErrorMessage = ""
-          return false
-        }
+    sumBringNumber () {
+      this.bringSum = 0
+      for (var i = 0; i < this.bringItems.length; i++) {
+        this.bringSum += Number(this.bringItems[i].bring_number)
+      }
+    },
+    isCurrentUserBringItem (userId) {
+      return Number(this.currentUserId) === userId
+    },
+    isNumberNullCheck (selectedNumber) {
+      if (selectedNumber === '') {
+        this.noNumberErrorMessage = '※数を入力してください'
+        return true
+      } else {
+        this.noNumberErrorMessage = ''
+        return false
       }
     }
   }
+}
 </script>
