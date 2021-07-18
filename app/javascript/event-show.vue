@@ -18,7 +18,7 @@
         <li
           :class="{'active': isActive === '2'}"
           class="current-user-bring-item-tab"
-          @click="changeTab('2')"   
+          @click="changeTab('2')"
         >
           自分が<br class="br-sp">持っていくもの
         </li>
@@ -101,94 +101,94 @@
 </template>
 
 <script>
-  import axios from 'axios';
-  import eventShowItem from './event-show-item.vue'
-  import eventShowCurrentUserItem from './event-show-current-user-item.vue'
+import axios from 'axios'
+import eventShowItem from './event-show-item.vue'
+import eventShowCurrentUserItem from './event-show-current-user-item.vue'
 
-  export default {
-    components: {
-      "event-show-item": eventShowItem,
-      "event-show-current-user-item": eventShowCurrentUserItem
+export default {
+  components: {
+    'event-show-item': eventShowItem,
+    'event-show-current-user-item': eventShowCurrentUserItem
+  },
+  props: {
+    currentUserId: {
+      type: String,
+      default: ''
     },
-    props: {
-      currentUserId: {
-        type: String,
-        default: '',
-      },
-      fromCreate: {
-        type: String,
-        default: '',
-      },
+    fromCreate: {
+      type: String,
+      default: ''
+    }
+  },
+  data () {
+    return {
+      isActive: '1',
+      eventName: '',
+      items: [],
+      selectedNumber: '',
+      message: '',
+      getItemRequestUrl: '',
+      eventEditUrl: '',
+      url: ''
+    }
+  },
+  mounted () {
+    this.setUrl()
+    this.getItems()
+    this.modal()
+  },
+  methods: {
+    setUrl () {
+      this.url = location.href
+      this.setItemRequestUrl(this.url)
+      this.setEditUrl(this.url)
     },
-    data() {
-      return {
-        isActive: '1',
-        eventName: "",
-        items: [],
-        selectedNumber: "",
-        message: '',
-        getItemRequestUrl: "",
-        eventEditUrl: "",
-        url:""
+    setItemRequestUrl (url) {
+      const requestEventURLindex = -44 // /events/IDを取得する
+      this.getItemRequestUrl = url.slice(requestEventURLindex)
+    },
+    setEditUrl (url) {
+      const eventIdIndex = -36
+      const eventId = url.slice(eventIdIndex)
+      this.eventEditUrl = eventId + '/edit'
+    },
+    getItems () {
+      axios.get(this.getItemRequestUrl + '.json')
+        .then((response) => {
+          this.items = response.data.item
+          this.eventName = response.data.name
+          this.inviteMessage()
+        }, (error) => {
+          console.log(error, response)
+        })
+    },
+    changeTab (num) {
+      this.isActive = num
+    },
+    inviteMessage () {
+      this.message = '「' + this.eventName + '」で誰かに持ってきてもらいたいものリストはこちら\n' + this.url + '\n' + '持ってきてくれる人募集中です！'
+    },
+    createUserBringItems (item, selectedNumber) {
+      axios.post('/api/user_bring_items', {
+        item: item,
+        selectedNumber: selectedNumber
+      })
+    },
+    cp () {
+      this.$copyText(this.message)
+      this.hide()
+    },
+    modal () {
+      if (this.fromCreate === 'from_create') {
+        this.show()
       }
     },
-    mounted() {
-      this.setUrl();
-      this.getItems()
-      this.modal()
+    show: function () {
+      this.$modal.show('modal-message-from-create')
     },
-    methods: {
-      setUrl() {
-        this.url = location.href
-        this.setItemRequestUrl(this.url)
-        this.setEditUrl(this.url)
-      },
-      setItemRequestUrl(url) {
-        const requestEventURLindex = -44 // /events/IDを取得する
-        this.getItemRequestUrl = url.slice(requestEventURLindex);
-      },
-      setEditUrl(url) {
-        const eventIdIndex = -36
-        const eventId = url.slice(eventIdIndex)
-        this.eventEditUrl = eventId + "/edit"
-      },
-      getItems() {
-        axios.get(this.getItemRequestUrl + ".json")
-          .then((response) => {
-            this.items = response.data.item
-            this.eventName = response.data.name
-            this.inviteMessage();
-          }, (error) => {
-            console.log(error, response);
-          });
-      },
-      changeTab(num) {
-        this.isActive = num
-      },
-      inviteMessage() {
-        this.message = "「" + this.eventName + "」で誰かに持ってきてもらいたいものリストはこちら\n" + this.url + "\n" + "持ってきてくれる人募集中です！"
-      },
-      createUserBringItems(item, selectedNumber) {
-        axios.post('/api/user_bring_items', {
-          item: item,
-          selectedNumber: selectedNumber
-        })
-      },
-      cp() {
-        this.$copyText(this.message)
-        this.hide()
-      },
-      modal() {
-        if (this.fromCreate == "from_create") {
-          this.show()
-        }
-      },
-      show: function () {
-        this.$modal.show('modal-message-from-create');
-      },
-      hide: function () {
-        this.$modal.hide('modal-message-from-create');
-      },
+    hide: function () {
+      this.$modal.hide('modal-message-from-create')
     }
   }
+}
 </script>

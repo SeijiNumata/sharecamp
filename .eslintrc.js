@@ -1,7 +1,9 @@
 module.exports = {
-    "extends": [
-    "plugin:vue/recommended",
-    ],
-    "rules":{
-    }
-    };
+  'extends': [
+    'plugin:vue/recommended',
+    'vue'
+  ],
+  'rules': {
+  }
+}
+

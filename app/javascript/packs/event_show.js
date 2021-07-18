@@ -26,7 +26,7 @@ Vue.use(VueClipboard)
 Vue.use(VModal)
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    render: h => h(EventShow,{ props: document.getElementById("event_show").dataset})
+    render: h => h(EventShow, { props: document.getElementById('event_show').dataset })
   }).$mount()
   document.body.appendChild(app.$el)
 

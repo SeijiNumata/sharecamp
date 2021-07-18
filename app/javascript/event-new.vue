@@ -81,81 +81,84 @@
 </template>
 
 <script>
-  import axios from 'axios';
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
 
-  export default {
-    data() {
-      return {
-        items: ["", "", ""],
-        newItems: [],
-        newItemsNumber: [],
-        newEventsName: '',
-        itemsPlaceholders: ["テント", "タープ", "寝袋"],
-        eventsNameNullError: "",
-        newItemsNullError: "",
-        newItemsNumberNullError: ""
-      }
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      items: ['', '', ''],
+      newItems: [],
+      newItemsNumber: ['', '', ''],
+      newEventsName: '',
+      itemsPlaceholders: ['テント', 'タープ', '寝袋'],
+      eventsNameNullError: '',
+      newItemsNullError: '',
+      newItemsNumberNullError: ''
+    }
+  },
+  methods: {
+    addInput () {
+      this.items.push('') // 配列に１つ空データを追加する
+      this.newItemsNumber.push('')
     },
-    methods: {
-      addInput() {
-        this.items.push(""); // 配列に１つ空データを追加する
-        this.newItemsNumber.push("")
-      },
-      createItem() {
-        if (this.isFormNullCheck()) {
-          return
-        }
-        let self = this
-        this.newItemsNumber = this.newItemsNumber.filter(Boolean)
+    createItem () {
+      if (this.isFormNullCheck()) {
+        return
+      }
+      const self = this
+      this.newItemsNumber = this.newItemsNumber.filter(Boolean)
 
-        axios.post('/api/events', {
-          item: {
-            name: this.newItems,
-            need_number: this.newItemsNumber
-          },
-          event: {
-            name: this.newEventsName
-          }
-        }).then((response) => {
-          self.items.unshift(response.data);
-          this.newItems = '';
-          const status = JSON.stringify(response.status)
-          if (status == '201') {
-            const url = JSON.stringify(response.data.id)
-            const url_rep = url.replace(/\"/g, "")
-            const redirectURL = ("users/new?e=" + url_rep)
-            location.href = redirectURL
-          }
-        }, (error) => {
-          console.log(error, response);
-        });
-      },
-      isFormNullCheck() {
-        if (this.newEventsName == '') {
-          this.eventsNameNullError = "※イベント名を入力してください"
-          return true
-        } else {
-          this.eventsNameNullError = ""
+      axios.post('/api/events', {
+        item: {
+          name: this.newItems,
+          need_number: this.newItemsNumber
+        },
+        event: {
+          name: this.newEventsName
         }
-        if (this.newItems.length == 0) {       
-          this.newItemsNumberNullError = "※持ち物を入力してください"
-          return true
-        } else {
-          for (let i = 0; i < this.newItemsNumber.length; ++i) {
-            if (!this.newItems[i] && this.newItemsNumber[i]) {
-              this.newItemsNumberNullError = "※持ち物を入力してください"
-              return true
-            }
-          }
-          for (let i = 0; i < this.newItems.length; ++i) {
-            if (this.newItems[i] && !this.newItemsNumber[i]) {
-              this.newItemsNumberNullError = "※持ち物の数を入力してください"
-              return true
-            }
-          }
-          return false
+      }).then((response) => {
+        self.items.unshift(response.data)
+        this.newItems = ''
+        const status = JSON.stringify(response.status)
+        if (status === '201') {
+          const url = JSON.stringify(response.data.id)
+          const urlRep = url.replace(/\"/g, '')
+          const redirectURL = ('users/new?e=' + urlRep)
+          location.href = redirectURL
         }
+      }, (error) => {
+        console.log(error, response)
+      })
+    },
+    isFormNullCheck () {
+      if (this.newEventsName === '') {
+        this.eventsNameNullError = '※イベント名を入力してください'
+        return true
+      } else {
+        this.eventsNameNullError = ''
+      }
+      if (this.newItems.length === 0) {
+        this.newItemsNumberNullError = '※持ち物を入力してください'
+        return true
+      } else {
+        for (let i = 0; i < this.newItemsNumber.length; ++i) {
+          if (!this.newItems[i] && this.newItemsNumber[i]) {
+            this.newItemsNumberNullError = '※持ち物を入力してください'
+            return true
+          }
+        }
+        for (let i = 0; i < this.newItems.length; ++i) {
+          if (this.newItems[i] && !this.newItemsNumber[i]) {
+            this.newItemsNumberNullError = '※持ち物の数を入力してください'
+            return true
+          }
+        }
+        return false
       }
     }
   }
+}
 </script>
