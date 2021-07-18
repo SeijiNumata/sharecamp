@@ -52,7 +52,7 @@
       return {
         items: ["", "", ""],
         newItems: [],
-        newItemsNumber: ["", "", ""],
+        newItemsNumber: [],
         newEventsName: '',
         itemsPlaceholders: ["テント", "タープ", "寝袋"],
         eventsNameNullError: "",
@@ -102,7 +102,9 @@
           this.eventsNameNullError = ""
         }
 
-        if (this.newItemsNumber.length == 0) {
+        if (this.newItems.length == 0) {
+ 
+       
           this.newItemsNumberNullError = "※持ち物を入力してください"
           return true
         } else {

@@ -9,10 +9,6 @@ module Api
       set_item
     end
 
-    def new
-      @event = Event.new
-    end
-
     def destroy
       set_item
       if @item.destroy!
@@ -30,10 +26,6 @@ module Api
 
     def item_params_id
       params.permit(:id)
-    end
-
-    def event_params
-      params.require(:event).permit(:name)
     end
 
     def set_item

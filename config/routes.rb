@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[create new]
   end
   namespace :api do
-    resources :items, only: %i[show new destroy]
+    resources :items, only: %i[show destroy]
     resources :user_bring_items, only: %i[create destroy update]
     resources :events, only: %i[create update]
   end

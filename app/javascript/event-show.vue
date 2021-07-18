@@ -10,18 +10,21 @@
       <ul class="tabs">
         <li
           :class="{'active': isActive === '1'}"
+          class="need-items-tab"
           @click="changeTab('1')"
         >
           持ってきて<br class="br-sp">ほしいもの
         </li>
         <li
           :class="{'active': isActive === '2'}"
-          @click="changeTab('2')"
+          class="current-user-bring-item-tab"
+          @click="changeTab('2')"   
         >
           自分が<br class="br-sp">持っていくもの
         </li>
         <li
           :class="{'active': isActive === '3'}"
+          class="invite-message-tab"
           @click="changeTab('3')"
         >
           参加者を呼ぶ
