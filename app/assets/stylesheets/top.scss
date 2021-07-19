@@ -27,7 +27,7 @@
         display: flex;
         width: 75%;
         margin: 0 auto;
-        
+  
         .describe-text1 {
             width: 50%;
             margin: 0 auto;
@@ -121,7 +121,9 @@
 
     .solution-container-text {
         margin: 20px auto 50px auto;
+        padding-bottom:30px;
         font-size: 30px;
+        border-bottom: 1px #ccc solid;
     }
 
     .sharecamp-solution {
@@ -136,6 +138,7 @@
         margin: 30px auto 40px auto;
         border-bottom: 1px #ccc solid;
         padding-bottom: 20px;
+
 
         .solution-image {
             width: 50%;
