@@ -1,3 +1,212 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 13px;
+        font-weight: normal;
+
+        &:last-child {
+            margin-bottom: 40px;
+        }
+    }
+
+    .describe-container1 {
+        text-align: left;
+        display: flex;
+        width: 75%;
+        margin: 0 auto;
+        
+        .describe-text1 {
+            width: 50%;
+            margin: 0 auto;
+
+            h3 {
+                margin: 3px;
+
+                .camp-bring-text {
+                    display: block;
+                    margin-bottom: 12px;
+                }
+            }
+
+            p {
+                margin: 3px;
+            }
+        }
+        
+     
+
+        .container1-img {
+            padding-left: 30px;
+            width: 50%;
+            display: flex;
+            margin: 0 auto;
+
+            .camp-tent {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+            }
+
+            .komatta-man {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .describe-text1 {
+                width:100%;
+                margin:0 100px;
+                margin-bottom:20px;
+                
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .container1-img {
+            margin:50px auto;
+      
+            width:80%;
+            display:flex;
+            .camp-tent {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto;
+            }
+
+            .komatta-man {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto;
+            }
+            }
+
+          
+        }
+    
+    }
+     
+    @media screen and (max-width: 768px) {
+            .describe-container1 {
+                display:inline-block;
+
+                width:100%;
+            }
+        }
+  
+    .arrow {
+        width: 100%;
+        text-align: center;
+
+        .arrow-buttom {
+            width: 100px;
+            margin: 20px auto;
+
+            display: inline-block;
+        }
+    }
+
+    .solution-container-text {
+        margin: 20px auto 50px auto;
+        font-size: 30px;
+    }
+
+    .sharecamp-solution {
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+    }
+
+    .solution-container {
+        width: 80%;
+        display: flex;
+        margin: 30px auto 40px auto;
+        border-bottom: 1px #ccc solid;
+        padding-bottom: 20px;
+
+        .solution-image {
+            width: 50%;
+
+            .sharecamp_show_main {
+                width: 300px;
+            }
+        }
+
+        .solution-text {
+            width: 50%;
+            margin-top: 40px;
+            font-size: 25px;
+            font-weight: bold;
+            padding-left:30px;
+        }
+
+    }
+}
+
+.link-container {
+    width: 80%;
+    margin: 0 auto 50px auto;
+    text-align: center;
+    
+    .event-index {
+        display: inline-block;
+        text-decoration: none;
+        background-color: #e3f6f5;
+        padding: 13px;
+        margin: 10px 30px;
+
+        &:hover {
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        &:visited {
+            text-decoration: none;
+            color: black;
+        }
+
+        &:active {
+            box-shadow: 0px 0px 10px #ccc;
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+    }
+
+
+    .event-new {
+        display: inline-block;
+        text-decoration: none;
+        background-color: #bae8e8;
+        padding: 13px;
+        margin: 30px 30px;
+
+        &:hover {
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        &:visited {
+            text-decoration: none;
+            color: black;
+        }
+
+        &:active {
+            box-shadow: 0px 0px 10px #ccc;
+            position: relative;
+            top: 2px;
+            left: 2px;
+        }
+    }
+}

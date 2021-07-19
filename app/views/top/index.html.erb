@@ -1,4 +1,61 @@
+<div class="main-container">
+  <div class="title">
+    <h1>SHARECAMP</h1>
+    <h2>「誰か持ってきて」「私が持っていきます」</h2>
+    <h2>このやりとりをかんたんに</h2>
+  </div>
+  <div class="describe-container1">
+    <div class="describe-text1">
+      <h3>こんなことありませんか？ <span class="camp-bring-text">キャンプなどで持ち物を分担したい！</span></h3>
+      <p>でも誰が持ってくるか決めるのが面倒・・・</p>
+      <p>誰が持ってくることになっていたか忘れてしまう・・・</p>
+      <p>分担表を作る作業が面倒、見にくい、共有できない・・・</p>
+    </div>
+    <div class="container1-img">
+      <%= image_tag 'camp_tent.png',class:"camp-tent" %>
+      <%= image_tag 'komatta_man2.png',class:"komatta-man" %>
+    </div>
+  </div>
+  <div class="arrow">
+    <%= image_tag 'buttom_arrow.png',class:"arrow-buttom" %>
+  </div>
+  <div class="solution-container-text">
+    <h3 class="sharecamp-solution">SHARECAMPなら</h3>
+    <h3 class="sharecamp-solution">ログイン不要で、簡単に</h3>
+  </div>
+  <div class="solution-container">
+    <div class="solution-image">
+      <%= image_tag 'sharecamp_show_main_image.png',class:"sharecamp_show_main" %>
+    </div>
+    <div class="solution-text">
+      <p>持ってきて欲しいものがすぐわかる！</p>
+    </div>
+  </div>
+  <div class="solution-container">
 
-<%= link_to "最近ブラウザで見たイベント一覧", events_path %>
-<%= link_to '持ってきて欲しいものリストを作る', new_event_path %>
+    <div class="solution-image">
+      <%= image_tag 'sharecamp_show_invite_image.png',class:"sharecamp_show_main" %>
+    </div>
+    <div class="solution-text">
+      <p>URLで簡単共有！</p>
+    </div>
+  </div>
+  <div class="solution-container">
+    <div class="solution-image">
+      <%= image_tag 'sharecamp_show_self_bring_image.png',class:"sharecamp_show_main" %>
+    </div>
+    <div class="solution-text">
+      <p>自分の持ち物もすぐに見れる！</p>
+    </div>
+  </div>
+</div>
 
+
+</div>
+
+
+
+<div class="link-container">
+  <%= link_to "最近ブラウザで見たイベント一覧", events_path ,class:"event-index"%>
+  <%= link_to 'さっそく持ってきて欲しいものリストを作ってみる', new_event_path,class:"event-new" %>
+</div>
