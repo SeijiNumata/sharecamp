@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: sharecamp_production
-  username: sharecamp
-  password: <%= ENV['SHARECAMP_DATABASE_PASSWORD'] %>
+  # database: sharecamp_production
+  # username: sharecamp
+  # password: <%= ENV['SHARECAMP_DATABASE_PASSWORD'] %>
