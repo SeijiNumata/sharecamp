@@ -1,6 +1,9 @@
 <template>
   <div id="event-new">
-    <h1>新規作成</h1>
+    <h1>持ち物リスト作成</h1>
+    <p class="new-describe">
+      新しい持ち物リストを作成しましょう
+    </p>
     <div class="event-name">
       <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
       <input
