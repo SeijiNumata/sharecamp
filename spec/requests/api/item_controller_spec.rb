@@ -7,7 +7,7 @@ RSpec.describe Api::ItemsController, type: :controller do
 
   describe 'api/itemsのテスト' do
     it 'deleteにリクエストを送ると、レスポンスのステータスが「200（成功）」であること' do
-      delete :destroy ,params: {id: event.items[0].id}
+      delete :destroy, params: { id: event.items[0].id }
       expect(response).to be_successful
     end
   end
