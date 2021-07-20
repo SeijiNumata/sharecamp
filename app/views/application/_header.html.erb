@@ -7,9 +7,9 @@
     <img class=img_logo src="/assets/img_logo.png" alt="ロゴ">
 </div>
     <div class=header-right>
-        <% if controller.controller_name=="events"&&controller.action_name=="show" %>
-        <p>hello! <%= current_user.name %></p>
-        <p><span>別人の場合は</span><%= link_to 'こちら', new_user_path %></p>
+        <% if controller.controller_name=="events" && controller.action_name=="show" %>
+           <p>hello! <%= current_user.name %></p>
+           <p><span>別人の場合は</span><%= link_to 'こちら', new_user_path %></p>
         <% end %>
     </div>
 </header>
