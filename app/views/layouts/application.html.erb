@@ -13,11 +13,11 @@
 
 <body>
   <header>
-    <% if current_user%>
-    <%= render partial: 'header', locals: { current_user: current_user } %>
-    <%else %>
-    <%= render partial: 'header' %>
-    <%end%>
+    <% if current_user.nil? %>
+      <%= render partial: 'header' %>
+    <% else %>
+      <%= render partial: 'header', locals: { current_user: current_user } %>
+    <% end %>
   </header>
 
   <%= yield %>
