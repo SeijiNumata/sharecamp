@@ -83,11 +83,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  #<<: *default
-  # database: sharecamp_production
-  # username: sharecamp
-  #password: <%= ENV['SHARECAMP_DATABASE_PASSWORD'] %>
-   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  <<: *default
+  database: sharecamp_production
+  username: sharecamp
+  password: <%= ENV['SHARECAMP_DATABASE_PASSWORD'] %>
