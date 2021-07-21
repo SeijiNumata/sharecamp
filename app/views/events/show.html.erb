@@ -1,25 +1,5 @@
-<%
-=begin%>
- <p id="notice"><%= notice %></p>
- <p>hello! <%= current_user.name %></p>
- <span>別人の場合は</span><%= link_to 'こちら', new_user_path %> 
-<p> 
-<%
-=end%>
 
-<%
-=begin%>
- <h1><%= @event.name %></h1> 
-<%
-=end%>
-
-<%
-=begin%>
- <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %> 
-<%
-=end%>
-
+<%= page_heading @event.name %>
 <%= javascript_pack_tag 'event_show' %>
 <div id='event_show' data-current-user-id="<%= current_user.id %>"  data-from-create="<%= @from_create %>"></div> 
 <%= stylesheet_pack_tag 'event_show'  %>  

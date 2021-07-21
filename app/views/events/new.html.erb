@@ -1,26 +1,6 @@
-<%
-=begin%>
- <h1>イベント名</h1> 
-<%
-=end%>
- <%
-=begin%>
- <%= @current_user.name %> 
- <%= @current_user.events[0].name %>  
-<%
-=end%>
+<%= page_heading "持ち物リスト作成" %>
 <%= javascript_pack_tag 'event_new' %>
 <%= stylesheet_pack_tag 'event_new'  %>  
 
-<%
-=begin%>
- <%= render 'form', event: @event %> 
-<%
-=end%>
-<%
-=begin%>
- 
-<%= link_to 'Back', events_path %> 
-<%
-=end%>
+
 
