@@ -9,8 +9,11 @@
     margin-top: 40px;
     margin-bottom: 40px;
 
+
+
     h1 {
         margin-bottom: 20px;
+        font-size: 40px;
     }
 
     h2 {
@@ -27,7 +30,7 @@
         display: flex;
         width: 75%;
         margin: 0 auto;
-  
+
         .describe-text1 {
             width: 50%;
             margin: 0 auto;
@@ -45,8 +48,8 @@
                 margin: 3px;
             }
         }
-        
-     
+
+
 
         .container1-img {
             padding-left: 30px;
@@ -69,44 +72,46 @@
 
         @media screen and (max-width: 768px) {
             .describe-text1 {
-                width:100%;
-                margin:0 100px;
-                margin-bottom:20px;
-                
+                width: 100%;
+                margin: 0px;
+                margin-bottom: 20px;
+
             }
         }
+
         @media screen and (max-width: 768px) {
             .container1-img {
-            margin:50px auto;
-      
-            width:80%;
-            display:flex;
-            .camp-tent {
-                width: 100px;
-                height: 100px;
-                margin: 0 auto;
+                margin: 50px auto;
+
+                width: 80%;
+                display: flex;
+
+                .camp-tent {
+                    width: 100px;
+                    height: 100px;
+                    margin: 0 auto;
+                }
+
+                .komatta-man {
+                    width: 100px;
+                    height: 100px;
+                    margin: 0 auto;
+                }
             }
 
-            .komatta-man {
-                width: 100px;
-                height: 100px;
-                margin: 0 auto;
-            }
-            }
 
-          
         }
-    
+
     }
-     
-    @media screen and (max-width: 768px) {
-            .describe-container1 {
-                display:inline-block;
 
-                width:100%;
-            }
+    @media screen and (max-width: 768px) {
+        .describe-container1 {
+            display: inline-block;
+
+            width: 100%;
         }
-  
+    }
+
     .arrow {
         width: 100%;
         text-align: center;
@@ -121,7 +126,7 @@
 
     .solution-container-text {
         margin: 20px auto 50px auto;
-        padding-bottom:30px;
+        padding-bottom: 30px;
         font-size: 30px;
         border-bottom: 1px #ccc solid;
     }
@@ -153,7 +158,30 @@
             margin-top: 40px;
             font-size: 25px;
             font-weight: bold;
-            padding-left:30px;
+            padding-left: 30px;
+
+            .describe-detail-text-title {
+                margin-bottom: 30px;
+
+                @media screen and (min-width: 1122px) {
+                    .br-sp {
+                        display: none;
+                    }
+                }
+            }
+
+            .describe-detail-text {
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 30px;
+
+                @media screen and (min-width: 1422px) {
+                    .br-sp {
+                        display: none;
+                    }
+                }
+
+            }
         }
 
     }
@@ -163,7 +191,7 @@
     width: 80%;
     margin: 0 auto 50px auto;
     text-align: center;
-    
+
     .event-index {
         display: inline-block;
         text-decoration: none;
@@ -189,8 +217,9 @@
     }
 
 
-    
+
 }
+
 .event-new {
     display: inline-block;
     text-decoration: none;
