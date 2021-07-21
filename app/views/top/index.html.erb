@@ -29,7 +29,9 @@
       <%= image_tag 'sharecamp_show_main_image.png',class:"sharecamp_show_main" %>
     </div>
     <div class="solution-text">
-      <p>持ってきて欲しいものがすぐわかる！</p>
+      <p class="describe-detail-text-title">グループで持ってきて<br>欲しいものがすぐわかる！</p>
+      <p class="describe-detail-text">グループに必要な持ち物リストも<br class="br-sp"すぐに作れて見やすい！</p>
+      <p class="describe-detail-text">ユーザー登録も、<br class="br-sp">持っていく持ち物の入力も簡単！</p>
     </div>
   </div>
   <div class="solution-container">
@@ -38,7 +40,8 @@
       <%= image_tag 'sharecamp_show_invite_image.png',class:"sharecamp_show_main" %>
     </div>
     <div class="solution-text">
-      <p>URLで簡単共有！</p>
+      <p class="describe-detail-text-title">URLでグループに<br class="br-sp">簡単共有！</p>
+      <p class="describe-detail-text">URLをコピーするだけで、<br class="br-sp">簡単に持ち物リストを共有できます。</p>
     </div>
   </div>
   <div class="solution-container">
@@ -46,17 +49,15 @@
       <%= image_tag 'sharecamp_show_self_bring_image.png',class:"sharecamp_show_main" %>
     </div>
     <div class="solution-text">
-      <p>自分の持ち物もすぐに見れる！</p>
+     <p class="describe-detail-text-title">自分の持ち物も<br class="br-sp">すぐに見れる！</p>
+     <p class="describe-detail-text">グループで持っていくものも、<br class="br-sp">自分の持ち物も管理できます。</p>
     </div>
   </div>
 </div>
 
-
 </div>
 
-
-
 <div class="link-container">
-  <%= link_to "最近ブラウザで見た持ってきて欲しいものリスト一覧に行く", events_path ,class:"event-index"%>
+  <%= link_to "最近ブラウザで見た持ってきて欲しいものリスト一覧", events_path ,class:"event-index"%>
   <%= link_to '持ってきて欲しいものリストを作ってみる', new_event_path,class:"event-new" %>
 </div>
