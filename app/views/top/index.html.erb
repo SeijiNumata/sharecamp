@@ -3,6 +3,7 @@
     <h1>SHARECAMP</h1>
     <h2>「誰か持ってきて」「私が持っていきます」</h2>
     <h2>このやりとりをかんたんに</h2>
+    <%= link_to 'さっそく持ってきて欲しいものリストを作ってみる', new_event_path,class:"event-new" %>
   </div>
   <div class="describe-container1">
     <div class="describe-text1">
@@ -57,5 +58,5 @@
 
 <div class="link-container">
   <%= link_to "最近ブラウザで見た持ってきて欲しいものリスト一覧に行く", events_path ,class:"event-index"%>
-  <%= link_to 'さっそく持ってきて欲しいものリストを作ってみる', new_event_path,class:"event-new" %>
+  <%= link_to '持ってきて欲しいものリストを作ってみる', new_event_path,class:"event-new" %>
 </div>

@@ -14,8 +14,7 @@
 <body>
   <header>
 
-      <%= render partial: 'header' %>
-
+      <%= render partial: 'header', locals: { current_user: current_user } %>
   </header>
 
   <%= yield %>
