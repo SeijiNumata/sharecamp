@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   root 'top#index'
+  get '/top/tos', to: 'top#tos'
   resources :events
   scope :events do
     resources :users, only: %i[create new]
