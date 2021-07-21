@@ -3,8 +3,9 @@
 require 'rails_helper'
 #   save_and_open_screenshot
 
-RSpec.feature '持ち物のシステムテスト', type: :feature, js: true do
+RSpec.describe '持ち物のシステムテスト', type: :feature, js: true do
   let(:event) { create(:event) }
+
   before do
     event
     visit "events/#{event.id}"
@@ -13,7 +14,7 @@ RSpec.feature '持ち物のシステムテスト', type: :feature, js: true do
   end
 
   context '詳細画面の持ち物のテスト' do
-    scenario 'ユーザーは詳細ページがから持っていく持ち物を登録することができる' do
+    it 'ユーザーは詳細ページがから持っていく持ち物を登録することができる' do
       expect(page.all('.bring-button')[0].disabled?).to be false
       page.all('.number-select')[0].find(:xpath, 'option[3]').select_option
       page.all('.bring-button')[0].click
@@ -23,12 +24,12 @@ RSpec.feature '持ち物のシステムテスト', type: :feature, js: true do
       expect(page.all('.bring-button')[0].disabled?).to be true
     end
 
-    scenario '詳細ページがから持っていく持ち物の数を入力しないと登録することができないこと' do
+    it '詳細ページがから持っていく持ち物の数を入力しないと登録することができないこと' do
       page.all('.bring-button')[0].click
       expect(page).to have_content '※数を入力してください'
     end
 
-    scenario '持っていく持ち物が登録されている上限になると持っていくボタンが押下できないこと' do
+    it '持っていく持ち物が登録されている上限になると持っていくボタンが押下できないこと' do
       click_on 'こちら'
       fill_in('user_name', with: '')
       fill_in('user_name', with: 'アリス')
@@ -51,7 +52,7 @@ RSpec.feature '持ち物のシステムテスト', type: :feature, js: true do
       expect(page.all('.bring-button')[0].disabled?).to be true
     end
 
-    scenario '持っていく持ち物を登録したら削除できること' do
+    it '持っていく持ち物を登録したら削除できること' do
       page.all('.number-select')[0].find(:xpath, 'option[7]').select_option
       page.all('.bring-button')[0].click
 

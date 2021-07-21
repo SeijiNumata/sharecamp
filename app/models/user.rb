@@ -11,6 +11,6 @@ class User < ApplicationRecord
   private
 
   def delete_whitespace
-    self.name = name.gsub(' ', '')
+    self.name = name.delete(' ')
   end
 end

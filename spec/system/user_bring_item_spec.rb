@@ -3,7 +3,7 @@
 require 'rails_helper'
 #   save_and_open_screenshot
 
-RSpec.feature '持っていくものリストのシステムテスト', type: :feature, js: true do
+RSpec.describe '持っていくものリストのシステムテスト', type: :feature, js: true do
   let(:event) { create(:event) }
 
   before do
@@ -14,7 +14,7 @@ RSpec.feature '持っていくものリストのシステムテスト', type: :f
   end
 
   context '新規画面のバリデーションテスト' do
-    scenario '持ち物リストの名前が空白の時に、イベントが作成できないこと' do
+    it '持ち物リストの名前が空白の時に、イベントが作成できないこと' do
       page.all('.number-select')[0].find(:xpath, 'option[5]').select_option
       page.all('.bring-button')[0].click
 

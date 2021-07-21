@@ -1,0 +1,60 @@
+inherit_from: .rubocop_todo.yml
+
+Metrics/AbcSize:
+  Max: 38
+
+# Offense count: 7
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
+# IgnoredMethods: refine
+Metrics/BlockLength:
+  Max: 98
+
+# Offense count: 2
+# Configuration parameters: IgnoredMethods.
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+# Offense count: 6
+# Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
+Metrics/MethodLength:
+  Max: 18
+
+# Offense count: 2
+# Configuration parameters: IgnoredMethods.
+Metrics/PerceivedComplexity:
+  Max: 9
+
+# Offense count: 1
+Naming/AccessorMethodName:
+  Exclude:
+    - 'app/controllers/events_controller.rb'
+
+# Offense count: 7
+# Configuration parameters: AllowedChars.
+# AllowedChars: ©
+Style/AsciiComments:
+  Exclude:
+    - 'app/controllers/api/events_controller.rb'
+    - 'config/application.rb'
+    - 'config/initializers/rack_profile.rb'
+    - 'spec/support/capybara.rb'
+
+# Offense count: 28
+# Configuration parameters: AllowedConstants.
+Style/Documentation:
+  Enabled: false
+
+# Offense count: 3
+# Cop supports --auto-correct.
+Style/IfUnlessModifier:
+  Exclude:
+    - 'app/controllers/api/events_controller.rb'
+    - 'app/controllers/events_controller.rb'
+    - 'bin/bundle'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Layout/LineLength:
+  Max: 198
