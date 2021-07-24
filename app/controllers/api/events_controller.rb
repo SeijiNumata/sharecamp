@@ -3,7 +3,6 @@
 module Api
   class EventsController < ApplicationController
     skip_before_action :verify_authenticity_token
-    protect_from_forgery
 
     def create
       event_name_params

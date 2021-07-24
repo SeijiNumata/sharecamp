@@ -17,7 +17,7 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
       click_on 'この内容で登録'
       expect(page).to have_content "タイトルの\n誰か持ってきてリストへようこそ"
       expect(page).to have_current_path new_user_path, ignore_query: true
-     
+
       fill_in('user_name', with: 'たろう')
 
       click_on '持ってきて欲しいものリストへ'

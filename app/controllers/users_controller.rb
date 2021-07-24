@@ -25,6 +25,7 @@ class UsersController < ApplicationController
       if @user.save
         cookies.signed[:user_id] = @user.id
         format.html { redirect_to event }
+        format.json { render json: @user.errors }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }

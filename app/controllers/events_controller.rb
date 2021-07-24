@@ -7,11 +7,7 @@ class EventsController < ApplicationController
     @events = []
     return unless cookies[:recent_watch_events]
 
-    recent_watch_events = JSON.parse(cookies[:recent_watch_events])
-    recent_watch_events.each do |event_id|
-      @events.push(Event.find(event_id))
-    end
-    @events.reverse!
+    set_recent_watch_event(JSON.parse(cookies[:recent_watch_events]))
   end
 
   def show
@@ -31,7 +27,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -78,5 +74,16 @@ class EventsController < ApplicationController
     @from_create = session[:from_create]
 
     session.delete(:from_create)
+  end
+
+  def set_recent_watch_event(recent_watch_events)
+    recent_watch_events.each do |event_id|
+      if Event.exists?(id: event_id) == false
+        @events = []
+        break
+      end
+      @events.push(Event.find(event_id))
+    end
+    @events.reverse!
   end
 end
