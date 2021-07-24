@@ -53,7 +53,7 @@
                 :key="n"
                 :value="n"
               >
-                {{ n }}
+                {{ n-1 }}
               </option>
             </select>
           </li>
