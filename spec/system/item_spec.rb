@@ -18,8 +18,7 @@ RSpec.describe '持ち物のシステムテスト', type: :feature, js: true do
       expect(page.all('.bring-button')[0].disabled?).to be false
       page.all('.number-select')[0].find(:xpath, 'option[3]').select_option
       page.all('.bring-button')[0].click
-
-      expect(page).to have_content 'TEST_ITEM_NAME1 (2/6)'
+      expect(page).to have_content "#{event.items[0].name} (2/6)"
       expect(page).to have_content 'たろう(2)'
       expect(page.all('.bring-button')[0].disabled?).to be true
     end
