@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
   def create
     event = Event.find(session[:event_id])
-
     if event.users.find_by(user_params)
       @user = event.users.find_by(user_params)
       cookies.signed[:user_id] = @user.id

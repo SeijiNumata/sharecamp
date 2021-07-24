@@ -21,10 +21,10 @@
             数
           </option>
           <option
-            v-for="n of Math.max(needNumber-bringSum, 0)"
+            v-for="n of Math.max(needNumber-bringSum, 0)+1"
             :key="n"
           >
-            {{ n }}
+            {{ n-1 }}
           </option>
         </select>
         <div class="stamp-button-component">
@@ -170,6 +170,9 @@ export default {
     isNumberNullCheck (selectedNumber) {
       if (selectedNumber === '') {
         this.noNumberErrorMessage = '※数を入力してください'
+        return true
+      } else if (Number(selectedNumber) === 0) {
+        this.noNumberErrorMessage = '※数が０の場合登録できません'
         return true
       } else {
         this.noNumberErrorMessage = ''
