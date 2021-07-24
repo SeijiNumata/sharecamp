@@ -94,7 +94,6 @@ export default {
   data () {
     return {
       isActive: '1',
-      message: 'EventNew!',
       eventName: '',
       items: [],
       getItemRequestUrl: '',
@@ -165,6 +164,7 @@ export default {
       }
       const eventsID = this.getItemRequestUrl.slice(8)
       const requestPath = '/api/events/' + eventsID
+      // Can't verify CSRF token authenticityのエラーが出るためheardersに値を設定する
       axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
       axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content')
 

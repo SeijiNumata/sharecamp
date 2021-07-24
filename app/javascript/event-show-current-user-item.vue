@@ -154,12 +154,12 @@ export default {
 </script>
 
 <style scoped>
-  input {
+  /* input {
     display: inline-block;
   }
 
   p {
     display: inline-block;
 
-  }
+  } */
 </style>

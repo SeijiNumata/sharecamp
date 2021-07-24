@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     addInput () {
-      this.items.push('') // 配列に１つ空データを追加する
+      this.items.push('')
       this.newItemsNumber.push('')
     },
     createItem () {
