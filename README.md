@@ -10,6 +10,13 @@ $ rails db:create
 $ rails db:migrate
 $ rails s
 ```
+
+## seed（テストデータ）
+```
+$ rails db:seed
+```
+ターミナルに出てきたURLに進み、ニックネームを「橋本たろう」で入力してください。
+
 ## lint
 
 ```
