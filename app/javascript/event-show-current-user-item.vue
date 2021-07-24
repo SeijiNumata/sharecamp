@@ -153,13 +153,3 @@ export default {
 }
 </script>
 
-<style scoped>
-  /* input {
-    display: inline-block;
-  }
-
-  p {
-    display: inline-block;
-
-  } */
-</style>

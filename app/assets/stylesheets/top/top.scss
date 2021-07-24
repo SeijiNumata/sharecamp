@@ -191,7 +191,7 @@
     width: 80%;
     margin: 0 auto 50px auto;
     text-align: center;
-    color: black;
+
 
     .event-index {
         display: inline-block;
@@ -216,9 +216,6 @@
             left: 2px;
         }
     }
-
-
-
 }
 
 .event-new {
@@ -226,7 +223,7 @@
     text-decoration: none;
     background-color: #bae8e8;
     padding: 13px;
-    
+
     margin: 40px 30px 70px 30px;
 
     &:hover {
@@ -246,12 +243,12 @@
     }
 }
 
-.tos-link{
+.tos-link {
     width: 100%;
-    margin:0 auto 30px auto;
+    margin: 0 auto 30px auto;
     display: inline-block;
     text-align: center;
     text-decoration: none;
-    color:black;
-    font-size:14px;
+    color: black;
+    font-size: 14px;
 }
