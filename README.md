@@ -21,3 +21,10 @@ $ rubocop
 ```
 bundle exec rspec
 ```
+できない場合
+```
+rails db:drop  RAILS_ENV=test     
+rails db:create  RAILS_ENV=test   
+rails db:migrate  RAILS_ENV=test 
+```
+してから再実行してください。
