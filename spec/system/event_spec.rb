@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-#   save_and_open_screenshot
+# 'save_and_open_screenshot'can debug and take screenshot
 
 RSpec.describe 'イベントのシステムテスト', type: :feature, js: true do
   let(:event) { create(:event) }
@@ -85,6 +85,10 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
       expect(page).to have_content "持ってきて\nほしいもの"
 
       expect(page).to have_content "#{event.items[0].name} (0/6)"
+    end
+
+    it '既存の持ち物の名前を編集できないようになっていること' do
+      expect(page.all('.item-name')[0].readonly?).to be true
     end
 
     it '既存のイベントの名前を変更できること' do
