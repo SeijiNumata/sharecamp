@@ -10,9 +10,8 @@ item1 = event.items.create!(
 user1 = User.create!(name: '橋本たろう')
 user2 = User.create!(name: '鈴木ゆうすけ')
 user3 = User.create!(name: '高橋ゆういち')
-user4 = User.create!(name: '吉田ゆい')
 
-users = [user1, user2, user3, user4]
+users = [user1, user2, user3]
 
 users.each do |user|
   user.events << event
@@ -32,7 +31,7 @@ item4 = event.items.create!(
   need_number: 2
 )
 
-item5 = event.items.create!(
+event.items.create!(
   name: 'タープ',
   need_number: 1
 )
@@ -66,6 +65,6 @@ UserBringItem.create!(
 
 puts 'テストデータのurl'
 puts "localhost:3000/events/#{event.id}"
-puts ""
-puts "「橋本たろう」でニックネームを入力すると、既に持ち物を登録しているユーザーでログインします。"
-puts "架空のニックネームでも大丈夫です。"
+puts ''
+puts '「橋本たろう」でニックネームを入力すると、既に持ち物を登録しているユーザーでログインします。'
+puts '架空のニックネームでも大丈夫です。'
