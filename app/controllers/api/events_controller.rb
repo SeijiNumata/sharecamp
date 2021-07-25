@@ -37,8 +37,6 @@ module Api
         next if item[:name] == '' || item[:need_number] == ''
 
         if event.items.find_by(name: item[:name])
-          # 数だけ変えるとき
-
           new_item = event.items.find_by(name: item[:name])
           unless new_item.update(need_number: item[:need_number])
             render json: { status: 'ERROR', data: new_item.errors }
