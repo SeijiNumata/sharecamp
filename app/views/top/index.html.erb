@@ -6,24 +6,20 @@
     <%= link_to '持ってきて欲しいものリストを作ってみる', new_event_path,class:"event-new" %>
   </div>
 
-  <div class="describe-container1">
-    <div class="describe-text1">
-      <h3>こんなことありませんか？ <span class="camp-bring-text">キャンプなどで持ち物を分担したい！</span></h3>
-      <p>でも誰が持ってくるか決めるのが面倒・・・</p>
-      <p>誰が持ってくることになっていたか忘れてしまう・・・</p>
-      <p>分担表を作る作業が面倒、見にくい、共有できない・・・</p>
+  <div class="describe-container">
+    <div class="describe-text">
+      <h3>こんなことありませんか？ <span class="camp-bring-text">持ち物分担って面倒...</span></h3>
+      <p>キャンプなどで、各自がそれぞれ持っていく必要のない、グループのメンバーの誰かが持ってくればいいものってありますよね。<br>それを誰が持っていくか決めるのって面倒。</p>
     </div>
-    <div class="container1-img">
-      <%= image_tag 'top/camp_tent.png',class:"camp-tent" %>
-      <%= image_tag 'top/komatta_man2.png',class:"komatta-man" %>
+    <div class="container-img">
+      <%= image_tag 'top/komatta_group.png',class:"camp-tent" %>
     </div>
   </div>
   <div class="arrow">
     <%= image_tag 'top/buttom_arrow.png',class:"arrow-buttom" %>
   </div>
   <div class="solution-container-text">
-    <h3 class="sharecamp-solution">SHARECAMPなら</h3>
-    <h3 class="sharecamp-solution">ログイン不要で、簡単に</h3>
+    <h3 class="sharecamp-solution">SHARECAMPを使えば<br>かんたんに決められる!!</h3>
   </div>
   <div class="solution-container">
     <div class="solution-image">
@@ -59,9 +55,8 @@
 </div>
 
 <div class="link-container">
-  <%= link_to "最近ブラウザで見た持ってきて欲しいものリスト一覧", events_path ,class:"event-index"%>
   <%= link_to '持ってきて欲しいものリストを作ってみる', new_event_path,class:"event-new" %>
 </div>
 
-<%= link_to "利用規約", top_tos_path ,class:"tos-link" %>
-</div>
+
+    <%= render partial: 'footer', locals: { current_user: current_user } %>
