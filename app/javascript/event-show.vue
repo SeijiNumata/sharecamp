@@ -4,7 +4,10 @@
       <h1 class="event_title">
         {{ eventName }}
       </h1>
-      <a :href="eventEditUrl"> 内容変更</a>
+      <a
+        :href="eventEditUrl"
+        class="edit-button"
+      > 内容変更</a>
     </div>
     <div class="show_component">
       <ul class="tabs">

@@ -1,15 +1,19 @@
 <header>
-
- <div class=header-left>
-   
+  <div class=header-left>
     <%=  link_to 'SHARECAMP', root_path ,class:"title" %>
- 
+
     <img class=img_logo src="/assets/img_logo.png" alt="ロゴ">
-</div>
-    <div class=header-right>
-        <% if controller.controller_name=="events" && controller.action_name=="show" %>
-           <p>hello! <%= current_user.name %></p>
-           <p><span>別人の場合は</span><%= link_to 'こちら', new_user_path %></p>
-        <% end %>
-    </div>
+  </div>
+  <div class=header-right>
+   <% unless controller.controller_name=="events" && controller.action_name=="index" %>
+    <%= link_to "最近見たリスト一覧", events_path ,class:"recent-watch-link" %>
+<% end %>
+      <% if controller.controller_name=="events" && controller.action_name=="show" %>
+          <div class="user-change-link">
+      <p>hello! <%= current_user.name %></p>
+      <p><span>別人の場合は</span><%= link_to 'こちら', new_user_path %></p>
+          </div>
+      <% end %>
+
+  </div>
 </header>

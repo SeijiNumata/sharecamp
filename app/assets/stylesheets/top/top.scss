@@ -3,21 +3,25 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .main-container {
-    width: 80%;
     margin: 0 auto;
-    text-align: center;
     margin-top: 40px;
     margin-bottom: 40px;
+    width:768px;
 
+    .title{
+        text-align: center;
+    }
 
 
     h1 {
+        font-family: 'Lato', sans-serif;
         margin-bottom: 20px;
-        font-size: 40px;
+        font-size: 50px;
     }
 
     h2 {
         font-size: 13px;
+
         font-weight: normal;
 
         &:last-child {
@@ -193,37 +197,39 @@
     text-align: center;
 
 
-    .event-index {
-        display: inline-block;
-        text-decoration: none;
-        background-color: #e3f6f5;
-        padding: 13px;
-        margin: 10px 30px;
+    // .event-index {
+    //     display: inline-block;
+    //     text-decoration: none;
+    //     background-color: #e3f6f5;
+    //     padding: 13px;
+    //     margin: 10px 30px;
 
-        &:hover {
-            box-shadow: 0px 0px 10px #ccc;
-        }
+    //     &:hover {
+    //         box-shadow: 0px 0px 10px #ccc;
+    //     }
 
-        &:visited {
-            text-decoration: none;
-            color: black;
-        }
+    //     &:visited {
+    //         text-decoration: none;
+    //         color: black;
+    //     }
 
-        &:active {
-            box-shadow: 0px 0px 10px #ccc;
-            position: relative;
-            top: 2px;
-            left: 2px;
-        }
-    }
+    //     &:active {
+    //         box-shadow: 0px 0px 10px #ccc;
+    //         position: relative;
+    //         top: 2px;
+    //         left: 2px;
+    //     }
+    // }
 }
 
 .event-new {
+    text-align: center;
     display: inline-block;
     text-decoration: none;
-    background-color: #bae8e8;
+    background-color: #EB5370;
     padding: 13px;
 
+    color: white ; 
     margin: 40px 30px 70px 30px;
 
     &:hover {
@@ -232,7 +238,7 @@
 
     &:visited {
         text-decoration: none;
-        color: black;
+
     }
 
     &:active {
