@@ -64,9 +64,19 @@
 
         @media screen and (max-width: 768px) {
             .describe-text {
-                width: 100%;
-                margin: 0px;
+               
+                margin: 30px ;
                 margin-bottom: 20px;
+                h3 {
+                    margin: 3px;
+                    font-size: 20px;
+                    font-weight: 900;
+                    .camp-bring-text {
+                        display: block;
+                        font-size:20px;
+                        margin-bottom: 12px;
+                    }
+                }
 
             }
         }
@@ -85,7 +95,6 @@
     @media screen and (max-width: 768px) {
         .describe-container {
             display: inline-block;
-
             width: 100%;
         }
     }
@@ -113,6 +122,11 @@
         text-align: center;
         width: 100%;
         display: inline-block;
+    }
+    @media screen and (max-width: 756px) {
+        .sharecamp-solution {
+            font-size:23px
+        }
     }
 
     .solution-container {
@@ -147,6 +161,11 @@
                     }
                 }
             }
+            @media screen and (max-width: 765px) {
+                    .describe-detail-text-title{
+                        font-size:14px;
+                    }
+                }
 
             .describe-detail-text {
                 font-size: 14px;
@@ -160,13 +179,17 @@
                 }
 
             }
+            @media screen and (max-width: 765px) {
+                .describe-detail-text{
+                    line-height:16px;
+                }
+            }
         }
     }
 }
 
 .link-container {
-    width: 80%;
-    margin: 0 auto 50px auto;
+
     text-align: center;
 }
 
@@ -203,6 +226,14 @@
         margin: 0 auto;
         margin-top: 40px;
         margin-bottom: 40px;
-        width:400px;
+        width:375px;
+        h1{
+            font-size: 35px;
+        }
+        .event-new{
+            padding:10px;
+            font-size:13px;
+        }
+
     }
 }    
