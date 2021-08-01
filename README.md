@@ -11,10 +11,7 @@
 
 ## ローカルでの立ち上げ方
 ```
-$ bundle install
-$ rails db:create
-$ rails db:migrate
-$ rails s
+$ ./bin/setup
 ```
 
 ## seed（テストデータ）
