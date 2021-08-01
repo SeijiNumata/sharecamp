@@ -146,6 +146,9 @@
                 right: 0px;
                 top: -30px;
             }
+            .delete-button {
+                width:10px;
+            }
 
             @media screen and (max-width: 768px) {
                 .bring-button {
@@ -374,12 +377,13 @@
        .modal {
             padding: 30px;
             font-size: 7px;
+            button {
+                width: 100px;
+                margin-right:10px;
+                margin-left: 10px;
+            }
         }
-        button {
-            width: 100px;
-            margin-right:10px;
-            margin-left: 10px;
-        }
+        
     }
     
 }
