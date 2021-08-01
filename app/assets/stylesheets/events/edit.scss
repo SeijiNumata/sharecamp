@@ -7,9 +7,8 @@
 }
 
 .event-edit {
-    width: 80%;
+    width: 768px;
     margin: 30px auto;
-    height: 800px;
 
     h1 {
         text-align: center;
@@ -107,5 +106,12 @@
             left: 2px;
             background-color: goldenrod;
         }
+    }
+}
+@media screen and (max-width: 768px) {
+    .event-edit {
+        width: 375px;
+        padding: 0 10px;
+
     }
 }

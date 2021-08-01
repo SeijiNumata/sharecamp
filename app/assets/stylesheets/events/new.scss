@@ -1,7 +1,6 @@
 #event-new {
-    width: 80%;
+    width: 768px;
     margin: 30px auto;
-    height: 800px;
 
     ::placeholder {
         color: #d8d8d8;
@@ -147,3 +146,13 @@
         text-align: center;
     }
 }
+@media screen and (max-width: 768px) {
+    #event-new  {
+        width: 375px;
+        padding: 0 10px;
+
+
+    }
+}
+
+

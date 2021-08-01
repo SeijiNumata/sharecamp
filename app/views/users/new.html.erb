@@ -8,16 +8,16 @@
 
   <div class="nickname-form">
     <p>ニックネームを入力してください</p>
-      <% if @user.errors.any? %>
-  <div id="error_explanation">
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
 
-    <ul>
-      <% @user.errors.each do |user| %>
-      <li class="error-message"><%= user.full_message  %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+      <ul>
+        <% @user.errors.each do |user| %>
+        <li class="error-message"><%= user.full_message  %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
     <div class="field">
       <p class="nickname-label"><%= form.label "ニックネーム" %></p>
       <%= form.text_field :name, class:"text_field", value:current_user&.name %>
@@ -28,5 +28,7 @@
     </div>
     <% end %>
   </div>
-  <%= link_to '戻る', :back %>
+  <div class="back-button-user-new">
+    <%= link_to '戻る', :back  %>
+  </div>
 </div>

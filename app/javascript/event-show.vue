@@ -4,7 +4,10 @@
       <h1 class="event_title">
         {{ eventName }}
       </h1>
-      <a :href="eventEditUrl"> 内容変更</a>
+      <a
+        :href="eventEditUrl"
+        class="edit-button"
+      > 内容変更</a>
     </div>
     <div class="show_component">
       <ul class="tabs">
@@ -75,10 +78,12 @@
       <modal
         class="modal"
         name="modal-message-from-create"
-        width="650px"
+        width="80%"
+        :max-width="630"
+        :adaptive="true"
       >
         <div class="modal-header">
-          <h2>以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</h2>
+          <h2>以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！</h2>
         </div>
         <div class="modal-body">
           <div class="modal-body-text">
@@ -191,5 +196,6 @@ export default {
       this.$modal.hide('modal-message-from-create')
     }
   }
+
 }
 </script>

@@ -3,21 +3,25 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .main-container {
-    width: 80%;
     margin: 0 auto;
-    text-align: center;
     margin-top: 40px;
     margin-bottom: 40px;
+    width:768px;
 
+    .title{
+        text-align: center;
+    }
 
 
     h1 {
+        font-family: 'Lato', sans-serif;
         margin-bottom: 20px;
-        font-size: 40px;
+        font-size: 60px;
     }
 
     h2 {
-        font-size: 13px;
+        font-size: 20px;
+
         font-weight: normal;
 
         &:last-child {
@@ -25,89 +29,68 @@
         }
     }
 
-    .describe-container1 {
+    .describe-container {
         text-align: left;
         display: flex;
-        width: 75%;
         margin: 0 auto;
 
-        .describe-text1 {
-            width: 50%;
-            margin: 0 auto;
+        .describe-text {
+            width: 70%;
+            margin: 70px auto 0px auto;
 
             h3 {
-                margin: 3px;
-
+                font-size: 30px;
+                font-weight: 900;
                 .camp-bring-text {
                     display: block;
+                    font-size:40px;
                     margin-bottom: 12px;
                 }
             }
 
-            p {
-                margin: 3px;
-            }
         }
 
 
 
-        .container1-img {
+        .container-img {
             padding-left: 30px;
-            width: 50%;
-            display: flex;
-            margin: 0 auto;
-
-            .camp-tent {
-                width: 150px;
-                height: 150px;
-                margin: 0 auto;
-            }
-
-            .komatta-man {
-                width: 150px;
-                height: 150px;
-                margin: 0 auto;
-            }
+            width: 300px;
+            margin: 50px auto 0px auto;
         }
 
         @media screen and (max-width: 768px) {
-            .describe-text1 {
-                width: 100%;
-                margin: 0px;
+            .describe-text {
+               
+                margin: 30px ;
                 margin-bottom: 20px;
+                h3 {
+                    margin: 3px;
+                    font-size: 20px;
+                    font-weight: 900;
+                    .camp-bring-text {
+                        display: block;
+                        font-size:20px;
+                        margin-bottom: 12px;
+                    }
+                }
 
             }
         }
 
         @media screen and (max-width: 768px) {
-            .container1-img {
+            .container-img {
                 margin: 50px auto;
 
                 width: 80%;
                 display: flex;
-
-                .camp-tent {
-                    width: 100px;
-                    height: 100px;
-                    margin: 0 auto;
-                }
-
-                .komatta-man {
-                    width: 100px;
-                    height: 100px;
-                    margin: 0 auto;
-                }
             }
-
-
         }
 
     }
 
     @media screen and (max-width: 768px) {
-        .describe-container1 {
+        .describe-container {
             display: inline-block;
-
             width: 100%;
         }
     }
@@ -135,6 +118,11 @@
         text-align: center;
         width: 100%;
         display: inline-block;
+    }
+    @media screen and (max-width: 756px) {
+        .sharecamp-solution {
+            font-size:23px
+        }
     }
 
     .solution-container {
@@ -169,6 +157,11 @@
                     }
                 }
             }
+            @media screen and (max-width: 765px) {
+                    .describe-detail-text-title{
+                        font-size:14px;
+                    }
+                }
 
             .describe-detail-text {
                 font-size: 14px;
@@ -182,49 +175,28 @@
                 }
 
             }
+            @media screen and (max-width: 765px) {
+                .describe-detail-text{
+                    line-height:16px;
+                }
+            }
         }
-
     }
 }
 
 .link-container {
-    width: 80%;
-    margin: 0 auto 50px auto;
+
     text-align: center;
-
-
-    .event-index {
-        display: inline-block;
-        text-decoration: none;
-        background-color: #e3f6f5;
-        padding: 13px;
-        margin: 10px 30px;
-
-        &:hover {
-            box-shadow: 0px 0px 10px #ccc;
-        }
-
-        &:visited {
-            text-decoration: none;
-            color: black;
-        }
-
-        &:active {
-            box-shadow: 0px 0px 10px #ccc;
-            position: relative;
-            top: 2px;
-            left: 2px;
-        }
-    }
 }
 
 .event-new {
+    text-align: center;
     display: inline-block;
     text-decoration: none;
-    background-color: #bae8e8;
+    background-color: #EB5370;
     padding: 13px;
-
-    margin: 40px 30px 70px 30px;
+    color: white ; 
+    margin: 40px 30px 10px 30px;
 
     &:hover {
         box-shadow: 0px 0px 10px #ccc;
@@ -232,7 +204,7 @@
 
     &:visited {
         text-decoration: none;
-        color: black;
+
     }
 
     &:active {
@@ -243,12 +215,20 @@
     }
 }
 
-.tos-link {
-    width: 100%;
-    margin: 0 auto 30px auto;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    font-size: 14px;
-}
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        margin: 0 auto;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        width:375px;
+        h1{
+            font-size: 35px;
+        }
+        .event-new{
+            padding:10px;
+            font-size:13px;
+        }
+
+    }
+}    
