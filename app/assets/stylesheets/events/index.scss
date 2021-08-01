@@ -1,7 +1,6 @@
 .events-index {
-    width: 80%;
+    width: 768px;
     margin: 30px auto;
-    height: 800px;
     text-align: center;
 
     h1 {
@@ -75,5 +74,12 @@
             left: 2px;
             background-color: goldenrod;
         }
+    }
+}
+@media screen and (max-width: 768px) {
+    .events-index {
+        width: 375px;
+        padding: 0 10px;
+
     }
 }

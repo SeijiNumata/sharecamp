@@ -1,7 +1,6 @@
 .user-new-container {
-    width: 80%;
+    width: 768px;
     margin: 30px auto;
-    height: 800px;
     text-align: center;
 
     h1 {
@@ -17,12 +16,16 @@
         margin: 30px auto;
         border: 3px solid black;
         height: 300px;
-        width: 450px;
+        width: 80%;
 
         p,
         .field,
         .actions {
             margin-top: 33px;
+            position: relative;
+        }
+        .field{
+            margin-top: 50px;
         }
 
         label {
@@ -33,11 +36,20 @@
 
         .nickname-label {
             text-align: left;
-            margin-left: 24px;
+            margin-left:10px;
+            position: absolute;
+            top:-60px;
+            left:140px;
         }
+        @media screen and (max-width: 768px) {
+            .nickname-label {
+                left:40px;
+            }
+        }
+        
 
         .text_field {
-            width: 90%;
+            width: 50%;
         }
 
         .nickname-submit-button {
@@ -58,5 +70,13 @@
 
             }
         }
+    }
+}
+@media screen and (max-width: 768px) {
+    .user-new-container {
+        width: 375px;
+
+        padding: 0 10px;
+
     }
 }

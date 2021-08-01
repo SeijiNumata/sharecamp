@@ -81,11 +81,7 @@
         }
     }
 
-    @media screen and (min-width: 768px) {
-        .br-sp {
-            display: none;
-        }
-    }
+
 
     .tabs li.active,
     .tabs :checked+label {
@@ -156,6 +152,9 @@
                     line-height: 14px;
                     right: 0px;
                     top: -34px;
+                    margin-right:0px;
+                    width:80px;
+                    font-size: 12px;
                 }
 
                 .number-select {
@@ -184,53 +183,42 @@
                     position: absolute;
                     margin: 0;
                     padding: 10px;
-                    width: 40px;
+                    line-height: 4px;
+                    width: 70px;
                     right: 100px;
                     top: -20px;
                     height: 10px;
-                    line-height: 10px;
                     border: 5px double red;
                     border-radius: 10%;
                     color: red;
                     text-align: center;
-                    font-size: 12px;
+                    font-size: 10px;
                     font-family: 'Bree Serif', serif;
                     transform: rotate(-16deg);
                 }
 
-                @media screen and (max-width: 768px) {
-                    .postmark-decide {
-                        width: 30px;
-                        font-size: 6px;
-                    }
-                }
+        
 
                 .postmark-bring {
                     display: inline-block;
                     position: absolute;
                     margin: 0;
                     padding: 10px;
-                    width: 60px;
+                    width: 80px;
                     right: 0px;
                     top: -20px;
                     height: 10px;
-                    line-height: 10px;
+                    line-height: 4px;
                     border: 5px double blue;
                     border-radius: 10%;
                     color: blue;
                     text-align: center;
-                    font-size: 9px;
+                    font-size: 7px;
                     font-family: 'Bree Serif', serif;
                     transform: rotate(-16deg);
                 }
 
-                @media screen and (max-width: 768px) {
-                    .postmark-bring {
-                        width: 30px;
-                        line-height: 9px;
-                        right: 10px;
-                    }
-                }
+
             }
         }
 
@@ -351,10 +339,6 @@
 
     }
 
-    .vm--modal {
-        width: 1000px;
-    }
-
     .modal {
         .modal-header {
             border-bottom: 1px solid #ddd;
@@ -385,5 +369,30 @@
                 width: 150px;
             }
         }
+    }
+    @media screen and (max-width: 768px) {
+       .modal {
+            padding: 30px;
+            font-size: 7px;
+        }
+        button {
+            width: 100px;
+            margin-right:10px;
+            margin-left: 10px;
+        }
+    }
+    
+}
+@media screen and (max-width: 768px) {
+    #event-show {
+        width: 375px;
+        padding: 0 10px;
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .br-sp {
+        display: none;
     }
 }

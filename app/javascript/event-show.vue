@@ -78,10 +78,12 @@
       <modal
         class="modal"
         name="modal-message-from-create"
-        width="650px"
+        width="80%"
+        :max-width="630"
+        :adaptive="true"
       >
         <div class="modal-header">
-          <h2>以下の文章を参加者に伝え、誰かに持ってきてもらおう！！</h2>
+          <h2>以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！</h2>
         </div>
         <div class="modal-body">
           <div class="modal-body-text">
@@ -194,5 +196,6 @@ export default {
       this.$modal.hide('modal-message-from-create')
     }
   }
+
 }
 </script>
