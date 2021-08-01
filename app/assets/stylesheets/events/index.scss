@@ -1,12 +1,13 @@
 .events-index {
     width: 768px;
     margin: 30px auto;
-    text-align: center;
+
 
     h1 {
         margin-top: 50px;
         margin-bottom: 20px;
         font-size: 20px;
+        text-align: center;
         font-weight: normal;
     }
 
@@ -17,13 +18,16 @@
     }
 
     .title-description {
+        text-align: center;
         margin-bottom: 20px;
     }
 
     .event {
+        
         width: 80%;
         border: solid 1px black;
         padding: 10px;
+        text-align: center;
         padding-left: 30px;
         margin: 10px;
         margin-left: 30px;
@@ -51,11 +55,15 @@
         border: solid 1px black;
         display: inline-block;
         padding:8px;
+        text-align: center;
     }
-
+    .button-component{
+        text-align: center;
+    }
     .new-event-button {
         display: inline-block;
         border: none;
+        text-align: center;
         background-color: #ffd803;
         padding: 15px;
         margin: 50px auto 10px auto;
