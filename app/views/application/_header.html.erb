@@ -20,6 +20,11 @@
             <% end %>
           </li>
 
+          <% if recent_watch_events_count==nil %>
+          <li class="no-recent-watch">
+            <p>最近見たリストはありません</p>
+          </li>
+          <% end %>
           <% if controller.controller_name=="events" && controller.action_name=="show" %>
 
           <div class="user-change-link">

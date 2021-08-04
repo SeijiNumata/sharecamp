@@ -74,6 +74,9 @@ li{
 #menu-btn-check {
     display: none;
 }
+.no-recent-watch{
+    display: none;
+}
 
 @media screen and (min-width: 768px) {
     .menu-content {
@@ -96,6 +99,11 @@ li{
 }
 
 @media screen and (max-width: 768px) {
+
+    .no-recent-watch{
+        display: block;
+    
+    }
     .menu-btn {
         position: absolute;
         top: 10px;

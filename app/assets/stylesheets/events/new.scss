@@ -2,18 +2,106 @@
     width: 768px;
     margin: 30px auto;
 
+    label {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        display: block;
+        width: 100%;
+        .tooltip {
+            /* 位置の情報 */
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+
+            /* 中身の情報 */
+            background: #bae8e8;
+            border-radius: 100%;
+            position: relative;
+
+            &:before {
+                /* 位置の情報 */
+                position: absolute;
+                display: inline-block;
+                top: 7px;
+                right: -2px;
+                position: absolute;
+                transform: translate(-50%, -50%) scale(0.6);
+
+                /* 中身の情報 */
+                content: '?';
+                color: white;
+                font-size: 100%;
+                font-weight: bold;
+            }
+
+            &:hover {
+                .text {
+                    /* アニメーションの情報 */
+                    visibility: visible;
+                    opacity: 1.0;
+                    bottom: calc(100% + 10px);
+
+                    &:after {
+
+                        /* 位置の情報 */
+                        position: absolute;
+                        display: block;
+                        width: 10px;
+                        height: 10px;
+                        left: 50%;
+                        bottom: -5px;
+                        transform: rotateZ(45deg) translateX(-50%);
+                        transform-origin: left;
+
+                        /* 中身の情報 */
+                        content: ' ';
+                        background: gray;
+                    }
+
+                }
+            }
+
+            .text {
+                visibility: hidden;
+                /* 位置の情報 */
+                position: absolute;
+                display: block;
+                width: 14em;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 100%;
+
+                /* 中身の情報 */
+                background: gray;
+                color: white;
+                font-size: 12px;
+                padding: 10px;
+                line-height: 1.4;
+                border-radius: 6px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                pointer-events: none;
+                /* アニメーションの情報 */
+                transition: all 0.4s ease;
+                visibility: hidden;
+                opacity: 0;
+                bottom: 100%;
+            }
+        }
+    }
+
+
     ::placeholder {
         color: #d8d8d8;
     }
 
-    h1{
-        display: inline-block;
+    h1 {
         text-align: center;
         margin-bottom: 10px;
         width: 100%;
     }
-    .new-describe{
-        display: inline-block;
+
+    .new-describe {
         text-align: center;
         margin-bottom: 10px;
         width: 100%;
@@ -21,89 +109,90 @@
     }
 
     .event-name {
-        width: 100%;
+        width: 80%;
         margin: 0 auto;
         height: 80px;
-        display: inline-block;
-
-        p {
-            display: inline-block;
-            width: 80%;
-            margin: 10px 10%;
-        }
 
         input {
             display: inline-block;
-            width: 80%;
-            margin: 0 10%;
+            width: 100%;
+            border: solid 1px #999;
+            border-radius: 4px;
+            line-height: 40px;
+            font-size: 16px;
+        }
+
+        .describe-new-event-name {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 20px;
+            display: inline-block;
         }
     }
 
     .event-name-error {
         color: red;
         font-size: 12px;
-        margin-left: 40px;
+        margin-left: 20px;
     }
 
     .event-item-null-error {
         color: red;
         font-size: 12px;
-        margin-left: 40px;
     }
 
     .event-content {
-        width: 100%;
+        width: 80%;
         margin: 0 auto;
-        display: inline-block;
+
+        input {
+            line-height: 40px;
+            border: solid 1px #999;
+            border-radius: 4px;
+        }
 
         p {
-            display: inline-block;
-            width: 80%;
-            margin: 10px 10%;
-
+            width: 100%;
         }
 
-        form {
-            width: 80%;
-            margin: 10px 10%;
-        }
+
 
         ul {
-            width: 100%;
-            margin-left: -38px;
+            padding-left: 0px;
         }
 
         li {
             list-style: none;
             display: flex;
             width: 100%;
-            margin-bottom: 5px;
+            margin-bottom: 16px;
 
             .item {
-                width: 86%;
+                flex: 1;
+
                 margin-right: 10px;
 
             }
 
             .item-number {
-                width: 14%;
+                width: 64px;
                 text-align: center;
+                border: solid 1px #999;
+                border-radius: 4px;
                 color: black;
             }
 
-            @media screen and (max-width: 768px) {
-                .item-number {
-                    font-size: 10px;
-                }
-            }
         }
 
         .add-button {
-            margin: 26px auto;
-            width: 150px;
+            margin: 16px auto 0;
+            width: 160px;
             background: white;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             display: block;
+            border: solid 1px #989898;
+            height: 44px;
+            border-radius: 4px;
 
             &:hover {
                 box-shadow: 0px 0px 10px #ccc;
@@ -122,10 +211,12 @@
         .create-button {
             border: none;
             background-color: #ffd803;
-            padding: 11px;
-            margin: 30px auto 10px auto;
-            width: 250px;
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin: 0 auto 4px auto;
+            height: 44px;
 
             &:hover {
                 box-shadow: 0px 0px 10px #ccc;
@@ -146,13 +237,15 @@
         text-align: center;
     }
 }
+
 @media screen and (max-width: 768px) {
-    #event-new  {
-        width: 375px;
+    #event-new {
+        max-width: 100%;
         padding: 0 10px;
 
+        h1 {
+            font-size: 22px;
+        }
 
     }
 }
-
-
