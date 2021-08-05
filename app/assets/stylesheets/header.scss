@@ -60,15 +60,13 @@ header {
 }
 
 ul {
-    list-style: none;
+
     margin:0px;
     .recent-watch-link{
         line-height:44px;
     }
 }
-li{
-    margin-right:10px;
-}
+
 
 
 #menu-btn-check {
@@ -102,7 +100,7 @@ li{
 
     .no-recent-watch{
         display: block;
-    
+        margin:0 auto;
     }
     .menu-btn {
         position: absolute;

@@ -6,7 +6,6 @@
     width: 768px;
     margin: 30px auto;
 
-
     input {
         display: block;
     }
@@ -27,10 +26,8 @@
         }
 
         a {
-            display: block;
-            width: 89px;
             height: 40px;
-            padding-top:7px;
+            padding-top:8px;
             text-align: center;
             text-decoration: none;
             color: black;
@@ -54,10 +51,12 @@
         justify-content: space-around;
         margin: 15px auto;
     }
-
+    ul{
+        padding-inline-start:0px;
+    }
     .tabs li,
     .tabs label {
-        width: 240px;
+        width: 300px;
         height: 40px;
         line-height: 40px;
         list-style: none;
@@ -98,9 +97,7 @@
         margin-left: 0px;
         list-style: none;
 
-        li {
-            margin-left: -29px;
-        }
+      
 
         .event-show-item {
             margin: 3px;
@@ -110,8 +107,8 @@
         }
 
         h2 {
-            display: inline-block;
-            margin: 20px 20px 20px -2px;
+       
+            margin: 20px 20px 20px 20px;
             font-size: 15px;
         }
 
@@ -132,7 +129,7 @@
 
             select {
                 position: absolute;
-                height: 30px;
+                height: 40px;
                 font-size: 14px;
                 margin-right: 4px;
                 top: -30px;
@@ -140,7 +137,7 @@
             }
 
             button {
-                height: 30px;
+                height: 40px;
                 font-size: 13px;
                 position: absolute;
                 right: 0px;
@@ -293,7 +290,6 @@
 
             .invite-message-content {
                 margin-bottom: 30px;
-                margin-right: 14px;
                 padding: 14px;
                 line-height: 30px;
                 border: 1px solid black;
@@ -316,7 +312,6 @@
                 height: 50px;
                 border: none;
                 background-color: #ffd803;
-
                 &:hover {
                     box-shadow: 0px 0px 10px #ccc;
                 }
@@ -370,6 +365,7 @@
 
             button {
                 width: 150px;
+                height:44px;
             }
         }
     }
@@ -389,7 +385,7 @@
 }
 @media screen and (max-width: 768px) {
     #event-show {
-        width: 375px;
+        max-width: 100%;
         padding: 0 10px;
 
     }

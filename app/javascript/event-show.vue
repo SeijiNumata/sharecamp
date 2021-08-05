@@ -65,9 +65,11 @@
           <p class="invite-message-title">
             以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！
           </p>
-          <p class="invite-message-content">
-            {{ message }}
-          </p>
+          <div class="invite-message-content">
+            <p> 「{{ eventName }}」で誰かに持ってきて<br class="br-sp">もらいたいものリストはこちら</p>
+            <p>{{ url }}</p>
+            <p> 持ってきてくれる人募集中です！</p>
+          </div>
           <button @click="cp()">
             コピー
           </button>

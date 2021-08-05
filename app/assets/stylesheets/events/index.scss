@@ -60,6 +60,12 @@
         padding:8px;
         text-align: center;
     }
+    @media screen and (max-width: 768px) {
+        .no-recent-watch-list{
+            width: 89%;
+        }
+    }
+    
     .button-component{
         text-align: center;
     }

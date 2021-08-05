@@ -1,6 +1,6 @@
 <header>
   <div class=header-left>
-    <%= link_to root_path, target: "_blank" do %>
+    <%= link_to root_path, target: "_self" do %>
     <%= image_tag "img_logo.png" ,class:"img_logo"%>
     <p class="title">SHARECAMP</p>
     <% end %>
@@ -20,7 +20,7 @@
             <% end %>
           </li>
 
-          <% if recent_watch_events_count==nil %>
+          <% if recent_watch_events_count==0 %>
           <li class="no-recent-watch">
             <p>最近見たリストはありません</p>
           </li>

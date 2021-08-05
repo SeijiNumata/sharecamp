@@ -10,9 +10,12 @@ module ApplicationHelper
   end
 
   def recent_watch_events_count
-    return unless cookies[:recent_watch_events]
-    
-    JSON.parse(cookies[:recent_watch_events]).count
-  end
+    if cookies[:recent_watch_events]
 
+      JSON.parse(cookies[:recent_watch_events]).count
+    else
+      0
+
+    end
+  end
 end
