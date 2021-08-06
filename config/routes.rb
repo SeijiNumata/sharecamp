@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   root 'top#index'
   get '/top/tos', to: 'top#tos'
-  resources :events
+  resources :events,only: %i[index show new]
   scope :events do
     resources :users, only: %i[create new]
   end
