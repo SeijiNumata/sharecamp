@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   def index
     return unless cookies[:recent_watch_events]
 
-    set_recent_watch_event(JSON.parse(cookies[:recent_watch_events]))
+    @events=recent_watch_events(JSON.parse(cookies[:recent_watch_events]))
   end
 
   def show
@@ -75,14 +75,14 @@ class EventsController < ApplicationController
     session.delete(:from_create)
   end
 
-  def set_recent_watch_event(recent_watch_events)
-    @events = []
+  def recent_watch_events(recent_watch_events)
+    events = []
     recent_watch_events.each do |event_id|
       if Event.exists?(id: event_id) == false
         break
       end
-      @events.push(Event.find(event_id))
+      events.push(Event.find(event_id))
     end
-    @events.reverse!
+    events.reverse!
   end
 end
