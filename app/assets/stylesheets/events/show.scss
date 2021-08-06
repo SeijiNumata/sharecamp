@@ -6,9 +6,13 @@
     width: 768px;
     margin: 30px auto;
 
-
     input {
-        display: block;
+        border: solid 1px #999;
+        border-radius: 4px;
+    }
+    select{
+        border: solid 1px #999;
+        border-radius: 4px;
     }
 
     .show-component {
@@ -19,18 +23,16 @@
         width: 100%;
         display: flex;
 
-        .event_title {
-            display: inline-block;
+        .event_title { 
             text-align: center;
             margin-bottom: 30px;
             width: 80%;
         }
 
         a {
-            display: block;
-            width: 89px;
-            height: 40px;
-            padding-top:7px;
+            height: 44px;
+            width: 120px;
+            padding-top: 8px;
             text-align: center;
             text-decoration: none;
             color: black;
@@ -55,9 +57,13 @@
         margin: 15px auto;
     }
 
+    ul {
+        padding-inline-start: 0px;
+    }
+
     .tabs li,
     .tabs label {
-        width: 240px;
+        width: 300px;
         height: 40px;
         line-height: 40px;
         list-style: none;
@@ -98,9 +104,7 @@
         margin-left: 0px;
         list-style: none;
 
-        li {
-            margin-left: -29px;
-        }
+
 
         .event-show-item {
             margin: 3px;
@@ -110,8 +114,8 @@
         }
 
         h2 {
-            display: inline-block;
-            margin: 20px 20px 20px -2px;
+
+            margin: 20px 20px 20px 20px;
             font-size: 15px;
         }
 
@@ -122,9 +126,7 @@
         }
 
         .item-name-and-number {
-            display: inline-block;
             width: 57%;
-
         }
 
         .event-show-item-input {
@@ -132,7 +134,7 @@
 
             select {
                 position: absolute;
-                height: 30px;
+                height: 40px;
                 font-size: 14px;
                 margin-right: 4px;
                 top: -30px;
@@ -140,14 +142,15 @@
             }
 
             button {
-                height: 30px;
+                height: 40px;
                 font-size: 13px;
                 position: absolute;
                 right: 0px;
                 top: -30px;
             }
+
             .delete-button {
-                width:10px;
+                width: 10px;
             }
 
             @media screen and (max-width: 768px) {
@@ -155,8 +158,8 @@
                     line-height: 14px;
                     right: 0px;
                     top: -34px;
-                    margin-right:0px;
-                    width:80px;
+                    margin-right: 0px;
+                    width: 80px;
                     font-size: 12px;
                 }
 
@@ -182,7 +185,7 @@
                 }
 
                 .postmark-decide {
-                    display: inline-block;
+   
                     position: absolute;
                     margin: 0;
                     padding: 10px;
@@ -200,10 +203,9 @@
                     transform: rotate(-16deg);
                 }
 
-        
+
 
                 .postmark-bring {
-                    display: inline-block;
                     position: absolute;
                     margin: 0;
                     padding: 10px;
@@ -228,11 +230,7 @@
         .event-show-item-user {
             clear: both;
             list-style: none;
-
-            ul {
-                display: inline-block;
-            }
-
+        
             li {
                 display: inline-block;
                 margin-right: 40px;
@@ -256,22 +254,9 @@
         .self-brings-contents {
             height: 600px;
 
-            input {
-                display: inline-block;
-            }
-
-            p {
-                display: inline-block;
-
-            }
-
             .self-bring-item {
                 margin-left: 40px;
                 margin-bottom: 4px;
-
-                input {
-                    display: inline-block;
-                }
             }
         }
 
@@ -293,7 +278,6 @@
 
             .invite-message-content {
                 margin-bottom: 30px;
-                margin-right: 14px;
                 padding: 14px;
                 line-height: 30px;
                 border: 1px solid black;
@@ -307,7 +291,7 @@
                     line-height: 20px;
                 }
             }
-
+       
 
             button {
                 width: 300px;
@@ -341,8 +325,13 @@
         }
 
     }
+    .vm--modal{
+        margin: 0 auto;
+    }
 
     .modal {
+        position: absolute;
+        left:-37px;
         .modal-header {
             border-bottom: 1px solid #ddd;
             font-size: 10px;
@@ -356,7 +345,6 @@
             text-align: center;
 
             p {
-                display: inline-block;
                 padding: 10px;
             }
         }
@@ -370,26 +358,30 @@
 
             button {
                 width: 150px;
+                height: 44px;
             }
         }
     }
+
     @media screen and (max-width: 768px) {
-       .modal {
+        .modal {
             padding: 30px;
             font-size: 7px;
+
             button {
                 width: 100px;
-                margin-right:10px;
+                margin-right: 10px;
                 margin-left: 10px;
             }
         }
-        
+
     }
-    
+
 }
+
 @media screen and (max-width: 768px) {
     #event-show {
-        width: 375px;
+        max-width: 100%;
         padding: 0 10px;
 
     }

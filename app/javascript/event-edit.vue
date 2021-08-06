@@ -1,81 +1,85 @@
 <template>
   <div class="event-edit">
-    <h1>内容変更</h1>
-    <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
-    <input
-      v-model.trim="eventName"
-      class="event-name"
-    >
-    <form>
-      <p>誰かに持ってきて欲しいもの</p>
-      <p
-        v-if="newItemsNullError"
-        class="event-item-null-error"
-      >
-        {{ newItemsNullError }}
-      </p>
-      <p
-        v-if="newItemsNumberNullError"
-        class="event-item-null-error"
-      >
-        {{ newItemsNumberNullError }}
-      </p>
-      <ul>
-        <li
-          v-for="(neededItemInfo, index) in neededItemInfos"
-          :key="neededItemInfo.id"
+    <div class="event-edit-component">
+      <h1>内容変更</h1>
+      <form>
+        <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
+        <input
+          v-model.trim="eventName"
+          class="event-name"
         >
-          <input
-            v-model.trim="neededItemInfo.name"
-            class="item-name"
-            :readonly="neededItemInfo.readonly"
-            :disabled="neededItemInfo.readonly"
-            :class="{readonly:neededItemInfo.readonly}"
+
+        <p>誰かに持ってきて欲しいもの</p>
+        <p
+          v-if="newItemsNullError"
+          class="event-item-null-error"
+        >
+          {{ newItemsNullError }}
+        </p>
+        <p
+          v-if="newItemsNumberNullError"
+          class="event-item-null-error"
+        >
+          {{ newItemsNumberNullError }}
+        </p>
+        <ul>
+          <li
+            v-for="(neededItemInfo, index) in neededItemInfos"
+            :key="neededItemInfo.id"
           >
-          <select
-            v-model="neededItemInfos[index].need_number"
-            class="item-number"
-            name="item-number"
-          >
-            <option
-              value=""
+            <input
+              v-model.trim="neededItemInfo.name"
+              class="item-name"
+              :readonly="neededItemInfo.readonly"
               :disabled="neededItemInfo.readonly"
-              selected
-              :style="neededItemInfo.readonly ? display: ''"
+              :class="{readonly:neededItemInfo.readonly}"
             >
-              数
-            </option>
-            <option
-              v-for="n of 20"
-              :key="n"
+            <select
+              v-model="neededItemInfos[index].need_number"
+              class="item-number"
+              name="item-number"
             >
-              {{ n }}
-            </option>
-          </select>
-          <button
-            class="delete-button"
-            type="button"
-            @click="deleteItems(neededItemInfo.item_id,index)"
-          >
-            削除
-          </button>
-        </li>
-      </ul>
-      <button
-        class="add-button"
-        type="button"
-        @click="addInput"
-      >
-        追加する
-      </button>
-      <button
-        class="create-button"
-        type="button"
-        @click="updateItems"
-      >
-        この内容で登録
-      </button>
-    </form>
+              <option
+                value=""
+                :disabled="neededItemInfo.readonly"
+                selected
+                :style="neededItemInfo.readonly ? display: ''"
+              >
+                数
+              </option>
+              <option
+                v-for="n of 20"
+                :key="n"
+              >
+                {{ n }}
+              </option>
+            </select>
+            <button
+              class="delete-button"
+              type="button"
+              @click="deleteItems(neededItemInfo.item_id,index)"
+            >
+              削除
+            </button>
+          </li>
+        </ul>
+        <button
+          class="add-button"
+          type="button"
+          @click="addInput"
+        >
+          追加する
+        </button>
+        <button
+          class="create-button"
+          type="button"
+          @click="updateItems"
+        >
+          この内容で登録
+        </button>
+      </form>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -88,8 +92,14 @@ import axios from 'axios'
 export default {
 
   props: {
-    currentUserId: { type: String, default: '' },
-    pageUrl: { type: String, default: '' }
+    currentUserId: {
+      type: String,
+      default: ''
+    },
+    pageUrl: {
+      type: String,
+      default: ''
+    }
   },
   data () {
     return {
@@ -101,7 +111,9 @@ export default {
       eventsNameNullError: '',
       newItemsNullError: '',
       newItemsNumberNullError: '',
-      display: { display: 'none' }
+      display: {
+        display: 'none'
+      }
     }
   },
   computed: {},

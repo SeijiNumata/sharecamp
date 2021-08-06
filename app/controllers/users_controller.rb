@@ -16,6 +16,9 @@ class UsersController < ApplicationController
     if event.users.find_by(user_params)
       @user = event.users.find_by(user_params)
       cookies.signed[:user_id] = @user.id
+    elsif User.find_by(user_params)
+      @user = User.find_by(user_params)
+      cookies.signed[:user_id] = @user.id
     else
       @user = User.new(user_params)
       @user.events << event

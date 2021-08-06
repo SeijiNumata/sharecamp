@@ -6,9 +6,9 @@
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 40px;
-    width:768px;
+    width: 768px;
 
-    .title{
+    .title {
         text-align: center;
     }
 
@@ -21,11 +21,16 @@
 
     h2 {
         font-size: 20px;
-
         font-weight: normal;
 
         &:last-child {
             margin-bottom: 40px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        h2 {
+            font-size: 17px;
         }
     }
 
@@ -41,9 +46,10 @@
             h3 {
                 font-size: 30px;
                 font-weight: 900;
+
                 .camp-bring-text {
                     display: block;
-                    font-size:40px;
+                    font-size: 40px;
                     margin-bottom: 12px;
                 }
             }
@@ -60,16 +66,18 @@
 
         @media screen and (max-width: 768px) {
             .describe-text {
-               
-                margin: 30px ;
+
+                margin: 30px;
                 margin-bottom: 20px;
+
                 h3 {
                     margin: 3px;
                     font-size: 20px;
                     font-weight: 900;
+
                     .camp-bring-text {
                         display: block;
-                        font-size:20px;
+                        font-size: 20px;
                         margin-bottom: 12px;
                     }
                 }
@@ -101,9 +109,7 @@
 
         .arrow-buttom {
             width: 100px;
-            margin: 20px auto;
-
-            display: inline-block;
+            margin: 20px auto 50px auto;
         }
     }
 
@@ -117,11 +123,11 @@
     .sharecamp-solution {
         text-align: center;
         width: 100%;
-        display: inline-block;
     }
+
     @media screen and (max-width: 756px) {
         .sharecamp-solution {
-            font-size:23px
+            font-size: 23px
         }
     }
 
@@ -157,11 +163,12 @@
                     }
                 }
             }
+
             @media screen and (max-width: 765px) {
-                    .describe-detail-text-title{
-                        font-size:14px;
-                    }
+                .describe-detail-text-title {
+                    font-size: 14px;
                 }
+            }
 
             .describe-detail-text {
                 font-size: 14px;
@@ -175,9 +182,10 @@
                 }
 
             }
+
             @media screen and (max-width: 765px) {
-                .describe-detail-text{
-                    line-height:16px;
+                .describe-detail-text {
+                    line-height: 16px;
                 }
             }
         }
@@ -195,7 +203,7 @@
     text-decoration: none;
     background-color: #EB5370;
     padding: 13px;
-    color: white ; 
+    color: white;
     margin: 40px 30px 10px 30px;
 
     &:hover {
@@ -221,14 +229,15 @@
         margin: 0 auto;
         margin-top: 40px;
         margin-bottom: 40px;
-        width:375px;
-        h1{
+        max-width: 100%;
+
+        h1 {
             font-size: 35px;
         }
-        .event-new{
-            padding:10px;
-            font-size:13px;
+
+        .event-new {
+            font-size: 13px;
         }
 
     }
-}    
+}

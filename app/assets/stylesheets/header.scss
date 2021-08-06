@@ -7,6 +7,9 @@ header {
     text-decoration: none;
     margin: 0 auto;
 
+    ul{
+        list-style:none;
+    }
     &:after {
         content: "";
         clear: both;
@@ -60,18 +63,19 @@ header {
 }
 
 ul {
-    list-style: none;
+
     margin:0px;
     .recent-watch-link{
         line-height:44px;
     }
 }
-li{
-    margin-right:10px;
-}
+
 
 
 #menu-btn-check {
+    display: none;
+}
+.no-recent-watch{
     display: none;
 }
 
@@ -96,6 +100,11 @@ li{
 }
 
 @media screen and (max-width: 768px) {
+
+    .no-recent-watch{
+        display: block;
+        margin:0 auto;
+    }
     .menu-btn {
         position: absolute;
         top: 10px;

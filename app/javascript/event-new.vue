@@ -1,31 +1,38 @@
 <template>
   <div id="event-new">
-    <h1>持ち物リスト作成</h1>
-    <p class="new-describe">
-      新しい持ち物リストを作成しましょう
-    </p>
-    <div class="event-name">
-      <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
-      <input
-        v-model.trim="newEventsName"
-        placeholder="○○大学卒業キャンプ"
-      >
-    </div>
-    <div class="event-content">
-      <p>誰かに持ってきて欲しいもの</p>
-      <p
-        v-if="newItemsNullError"
-        class="event-item-null-error"
-      >
-        {{ newItemsNullError }}
-      </p>
-      <p
-        v-if="newItemsNumberNullError"
-        class="event-item-null-error"
-      >
-        {{ newItemsNumberNullError }}
-      </p>
-      <form>
+    <h1>持ち物分担リスト作成</h1>
+    <form>
+      <div class="event-name">
+        <label>イベント名  <span class="tooltip"><span class="text">
+          イベントの名称を入力してください。（例）〇〇大学卒業キャンプ
+        </span></span></label>
+        <p class="event-name-error">
+          {{ eventsNameNullError }}
+        </p>
+        <input
+          v-model.trim="newEventsName"
+          placeholder="○○大学卒業キャンプ"
+        >
+      </div>
+      <div class="event-content">
+        <label class="someone-bring-items">誰かに持ってきて欲しいもの  <span class="tooltip"><span class="text">
+          グループで各自が持ってくる必要はない、誰かが持ってくればいいものを入力してください。<br>
+          例えばキャンプの場合、テントやまな板は誰かが持ってくれば良い持ち物なので入力しましょう。<br>
+        </span></span>
+        </label>
+        <p
+          v-if="newItemsNullError"
+          class="event-item-null-error"
+        >
+          {{ newItemsNullError }}
+        </p>
+        <p
+          v-if="newItemsNumberNullError"
+          class="event-item-null-error"
+        >
+          {{ newItemsNumberNullError }}
+        </p>
+
         <ul>
           <li
             v-for="(item, index) in items"
@@ -78,8 +85,10 @@
             内容は後で変更ができます
           </p>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
+    </label>
+  </div>
   </div>
 </template>
 

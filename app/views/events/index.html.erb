@@ -1,21 +1,20 @@
-
 <%= page_heading "一覧ページ" %>
 <div class="events-index">
-<h1>最近ブラウザで閲覧した<br class="br-sp">持ってきて欲しいものリスト</h1>
-<p class="title-description">直近５件のブラウザで<br class="br-sp">閲覧したリストを表示しています</p>
+    <h1>最近ブラウザで閲覧した<br class="br-sp">持ってきて欲しいものリスト</h1>
+    <p class="title-description">直近５件のブラウザで<br class="br-sp">閲覧したリストを表示しています</p>
 
     <% @events.each do |event| %>
     <div class="event">
         <%= link_to event.name, event ,class:"event-name"%>
-       <%= link_to "更新日時   "+event.updated_at.strftime("%Y年 %m月 %d日"),event ,class:"updated-at"  %>
-       </div>
+        <%= link_to "更新日時   "+event.updated_at.strftime("%Y年 %m月 %d日"),event ,class:"updated-at"  %>
+    </div>
     <% end %>
-<% if @events.count==0 %>
-    <p class="no-recent-watch">最近閲覧した持ってきて欲しいものリストはまだありません</p>
-<% end %>
+    <% if @events.count==0 %>
+    <p class="no-recent-watch-list">最近閲覧した持ってきて<br class="br-sp">欲しいものリストはまだありません</p>
+    <% end %>
 
-<br>
-<div class="button-component">
-<%= link_to '持ってきて欲しいものリストを作る', new_event_path,class:"new-event-button" %>
-</div>
+    <br>
+    <div class="button-component">
+        <%= link_to '持ってきて欲しいものリストを作る', new_event_path,class:"new-event-button" %>
+    </div>
 </div>
