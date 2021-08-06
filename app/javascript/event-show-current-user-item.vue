@@ -3,13 +3,15 @@
     v-if="bringItemId!=0"
     class="self-bring-item"
   >
-    <input
-      id="checkbox"
-      v-model="bringChecked"
-      type="checkbox"
-      @change="changeBringCheckBox"
-    >
-    <p>{{ itemName }}({{ bringNumber }})</p>
+    <label>
+      <input
+        id="checkbox"
+        v-model="bringChecked"
+        type="checkbox"
+        @change="changeBringCheckBox"
+      >
+      {{ itemName }}({{ bringNumber }})
+    </label>
   </div>
 </template>
 
