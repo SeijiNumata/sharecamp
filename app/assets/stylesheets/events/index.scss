@@ -25,15 +25,10 @@
 
 
     .event {
-        
-        width: 80%;
+
         border: solid 1px black;
         padding: 10px;
-        text-align: center;
-        padding-left: 30px;
-        margin: 10px;
-        margin-left: 30px;
-        display: inline-block;
+        margin: 10px 40px;
         text-align: left;
         position: relative;
 
@@ -70,7 +65,6 @@
         text-align: center;
     }
     .new-event-button {
-        display: inline-block;
         border: none;
         text-align: center;
         background-color: #ffd803;

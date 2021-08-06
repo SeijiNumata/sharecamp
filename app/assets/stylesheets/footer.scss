@@ -1,6 +1,9 @@
 #footer {
     position: relative;
     background-color: #bae8e8;
+    ul{
+        list-style: none;
+    }
 }
 #footer .nav a {
     display: block;

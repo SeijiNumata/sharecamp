@@ -7,7 +7,12 @@
     margin: 30px auto;
 
     input {
-        display: block;
+        border: solid 1px #999;
+        border-radius: 4px;
+    }
+    select{
+        border: solid 1px #999;
+        border-radius: 4px;
     }
 
     .show-component {
@@ -18,16 +23,16 @@
         width: 100%;
         display: flex;
 
-        .event_title {
-            display: inline-block;
+        .event_title { 
             text-align: center;
             margin-bottom: 30px;
             width: 80%;
         }
 
         a {
-            height: 40px;
-            padding-top:8px;
+            height: 44px;
+            width: 120px;
+            padding-top: 8px;
             text-align: center;
             text-decoration: none;
             color: black;
@@ -51,9 +56,11 @@
         justify-content: space-around;
         margin: 15px auto;
     }
-    ul{
-        padding-inline-start:0px;
+
+    ul {
+        padding-inline-start: 0px;
     }
+
     .tabs li,
     .tabs label {
         width: 300px;
@@ -97,7 +104,7 @@
         margin-left: 0px;
         list-style: none;
 
-      
+
 
         .event-show-item {
             margin: 3px;
@@ -107,7 +114,7 @@
         }
 
         h2 {
-       
+
             margin: 20px 20px 20px 20px;
             font-size: 15px;
         }
@@ -119,9 +126,7 @@
         }
 
         .item-name-and-number {
-            display: inline-block;
             width: 57%;
-
         }
 
         .event-show-item-input {
@@ -143,8 +148,9 @@
                 right: 0px;
                 top: -30px;
             }
+
             .delete-button {
-                width:10px;
+                width: 10px;
             }
 
             @media screen and (max-width: 768px) {
@@ -152,8 +158,8 @@
                     line-height: 14px;
                     right: 0px;
                     top: -34px;
-                    margin-right:0px;
-                    width:80px;
+                    margin-right: 0px;
+                    width: 80px;
                     font-size: 12px;
                 }
 
@@ -179,7 +185,7 @@
                 }
 
                 .postmark-decide {
-                    display: inline-block;
+   
                     position: absolute;
                     margin: 0;
                     padding: 10px;
@@ -197,10 +203,9 @@
                     transform: rotate(-16deg);
                 }
 
-        
+
 
                 .postmark-bring {
-                    display: inline-block;
                     position: absolute;
                     margin: 0;
                     padding: 10px;
@@ -225,11 +230,7 @@
         .event-show-item-user {
             clear: both;
             list-style: none;
-
-            ul {
-                display: inline-block;
-            }
-
+        
             li {
                 display: inline-block;
                 margin-right: 40px;
@@ -253,22 +254,9 @@
         .self-brings-contents {
             height: 600px;
 
-            input {
-                display: inline-block;
-            }
-
-            p {
-                display: inline-block;
-
-            }
-
             .self-bring-item {
                 margin-left: 40px;
                 margin-bottom: 4px;
-
-                input {
-                    display: inline-block;
-                }
             }
         }
 
@@ -303,7 +291,7 @@
                     line-height: 20px;
                 }
             }
-
+       
 
             button {
                 width: 300px;
@@ -312,6 +300,7 @@
                 height: 50px;
                 border: none;
                 background-color: #ffd803;
+
                 &:hover {
                     box-shadow: 0px 0px 10px #ccc;
                 }
@@ -336,8 +325,13 @@
         }
 
     }
+    .vm--modal{
+        margin: 0 auto;
+    }
 
     .modal {
+        position: absolute;
+        left:-37px;
         .modal-header {
             border-bottom: 1px solid #ddd;
             font-size: 10px;
@@ -351,7 +345,6 @@
             text-align: center;
 
             p {
-                display: inline-block;
                 padding: 10px;
             }
         }
@@ -365,24 +358,27 @@
 
             button {
                 width: 150px;
-                height:44px;
+                height: 44px;
             }
         }
     }
+
     @media screen and (max-width: 768px) {
-       .modal {
+        .modal {
             padding: 30px;
             font-size: 7px;
+
             button {
                 width: 100px;
-                margin-right:10px;
+                margin-right: 10px;
                 margin-left: 10px;
             }
         }
-        
+
     }
-    
+
 }
+
 @media screen and (max-width: 768px) {
     #event-show {
         max-width: 100%;

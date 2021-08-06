@@ -7,6 +7,9 @@ header {
     text-decoration: none;
     margin: 0 auto;
 
+    ul{
+        list-style:none;
+    }
     &:after {
         content: "";
         clear: both;

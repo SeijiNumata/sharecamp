@@ -114,26 +114,17 @@
         height: 80px;
 
         input {
-            display: inline-block;
             width: 100%;
             border: solid 1px #999;
             border-radius: 4px;
             line-height: 40px;
             font-size: 16px;
         }
-
-        .describe-new-event-name {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            line-height: 20px;
-            display: inline-block;
-        }
     }
 
     .event-name-error {
         color: red;
         font-size: 12px;
-        margin-left: 20px;
     }
 
     .event-item-null-error {
@@ -178,7 +169,6 @@
                 text-align: center;
                 border: solid 1px #999;
                 border-radius: 4px;
-                color: black;
                 background-color:white;
             }
 

@@ -10,6 +10,21 @@
     width: 768px;
     margin: 30px auto;
 
+    .event-edit-component {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    input {
+        border: solid 1px #999;
+        border-radius: 4px;
+    }
+
+    select {
+        border: solid 1px #999;
+        border-radius: 4px;
+    }
+
     h1 {
         text-align: center;
     }
@@ -21,7 +36,7 @@
 
     .event-name {
         width: 100%;
-        height:40px;
+        height: 40px;
     }
 
     .event-name-error {
@@ -38,25 +53,22 @@
 
     li {
         width: 100%;
-        display: inline-block;
         display: flex;
-        height:40px;
+        height: 40px;
         margin-bottom: 16px;
 
         .item-name {
-            display: inline-block;
             width: 79%;
             margin-right: 10px;
         }
 
         .item-number {
-            display: inline-block;
             width: 14%;
             text-align: center;
+            background-color: white;
         }
 
         .delete-button {
-            display: inline-block;
             width: 50px;
             height: 40px;
             margin-left: 3px;
@@ -72,7 +84,7 @@
     .add-button {
         margin: 26px auto;
         width: 150px;
-        height:44px;
+        height: 44px;
         background: white;
         margin-bottom: 30px;
         display: block;
@@ -97,7 +109,7 @@
         margin: 30px auto 10px auto;
         width: 250px;
         display: block;
-        height:44px;
+        height: 44px;
 
         &:hover {
             box-shadow: 0px 0px 10px #ccc;
@@ -112,10 +124,10 @@
         }
     }
 }
+
 @media screen and (max-width: 768px) {
     .event-edit {
         max-width: 100%;
         padding: 0 10px;
-
     }
 }

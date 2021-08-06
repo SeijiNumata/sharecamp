@@ -5,7 +5,10 @@
       <div class="event-name">
         <label>イベント名  <span class="tooltip"><span class="text">
           イベントの名称を入力してください。（例）〇〇大学卒業キャンプ
-        </span></span><span class="event-name-error">{{ eventsNameNullError }}</span></label>
+        </span></span></label>
+        <p class="event-name-error">
+          {{ eventsNameNullError }}
+        </p>
         <input
           v-model.trim="newEventsName"
           placeholder="○○大学卒業キャンプ"
@@ -14,7 +17,7 @@
       <div class="event-content">
         <label class="someone-bring-items">誰かに持ってきて欲しいもの  <span class="tooltip"><span class="text">
           グループで各自が持ってくる必要はない、誰かが持ってくればいいものを入力してください。<br>
-          例えば、キャンプの場合、テントやまな板は誰かが持ってくれば良い持ち物なので入力しましょう。<br>
+          例えばキャンプの場合、テントやまな板は誰かが持ってくれば良い持ち物なので入力しましょう。<br>
         </span></span>
         </label>
         <p
