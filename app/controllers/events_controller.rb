@@ -4,7 +4,6 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
-    @events = []
     return unless cookies[:recent_watch_events]
 
     set_recent_watch_event(JSON.parse(cookies[:recent_watch_events]))
@@ -77,9 +76,9 @@ class EventsController < ApplicationController
   end
 
   def set_recent_watch_event(recent_watch_events)
+    @events = []
     recent_watch_events.each do |event_id|
       if Event.exists?(id: event_id) == false
-        @events = []
         break
       end
       @events.push(Event.find(event_id))
