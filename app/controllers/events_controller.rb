@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    set_from_event_create
+    check_came_from_create
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
 
@@ -68,7 +68,7 @@ class EventsController < ApplicationController
     cookies[:recent_watch_events] = JSON.generate(recent_watch_events)
   end
 
-  def set_from_event_create
+  def check_came_from_create
     return unless session[:from_create]
 
     @from_create = session[:from_create]
