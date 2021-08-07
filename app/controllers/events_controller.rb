@@ -22,6 +22,8 @@ class EventsController < ApplicationController
     session[:from_create] = 'from_create'
   end
 
+  def edit; end
+
   private
 
   def set_event
