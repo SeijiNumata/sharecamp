@@ -9,10 +9,10 @@ module ApplicationHelper
     content_for(:title) { title }
   end
 
-  def recent_watch_events_count
-    if cookies[:recent_watch_events]
+  def recent_watched_events_count
+    if cookies[:recent_watched_events]
 
-      JSON.parse(cookies[:recent_watch_events]).count
+      JSON.parse(cookies[:recent_watched_events]).count
     else
       0
 

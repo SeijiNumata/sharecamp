@@ -4,9 +4,9 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
-    return unless cookies[:recent_watch_events]
+    return unless cookies[:recent_watched_events]
 
-    @events=recent_watch_events(JSON.parse(cookies[:recent_watch_events]))
+    @events = recent_watched_events(JSON.parse(cookies[:recent_watched_events]))
   end
 
   def show
@@ -54,17 +54,17 @@ class EventsController < ApplicationController
   end
 
   def set_recent_watch_cookies(event)
-    if cookies[:recent_watch_events].nil?
-      recent_watch_events = [event.id.to_s]
+    if cookies[:recent_watched_events].nil?
+      recent_watched_events = [event.id.to_s]
     else
-      recent_watch_events = JSON.parse(cookies[:recent_watch_events])
-      recent_watch_events.push(event.id).uniq!
+      recent_watched_events = JSON.parse(cookies[:recent_watched_events])
+      recent_watched_events.push(event.id).uniq!
       recent_watch_array_number = 5
-      if recent_watch_events.count > recent_watch_array_number
-        recent_watch_events.slice!(0..recent_watch_events.count - (recent_watch_array_number + 1))
+      if recent_watched_events.count > recent_watch_array_number
+        recent_watched_events.slice!(0..recent_watched_events.count - (recent_watch_array_number + 1))
       end
     end
-    cookies[:recent_watch_events] = JSON.generate(recent_watch_events)
+    cookies[:recent_watched_events] = JSON.generate(recent_watched_events)
   end
 
   def from_create_check
@@ -75,12 +75,13 @@ class EventsController < ApplicationController
     session.delete(:from_create)
   end
 
-  def recent_watch_events(recent_watch_events)
+  def recent_watched_events(recent_watched_events)
     events = []
-    recent_watch_events.each do |event_id|
+    recent_watched_events.each do |event_id|
       if Event.exists?(id: event_id) == false
         break
       end
+
       events.push(Event.find(event_id))
     end
     events.reverse!

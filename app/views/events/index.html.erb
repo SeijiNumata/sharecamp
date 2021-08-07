@@ -4,13 +4,13 @@
     <p class="title-description">直近５件のブラウザで<br class="br-sp">閲覧したリストを表示しています</p>
 
 
-    <% if @events==nil %>
+    <% if @events.blank? %>
         <p class="no-recent-watch-list">最近閲覧した持ってきて<br class="br-sp">欲しいものリストはまだありません</p>
     <% else %>
        <% @events.each do |event| %>
          <div class="event">
-           <%= link_to event.name, event ,class:"event-name"%>
-           <%= link_to "更新日時   "+event.updated_at.strftime("%Y年 %m月 %d日"),event ,class:"updated-at"  %>
+           <%= link_to event.name, event, class:"event-name"%>
+           <%= link_to "更新日時   "+event.updated_at.strftime("%Y年 %m月 %d日"), event, class:"updated-at"  %>
         </div>
        <% end %>
     <% end %>
@@ -18,6 +18,6 @@
 
     <br>
     <div class="button-component">
-        <%= link_to '持ってきて欲しいものリストを作る', new_event_path,class:"new-event-button" %>
+        <%= link_to '持ってきて欲しいものリストを作る', new_event_path, class:"new-event-button" %>
     </div>
 </div>
