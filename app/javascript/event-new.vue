@@ -3,24 +3,29 @@
     <h1>持ち物分担リスト作成</h1>
     <form>
       <div class="event-name">
-        <label>イベント名  <span class="tooltip"><span class="text">
-          イベントの名称を入力してください。（例）〇〇大学卒業キャンプ
-        </span></span></label>
+        <label>イベント名
+
+        </label>
+        <p class="describe-event-name">
+          イベントの名称を入力してください
+        </p>
         <p class="event-name-error">
           {{ eventsNameNullError }}
         </p>
         <input
           v-model.trim="newEventsName"
-          placeholder="○○大学卒業キャンプ"
         >
+        <p class="event-name-example">
+          （例）〇〇大学卒業キャンプ
+        </p>
       </div>
       <div class="event-content">
-        <label class="someone-bring-items">誰かに持ってきて欲しいもの  <span class="tooltip"><span class="text">
+        <label class="someone-bring-items">誰かに持ってきて欲しいもの
+        </label>
+        <p class="describe-someone-bring-items">
           グループで各自が持ってくる必要はない、誰かが持ってくればいいものを入力してください。<br>
           例えばキャンプの場合、テントやまな板は誰かが持ってくれば良い持ち物なので入力しましょう。<br>
-        </span></span>
-        </label>
-        <p
+        </p><p
           v-if="newItemsNullError"
           class="event-item-null-error"
         >
@@ -38,31 +43,35 @@
             v-for="(item, index) in items"
             :key="item.id"
           >
-            <input
-              v-model.trim="newItems[index]"
-              class="item"
-              type="text"
-              :placeholder="itemsPlaceholders[index]"
-            >
-            <select
-              v-model="newItemsNumber[index]"
-              class="item-number"
-              name="new-items-number"
-            >
-              <option
-                value=""
-                selected
+            <div class="input-container">
+              <input
+                v-model.trim="newItems[index]"
+                class="item"
+                type="text"
               >
-                数
-              </option>
-              <option
-                v-for="n of 20"
-                :key="n"
-                :value="n"
+              <select
+                v-model="newItemsNumber[index]"
+                class="item-number"
+                name="new-items-number"
               >
-                {{ n }}
-              </option>
-            </select>
+                <option
+                  value=""
+                  selected
+                >
+                  数
+                </option>
+                <option
+                  v-for="n of 20"
+                  :key="n"
+                  :value="n"
+                >
+                  {{ n }}
+                </option>
+              </select>
+            </div>
+            <p class="bring-item-example">
+              {{ itemsExamples[index] }}
+            </p>
           </li>
         </ul>
         <button
@@ -105,7 +114,7 @@ export default {
       newItems: [],
       newItemsNumber: ['', '', ''],
       newEventsName: '',
-      itemsPlaceholders: ['テント', 'タープ', '寝袋'],
+      itemsExamples: ['(例)まな板', '(例)鍋', '(例)トランプ'],
       eventsNameNullError: '',
       newItemsNullError: '',
       newItemsNumberNullError: ''
