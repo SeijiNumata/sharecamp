@@ -24,8 +24,6 @@ class EventsController < ApplicationController
 
   def edit; end
 
-  def update; end
-
   private
 
   def set_event
