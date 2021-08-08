@@ -43,12 +43,12 @@
             <div class="input-container">
               <input
                 v-model.trim="newItems[index]"
-                class="item"
+                class="item-new"
                 type="text"
               >
               <select
                 v-model="newItemsNumber[index]"
-                class="item-number"
+                class="item-number-new"
                 name="new-items-number"
               >
                 <option
