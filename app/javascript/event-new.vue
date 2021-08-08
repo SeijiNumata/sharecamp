@@ -6,9 +6,6 @@
         <label>イベント名
 
         </label>
-        <p class="describe-event-name">
-          イベントの名称を入力してください
-        </p>
         <p class="event-name-error">
           {{ eventsNameNullError }}
         </p>
@@ -16,7 +13,7 @@
           v-model.trim="newEventsName"
         >
         <p class="event-name-example">
-          （例）〇〇大学卒業キャンプ
+          イベントの名称を入力してください（例）〇〇大学卒業キャンプ
         </p>
       </div>
       <div class="event-content">
@@ -24,7 +21,7 @@
         </label>
         <p class="describe-someone-bring-items">
           グループで各自が持ってくる必要はない、誰かが持ってくればいいものを入力してください。<br>
-          例えばキャンプの場合、テントやまな板は誰かが持ってくれば良い持ち物なので入力しましょう。<br>
+          例えばキャンプの場合、まな板や鍋は誰かが持ってくれば良い持ち物なので入力しましょう。<br>
         </p><p
           v-if="newItemsNullError"
           class="event-item-null-error"
