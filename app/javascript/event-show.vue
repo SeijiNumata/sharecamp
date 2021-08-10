@@ -187,7 +187,7 @@ export default {
       this.hide()
     },
     modal () {
-      if (this.fromCreate === 'from_create') {
+      if (this.fromCreate === 'from_event_create') {
         this.show()
       }
     },
