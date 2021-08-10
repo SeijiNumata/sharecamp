@@ -10,7 +10,8 @@
         border: solid 1px #999;
         border-radius: 4px;
     }
-    select{
+
+    select {
         border: solid 1px #999;
         border-radius: 4px;
     }
@@ -23,7 +24,7 @@
         width: 100%;
         display: flex;
 
-        .event_title { 
+        .event_title {
             text-align: center;
             margin-bottom: 30px;
             width: 80%;
@@ -139,6 +140,12 @@
                 margin-right: 4px;
                 top: -30px;
                 right: 80px;
+                padding: 4px 4px 4px 4px 4px;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 0 0 0 2px #ffd705;
+                }
             }
 
             button {
@@ -151,6 +158,10 @@
 
             .delete-button {
                 width: 10px;
+            }
+
+            .bring-button {
+                cursor: pointer;
             }
 
             @media screen and (max-width: 768px) {
@@ -168,70 +179,13 @@
                 }
             }
 
-            .stamp-button-component {
-                position: relative;
 
-                .no-number-error {
-                    color: red;
-                    font-size: 10px;
-                    position: absolute;
-                    right: 10px;
-                    top:7px;
-                }
-
-                @media screen and (max-width: 768px) {
-                    .no-number-error {
-                        top: -10px;
-                    }
-                }
-
-                .postmark-decide {
-   
-                    position: absolute;
-                    margin: 0;
-                    padding: 10px;
-                    line-height: 4px;
-                    width: 70px;
-                    right: 100px;
-                    top: -20px;
-                    height: 10px;
-                    border: 5px double red;
-                    border-radius: 10%;
-                    color: red;
-                    text-align: center;
-                    font-size: 10px;
-                    font-family: 'Bree Serif', serif;
-                    transform: rotate(-16deg);
-                }
-
-
-
-                .postmark-bring {
-                    position: absolute;
-                    margin: 0;
-                    padding: 10px;
-                    width: 80px;
-                    right: 0px;
-                    top: -20px;
-                    height: 10px;
-                    line-height: 4px;
-                    border: 5px double blue;
-                    border-radius: 10%;
-                    color: blue;
-                    text-align: center;
-                    font-size: 7px;
-                    font-family: 'Bree Serif', serif;
-                    transform: rotate(-16deg);
-                }
-
-
-            }
         }
 
         .event-show-item-user {
             clear: both;
             list-style: none;
-        
+
             li {
                 display: inline-block;
                 margin-right: 40px;
@@ -250,16 +204,6 @@
                 font-weight: bold;
             }
 
-        }
-
-        .self-brings-contents {
-            height: 600px;
-
-            .self-bring-item {
-                margin-left: 40px;
-                margin-bottom: 4px;
-                display: inline-block;
-            }
         }
 
         .invite {
@@ -293,7 +237,7 @@
                     line-height: 20px;
                 }
             }
-       
+
 
             button {
                 width: 300px;
@@ -327,13 +271,15 @@
         }
 
     }
-    .vm--modal{
+
+    .vm--modal {
         margin: 0 auto;
     }
 
     .modal {
         position: absolute;
-        left:-37px;
+        left: -25%;
+
         .modal-header {
             border-bottom: 1px solid #ddd;
             font-size: 10px;
@@ -361,6 +307,7 @@
             button {
                 width: 150px;
                 height: 44px;
+                cursor: pointer;
             }
         }
     }
@@ -369,6 +316,7 @@
         .modal {
             padding: 30px;
             font-size: 7px;
+            left: -37px;
 
             button {
                 width: 100px;
@@ -381,6 +329,72 @@
 
 }
 
+.stamp-button-component {
+    position: relative;
+
+    .no-number-error {
+        color: red;
+        font-size: 10px;
+        position: absolute;
+        right: 10px;
+        top: 7px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .no-number-error {
+            top: -10px;
+        }
+    }
+
+    .postmark-decide {
+
+        position: absolute;
+        margin: 0;
+        padding: 10px;
+        line-height: 4px;
+        width: 70px;
+        right: 100px;
+        top: -20px;
+        height: 10px;
+        border: 5px double red;
+        border-radius: 10%;
+        color: red;
+        text-align: center;
+        font-size: 10px;
+        font-family: 'Bree Serif', serif;
+        transform: rotate(-16deg);
+    }
+
+
+
+    .postmark-bring {
+        position: absolute;
+        margin: 0;
+        padding: 10px;
+        width: 80px;
+        right: 0px;
+        top: -20px;
+        height: 10px;
+        line-height: 4px;
+        border: 5px double blue;
+        border-radius: 10%;
+        color: blue;
+        text-align: center;
+        font-size: 7px;
+        font-family: 'Bree Serif', serif;
+        transform: rotate(-16deg);
+    }
+}
+
+.self-brings-contents {
+    height: 600px;
+
+    .self-bring-item {
+        margin-left: 40px;
+        margin-bottom: 4px;
+        display: inline-block;
+    }
+}
 @media screen and (max-width: 768px) {
     #event-show {
         max-width: 100%;

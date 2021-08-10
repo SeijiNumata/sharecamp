@@ -3,93 +3,11 @@
     margin: 30px auto;
 
     label {
-        margin-top: 10px;
-        margin-bottom: 5px;
         display: block;
         width: 100%;
-        .tooltip {
-            /* 位置の情報 */
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            vertical-align: middle;
-
-            /* 中身の情報 */
-            background: #bae8e8;
-            border-radius: 100%;
-            position: relative;
-
-            &:before {
-                /* 位置の情報 */
-                position: absolute;
-                display: inline-block;
-                top: 7px;
-                right: -2px;
-                position: absolute;
-                transform: translate(-50%, -50%) scale(0.6);
-
-                /* 中身の情報 */
-                content: '?';
-                color: white;
-                font-size: 100%;
-                font-weight: bold;
-            }
-
-            &:hover {
-                .text {
-                    /* アニメーションの情報 */
-                    visibility: visible;
-                    opacity: 1.0;
-                    bottom: calc(100% + 10px);
-
-                    &:after {
-
-                        /* 位置の情報 */
-                        position: absolute;
-                        display: block;
-                        width: 10px;
-                        height: 10px;
-                        left: 50%;
-                        bottom: -5px;
-                        transform: rotateZ(45deg) translateX(-50%);
-                        transform-origin: left;
-
-                        /* 中身の情報 */
-                        content: ' ';
-                        background: gray;
-                    }
-
-                }
-            }
-
-            .text {
-                visibility: hidden;
-                /* 位置の情報 */
-                position: absolute;
-                display: block;
-                width: 14em;
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 100%;
-
-                /* 中身の情報 */
-                background: gray;
-                color: white;
-                font-size: 12px;
-                padding: 10px;
-                line-height: 1.4;
-                border-radius: 6px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-                pointer-events: none;
-                /* アニメーションの情報 */
-                transition: all 0.4s ease;
-                visibility: hidden;
-                opacity: 0;
-                bottom: 100%;
-            }
-        }
+        margin-bottom: 10px;
+        font-weight: bold;
     }
-
 
     ::placeholder {
         color: #d8d8d8;
@@ -109,9 +27,7 @@
     }
 
     .event-name {
-        width: 80%;
-        margin: 0 auto;
-        height: 80px;
+        margin-top: 1rem;
 
         input {
             width: 100%;
@@ -133,20 +49,14 @@
     }
 
     .event-content {
-        width: 80%;
-        margin: 0 auto;
+        margin-top: 1rem;
 
         input {
-            line-height: 40px;
+            height: 40px;
+            padding: 0 8px;
             border: solid 1px #999;
             border-radius: 4px;
         }
-
-        p {
-            width: 100%;
-        }
-
-
 
         ul {
             padding-left: 0px;
@@ -154,24 +64,16 @@
 
         li {
             list-style: none;
-            display: flex;
+
             width: 100%;
             margin-bottom: 16px;
 
-            .item {
-                flex: 1;
-                margin-right: 10px;
+        }
 
-            }
 
-            .item-number {
-                width: 64px;
-                text-align: center;
-                border: solid 1px #999;
-                border-radius: 4px;
-                background-color:white;
-            }
-
+        .bring-item-example {
+            font-size: 13px;
+            color: gray;
         }
 
         .add-button {
@@ -183,6 +85,7 @@
             border: solid 1px #989898;
             height: 44px;
             border-radius: 4px;
+            cursor: pointer;
 
             &:hover {
                 box-shadow: 0px 0px 10px #ccc;
@@ -207,6 +110,7 @@
             width: 250px;
             margin: 0 auto 4px auto;
             height: 44px;
+            cursor: pointer;
 
             &:hover {
                 box-shadow: 0px 0px 10px #ccc;
@@ -222,14 +126,52 @@
         }
     }
 
+
     .messasge-container {
         margin: 0px auto;
         text-align: center;
-        .message{
-            font-size:12px;
+
+        .message {
+            font-size: 12px;
         }
     }
 }
+
+.input-container {
+    display: flex;
+}
+
+.item-new {
+    flex: 1;
+    margin-right: 10px;
+
+}
+
+
+.item-number-new {
+    width: 64px;
+    text-align: center;
+    border: solid 1px #999;
+    border-radius: 4px;
+    background-color: white;
+    padding: 4px 4px 4px 4px 4px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 0 2px #ffd705;
+    }
+}
+.describe-someone-bring-items {
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+.event-name-example {
+    font-size: 12px;
+    color: gray;
+}
+
 
 @media screen and (max-width: 768px) {
     #event-new {
