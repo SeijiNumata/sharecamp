@@ -1,31 +1,37 @@
 .user-new-container {
-    width: 768px;
+    width: 540px;
     margin: 30px auto;
 
     h1 {
-        font-size: 20px;
-        font-weight: 500;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.4;
         text-align: center;
     }
-    .error-message{
-        color:red;
+
+    .error-message {
+        color: red;
         list-style-type: none;
         text-align: center;
     }
 
+  
     .nickname-form {
-        margin: 30px auto;
-        border: 3px solid black;
-        height: 300px;
-        width: 80%;
+        border: 1px solid #ccc;
+        padding:24px;
+        border-radius:4px;
+        margin-top: 24px;
         text-align: center;
 
-        p,
-        
+        label {
+            font-weight: 700;
+            font-size:16px;
+            margin-bottom:16px;
+        }
+
         .actions {
-            margin-top: 33px;
+            margin-top: 20px;
             position: relative;
-            text-align: center;
         }
 
 
@@ -35,23 +41,25 @@
 
         }
 
-        .nickname-label {
-            width: 80%;
-            text-align: left;
-            display: inline-block;
-        }
-
         .text_field {
-            width: 80%;
-            height:40px;
-            border:solid 1px #999;
-            border: radius 4px;
+            height: 40px;
+            border: solid 1px #999;
+            border-radius:4px;
+            width:320px;
+            max-width: 100%;
+            margin:0 auto;
+            display:block;
+            padding:0 8px;
         }
 
         .nickname-submit-button {
             border: none;
             background-color: #ffd803;
-            padding: 11px;
+            padding: 12px 32px 12px;
+            font-weight: 600;
+            color:#444;
+            margin:0 auto;
+            display:block;
             cursor: pointer;
 
             &:hover {
@@ -68,14 +76,21 @@
             }
         }
     }
-    .back-button-user-new{
-        text-align: center;
-    }
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 540px) {
     .user-new-container {
         max-width: 100%;
         padding: 0 10px;
+    }
+    .nickname-submit-button{
+        width:100%;
+    }
+}
 
+@media screen and (max-width: 768px) {
+
+    h1{
+        font-size: 18px;
     }
 }

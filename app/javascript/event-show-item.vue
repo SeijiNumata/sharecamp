@@ -42,7 +42,6 @@
           >
             {{ noNumberErrorMessage }}
           </p>
-          <p />
           <div
             v-if="needNumber-bringSum<=0"
             class="postmark-decide"

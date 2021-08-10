@@ -1,13 +1,12 @@
 <%= page_heading "ユーザー入力" %>
 <div class=user-new-container>
   <% if @event!=nil %>
-  <h1><%= @event.name %>の</h1>
-  <h1>誰か持ってきてリストへようこそ</h1>
+  <h1><%= @event.name %>の<br>持ち物分担リストへようこそ</h1>
   <%end %>
   <%= form_with(model: @user) do |form| %>
 
   <div class="nickname-form">
-    <p>ニックネームを入力してください</p>
+    <label>あなたのニックネームを入力してください</label>
     <% if @user.errors.any? %>
     <div id="error_explanation">
 
@@ -19,16 +18,13 @@
     </div>
     <% end %>
     <div class="field">
-      <p class="nickname-label"><%= form.label "ニックネーム" %></p>
+      
       <%= form.text_field :name, class:"text_field", value:current_user&.name %>
     </div>
 
     <div class="actions">
-      <%= form.submit "持ってきて欲しいものリストへ", class:"nickname-submit-button"%>
+      <%= form.submit "持ち物分担リストへ", class:"nickname-submit-button"%>
     </div>
     <% end %>
-  </div>
-  <div class="back-button-user-new">
-    <%= link_to '戻る', :back  %>
   </div>
 </div>

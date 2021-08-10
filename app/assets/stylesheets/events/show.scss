@@ -5,6 +5,7 @@
 #event-show {
     width: 768px;
     margin: 30px auto;
+    padding:0 16px;
 
     input {
         border: solid 1px #999;
@@ -23,7 +24,8 @@
     .event_head {
         width: 100%;
         display: flex;
-
+        margin-bottom:32px;
+        align-items: center;
         .event_title {
             text-align: center;
             margin-bottom: 30px;
@@ -272,13 +274,7 @@
 
     }
 
-    .vm--modal {
-        margin: 0 auto;
-    }
-
     .modal {
-        position: absolute;
-        left: -25%;
 
         .modal-header {
             border-bottom: 1px solid #ddd;
