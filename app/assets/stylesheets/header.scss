@@ -7,9 +7,6 @@ header {
     text-decoration: none;
     margin: 0 auto;
 
-    .menu-content{
-        height:44px;
-    }
     ul{
         list-style:none;
         height:44px;
@@ -32,48 +29,45 @@ header {
 
     position: relative;
 
-    .header-left {
-        width: 40%;
+    
+}
+.header-left {
+    width: 40%;
+}
+.header-left-title {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    color: #444;
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 12px;
+    margin-left: 20px;
+    vertical-align: middle;
+    text-decoration: none;
+}
+.img_logo {
+        width: 50px;
+        display: inline-block;
+        margin-top: 10px;
+        position: absolute;
+        top: 0px;
+        left: 130px;
+    }
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+    a {
+        font-weight: 700;
+        color: #272343;
+        text-decoration: none;
+        margin-right: 10px;
 
-        .title {
-            display: inline-block;
-            font-family: 'Lato', sans-serif;
-            color: #444;
-            font-weight: 700;
-            font-size: 19px;
-            margin-top: 12px;
-            margin-left: 20px;
-            vertical-align: middle;
+        &:hover {
+           color: #ca353b;
             text-decoration: none;
         }
-
-        .img_logo {
-            width: 50px;
-            display: inline-block;
-            margin-top: 10px;
-            position: absolute;
-            top: 0px;
-            left: 130px;
-        }
     }
-
-    .header-right {
-        display: flex;
-        justify-content: flex-end;
-        width: 60%;
-        a {
-            font-weight: 700;
-            color: #272343;
-            text-decoration: none;
-            margin-right: 10px;
-
-            &:hover {
-               color: #ca353b;
-                text-decoration: none;
-            }
-        }
-    }
-
 }
 
 ul {
@@ -83,8 +77,6 @@ ul {
         line-height:44px;
     }
 }
-
-
 
 #menu-btn-check {
     display: none;
@@ -214,13 +206,13 @@ ul {
 
     .menu-content {
         width: 100%;
-        height: 300px;
+        height: 500px;
         position: fixed;
         top: 0;
         left: 100%;
         /*leftの値を変更してメニューを画面外へ*/
         z-index: 80;
-        background-color: #bae8e8;
+       background-color: #bae8e8;
         transition: all 0.5s;
         /*アニメーション設定*/
     }
