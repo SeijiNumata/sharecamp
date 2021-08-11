@@ -76,14 +76,10 @@ class EventsController < ApplicationController
   def recent_watched_events
     return unless cookies[:recent_watched_events]
 
-    events = []
-    JSON.parse(cookies[:recent_watched_events]).each do |event_id|
-      if Event.exists?(id: event_id) == false
-        break
-      end
-
-      events.push(Event.find(event_id))
+    events = JSON.parse(cookies[:recent_watched_events]).map do |event_id|
+      Event.find(event_id)
     end
+
     events.reverse!
   end
 end
