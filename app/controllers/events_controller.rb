@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
 
-    set_recent_watch_cookies(@event)
+    push_recent_watch_cookies(@event)
   end
 
   def new
@@ -51,7 +51,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(:name)
   end
 
-  def set_recent_watch_cookies(event)
+  def push_recent_watch_cookies(event)
     if cookies[:recent_watched_events].nil?
       recent_watched_events = [event.id.to_s]
     else
