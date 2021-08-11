@@ -30,6 +30,7 @@
         margin-top: 1rem;
 
         input {
+            padding:0 8px;
             width: 100%;
             border: solid 1px #999;
             border-radius: 4px;
@@ -39,12 +40,12 @@
     }
 
     .event-name-error {
-        color: red;
+        color: #d43a4a;
         font-size: 12px;
     }
 
     .event-item-null-error {
-        color: red;
+        color: #d43a4a;
         font-size: 12px;
     }
 
@@ -79,7 +80,7 @@
         .add-button {
             margin: 16px auto 0;
             width: 160px;
-            background: white;
+            background: #fffffe;
             margin-bottom: 20px;
             display: block;
             border: solid 1px #989898;
@@ -98,12 +99,12 @@
                 left: 2px;
                 background: #e0e0e0;
             }
-
         }
 
         .create-button {
             border: none;
             background-color: #ffd803;
+            font-weight: 500;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -153,7 +154,7 @@
     text-align: center;
     border: solid 1px #999;
     border-radius: 4px;
-    background-color: white;
+    background-color: #fffffe;
     padding: 4px 4px 4px 4px 4px;
     cursor: pointer;
 

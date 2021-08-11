@@ -1,81 +1,96 @@
 .user-new-container {
-    width: 768px;
+    width: 540px;
     margin: 30px auto;
+}
 
-    h1 {
-        font-size: 20px;
-        font-weight: 500;
-        text-align: center;
+.nickname-form {
+    border: 1px solid #ccc;
+    padding:24px;
+    border-radius:4px;
+    margin-top: 24px;
+    text-align: center;
+
+    label {
+        font-weight: 700;
+        font-size:16px;
+        margin-bottom:16px;
     }
-    .error-message{
-        color:red;
-        list-style-type: none;
-        text-align: center;
+
+    .actions {
+        margin-top: 20px;
+        position: relative;
     }
 
-    .nickname-form {
-        margin: 30px auto;
-        border: 3px solid black;
-        height: 300px;
-        width: 80%;
-        text-align: center;
 
-        p,
-        
-        .actions {
-            margin-top: 33px;
+    label {
+        font-size: 12px;
+        display: inline-block;
+
+    }
+
+    .text_field {
+        height: 40px;
+        border: solid 1px #999;
+        border-radius:4px;
+        width:320px;
+        max-width: 100%;
+        margin:0 auto;
+        display:block;
+        padding:0 8px;
+    }
+
+    .nickname-submit-button {
+        border: none;
+        background-color: #ffd803;
+        padding: 12px 32px 12px;
+        font-weight: 600;
+        color:#444;
+        margin:0 auto;
+        display:block;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        &:active {
+            box-shadow: 0px 0px 10px #ccc;
             position: relative;
-            text-align: center;
-        }
-
-
-        label {
-            font-size: 12px;
-            display: inline-block;
+            top: 2px;
+            left: 2px;
+            background-color: goldenrod;
 
         }
-
-        .nickname-label {
-            width: 80%;
-            text-align: left;
-            display: inline-block;
-        }
-
-        .text_field {
-            width: 80%;
-            height:40px;
-            border:solid 1px #999;
-            border: radius 4px;
-        }
-
-        .nickname-submit-button {
-            border: none;
-            background-color: #ffd803;
-            padding: 11px;
-            cursor: pointer;
-
-            &:hover {
-                box-shadow: 0px 0px 10px #ccc;
-            }
-
-            &:active {
-                box-shadow: 0px 0px 10px #ccc;
-                position: relative;
-                top: 2px;
-                left: 2px;
-                background-color: goldenrod;
-
-            }
-        }
-    }
-    .back-button-user-new{
-        text-align: center;
     }
 }
+.user-new-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.user-new-error-message {
+    color: #d43a4a;
+    list-style-type: none;
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
+
+    .user-new-title {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 540px) {
     .user-new-container {
         max-width: 100%;
         padding: 0 10px;
-
+    }
+    .nickname-submit-button{
+        width:100%;
     }
 }
+
+

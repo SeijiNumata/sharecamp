@@ -2,7 +2,7 @@
   <div class=header-left>
     <%= link_to root_path, target: "_self" do %>
     <%= image_tag "img_logo.png" ,class:"img_logo"%>
-    <p class="title">SHARECAMP</p>
+    <p class="header-left-title">SHARECAMP</p>
     <% end %>
 
 
@@ -13,7 +13,7 @@
       <label for="menu-btn-check" class="menu-btn"><span></span></label>
       <!--ここからメニュー-->
       <div class="menu-content">
-        <ul>
+        <ul class="header-menu-content-ul">
           <li>
             <% unless controller.controller_name=="events" && controller.action_name=="index" %>
             <%= link_to "最近見たリスト一覧", events_path ,class:"recent-watch-link" %>

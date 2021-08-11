@@ -1,7 +1,7 @@
 <template>
-  <div id="event-show">
-    <div class="event_head">
-      <h1 class="event_title">
+  <div class="event-show">
+    <div class="event-show-head">
+      <h1 class="event-show-title">
         {{ eventName }}
       </h1>
       <a
@@ -13,30 +13,32 @@
       <ul class="tabs">
         <li
           :class="{'active': isActive === '1'}"
-          class="need-items-tab"
+          class="need-items-tab show-tabs-li"
           @click="changeTab('1')"
         >
-          持ってきて<br class="br-sp">ほしいもの
+          持ってきて<br class="br-sp">ほしい物
         </li>
         <li
           :class="{'active': isActive === '2'}"
-          class="current-user-bring-item-tab"
+          class="current-user-bring-item-tab show-tabs-li"
           @click="changeTab('2')"
         >
-          自分が<br class="br-sp">持っていくもの
+          自分が<br class="br-sp">持っていく物
         </li>
         <li
           :class="{'active': isActive === '3'}"
-          class="invite-message-tab"
+          class="invite-message-tab show-tabs-li"
           @click="changeTab('3')"
         >
           参加者を呼ぶ
         </li>
       </ul>
 
-      <ul class="contents">
-        <li v-if="isActive === '1'">
-          <h2>誰か持ってきて</h2>
+      <div class="show-contents">
+        <div v-if="isActive === '1'">
+          <h2 class="show-bring-button-describe-h2">
+            この中で自分が持っていく物があったら<br>数を選択して「持っていく」ボタンを<br class="br-sp">押してください
+          </h2>
           <event-show-item
             v-for="(item) in items"
             :key="item.id"
@@ -45,36 +47,42 @@
             :item="item"
             :current-user-id="currentUserId"
           />
-        </li>
-        <li
+        </div>
+        <div
           v-else-if="isActive === '2'"
           class="self-brings-contents"
         >
-          <h2>自分の持ち物</h2>
+          <h2 class="event-show-my-items">
+            自分の持ち物
+          </h2>
           <event-show-current-user-item
             v-for="(item) in items"
             :key="item.id"
             :item="item"
             :current-user-id="currentUserId"
           />
-        </li>
-        <li
+        </div>
+        <div
           v-else-if="isActive === '3'"
           class="invite"
         >
-          <p class="invite-message-title">
+          <h2 class="invite-message-title">
             以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！
-          </p>
+          </h2>
           <div class="invite-message-content">
-            <p> 「{{ eventName }}」で誰かに持ってきて<br class="br-sp">もらいたいものリストはこちら</p>
+            <p> 「{{ eventName }}」で誰かに持ってきて<br class="br-sp">もらいたい物リストはこちら</p>
             <p>{{ url }}</p>
             <p> 持ってきてくれる人募集中です！</p>
           </div>
-          <button @click="cp()">
+          <button
+            class="event-show-invite-copy-button"
+            @click="cp()"
+          >
             コピー
           </button>
-        </li>
-      </ul>
+          </h2>
+        </div>
+      </div>
     </div>
     <div>
       <modal
@@ -89,21 +97,28 @@
         </div>
         <div class="modal-body">
           <div class="modal-body-text">
-            <p>「{{ eventName }}」で誰かに持ってきてもらいたいものリストはこちら</p>
+            <p>「{{ eventName }}」で誰かに持ってきてもらいたい物リストはこちら</p>
             <p>{{ url }}</p>
             <p>持ってきてくれる人募集中です！</p>
           </div>
           <div class="modal-body-button">
-            <button @click="cp()">
+            <button
+              class="modal-body-copy-button"
+              @click="cp()"
+            >
               コピー
             </button>
-            <button @click="hide">
+            <button
+              class="modal-body-close-button"
+              @click="hide"
+            >
               閉じる
             </button>
           </div>
         </div>
       </modal>
     </div>
+  </div>
   </div>
 </template>
 
@@ -174,7 +189,7 @@ export default {
       this.isActive = num
     },
     inviteMessage () {
-      this.message = '「' + this.eventName + '」で誰かに持ってきてもらいたいものリストはこちら\n' + this.url + '\n' + '持ってきてくれる人募集中です！'
+      this.message = '「' + this.eventName + '」で誰かに持ってきてもらいた物リストはこちら\n' + this.url + '\n' + '持ってきてくれる人募集中です！'
     },
     createUserBringItems (item, selectedNumber) {
       axios.post('/api/user_bring_items', {

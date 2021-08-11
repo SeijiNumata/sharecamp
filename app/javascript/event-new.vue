@@ -17,10 +17,10 @@
         </p>
       </div>
       <div class="event-content">
-        <label class="someone-bring-items">誰かに持ってきて欲しいもの
+        <label class="someone-bring-items">誰かに持ってきて欲しい物
         </label>
         <p class="describe-someone-bring-items">
-          グループで各自が持ってくる必要はない、誰かが持ってくればいいものを入力してください。<br>
+          グループで各自が持ってくる必要はない、誰かが持ってくればいい物を入力してください。<br>
           例えばキャンプの場合、まな板や鍋は誰かが持ってくれば良い持ち物なので入力しましょう。<br>
         </p><p
           v-if="newItemsNullError"

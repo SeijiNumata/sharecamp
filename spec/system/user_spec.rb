@@ -10,7 +10,7 @@ RSpec.describe 'ユーザーの切り替え', type: :feature, js: true do
     event
     visit "events/#{event.id}"
     fill_in('user_name', with: 'たろう')
-    click_on '持ってきて欲しいものリストへ'
+    click_on '持ってきて欲しい物リストへ'
   end
 
   context 'ユーザー新規作成' do
@@ -18,7 +18,7 @@ RSpec.describe 'ユーザーの切り替え', type: :feature, js: true do
       click_on 'こちら'
       fill_in('user_name', with: '')
       fill_in('user_name', with: 'アリス')
-      click_on '持ってきて欲しいものリストへ'
+      click_on '持ってきて欲しい物リストへ'
       expect(page).to have_content 'アリス'
     end
 
@@ -29,13 +29,13 @@ RSpec.describe 'ユーザーの切り替え', type: :feature, js: true do
       click_on 'こちら'
       fill_in('user_name', with: '')
       fill_in('user_name', with: 'アリス')
-      click_on '持ってきて欲しいものリストへ'
+      click_on '持ってきて欲しい物リストへ'
       expect(page).to have_content 'アリス'
 
       click_on 'こちら'
       fill_in('user_name', with: '')
       fill_in('user_name', with: 'たろう')
-      click_on '持ってきて欲しいものリストへ'
+      click_on '持ってきて欲しい物リストへ'
       expect(page).to have_content 'たろう(3)'
     end
   end
@@ -44,7 +44,7 @@ RSpec.describe 'ユーザーの切り替え', type: :feature, js: true do
     it 'ニックネームが空白だとエラーメッセージが表示される' do
       click_on 'こちら'
       fill_in('user_name', with: '')
-      click_on '持ってきて欲しいものリストへ'
+      click_on '持ってきて欲しい物リストへ'
       expect(page).to have_content 'ニックネームは１文字以上入力してください。'
     end
 
@@ -52,7 +52,7 @@ RSpec.describe 'ユーザーの切り替え', type: :feature, js: true do
       click_on 'こちら'
       fill_in('user_name', with: '')
       fill_in('user_name', with: "空白がある\s名前")
-      click_on '持ってきて欲しいものリストへ'
+      click_on '持ってきて欲しい物リストへ'
       expect(page).to have_content '空白がある名前'
     end
   end

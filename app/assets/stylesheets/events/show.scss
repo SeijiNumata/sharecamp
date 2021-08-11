@@ -2,409 +2,357 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#event-show {
+.event-show {
     width: 768px;
     margin: 30px auto;
+    padding: 0 16px;
+}
 
-    input {
-        border: solid 1px #999;
-        border-radius: 4px;
+.event-show-head {
+    width: 100%;
+    display: flex;
+    margin-bottom: 32px;
+    align-items: center;
+}
+
+.edit-button {
+    font-size: 14px;
+    color: #999;
+}
+
+.event-show-title {
+    font-size: 28px;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.tabs {
+    display: flex;
+    margin: 0 - 8px 28px;
+}
+
+.show-tabs-li {
+    line-height: 40px;
+    list-style: none;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+    transition: .3s;
+    border-radius: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
+    background: #fffffe;
+    color: #999;
+    flex: 1;
+}
+
+.show-tabs-li .active {
+    background-color: #bae8e8;
+    cursor: auto;
+    color: #444444;
+    font-weight: 700;
+    border: solid 1px #7fb3b3;
+}
+
+
+.item-and-input {
+    border-bottom: dashed 1px #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.kimari {
+    background: #bae8e7;
+    padding: 3px;
+    display: inline-block;
+    color: #0d3e0d;
+    font-size: 12ox;
+    align-items: center;
+    padding: 0 0.6em;
+    margin-right: 8px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+.event-show-item-input {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 22px 12px;
+}
+
+.bring-button {
+    height: 40px;
+    font-size: 13px;
+    display: inline-block;
+    width: 104px;
+    background: #ffd803;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.event-show-item-input-number-select {
+    height: 40px;
+    margin-right: 4px;
+    padding: 0 8px;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+        box-shadow: 0 0 0 2px #ffd705;
+    }
+}
+
+
+
+.event-show-self-bring-checkbox {
+    border: solid 1px #999;
+    border-radius: 4px;
+    background-color: #fffffe;
+}
+
+.event-show-invite-copy-button {
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    height: 50px;
+    border: none;
+    background-color: #ffd803;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 0px 10px #ccc;
     }
 
-    select {
-        border: solid 1px #999;
-        border-radius: 4px;
+    &:active {
+        box-shadow: 0px 0px 10px #ccc;
+        position: relative;
+        top: 2px;
+        left: px;
+        background-color: goldenrod;
     }
-
-    .show-component {
-        width: 100%;
-    }
-
-    .event_head {
-        width: 100%;
-        display: flex;
-
-        .event_title {
-            text-align: center;
-            margin-bottom: 30px;
-            width: 80%;
-        }
-
-        a {
-            height: 44px;
-            width: 120px;
-            padding-top: 8px;
-            text-align: center;
-            text-decoration: none;
-            color: black;
-            margin-left: auto;
-            margin-right: 0px;
-            border: 1px solid #ccc;
-        }
-
-        @media screen and (max-width: 850px) {
-            a {
-                font-size: 11px;
-                line-height: 20px;
-                width: 89px;
-            }
-        }
-    }
-
-    .tabs {
-        display: flex;
-        width: 90%;
-        justify-content: space-around;
-        margin: 15px auto;
-    }
-
-    ul {
-        padding-inline-start: 0px;
-    }
-
-    .tabs li,
-    .tabs label {
-        width: 300px;
-        height: 40px;
-        line-height: 40px;
-        list-style: none;
-        border: 1px solid gray;
-        cursor: pointer;
-        text-align: center;
-        transition: .3s;
-        background-color: #e3f6f5;
-        border-radius: 4px;
-        margin-right: 5px;
-    }
-
-    @media screen and (max-width: 768px) {
-        .tabs li {
-            font-size: 10px;
-            line-height: 20px;
-        }
-
-        li:last-child {
-            line-height: 40px;
-        }
-    }
-
-
-
-    .tabs li.active,
-    .tabs :checked+label {
-        background-color: #bae8e8;
-        border-color: #000;
-        color: black;
-        cursor: auto;
-    }
-
-    .contents {
-        margin-top: -17px;
-        width: 100%;
-        border: 1px solid gray;
-        margin-left: 0px;
-        list-style: none;
-
-
-
-        .event-show-item {
-            margin: 3px;
-            border: 1px solid black;
-            margin-right: 6px;
-            padding: 10px;
-        }
-
-        h2 {
-
-            margin: 20px 20px 20px 20px;
-            font-size: 15px;
-        }
-
-        .item-and-input {
-            border-bottom: 1px solid black;
-            padding-bottom: 20px;
-            margin-bottom: 10px;
-        }
-
-        .item-name-and-number {
-            width: 57%;
-        }
-
-        .event-show-item-input {
-            position: relative;
-
-            select {
-                position: absolute;
-                height: 40px;
-                font-size: 14px;
-                margin-right: 4px;
-                top: -30px;
-                right: 80px;
-                padding: 4px 4px 4px 4px 4px;
-                cursor: pointer;
-
-                &:hover {
-                    box-shadow: 0 0 0 2px #ffd705;
-                }
-            }
-
-            button {
-                height: 40px;
-                font-size: 13px;
-                position: absolute;
-                right: 0px;
-                top: -30px;
-            }
-
-            .delete-button {
-                width: 10px;
-            }
-
-            .bring-button {
-                cursor: pointer;
-            }
-
-            @media screen and (max-width: 768px) {
-                .bring-button {
-                    line-height: 14px;
-                    right: 0px;
-                    top: -34px;
-                    margin-right: 0px;
-                    width: 80px;
-                    font-size: 12px;
-                }
-
-                .number-select {
-                    top: -34px;
-                }
-            }
-
-
-        }
-
-        .event-show-item-user {
-            clear: both;
-            list-style: none;
-
-            li {
-                display: inline-block;
-                margin-right: 40px;
-            }
-
-            button,
-            p {
-                display: inline-block;
-            }
-
-            button {
-                color: red;
-            }
-
-            .bring-item-current-user-name {
-                font-weight: bold;
-            }
-
-        }
-
-        .invite {
-            text-align: center;
-            height: 400px;
-
-            .invite-message-title {
-                margin-top: 40px;
-                margin-bottom: 30px;
-            }
-
-            @media screen and (max-width: 800px) {
-                .invite-message-title {
-                    font-size: 15px;
-                    line-height: 20px;
-                }
-            }
-
-            .invite-message-content {
-                margin-bottom: 30px;
-                padding: 14px;
-                line-height: 30px;
-                border: 1px solid black;
-                white-space: pre-line;
-                word-wrap: break-word;
-            }
-
-            @media screen and (max-width: 756px) {
-                .invite-message-content {
-                    font-size: 15px;
-                    line-height: 20px;
-                }
-            }
-
-
-            button {
-                width: 300px;
-                margin-top: 20px;
-                margin-bottom: 30px;
-                height: 50px;
-                border: none;
-                background-color: #ffd803;
-
-                &:hover {
-                    box-shadow: 0px 0px 10px #ccc;
-                }
-
-                &:active {
-                    box-shadow: 0px 0px 10px #ccc;
-                    position: relative;
-                    top: 2px;
-                    left: px;
-                    background-color: goldenrod;
-
-                }
-
-            }
-
-        }
-
-        @media screen and (max-width: 768px) {
-            .invite {
-                height: 600px;
-            }
-        }
-
-    }
-
-    .vm--modal {
-        margin: 0 auto;
-    }
-
-    .modal {
-        position: absolute;
-        left: -25%;
-
-        .modal-header {
-            border-bottom: 1px solid #ddd;
-            font-size: 10px;
-            text-align: center;
-            margin-top: 20px;
-            padding-bottom: 20px;
-        }
-
-        .modal-body-text {
-            margin-top: 20px;
-            text-align: center;
-
-            p {
-                padding: 10px;
-            }
-        }
-
-        .modal-body-button {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            margin-left: 50px;
-            margin-right: 50px;
-
-            button {
-                width: 150px;
-                height: 44px;
-                cursor: pointer;
-            }
-        }
-    }
-
-    @media screen and (max-width: 768px) {
-        .modal {
-            padding: 30px;
-            font-size: 7px;
-            left: -37px;
-
-            button {
-                width: 100px;
-                margin-right: 10px;
-                margin-left: 10px;
-            }
-        }
-
-    }
-
 }
 
 .stamp-button-component {
-    position: relative;
+    display: inline-block;
+}
 
-    .no-number-error {
-        color: red;
-        font-size: 10px;
-        position: absolute;
-        right: 10px;
-        top: 7px;
-    }
-
-    @media screen and (max-width: 768px) {
-        .no-number-error {
-            top: -10px;
-        }
-    }
-
-    .postmark-decide {
-
-        position: absolute;
-        margin: 0;
-        padding: 10px;
-        line-height: 4px;
-        width: 70px;
-        right: 100px;
-        top: -20px;
-        height: 10px;
-        border: 5px double red;
-        border-radius: 10%;
-        color: red;
-        text-align: center;
-        font-size: 10px;
-        font-family: 'Bree Serif', serif;
-        transform: rotate(-16deg);
-    }
-
-
-
-    .postmark-bring {
-        position: absolute;
-        margin: 0;
-        padding: 10px;
-        width: 80px;
-        right: 0px;
-        top: -20px;
-        height: 10px;
-        line-height: 4px;
-        border: 5px double blue;
-        border-radius: 10%;
-        color: blue;
-        text-align: center;
-        font-size: 7px;
-        font-family: 'Bree Serif', serif;
-        transform: rotate(-16deg);
-    }
+.no-number-error {
+    color: #d43a4a;
+    font-size: 10px;
+    position: absolute;
+    right: 10px;
+    top: 7px;
 }
 
 .self-brings-contents {
     height: 600px;
+    width: 400px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
 }
+
 .self-bring-item {
     margin-left: 40px;
     margin-bottom: 4px;
     display: inline-block;
-    width: 100%;
+    width: 300px;
 }
+
+.event-show-self-bring-delete-button {
+    color: #d43a3a;
+    background: #f5d5d5;
+    border: solid 1px #d43a3a;
+    border-radius: 4px;
+}
+
+.show-contents {
+    list-style: none;
+}
+
+.event-show-my-items,
+.show-bring-button-describe-h2 {
+    font-size: 15px;
+    margin-top: 25px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.event-show-item {
+    padding: 12px 188px 12px 16px;
+    border: solid 1px #ccc;
+    margin-bottom: 16px;
+    position: relative;
+    border-radius: 4px;
+    min-height: 86px;
+}
+
+.event-show-item-user {
+    font-size: 14px;
+
+    li {
+        display: inline-block;
+    }
+
+    button,
+    p {
+        display: inline-block;
+    }
+}
+
+.bring-item-current-user-name {
+    font-weight: bold;
+    color: #158a87;
+}
+
+.invite {
+    text-align: center;
+    height: 400px;
+}
+
+.invite-message-title {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.invite-message-content {
+    margin-bottom: 30px;
+    padding: 14px;
+    line-height: 30px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+.modal-header {
+    border-bottom: 1px solid #ddd;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.modal-body-text {
+    margin-top: 20px;
+    text-align: center;
+
+    p {
+        padding: 10px;
+    }
+}
+
+.modal-body-button {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.modal-body-copy-button,
+.modal-body-close-button {
+    width: 150px;
+    height: 44px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+    .edit-button {
+        font-size: 11px;
+        line-height: 20px;
+        width: 89px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .invite-message-title {
+        font-size: 15px;
+        line-height: 20px;
+    }
+}
+
 @media screen and (max-width: 768px) {
-    #event-show {
+    .show-tabs-li {
+        font-size: 10px;
+        line-height: 20px;
+    }
+
+    .show-tabs-li:last-child {
+        line-height: 40px;
+    }
+
+    .bring-button {
+        line-height: 14px;
+        right: 0px;
+        top: -34px;
+        margin-right: 0px;
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .no-number-error {
+        top: 8px;
+    }
+
+    .invite-message-content {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .invite {
+        height: 600px;
+    }
+
+    .event-show-self-bring-delete-button {
+        height: 27px;
+        line-height: 20px;
+        display: inline-block;
+
+    }
+
+    .modal {
+        padding: 30px;
+        font-size: 7px;
+        left: -37px;
+
+        button {
+            width: 100px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    }
+
+    .event-show {
         max-width: 100%;
         padding: 0 10px;
 
     }
+
+    .self-brings-contents {
+        padding: 0 10px;
+        width: 100%;
+    }
+
+    .event-show-invite-copy-button {
+        width: 100%;
+    }
+    .self-bring-item {
+        margin-left: 10px;
+    }
+
 }
+
+
 
 @media screen and (min-width: 768px) {
     .br-sp {
         display: none;
     }
 }
+
