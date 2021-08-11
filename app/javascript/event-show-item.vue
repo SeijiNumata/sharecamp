@@ -14,7 +14,7 @@
         <select
           v-show="needNumber!=1"
           v-model="selectedNumber"
-          class="number-select"
+          class="event-show-item-input-number-select"
           name="select-number"
           :disabled="isCurrentUserItem||needNumber-bringSum<=0"
         >
@@ -61,6 +61,7 @@
         </p>
         <button
           v-show="isCurrentUser(bring_item)"
+          class="event-show-self-bring-delete-button"
           type="button"
           @click="deleteUserBringItem(bring_item)"
         >

@@ -1,7 +1,7 @@
 <template>
   <div class="event-show">
-    <div class="event_head">
-      <h1 class="event_title">
+    <div class="event-show-head">
+      <h1 class="event-show-title">
         {{ eventName }}
       </h1>
       <a
@@ -13,30 +13,32 @@
       <ul class="tabs">
         <li
           :class="{'active': isActive === '1'}"
-          class="need-items-tab"
+          class="need-items-tab show-tabs-li"
           @click="changeTab('1')"
         >
           持ってきて<br class="br-sp">ほしい物
         </li>
         <li
           :class="{'active': isActive === '2'}"
-          class="current-user-bring-item-tab"
+          class="current-user-bring-item-tab show-tabs-li"
           @click="changeTab('2')"
         >
           自分が<br class="br-sp">持っていく物
         </li>
         <li
           :class="{'active': isActive === '3'}"
-          class="invite-message-tab"
+          class="invite-message-tab show-tabs-li"
           @click="changeTab('3')"
         >
           参加者を呼ぶ
         </li>
       </ul>
 
-      <div class="contents">
+      <div class="show-contents">
         <div v-if="isActive === '1'">
-          <h2>この中で自分が持っていく物があったら<br>数を選択して「持っていく」ボタンを<br class="br-sp">押してください</h2>
+          <h2 class="show-bring-button-describe-h2">
+            この中で自分が持っていく物があったら<br>数を選択して「持っていく」ボタンを<br class="br-sp">押してください
+          </h2>
           <event-show-item
             v-for="(item) in items"
             :key="item.id"
@@ -50,7 +52,9 @@
           v-else-if="isActive === '2'"
           class="self-brings-contents"
         >
-          <h2>自分の持ち物</h2>
+          <h2 class="event-show-my-items">
+            自分の持ち物
+          </h2>
           <event-show-current-user-item
             v-for="(item) in items"
             :key="item.id"
@@ -97,10 +101,16 @@
             <p>持ってきてくれる人募集中です！</p>
           </div>
           <div class="modal-body-button">
-            <button @click="cp()">
+            <button
+              class="modal-body-copy-button"
+              @click="cp()"
+            >
               コピー
             </button>
-            <button @click="hide">
+            <button
+              class="modal-body-close-button"
+              @click="hide"
+            >
               閉じる
             </button>
           </div>

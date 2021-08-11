@@ -7,8 +7,22 @@ header {
     text-decoration: none;
     margin: 0 auto;
 
+    .menu-content{
+        height:44px;
+    }
     ul{
         list-style:none;
+        height:44px;
+    }
+    li{
+        height:44px;
+        margin-left:10px;
+        margin-right:2px;
+        border-bottom: 3px dashed #7fb3b3;
+          box-sizing: border-box;
+    }
+    p{
+        line-height:22px;
     }
     &:after {
         content: "";

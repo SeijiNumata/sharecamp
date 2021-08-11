@@ -10,51 +10,9 @@
     width: 768px;
     margin: 30px auto;
 
-    .event-edit-component {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    input {
-        border: solid 1px #999;
-        border-radius: 4px;
-        flex: 1;
-    }
-
-    select {
-        border: solid 1px #999;
-        border-radius: 4px;
-        padding: 4px 4px 4px 4px 4px;
-        cursor: pointer;
-        &:hover{
-            box-shadow: 0 0 0 2px #ffd705;
-        }
-    }
-
-    h1 {
-        text-align: center;
-    }
-
     p {
         margin-top: 20px;
         margin-bottom: 10px;
-    }
-
-    .event-name {
-        width: 100%;
-        height: 40px;
-    }
-
-    .event-name-error {
-        color: red;
-        font-size: 12px;
-        margin-left: 40px;
-    }
-
-    .event-item-null-error {
-        color: red;
-        font-size: 12px;
-        margin-left: 40px;
     }
 
     li {
@@ -62,83 +20,128 @@
         display: flex;
         height: 40px;
         margin-bottom: 16px;
-
-        .item-name {
-            flex: 1;
-            margin-right: 10px;
-        }
-
-        .item-number {
-            width: 64px;
-            text-align: center;
-            background-color: #fffffe;
-        }
-
-        .delete-button {
-            width: 50px;
-            height: 40px;
-            margin-left: 3px;
-            font-size: 13px;
-            cursor: pointer;
-            &:hover{
-                box-shadow: 0 0 0 2px #ffd705;
-            }
-        }
     }
 
     ul {
         list-style: none;
         padding-left: 0px;
     }
+}
 
-    .add-button {
-        margin: 26px auto;
-        width: 150px;
-        height: 44px;
-        background: #fffffe;
-        margin-bottom: 30px;
-        display: block;
-        cursor: pointer;
-        &:hover {
-            box-shadow: 0px 0px 10px #ccc;
-        }
+.event-edit-create-button {
+    border: none;
+    background-color: #ffd803;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin: 20px auto 0px auto;
+    height: 44px;
+    cursor: pointer;
 
-        &:active {
-            box-shadow: 0px 0px 10px #ccc;
-            position: relative;
-            top: 2px;
-            left: 2px;
-            background: #e0e0e0;
-        }
+    &:hover {
+        box-shadow: 0px 0px 10px #ccc;
     }
 
-    .create-button {
-        border: none;
-        background-color: #ffd803;
-        padding: 11px;
-        margin: 30px auto 10px auto;
-        width: 250px;
-        display: block;
-        height: 44px;
-        cursor: pointer;
+    &:active {
+        box-shadow: 0px 0px 10px #ccc;
+        position: relative;
+        top: 2px;
+        left: 2px;
+        background-color: goldenrod;
+    }
+}
 
-        &:hover {
-            box-shadow: 0px 0px 10px #ccc;
-        }
+.event-edit-add-button {
+    margin: 16px auto 0;
+    width: 160px;
+    background: #fffffe;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: block;
+    border: solid 1px #989898;
+    height: 44px;
+    border-radius: 4px;
+    cursor: pointer;
 
-        &:active {
-            box-shadow: 0px 0px 10px #ccc;
-            position: relative;
-            top: 2px;
-            left: 2px;
-            background-color: goldenrod;
-        }
+    &:hover {
+        box-shadow: 0px 0px 10px #ccc;
+    }
+
+    &:active {
+        box-shadow: 0px 0px 10px #ccc;
+        position: relative;
+        top: 2px;
+        left: 2px;
+        background: #e0e0e0;
+    }
+}
+
+.event-edit-component {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.event-edit-event-name {
+    border: solid 1px #999;
+    border-radius: 4px;
+    flex: 1;
+    width: 100%;
+    height: 40px;
+}
+
+.event-edit-item-name {
+    border: solid 1px #999;
+    border-radius: 4px;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.event-edit-item-number {
+    width: 64px;
+    text-align: center;
+    background-color: #fffffe;
+    border: solid 1px #999;
+    border-radius: 4px;
+    padding: 4px 4px 4px 4px 4px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 0 2px #ffd705;
+    }
+}
+
+.event-edit-title {
+    text-align: center;
+    font-size: 28px;
+}
+
+.event-edit-event-name-error {
+    color: red;
+    font-size: 12px;
+    margin-left: 40px;
+}
+
+.event-edit-event-item-null-error {
+    color: red;
+    font-size: 12px;
+    margin-left: 40px;
+}
+
+.event-edit-delete-button {
+    width: 50px;
+    height: 40px;
+    margin-left: 3px;
+    font-size: 13px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 0 2px #ffd705;
     }
 }
 
 @media screen and (max-width: 768px) {
     .event-edit {
         max-width: 100%;
-        padding: 0 10px;
     }
 }
