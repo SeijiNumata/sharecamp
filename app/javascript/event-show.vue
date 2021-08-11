@@ -1,5 +1,5 @@
 <template>
-  <div id="event-show">
+  <div class="event-show">
     <div class="event_head">
       <h1 class="event_title">
         {{ eventName }}
@@ -16,14 +16,14 @@
           class="need-items-tab"
           @click="changeTab('1')"
         >
-          持ってきて<br class="br-sp">ほしいもの
+          持ってきて<br class="br-sp">ほしい物
         </li>
         <li
           :class="{'active': isActive === '2'}"
           class="current-user-bring-item-tab"
           @click="changeTab('2')"
         >
-          自分が<br class="br-sp">持っていくもの
+          自分が<br class="br-sp">持っていく物
         </li>
         <li
           :class="{'active': isActive === '3'}"
@@ -34,9 +34,9 @@
         </li>
       </ul>
 
-      <ul class="contents">
-        <li v-if="isActive === '1'">
-          <h2>誰か持ってきて</h2>
+      <div class="contents">
+        <div v-if="isActive === '1'">
+          <h2>この中で自分が持っていく物があったら<br>数を選択して「持っていく」ボタンを<br class="br-sp">押してください</h2>
           <event-show-item
             v-for="(item) in items"
             :key="item.id"
@@ -45,8 +45,8 @@
             :item="item"
             :current-user-id="currentUserId"
           />
-        </li>
-        <li
+        </div>
+        <div
           v-else-if="isActive === '2'"
           class="self-brings-contents"
         >
@@ -57,8 +57,8 @@
             :item="item"
             :current-user-id="currentUserId"
           />
-        </li>
-        <li
+        </div>
+        <div
           v-else-if="isActive === '3'"
           class="invite"
         >
@@ -66,15 +66,18 @@
             以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！
           </p>
           <div class="invite-message-content">
-            <p> 「{{ eventName }}」で誰かに持ってきて<br class="br-sp">もらいたいものリストはこちら</p>
+            <p> 「{{ eventName }}」で誰かに持ってきて<br class="br-sp">もらいたい物リストはこちら</p>
             <p>{{ url }}</p>
             <p> 持ってきてくれる人募集中です！</p>
           </div>
-          <button @click="cp()">
+          <button
+            class="event-show-invite-copy-button"
+            @click="cp()"
+          >
             コピー
           </button>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
     <div>
       <modal
@@ -89,7 +92,7 @@
         </div>
         <div class="modal-body">
           <div class="modal-body-text">
-            <p>「{{ eventName }}」で誰かに持ってきてもらいたいものリストはこちら</p>
+            <p>「{{ eventName }}」で誰かに持ってきてもらいたい物リストはこちら</p>
             <p>{{ url }}</p>
             <p>持ってきてくれる人募集中です！</p>
           </div>
@@ -104,6 +107,7 @@
         </div>
       </modal>
     </div>
+  </div>
   </div>
 </template>
 
@@ -174,7 +178,7 @@ export default {
       this.isActive = num
     },
     inviteMessage () {
-      this.message = '「' + this.eventName + '」で誰かに持ってきてもらいたいものリストはこちら\n' + this.url + '\n' + '持ってきてくれる人募集中です！'
+      this.message = '「' + this.eventName + '」で誰かに持ってきてもらいた物リストはこちら\n' + this.url + '\n' + '持ってきてくれる人募集中です！'
     },
     createUserBringItems (item, selectedNumber) {
       axios.post('/api/user_bring_items', {

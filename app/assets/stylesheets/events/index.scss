@@ -25,22 +25,21 @@
 
 
     .event {
-
-        border: solid 1px black;
+        border: solid 1px #444;
         padding: 10px;
         margin: 10px 40px;
         text-align: left;
         position: relative;
 
         .event-name {
-            color: black;
+            color: #444;
             display: block;
             text-decoration: none;
         }
 
         .updated-at {
             display: block;
-            color: black;
+            color: #444;
             text-decoration: none;
             font-size: 3px;
             position: absolute;
@@ -49,7 +48,7 @@
         }
     }
     .no-recent-watch-list{
-        border: solid 1px black;
+        border: solid 1px #444;
         width:450px;
         margin:0 auto;
         padding:8px;
@@ -72,7 +71,7 @@
         margin: 50px auto 10px auto;
         width: 300px;
         text-decoration: none;
-        color: black;
+        color:#444;
 
         &:hover {
             box-shadow: 0px 0px 10px #ccc;

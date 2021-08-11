@@ -76,6 +76,12 @@
             }
         }
     }
+    @media screen and (max-width: 768px) {
+
+        h1{
+            font-size: 18px;
+        }
+    }
 }
 
 @media screen and (max-width: 540px) {
@@ -88,9 +94,4 @@
     }
 }
 
-@media screen and (max-width: 768px) {
 
-    h1{
-        font-size: 18px;
-    }
-}

@@ -2,6 +2,12 @@
   <div class="event-show-item">
     <div class="item-and-input">
       <p class="item-name-and-number">
+        <span
+          v-if="needNumber-bringSum<=0"
+          class="kimari"
+        >
+          分担決定
+        </span><br class="br-sp">
         {{ itemName }} <span>({{ bringSum }}/{{ needNumber }})</span>
       </p>
       <div class="event-show-item-input">
@@ -42,18 +48,6 @@
           >
             {{ noNumberErrorMessage }}
           </p>
-          <div
-            v-if="needNumber-bringSum<=0"
-            class="postmark-decide"
-          >
-            決まり
-          </div>
-          <div
-            v-if="isCurrentUserItem"
-            class="postmark-bring"
-          >
-            持っていく
-          </div>
         </div>
       </div>
     </div>
@@ -73,10 +67,11 @@
           ×
         </button>
         <p v-if="bringItems[index+1]!=null">
-          ,
+          ，
         </p>
       </li>
     </ul>
+  </div>
   </div>
 </template>
 

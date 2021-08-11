@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#event-show {
+.event-show {
     width: 768px;
     margin: 30px auto;
     padding:0 16px;
@@ -27,21 +27,14 @@
         margin-bottom:32px;
         align-items: center;
         .event_title {
-            text-align: center;
-            margin-bottom: 30px;
-            width: 80%;
+            font-size:28px;
+            line-height: 1.4;
+            flex: 1;
         }
 
         a {
-            height: 44px;
-            width: 120px;
-            padding-top: 8px;
-            text-align: center;
-            text-decoration: none;
-            color: black;
-            margin-left: auto;
-            margin-right: 0px;
-            border: 1px solid #ccc;
+            font-size:14px;
+            color:#999;
         }
 
         @media screen and (max-width: 850px) {
@@ -55,28 +48,25 @@
 
     .tabs {
         display: flex;
-        width: 90%;
-        justify-content: space-around;
-        margin: 15px auto;
+        margin: 0 - 8px 28px;
     }
 
-    ul {
-        padding-inline-start: 0px;
-    }
+
 
     .tabs li,
     .tabs label {
-        width: 300px;
-        height: 40px;
         line-height: 40px;
         list-style: none;
-        border: 1px solid gray;
+        border: 1px solid #ccc;
         cursor: pointer;
         text-align: center;
         transition: .3s;
-        background-color: #e3f6f5;
         border-radius: 4px;
-        margin-right: 5px;
+        margin-left:8px;
+        margin-right: 8px;
+        background:#fffffe;
+        color:#999;
+        flex:1;
     }
 
     @media screen and (max-width: 768px) {
@@ -95,55 +85,60 @@
     .tabs li.active,
     .tabs :checked+label {
         background-color: #bae8e8;
-        border-color: #000;
-        color: black;
         cursor: auto;
+        color:#444444;
+        font-weight: 700;
+        border: solid 1px #7fb3b3;
     }
 
     .contents {
-        margin-top: -17px;
-        width: 100%;
-        border: 1px solid gray;
-        margin-left: 0px;
         list-style: none;
-
-
-
         .event-show-item {
-            margin: 3px;
-            border: 1px solid black;
-            margin-right: 6px;
-            padding: 10px;
+            padding:12px 188px 12px 16px;
+            border:solid 1px #ccc;
+            margin-bottom:16px;
+            position:relative;
+            border-radius:4px;
+            min-height: 86px;
         }
 
         h2 {
-
-            margin: 20px 20px 20px 20px;
             font-size: 15px;
+            margin-top:25px;
+            margin-bottom:16px;
+            text-align: center;
         }
 
         .item-and-input {
-            border-bottom: 1px solid black;
-            padding-bottom: 20px;
-            margin-bottom: 10px;
+            border-bottom: dashed 1px #ccc;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+            line-height: 1.4;
         }
-
-        .item-name-and-number {
-            width: 57%;
+        .kimari{
+            background:#bae8e7;
+            padding:3px;
+            display: inline-block;
+            color: #0d3e0d;
+            font-size:12ox;
+            align-items:center;
+            padding: 0 0.6em;
+            margin-right:8px;
+            height:22px;
+            border-radius: 4px;
         }
-
         .event-show-item-input {
-            position: relative;
+            position: absolute;
+            right:0px;
+            top:0px;
+            padding:22px 12px;
 
             select {
-                position: absolute;
                 height: 40px;
-                font-size: 14px;
                 margin-right: 4px;
-                top: -30px;
-                right: 80px;
-                padding: 4px 4px 4px 4px 4px;
+                padding: 0 8px;
                 cursor: pointer;
+                font-size:16px;
 
                 &:hover {
                     box-shadow: 0 0 0 2px #ffd705;
@@ -151,11 +146,13 @@
             }
 
             button {
-                height: 40px;
-                font-size: 13px;
-                position: absolute;
-                right: 0px;
-                top: -30px;
+               height: 40px;
+               font-size: 13px;
+               display:inline-block;
+               width:104px;
+               background:#ffd803;
+               border:none;
+               border-radius:4px;
             }
 
             .delete-button {
@@ -180,17 +177,13 @@
                     top: -34px;
                 }
             }
-
-
         }
 
         .event-show-item-user {
-            clear: both;
-            list-style: none;
+            font-size:14px;
 
             li {
                 display: inline-block;
-                margin-right: 40px;
             }
 
             button,
@@ -199,11 +192,15 @@
             }
 
             button {
-                color: red;
+                color: #d43a3a;
+                background:#f5d5d5;
+                border:solid 1px #d43a3a;
+                border-radius:4px;
             }
 
             .bring-item-current-user-name {
                 font-weight: bold;
+                color:#158a87;
             }
 
         }
@@ -228,7 +225,8 @@
                 margin-bottom: 30px;
                 padding: 14px;
                 line-height: 30px;
-                border: 1px solid black;
+                border-radius: 4px;
+                border: 1px solid #444;
                 white-space: pre-line;
                 word-wrap: break-word;
             }
@@ -241,28 +239,7 @@
             }
 
 
-            button {
-                width: 300px;
-                margin-top: 20px;
-                margin-bottom: 30px;
-                height: 50px;
-                border: none;
-                background-color: #ffd803;
-
-                &:hover {
-                    box-shadow: 0px 0px 10px #ccc;
-                }
-
-                &:active {
-                    box-shadow: 0px 0px 10px #ccc;
-                    position: relative;
-                    top: 2px;
-                    left: px;
-                    background-color: goldenrod;
-
-                }
-
-            }
+           
 
         }
 
@@ -273,7 +250,7 @@
         }
 
     }
-
+    
     .modal {
 
         .modal-header {
@@ -324,9 +301,32 @@
     }
 
 }
+.event-show-invite-copy-button {
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    height: 50px;
+    border: none;
+    background-color: #ffd803;
+    border-radius:4px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0px 0px 10px #ccc;
+    }
+
+    &:active {
+        box-shadow: 0px 0px 10px #ccc;
+        position: relative;
+        top: 2px;
+        left: px;
+        background-color: goldenrod;
+
+    }
+
+}
 
 .stamp-button-component {
-    position: relative;
+    display: inline-block;
 
     .no-number-error {
         color: red;
@@ -349,12 +349,12 @@
         padding: 10px;
         line-height: 4px;
         width: 70px;
-        right: 100px;
-        top: -20px;
+        right: 120px;
+        top: 20px;
         height: 10px;
-        border: 5px double red;
+        border: 5px double #d43a3a;
         border-radius: 10%;
-        color: red;
+        color: #d43a3a;
         text-align: center;
         font-size: 10px;
         font-family: 'Bree Serif', serif;
@@ -384,18 +384,28 @@
 
 .self-brings-contents {
     height: 600px;
+    width:400px;
+    border:1px solid #ccc;
+    margin:0 auto;
 }
 .self-bring-item {
     margin-left: 40px;
     margin-bottom: 4px;
     display: inline-block;
-    width: 100%;
+    width: 300px;
 }
 @media screen and (max-width: 768px) {
-    #event-show {
+    .event-show {
         max-width: 100%;
         padding: 0 10px;
 
+    }
+    .self-brings-contents{
+        padding: 0 10px;
+        width:100%;
+    }
+    .event-show-invite-copy-button{
+        width:100%;
     }
 }
 

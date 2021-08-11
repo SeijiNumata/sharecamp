@@ -10,7 +10,7 @@ RSpec.describe '持ち物のシステムテスト', type: :feature, js: true do
     event
     visit "events/#{event.id}"
     fill_in('user_name', with: 'たろう')
-    click_on '持ってきて欲しいものリストへ'
+    click_on '持ってきて欲しい物リストへ'
   end
 
   context '詳細画面の持ち物のテスト' do
@@ -32,21 +32,21 @@ RSpec.describe '持ち物のシステムテスト', type: :feature, js: true do
       click_on 'こちら'
       fill_in('user_name', with: '')
       fill_in('user_name', with: 'アリス')
-      click_on '持ってきて欲しいものリストへ'
+      click_on '持ってきて欲しい物リストへ'
 
       expect(page.all('.bring-button')[0].disabled?).to be false
 
       click_on 'こちら'
       fill_in('user_name', with: '')
       fill_in('user_name', with: 'たろう')
-      click_on '持ってきて欲しいものリストへ'
+      click_on '持ってきて欲しい物リストへ'
       page.all('.number-select')[0].find(:xpath, 'option[7]').select_option
       page.all('.bring-button')[0].click
 
       click_on 'こちら'
       fill_in('user_name', with: '')
       fill_in('user_name', with: 'アリス')
-      click_on '持ってきて欲しいものリストへ'
+      click_on '持ってきて欲しい物リストへ'
       sleep 0.2
       expect(page.all('.bring-button')[0].disabled?).to be true
     end
