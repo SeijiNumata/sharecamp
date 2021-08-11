@@ -66,9 +66,9 @@
           v-else-if="isActive === '3'"
           class="invite"
         >
-          <p class="invite-message-title">
+          <h2 class="invite-message-title">
             以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！
-          </p>
+          </h2>
           <div class="invite-message-content">
             <p> 「{{ eventName }}」で誰かに持ってきて<br class="br-sp">もらいたい物リストはこちら</p>
             <p>{{ url }}</p>
@@ -80,6 +80,7 @@
           >
             コピー
           </button>
+          </h2>
         </div>
       </div>
     </div>

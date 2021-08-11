@@ -40,12 +40,12 @@
     }
 
     .event-name-error {
-        color: red;
+        color: #d43a4a;
         font-size: 12px;
     }
 
     .event-item-null-error {
-        color: red;
+        color: #d43a4a;
         font-size: 12px;
     }
 
@@ -99,12 +99,12 @@
                 left: 2px;
                 background: #e0e0e0;
             }
-
         }
 
         .create-button {
             border: none;
             background-color: #ffd803;
+            font-weight: 500;
             display: flex;
             justify-content: center;
             align-items: center;

@@ -1,5 +1,5 @@
 header {
-    width:100%;
+    width: 100%;
     box-sizing: border-box;
     background-color: #bae8e8;
     height: 44px;
@@ -7,33 +7,36 @@ header {
     text-decoration: none;
     margin: 0 auto;
 
-    ul{
-        list-style:none;
-        height:44px;
-    }
-    li{
-        height:44px;
-        margin-left:10px;
-        margin-right:2px;
+
+
+    li {
+        height: 44px;
+        margin-left: 10px;
+        margin-right: 2px;
         border-bottom: 3px dashed #7fb3b3;
-          box-sizing: border-box;
+        box-sizing: border-box;
     }
-    p{
-        line-height:22px;
+
+    p {
+        line-height: 22px;
     }
+
     &:after {
         content: "";
         clear: both;
         display: block;
     }
-
     position: relative;
-
-    
 }
+
 .header-left {
     width: 40%;
 }
+.header-menu-content-ul {
+    list-style: none;
+    height: 44px;
+}
+
 .header-left-title {
     display: inline-block;
     font-family: 'Lato', sans-serif;
@@ -45,18 +48,21 @@ header {
     vertical-align: middle;
     text-decoration: none;
 }
+
 .img_logo {
-        width: 50px;
-        display: inline-block;
-        margin-top: 10px;
-        position: absolute;
-        top: 0px;
-        left: 130px;
-    }
+    width: 50px;
+    display: inline-block;
+    margin-top: 10px;
+    position: absolute;
+    top: 0px;
+    left: 130px;
+}
+
 .header-right {
     display: flex;
     justify-content: flex-end;
     width: 60%;
+
     a {
         font-weight: 700;
         color: #272343;
@@ -64,24 +70,19 @@ header {
         margin-right: 10px;
 
         &:hover {
-           color: #ca353b;
+            color: #ca353b;
             text-decoration: none;
         }
     }
 }
 
-ul {
 
-    margin:0px;
-    .recent-watch-link{
-        line-height:44px;
-    }
-}
 
 #menu-btn-check {
     display: none;
 }
-.no-recent-watch{
+
+.no-recent-watch {
     display: none;
 }
 
@@ -94,23 +95,30 @@ ul {
 
         a {
             text-decoration: none;
-         
+
             font-weight: bold;
         }
 
         ul {
             display: flex;
+            margin: 0px;
+            height: 300px;
+
+            .recent-watch-link {
+                line-height: 44px;
+            }
         }
     }
-
 }
 
 @media screen and (max-width: 768px) {
 
-    .no-recent-watch{
+    .no-recent-watch {
         display: block;
-        margin:0 auto;
+        margin: 0 auto;
+        margin-top: 20px;
     }
+
     .menu-btn {
         position: absolute;
         top: 10px;
@@ -175,11 +183,12 @@ ul {
     }
 
     .menu-content ul li {
+        height: 60px;
         border-bottom: solid 1px #ffffff;
         list-style: none;
     }
 
-    .menu-content ul li a p{
+    .menu-content ul li a p {
         display: block;
         width: 100%;
         font-size: 15px;
@@ -189,9 +198,15 @@ ul {
         padding: 9px 15px 10px 0;
         position: relative;
     }
-    .menu-content li{
-        padding:20px;
+
+    .menu-content ul {
+        height: 500px;
     }
+
+    .menu-content li {
+        padding: 7px;
+    }
+
     .menu-content ul li a::before {
         content: "";
         width: 7px;
@@ -212,7 +227,7 @@ ul {
         left: 100%;
         /*leftの値を変更してメニューを画面外へ*/
         z-index: 80;
-       background-color: #bae8e8;
+        background-color: #bae8e8;
         transition: all 0.5s;
         /*アニメーション設定*/
     }

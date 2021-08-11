@@ -1,7 +1,7 @@
 <%= page_heading "ユーザー入力" %>
 <div class=user-new-container>
   <% if @event!=nil %>
-  <h1><%= @event.name %>の<br>持ち物分担リストへようこそ</h1>
+  <h1 class="user-new-title"><%= @event.name %>の<br>持ち物分担リストへようこそ</h1>
   <%end %>
   <%= form_with(model: @user) do |form| %>
 
@@ -12,7 +12,7 @@
 
       <ul>
         <% @user.errors.each do |user| %>
-        <li class="error-message"><%= user.full_message  %></li>
+        <li class="user-new-error-message"><%= user.full_message  %></li>
         <% end %>
       </ul>
     </div>

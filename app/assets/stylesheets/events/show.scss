@@ -141,7 +141,7 @@
 }
 
 .no-number-error {
-    color: red;
+    color: #d43a4a;
     font-size: 10px;
     position: absolute;
     right: 10px;
@@ -216,6 +216,8 @@
 .invite-message-title {
     margin-top: 40px;
     margin-bottom: 30px;
+    font-size: 15px;
+    text-align: center;
 }
 
 .invite-message-content {
@@ -295,7 +297,7 @@
     }
 
     .no-number-error {
-        top: -10px;
+        top: 8px;
     }
 
     .invite-message-content {
