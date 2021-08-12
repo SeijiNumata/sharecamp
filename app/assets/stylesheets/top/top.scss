@@ -196,12 +196,13 @@
     text-align: center;
 }
 
-.event-new {
+.event-new-link {
     text-align: center;
     display: inline-block;
     text-decoration: none;
     background-color: #EB5370;
     padding: 13px;
+    width:340px;
     color: #fffffe;
     margin: 40px 30px 10px 30px;
 
@@ -234,7 +235,7 @@
             font-size: 35px;
         }
 
-        .event-new {
+        .event-new-link {
             font-size: 13px;
         }
 

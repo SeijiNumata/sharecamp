@@ -1,5 +1,5 @@
 <template>
-  <div id="event-new">
+  <div class="event-new">
     <h1>持ち物分担リスト作成</h1>
     <form>
       <div class="event-name">
