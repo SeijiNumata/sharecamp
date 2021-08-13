@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    from_create_check
+    set_came_from_event_create
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
 
@@ -16,30 +16,10 @@ class EventsController < ApplicationController
   end
 
   def new
-    session[:from_create] = 'from_create'
+    session[:from_event_create] = 'from_event_create'
   end
 
   def edit; end
-
-  def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
 
@@ -65,12 +45,12 @@ class EventsController < ApplicationController
     cookies[:recent_watched_events] = JSON.generate(recent_watched_events)
   end
 
-  def from_create_check
-    return unless session[:from_create]
+  def set_came_from_event_create
+    return unless session[:from_event_create]
 
-    @from_create = session[:from_create]
+    @from_event_create = session[:from_event_create]
 
-    session.delete(:from_create)
+    session.delete(:from_event_create)
   end
 
   def recent_watched_events

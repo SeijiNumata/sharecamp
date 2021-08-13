@@ -1,238 +1,159 @@
-#event-new {
+.event-new {
     width: 768px;
     margin: 30px auto;
 
     label {
-        margin-top: 10px;
-        margin-bottom: 5px;
         display: block;
         width: 100%;
-        .tooltip {
-            /* 位置の情報 */
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            vertical-align: middle;
-
-            /* 中身の情報 */
-            background: #bae8e8;
-            border-radius: 100%;
-            position: relative;
-
-            &:before {
-                /* 位置の情報 */
-                position: absolute;
-                display: inline-block;
-                top: 7px;
-                right: -2px;
-                position: absolute;
-                transform: translate(-50%, -50%) scale(0.6);
-
-                /* 中身の情報 */
-                content: '?';
-                color: white;
-                font-size: 100%;
-                font-weight: bold;
-            }
-
-            &:hover {
-                .text {
-                    /* アニメーションの情報 */
-                    visibility: visible;
-                    opacity: 1.0;
-                    bottom: calc(100% + 10px);
-
-                    &:after {
-
-                        /* 位置の情報 */
-                        position: absolute;
-                        display: block;
-                        width: 10px;
-                        height: 10px;
-                        left: 50%;
-                        bottom: -5px;
-                        transform: rotateZ(45deg) translateX(-50%);
-                        transform-origin: left;
-
-                        /* 中身の情報 */
-                        content: ' ';
-                        background: gray;
-                    }
-
-                }
-            }
-
-            .text {
-                visibility: hidden;
-                /* 位置の情報 */
-                position: absolute;
-                display: block;
-                width: 14em;
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 100%;
-
-                /* 中身の情報 */
-                background: gray;
-                color: white;
-                font-size: 12px;
-                padding: 10px;
-                line-height: 1.4;
-                border-radius: 6px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-                pointer-events: none;
-                /* アニメーションの情報 */
-                transition: all 0.4s ease;
-                visibility: hidden;
-                opacity: 0;
-                bottom: 100%;
-            }
-        }
+        margin-bottom: 10px;
+        font-weight: bold;
     }
-
 
     ::placeholder {
         color: #d8d8d8;
     }
 
-    h1 {
-        text-align: center;
-        margin-bottom: 10px;
-        width: 100%;
-    }
-
-    .new-describe {
-        text-align: center;
-        margin-bottom: 10px;
-        width: 100%;
-        font-size: 12px;
-    }
-
-    .event-name {
-        width: 80%;
-        margin: 0 auto;
-        height: 80px;
-
-        input {
-            width: 100%;
-            border: solid 1px #999;
-            border-radius: 4px;
-            line-height: 40px;
-            font-size: 16px;
-        }
-    }
-
-    .event-name-error {
-        color: red;
-        font-size: 12px;
-    }
-
-    .event-item-null-error {
-        color: red;
-        font-size: 12px;
-    }
-
-    .event-content {
-        width: 80%;
-        margin: 0 auto;
-
-        input {
-            line-height: 40px;
-            border: solid 1px #999;
-            border-radius: 4px;
-        }
-
-        p {
-            width: 100%;
-        }
-
-
-
-        ul {
-            padding-left: 0px;
-        }
-
-        li {
-            list-style: none;
-            display: flex;
-            width: 100%;
-            margin-bottom: 16px;
-
-            .item {
-                flex: 1;
-                margin-right: 10px;
-
-            }
-
-            .item-number {
-                width: 64px;
-                text-align: center;
-                border: solid 1px #999;
-                border-radius: 4px;
-                background-color:white;
-            }
-
-        }
-
-        .add-button {
-            margin: 16px auto 0;
-            width: 160px;
-            background: white;
-            margin-bottom: 20px;
-            display: block;
-            border: solid 1px #989898;
-            height: 44px;
-            border-radius: 4px;
-
-            &:hover {
-                box-shadow: 0px 0px 10px #ccc;
-            }
-
-            &:active {
-                box-shadow: 0px 0px 10px #ccc;
-                position: relative;
-                top: 2px;
-                left: 2px;
-                background: #e0e0e0;
-            }
-
-        }
-
-        .create-button {
-            border: none;
-            background-color: #ffd803;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 250px;
-            margin: 0 auto 4px auto;
-            height: 44px;
-
-            &:hover {
-                box-shadow: 0px 0px 10px #ccc;
-            }
-
-            &:active {
-                box-shadow: 0px 0px 10px #ccc;
-                position: relative;
-                top: 2px;
-                left: 2px;
-                background-color: goldenrod;
-            }
-        }
-    }
-
     .messasge-container {
         margin: 0px auto;
         text-align: center;
-        .message{
-            font-size:12px;
+
+        .message {
+            font-size: 12px;
         }
     }
 }
+.event-new-event-content {
+    margin-top: 1rem;
+
+    input {
+        height: 40px;
+        padding: 0 8px;
+        border: solid 1px #999;
+        border-radius: 4px;
+    }
+
+    li {
+        list-style: none;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+}
+.event-new-bring-item-example {
+    font-size: 13px;
+    color: gray;
+}
+
+.event-new-add-button {
+    margin: 16px auto 0;
+    width: 160px;
+    background: #fffffe;
+    margin-bottom: 20px;
+    display: block;
+    border: solid 1px #989898;
+    height: 44px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 0px 10px #ccc;
+    }
+
+    &:active {
+        box-shadow: 0px 0px 10px #ccc;
+        position: relative;
+        top: 2px;
+        left: 2px;
+        background: #e0e0e0;
+    }
+}
+.event-new-create-button {
+    border: none;
+    background-color: #ffd803;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin: 0 auto 4px auto;
+    height: 44px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 0px 10px #ccc;
+    }
+
+    &:active {
+        box-shadow: 0px 0px 10px #ccc;
+        position: relative;
+        top: 2px;
+        left: 2px;
+        background-color: goldenrod;
+    }
+}
+.event-new-title {
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.event-new-event-name {
+    margin-top: 1rem;
+
+    input {
+        padding:0 8px;
+        width: 100%;
+        border: solid 1px #999;
+        border-radius: 4px;
+        line-height: 40px;
+        font-size: 16px;
+    }
+}
+.input-container {
+    display: flex;
+}
+
+.item-new {
+    flex: 1;
+    margin-right: 10px;
+
+}
+.event-new-event-item-null-error {
+    color: #d43a4a;
+    font-size: 12px;
+}
+
+
+
+.item-number-new {
+    width: 64px;
+    text-align: center;
+    border: solid 1px #999;
+    border-radius: 4px;
+    background-color: #fffffe;
+    padding: 4px 4px 4px 4px 4px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 0 2px #ffd705;
+    }
+}
+.describe-someone-bring-items {
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: gray;
+}
+.event-new-event-name-error {
+    color: #d43a4a;
+    font-size: 12px;
+}
+
+.event-new-event-name-example {
+    font-size: 12px;
+    color: gray;
+}
+
 
 @media screen and (max-width: 768px) {
-    #event-new {
+    .event-new {
         max-width: 100%;
         padding: 0 10px;
 

@@ -4,12 +4,12 @@
     class="self-bring-item"
   >
     <input
-      id="checkbox"
       v-model="bringChecked"
+      class="event-show-self-bring-checkbox"
       type="checkbox"
       @change="changeBringCheckBox"
     >
-    <p>{{ itemName }}({{ bringNumber }})</p>
+    {{ itemName }}({{ bringNumber }})
   </div>
 </template>
 

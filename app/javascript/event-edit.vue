@@ -1,18 +1,20 @@
 <template>
   <div class="event-edit">
     <div class="event-edit-component">
-      <h1>内容変更</h1>
+      <h1 class="event-edit-title">
+        持ち物分担リスト<br class="br-sp">内容変更
+      </h1>
       <form>
-        <p>イベント名<span class="event-name-error">{{ eventsNameNullError }}</span></p>
+        <p>イベント名<span class="event-edit-event-name-error">{{ eventsNameNullError }}</span></p>
         <input
           v-model.trim="eventName"
-          class="event-name"
+          class="event-edit-event-name"
         >
 
-        <p>誰かに持ってきて欲しいもの</p>
+        <p>誰かに持ってきて欲しい物</p>
         <p
           v-if="newItemsNullError"
-          class="event-item-null-error"
+          class="event-edit-event-item-null-error"
         >
           {{ newItemsNullError }}
         </p>
@@ -29,14 +31,14 @@
           >
             <input
               v-model.trim="neededItemInfo.name"
-              class="item-name"
+              class="event-edit-item-name"
               :readonly="neededItemInfo.readonly"
               :disabled="neededItemInfo.readonly"
               :class="{readonly:neededItemInfo.readonly}"
             >
             <select
               v-model="neededItemInfos[index].need_number"
-              class="item-number"
+              class="event-edit-item-number"
               name="item-number"
             >
               <option
@@ -55,7 +57,7 @@
               </option>
             </select>
             <button
-              class="delete-button"
+              class="event-edit-delete-button"
               type="button"
               @click="deleteItems(neededItemInfo.item_id,index)"
             >
@@ -64,14 +66,14 @@
           </li>
         </ul>
         <button
-          class="add-button"
+          class="event-edit-add-button"
           type="button"
           @click="addInput"
         >
-          追加する
+          +追加
         </button>
         <button
-          class="create-button"
+          class="event-edit-create-button"
           type="button"
           @click="updateItems"
         >

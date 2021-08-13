@@ -3,14 +3,14 @@
 require 'rails_helper'
 #   save_and_open_screenshot
 
-RSpec.describe '持っていくものリストのシステムテスト', type: :feature, js: true do
+RSpec.describe '持っていく物リストのシステムテスト', type: :feature, js: true do
   let(:event) { create(:event) }
 
   before do
     event
     visit "events/#{event.id}"
     fill_in('user_name', with: 'たろう')
-    click_on '持ってきて欲しいものリストへ'
+    click_on '持ってきて欲しい物リストへ'
   end
 
   context '新規画面のバリデーションテスト' do
