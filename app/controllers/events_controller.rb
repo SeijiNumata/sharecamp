@@ -76,10 +76,6 @@ class EventsController < ApplicationController
   def recent_watched_events
     return unless cookies[:recent_watched_events]
 
-    events = JSON.parse(cookies[:recent_watched_events]).map do |event_id|
-      Event.find(event_id)
-    end
-
-    events.reverse!
+    Event.where(id: JSON.parse(cookies[:recent_watched_events])).order('updated_at DESC')
   end
 end
