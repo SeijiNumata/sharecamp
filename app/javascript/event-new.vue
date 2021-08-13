@@ -1,22 +1,24 @@
 <template>
-  <div id="event-new">
-    <h1>持ち物分担リスト作成</h1>
+  <div class="event-new">
+    <h1 class="event-new-title">
+      持ち物分担リスト作成
+    </h1>
     <form>
-      <div class="event-name">
+      <div class="event-new-event-name">
         <label>イベント名
 
         </label>
-        <p class="event-name-error">
+        <p class="event-new-event-name-error">
           {{ eventsNameNullError }}
         </p>
         <input
           v-model.trim="newEventsName"
         >
-        <p class="event-name-example">
+        <p class="event-new-event-name-example">
           イベントの名称を入力してください（例）〇〇大学卒業キャンプ
         </p>
       </div>
-      <div class="event-content">
+      <div class="event-new-event-content">
         <label class="someone-bring-items">誰かに持ってきて欲しい物
         </label>
         <p class="describe-someone-bring-items">
@@ -24,7 +26,7 @@
           例えばキャンプの場合、まな板や鍋は誰かが持ってくれば良い持ち物なので入力しましょう。<br>
         </p><p
           v-if="newItemsNullError"
-          class="event-item-null-error"
+          class="event-new-event-item-null-error"
         >
           {{ newItemsNullError }}
         </p>
@@ -66,13 +68,13 @@
                 </option>
               </select>
             </div>
-            <p class="bring-item-example">
+            <p class="event-new-bring-item-example">
               {{ itemsExamples[index] }}
             </p>
           </li>
         </ul>
         <button
-          class="add-button"
+          class="event-new-add-button"
           type="button"
           @click="addInput"
         >
@@ -80,7 +82,7 @@
         </button>
 
         <button
-          class="create-button"
+          class="event-new-create-button"
           type="button"
           @click="createItem"
         >
