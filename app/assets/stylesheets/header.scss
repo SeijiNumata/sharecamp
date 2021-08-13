@@ -85,6 +85,10 @@ header {
 .no-recent-watch {
     display: none;
 }
+.current-user-name{
+    font-weight: 700;
+    font-style: italic;
+}
 
 @media screen and (min-width: 768px) {
     .menu-content {
