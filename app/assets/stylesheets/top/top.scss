@@ -2,34 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.main-container {
+.top-index-main-container {
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 40px;
     width: 768px;
 
-    .title {
-        text-align: center;
-    }
-
-
-    h1 {
+    .top-h1 {
         font-family: 'Lato', sans-serif;
         margin-bottom: 20px;
         font-size: 60px;
     }
 
-    h2 {
+    .top-sub-title {
         font-size: 20px;
         font-weight: normal;
-
-        &:last-child {
-            margin-bottom: 40px;
-        }
     }
 
     @media screen and (max-width: 400px) {
-        h2 {
+        .top-sub-title  {
             font-size: 17px;
         }
     }
@@ -53,10 +44,7 @@
                     margin-bottom: 12px;
                 }
             }
-
         }
-
-
 
         .container-img {
             padding-left: 30px;
@@ -191,6 +179,9 @@
         }
     }
 }
+.top-title {
+    text-align: center;
+}
 
 .link-container {
     text-align: center;
@@ -225,13 +216,13 @@
 
 
 @media screen and (max-width: 768px) {
-    .main-container {
+    .top-index-main-container {
         margin: 0 auto;
         margin-top: 40px;
         margin-bottom: 40px;
         max-width: 100%;
 
-        h1 {
+        .top-h1  {
             font-size: 35px;
         }
 

@@ -13,115 +13,6 @@
         color: #d8d8d8;
     }
 
-    .new-describe {
-        text-align: center;
-        margin-bottom: 10px;
-        width: 100%;
-        font-size: 12px;
-    }
-
-    .event-name {
-        margin-top: 1rem;
-
-        input {
-            padding:0 8px;
-            width: 100%;
-            border: solid 1px #999;
-            border-radius: 4px;
-            line-height: 40px;
-            font-size: 16px;
-        }
-    }
-
-    .event-name-error {
-        color: #d43a4a;
-        font-size: 12px;
-    }
-
-    .event-item-null-error {
-        color: #d43a4a;
-        font-size: 12px;
-    }
-
-    .event-content {
-        margin-top: 1rem;
-
-        input {
-            height: 40px;
-            padding: 0 8px;
-            border: solid 1px #999;
-            border-radius: 4px;
-        }
-
-        ul {
-            padding-left: 0px;
-        }
-
-        li {
-            list-style: none;
-
-            width: 100%;
-            margin-bottom: 16px;
-
-        }
-
-
-        .bring-item-example {
-            font-size: 13px;
-            color: gray;
-        }
-
-        .add-button {
-            margin: 16px auto 0;
-            width: 160px;
-            background: #fffffe;
-            margin-bottom: 20px;
-            display: block;
-            border: solid 1px #989898;
-            height: 44px;
-            border-radius: 4px;
-            cursor: pointer;
-
-            &:hover {
-                box-shadow: 0px 0px 10px #ccc;
-            }
-
-            &:active {
-                box-shadow: 0px 0px 10px #ccc;
-                position: relative;
-                top: 2px;
-                left: 2px;
-                background: #e0e0e0;
-            }
-        }
-
-        .create-button {
-            border: none;
-            background-color: #ffd803;
-            font-weight: 500;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 250px;
-            margin: 0 auto 4px auto;
-            height: 44px;
-            cursor: pointer;
-
-            &:hover {
-                box-shadow: 0px 0px 10px #ccc;
-            }
-
-            &:active {
-                box-shadow: 0px 0px 10px #ccc;
-                position: relative;
-                top: 2px;
-                left: 2px;
-                background-color: goldenrod;
-            }
-        }
-    }
-
-
     .messasge-container {
         margin: 0px auto;
         text-align: center;
@@ -131,11 +22,90 @@
         }
     }
 }
+.event-new-event-content {
+    margin-top: 1rem;
 
+    input {
+        height: 40px;
+        padding: 0 8px;
+        border: solid 1px #999;
+        border-radius: 4px;
+    }
+
+    li {
+        list-style: none;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+}
+.event-new-bring-item-example {
+    font-size: 13px;
+    color: gray;
+}
+
+.event-new-add-button {
+    margin: 16px auto 0;
+    width: 160px;
+    background: #fffffe;
+    margin-bottom: 20px;
+    display: block;
+    border: solid 1px #989898;
+    height: 44px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 0px 10px #ccc;
+    }
+
+    &:active {
+        box-shadow: 0px 0px 10px #ccc;
+        position: relative;
+        top: 2px;
+        left: 2px;
+        background: #e0e0e0;
+    }
+}
+.event-new-create-button {
+    border: none;
+    background-color: #ffd803;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin: 0 auto 4px auto;
+    height: 44px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 0px 10px #ccc;
+    }
+
+    &:active {
+        box-shadow: 0px 0px 10px #ccc;
+        position: relative;
+        top: 2px;
+        left: 2px;
+        background-color: goldenrod;
+    }
+}
 .event-new-title {
     text-align: center;
     margin-bottom: 10px;
     width: 100%;
+}
+.event-new-event-name {
+    margin-top: 1rem;
+
+    input {
+        padding:0 8px;
+        width: 100%;
+        border: solid 1px #999;
+        border-radius: 4px;
+        line-height: 40px;
+        font-size: 16px;
+    }
 }
 .input-container {
     display: flex;
@@ -146,6 +116,11 @@
     margin-right: 10px;
 
 }
+.event-new-event-item-null-error {
+    color: #d43a4a;
+    font-size: 12px;
+}
+
 
 
 .item-number-new {
@@ -166,8 +141,12 @@
     margin-bottom: 10px;
     color: gray;
 }
+.event-new-event-name-error {
+    color: #d43a4a;
+    font-size: 12px;
+}
 
-.event-name-example {
+.event-new-event-name-example {
     font-size: 12px;
     color: gray;
 }
