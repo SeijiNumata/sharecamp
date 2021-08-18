@@ -32,6 +32,7 @@
     margin: 0 - 8px 28px;
 }
 
+
 .show-tabs-li {
     z-index:110;
     line-height: 40px;
@@ -65,17 +66,18 @@
     line-height: 1.4;
 }
 
-.kimari {
+.item-bringer-disiced {
     background: #bae8e7;
-    padding: 3px;
     display: inline-block;
     color: #0d3e0d;
-    font-size: 12ox;
+    font-size: 12px;
     align-items: center;
     padding: 0 0.6em;
     margin-right: 8px;
-    height: 22px;
+    height: 29px;
+    line-height:29px;
     border-radius: 4px;
+    display:inline-flex;
 }
 
 .event-show-item-input {
@@ -83,6 +85,8 @@
     right: 0px;
     top: 0px;
     padding: 22px 12px;
+    display:flex;
+    align-items:center;
 }
 
 .bring-button {
@@ -101,6 +105,9 @@
     padding: 0 8px;
     cursor: pointer;
     font-size: 16px;
+    border:solid 1px #ccc;
+    border-radius:4px;
+    margin-right:4px;
 
     &:hover {
         box-shadow: 0 0 0 2px #ffd705;
@@ -151,17 +158,14 @@
 }
 
 .self-brings-contents {
-    height: 600px;
     width: 400px;
-    border: 1px solid #ccc;
     margin: 0 auto;
 }
 
 .self-bring-item {
-    margin-left: 40px;
     margin-bottom: 4px;
-    display: inline-block;
-    width: 300px;
+    padding:8px;
+    border-bottom:dashed 1px #cccccc;
 }
 
 .event-show-self-bring-delete-button {
@@ -169,6 +173,7 @@
     background: #f5d5d5;
     border: solid 1px #d43a3a;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .show-contents {
@@ -177,10 +182,13 @@
 
 .event-show-my-items,
 .show-bring-button-describe-h2 {
-    font-size: 15px;
+    font-size: 17px;
     margin-top: 25px;
     margin-bottom: 16px;
     text-align: center;
+}
+.event-show-my-items{
+    font-size:23px;
 }
 
 .event-show-item {
@@ -218,7 +226,7 @@
 .invite-message-title {
     margin-top: 40px;
     margin-bottom: 30px;
-    font-size: 15px;
+    font-size: 23px;
     text-align: center;
 }
 
@@ -279,8 +287,8 @@
 
 @media screen and (max-width: 800px) {
     .invite-message-title {
-        font-size: 15px;
-        line-height: 20px;
+        font-size: 19px;
+        line-height: 25px;
     }
 }
 
@@ -292,6 +300,10 @@
     .show-tabs-li{
         z-index:0;
     }
+
+    .current-user-bring-item-tab{
+        line-height: 40px;
+        }
 
     .show-tabs-li:last-child {
         line-height: 40px;
