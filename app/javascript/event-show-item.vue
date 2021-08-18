@@ -4,7 +4,7 @@
       <p class="item-name-and-number">
         <span
           v-if="needNumber-bringSum<=0"
-          class="kimari"
+          class="item-bringer-disiced"
         >
           分担決定
         </span><br class="br-sp">

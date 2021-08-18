@@ -23,7 +23,7 @@
           class="current-user-bring-item-tab show-tabs-li"
           @click="changeTab('2')"
         >
-          自分が<br class="br-sp">持っていく物
+          自分の持ち物
         </li>
         <li
           :class="{'active': isActive === '3'}"
