@@ -49,7 +49,7 @@
 }
 
 
-.show-tabs-li .active {
+.tabs .active {
     background-color: #bae8e8;
     cursor: auto;
     color: #444444;
@@ -266,7 +266,7 @@
     &:hover {
         box-shadow: 0 0 0 2px #ffd705;
     }
-    
+
 }
 
 @media screen and (max-width: 850px) {
@@ -329,7 +329,7 @@
     .modal {
         font-size: 7px;
         margin-right:10px;
-  
+
 
         button {
             width: 100px;
@@ -362,4 +362,3 @@
         display: none;
     }
 }
-
