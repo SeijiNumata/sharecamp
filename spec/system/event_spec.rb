@@ -9,18 +9,18 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
   context '新規作成画面のテスト' do
     it '新規作成時、event/users/newに遷移してからevent/idに遷移すること' do
       visit '/events/new'
-      expect(page).to have_content '持ち物リスト作成'
+      expect(page).to have_content '持ち物分担リスト作成'
       fill_in('○○大学卒業キャンプ', with: 'タイトル')
       fill_in('テント', with: 'テント')
       first('.item-number').find(:xpath, 'option[4]').select_option
 
       click_on 'この内容で登録'
-      expect(page).to have_content "タイトルの\n誰か持ってきてリストへようこそ"
+      expect(page).to have_content "タイトルの\n持ち物分担リストへようこそ"
       expect(page).to have_current_path new_user_path, ignore_query: true
 
       fill_in('user_name', with: 'たろう')
 
-      click_on '持ってきて欲しい物リストへ'
+      click_on '持ち物分担リストへ'
 
       click_on '閉じる'
       expect(page).to have_content 'テント'
@@ -29,9 +29,9 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
   end
 
   context '新規画面のバリデーションテスト' do
-    it '持ち物リストの名前が空白の時に、イベントが作成できないこと' do
+    it '持ち物分担リストの名前が空白の時に、イベントが作成できないこと' do
       visit '/events/new'
-      expect(page).to have_content '持ち物リスト作成'
+      expect(page).to have_content '持ち物分担リスト作成'
       fill_in('テント', with: 'テント')
       first('.item-number').find(:xpath, 'option[4]').select_option
 
@@ -41,7 +41,7 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
 
     it '持っていく物が最低１つ以上登録されていないと、イベント作成ができないこと' do
       visit '/events/new'
-      expect(page).to have_content '持ち物リスト作成'
+      expect(page).to have_content '持ち物分担リスト作成'
       fill_in('○○大学卒業キャンプ', with: 'タイトル')
 
       click_on 'この内容で登録'
@@ -50,7 +50,7 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
 
     it '持っていく物の数が入力されていないとき、イベント作成ができないこと' do
       visit '/events/new'
-      expect(page).to have_content '持ち物リスト作成'
+      expect(page).to have_content '持ち物分担リスト作成'
       fill_in('○○大学卒業キャンプ', with: 'タイトル')
       fill_in('テント', with: 'テント')
 
@@ -60,7 +60,7 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
 
     it '持っていく物の数だけ登録されていて名前が入力されていない時、イベント作成ができないこと' do
       visit '/events/new'
-      expect(page).to have_content '持ち物リスト作成'
+      expect(page).to have_content '持ち物分担リストト作成'
       fill_in('○○大学卒業キャンプ', with: 'タイトル')
       first('.item-number').find(:xpath, 'option[4]').select_option
 
@@ -74,7 +74,7 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
       event
       visit "events/#{event.id}"
       fill_in('user_name', with: 'たろう')
-      click_on '持ってきて欲しい物リストへ'
+      click_on '持ち物分担リストへ'
       click_on '内容変更'
     end
 
@@ -123,7 +123,7 @@ RSpec.describe 'イベントのシステムテスト', type: :feature, js: true 
       visit "events/#{events[0].id}"
       fill_in('user_name', with: 'たろう')
 
-      click_on '持ってきて欲しい物リストへ'
+      click_on '持ち物分担リストへ'
 
       5.times { |n| visit "events/#{events[n].id}" }
 

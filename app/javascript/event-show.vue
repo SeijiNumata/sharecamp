@@ -70,7 +70,7 @@
             以下の文章を参加者に伝え、<br class="br-sp">誰かに持ってきてもらおう！！
           </h2>
           <div class="invite-message-content">
-            <p> 「{{ eventName }}」で誰かに持ってきて<br class="br-sp">もらいたい物リストはこちら</p>
+            <p> 「{{ eventName }}」の<br class="br-sp">持ち物分担リストはこちら</p>
             <p>{{ url }}</p>
             <p> 持ってきてくれる人募集中です！</p>
           </div>
@@ -97,7 +97,7 @@
         </div>
         <div class="modal-body">
           <div class="modal-body-text">
-            <p>「{{ eventName }}」で誰かに持ってきてもらいたい物リストはこちら</p>
+            <p>「{{ eventName }}」の持ち物分担リストはこちら</p>
             <p>{{ url }}</p>
             <p>持ってきてくれる人募集中です！</p>
           </div>
@@ -189,7 +189,7 @@ export default {
       this.isActive = num
     },
     inviteMessage () {
-      this.message = '「' + this.eventName + '」で誰かに持ってきてもらいた物リストはこちら\n' + this.url + '\n' + '持ってきてくれる人募集中です！'
+      this.message = '「' + this.eventName + '」の持ち物分担リストはこちら\n' + this.url + '\n' + '持ってきてくれる人募集中です！'
     },
     createUserBringItems (item, selectedNumber) {
       axios.post('/api/user_bring_items', {

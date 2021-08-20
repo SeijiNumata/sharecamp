@@ -15,13 +15,13 @@
         <ul class="header-menu-content-ul">
           <li>
             <% unless controller.controller_name=="events" && controller.action_name=="index" %>
-            <%= link_to "最近見たリスト一覧", events_path ,class:"recent-watch-link" %>
+            <%= link_to "最近見た持ち物分担リスト一覧", events_path ,class:"recent-watch-link" %>
             <% end %>
           </li>
 
           <% if recent_watch_events_count==0 %>
           <li class="no-recent-watch">
-            <p>最近見たリストはありません</p>
+            <p>最近見た持ち物分担リストはありません</p>
           </li>
           <% end %>
           <% if controller.controller_name=="events" && controller.action_name=="show" %>

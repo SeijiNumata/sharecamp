@@ -1,7 +1,7 @@
 <%= page_heading "一覧ページ" %>
 <div class="events-index">
-    <h1 class="event-index-title">最近ブラウザで閲覧した<br class="br-sp">持ってきて欲しい物リスト</h1>
-    <p class="event-index-title-description">直近５件のブラウザで<br class="br-sp">閲覧したリストを表示しています</p>
+    <h1 class="event-index-title">最近ブラウザで閲覧した<br class="br-sp">持ち物分担リスト</h1>
+    <p class="event-index-title-description">直近５件のブラウザで閲覧した<br class="br-sp">持ち物分担リストを表示しています</p>
 
     <% @events.each do |event| %>
     <div class="event-index-event-list">
@@ -10,11 +10,11 @@
     </div>
     <% end %>
     <% if @events.count==0 %>
-    <p class="no-recent-watch-list">最近閲覧した持ってきて<br class="br-sp">欲しい物リストはまだありません</p>
+    <p class="no-recent-watch-list">最近閲覧した持ってきて<br class="br-sp">持ち物分担リストはまだありません</p>
     <% end %>
 
     <br>
     <div class="event-index-button-component">
-        <%= link_to '持ってきて欲しい物リストを作る', new_event_path,class:"event-index-new-event-button" %>
+        <%= link_to '持ち物分担リストを作る', new_event_path,class:"event-index-new-event-button" %>
     </div>
 </div>
