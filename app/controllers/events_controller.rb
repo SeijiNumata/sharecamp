@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     set_came_from_event_create
     session[:event_id] = @event.id
     redirect_to '/events/users/new' unless current_user
-    cookies[:recent_watched_events] = WatchedEvent.push_recent_watched(@event, cookies[:recent_watched_events])
+    cookies[:recent_watched_events] = WatchedEvent.update_recent_watched(@event, cookies[:recent_watched_events] ||= '')
   end
 
   def new

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class WatchedEvent
-  def self.push_recent_watched(event, recent_watched_event_cookies)
-    if recent_watched_event_cookies.nil?
-      [event.id.to_s]
+  def self.update_recent_watched(event, recent_watched_event_cookies)
+    if recent_watched_event_cookies.blank?
+      recent_watched_events = [event.id.to_s]
     else
       recent_watched_events = JSON.parse(recent_watched_event_cookies)
       recent_watched_events.push(event.id).uniq!
