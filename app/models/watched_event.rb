@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class WatchedEvent
-  def self.update_recent_watched(event, recent_watched_event_cookies)
+  def self.update(event, recent_watched_event_cookies)
     if recent_watched_event_cookies.blank?
       recent_watched_events = [event.id.to_s]
     else
@@ -13,7 +13,7 @@ class WatchedEvent
     JSON.generate(recent_watched_events)
   end
 
-  def self.recent_watched_events(recent_watched_event_cookies)
+  def self.convert_from_cookies(recent_watched_event_cookies)
     return unless recent_watched_event_cookies
 
     Event.where(id: JSON.parse(recent_watched_event_cookies)).order('updated_at DESC')
