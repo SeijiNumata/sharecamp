@@ -16,6 +16,11 @@
     padding:8px;
     text-align: center;
 }
+@media screen and (max-width: 768px) {
+    .no-recent-watch-list{
+        font-size: 14px;
+    }
+}
 
 .event-index-title-description {
     text-align: center;

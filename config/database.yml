@@ -21,7 +21,9 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: sharecamp
-  password: 
+  password: password
+  # host: db
+  # port: 5432
   host: localhost
 
 development:
