@@ -89,6 +89,7 @@
         class="modal"
         name="modal-message-from-create"
         width="80%"
+        height="320px"
         :max-width="630"
         :adaptive="true"
       >
