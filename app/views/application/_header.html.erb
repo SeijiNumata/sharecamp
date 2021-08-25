@@ -11,7 +11,6 @@
     <div class="hamburger-menu">
       <input type="checkbox" id="menu-btn-check">
       <label for="menu-btn-check" class="menu-btn"><span></span></label>
-      <!--ここからメニュー-->
       <div class="menu-content">
         <ul class="header-menu-content-ul">
           <li>
@@ -29,7 +28,7 @@
 
           <div class="user-change-link">
             <li>
-              <p>hello! <%= current_user.name %></p>
+              <p>hello! <span class="current-user-name"><%= current_user.name %></span></p>
               <p><span>別人の場合は</span><%= link_to 'こちら', new_user_path %></p>
             </li>
           </div>
@@ -37,21 +36,7 @@
 
         </ul>
       </div>
-      <!--ここまでメニュー-->
     </div>
-    <%
-=begin%>
-    <% unless controller.controller_name=="events" && controller.action_name=="index" %>
-    <%= link_to "最近見たリスト一覧", events_path ,class:"recent-watch-link" %>
-    <% end %>
-    <% if controller.controller_name=="events" && controller.action_name=="show" %>
-    <div class="user-change-link">
-      <p>hello! <%= current_user.name %></p>
-      <p><span>別人の場合は</span><%= link_to 'こちら', new_user_path %></p>
-    </div>
-    <% end %>
-    <%
-=end%>
 
   </div>
 </header>

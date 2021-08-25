@@ -3,6 +3,7 @@
     v-if="bringItemId!=0"
     class="self-bring-item"
   >
+  <label>
     <input
       v-model="bringChecked"
       class="event-show-self-bring-checkbox"
@@ -10,6 +11,7 @@
       @change="changeBringCheckBox"
     >
     {{ itemName }}({{ bringNumber }})
+    </label>
   </div>
 </template>
 
@@ -152,4 +154,3 @@ export default {
   }
 }
 </script>
-
