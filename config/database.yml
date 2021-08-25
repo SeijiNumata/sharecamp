@@ -21,9 +21,7 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: sharecamp
-  password: password
-  # host: db
-  # port: 5432
+  password:
   host: localhost
 
 development:
@@ -89,19 +87,3 @@ production:
   # database: sharecamp_production
   # username: sharecamp
   # password: <%= ENV['SHARECAMP_DATABASE_PASSWORD'] %>
-
-# #########################
-# default: &default
-#   adapter: postgresql
-#   encoding: unicode
-#   host: db
-#   username: postgres
-#   password:
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-# production:
-#   <<: *default
-#   host: <%= Rails.application.credentials.rds[:host] %>
-#   database: <%= Rails.application.credentials.rds[:database] %>
-#   username: <%= Rails.application.credentials.rds[:username] %>
-#   password: <%= Rails.application.credentials.rds[:password] %>
